@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Tjenestekatalog feature.
+ */
+
+include_once 'tk.features.inc';

@@ -1,0 +1,13 @@
+name = Tjenestekatalog
+description = Bla, bla
+core = 7.x
+dependencies[] = features
+dependencies[] = field_sql_storage
+dependencies[] = list
+dependencies[] = node
+dependencies[] = options
+dependencies[] = text
+features[features_api][] = api:1
+features[field][] = node-service-field_criticality
+features[field][] = node-service-field_description
+features[node][] = service
