@@ -13,6 +13,7 @@ dependencies[] = views
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:1
 features[field][] = node-service-field_criticality
+features[field][] = node-service-field_demand
 features[field][] = node-service-field_description
 features[node][] = service
 features[views_view][] = all_services
