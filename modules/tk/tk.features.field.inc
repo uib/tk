@@ -32,6 +32,7 @@ function tk_field_default_fields() {
           2 => 'Viktig',
           3 => 'Normal',
           4 => 'Liten',
+          5 => 'Bitte liten',
         ),
         'allowed_values_function' => '',
       ),
