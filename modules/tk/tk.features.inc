@@ -24,6 +24,14 @@ function tk_node_info() {
       'title_label' => t('Tittel'),
       'help' => '',
     ),
+    'support_contact' => array(
+      'name' => t('Servicekontakt'),
+      'base' => 'node_content',
+      'description' => t('Hvor henvender bruker seg for å få service på denne tjenesten.'),
+      'has_title' => '1',
+      'title_label' => t('Navn'),
+      'help' => '',
+    ),
   );
   return $items;
 }
