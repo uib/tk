@@ -17,6 +17,7 @@ features[field][] = node-service-field_criticality
 features[field][] = node-service-field_demand
 features[field][] = node-service-field_description
 features[field][] = node-service-field_service_type
+features[field][] = node-service-field_support_contact
 features[field][] = node-service-field_usergroup
 features[field][] = node-support_contact-field_adress
 features[field][] = node-support_contact-field_phone
