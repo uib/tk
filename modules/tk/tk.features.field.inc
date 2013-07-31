@@ -74,7 +74,7 @@ function tk_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
@@ -141,7 +141,7 @@ function tk_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '4',
+        'weight' => '5',
       ),
     ),
   );
@@ -282,9 +282,75 @@ function tk_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-service-field_usergroup'.
+  $fields['node-service-field_usergroup'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_usergroup',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'ansatt' => 'Ansatt ved UiB',
+          'student' => 'Student ved UiB',
+          'ekstern' => 'Ekstern',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'service',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Angir hvem som kan benytte denne tjenesten. ',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 4,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_usergroup',
+      'label' => 'Brukergrupper',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '3',
+      ),
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
+  t('Angir hvem som kan benytte denne tjenesten. ');
   t('Beskrivelse');
+  t('Brukergrupper');
   t('Her har du mulighet for å vekte hvor viktig en tjeneste er.');
   t('Klassifiserer om tjenesten er en tjeneste vi tilbyr til brukere eller om det er en «underliggende»/teknisk tjeneste.');
   t('Krav');
