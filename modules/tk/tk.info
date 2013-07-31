@@ -4,6 +4,7 @@ core = 7.x
 package = Other
 php = 5.2.4
 dependencies[] = features
+dependencies[] = entityreference
 dependencies[] = field_sql_storage
 dependencies[] = list
 dependencies[] = node
