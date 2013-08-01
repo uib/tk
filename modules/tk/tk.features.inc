@@ -21,7 +21,7 @@ function tk_node_info() {
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Tittel'),
+      'title_label' => t('Navn'),
       'help' => '',
     ),
     'service_owner' => array(
