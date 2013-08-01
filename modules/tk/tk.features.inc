@@ -25,9 +25,9 @@ function tk_node_info() {
       'help' => '',
     ),
     'support_contact' => array(
-      'name' => t('Servicekontakt'),
+      'name' => t('Brukerstøtte'),
       'base' => 'node_content',
-      'description' => t('Hvor henvender bruker seg for å få service på en tjenesten.'),
+      'description' => t('Hvor henvender bruker seg for å få brukerstøtte på en tjenesten.'),
       'has_title' => '1',
       'title_label' => t('Navn'),
       'help' => '',
