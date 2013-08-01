@@ -24,6 +24,14 @@ function tk_node_info() {
       'title_label' => t('Tittel'),
       'help' => '',
     ),
+    'service_owner' => array(
+      'name' => t('Systemeier'),
+      'base' => 'node_content',
+      'description' => t('Eier av en tjenesten. Navn på enhet, institusjon etc'),
+      'has_title' => '1',
+      'title_label' => t('Navn'),
+      'help' => '',
+    ),
     'support_contact' => array(
       'name' => t('Brukerstøtte'),
       'base' => 'node_content',
