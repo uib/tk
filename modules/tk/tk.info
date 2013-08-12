@@ -9,6 +9,7 @@ dependencies[] = field_sql_storage
 dependencies[] = field_permissions
 dependencies[] = link
 dependencies[] = list
+dependencies[] = field_group
 dependencies[] = node
 dependencies[] = options
 dependencies[] = text
