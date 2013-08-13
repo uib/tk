@@ -48,7 +48,7 @@ function tk_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '2',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'inline',
@@ -117,7 +117,7 @@ function tk_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '1',
+          'weight' => '2',
         ),
         'full' => array(
           'label' => 'above',
@@ -188,7 +188,7 @@ function tk_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '4',
+          'weight' => '5',
         ),
         'full' => array(
           'label' => 'above',
@@ -262,7 +262,7 @@ function tk_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '3',
+          'weight' => '4',
         ),
         'full' => array(
           'label' => 'above',
@@ -354,7 +354,7 @@ function tk_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '9',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -511,7 +511,7 @@ function tk_field_default_fields() {
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '8',
+          'weight' => '2',
         ),
         'full' => array(
           'label' => 'above',
@@ -678,7 +678,7 @@ function tk_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '0',
+          'weight' => '1',
         ),
         'full' => array(
           'label' => 'above',
