@@ -1,0 +1,17 @@
+/* line 2, ../sass/uib_tk.scss */
+.group-sidebar {
+  width: 30%;
+  float: right;
+  padding: 2px;
+  font-size: 75%;
+}
+
+/*.group-sidebar div.field_label {
+  padding-top: 10px;
+}*/
+/* line 13, ../sass/uib_tk.scss */
+*
+.group-main {
+  width: 68%;
+  float: left;
+}
