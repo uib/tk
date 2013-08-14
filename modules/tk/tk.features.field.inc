@@ -312,11 +312,11 @@ function tk_field_default_fields() {
       'entity_types' => array(),
       'field_name' => 'field_operator',
       'foreign keys' => array(
-        'node' => array(
+        'users' => array(
           'columns' => array(
-            'target_id' => 'nid',
+            'target_id' => 'uid',
           ),
-          'table' => 'node',
+          'table' => 'users',
         ),
       ),
       'indexes' => array(
