@@ -306,11 +306,11 @@ function tk_field_default_fields() {
         'type' => '2',
       ),
       'foreign keys' => array(
-        'users' => array(
+        'node' => array(
           'columns' => array(
-            'target_id' => 'uid',
+            'target_id' => 'nid',
           ),
-          'table' => 'users',
+          'table' => 'node',
         ),
       ),
       'indexes' => array(
