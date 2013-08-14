@@ -23,11 +23,12 @@ function tk_field_group_info() {
     'label' => '',
     'weight' => '0',
     'children' => array(
-      0 => 'field_criticality',
-      1 => 'field_demand',
-      2 => 'field_description',
-      3 => 'field_usergroup',
+      0 => 'field_usergroup',
+      1 => 'field_criticality',
+      2 => 'field_summary',
+      3 => 'field_description',
       4 => 'field_availability',
+      5 => 'field_demand',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -58,8 +59,8 @@ function tk_field_group_info() {
     'label' => '',
     'weight' => '1',
     'children' => array(
-      0 => 'field_support_contact',
-      1 => 'field_service_owner',
+      0 => 'field_service_owner',
+      1 => 'field_support_contact',
     ),
     'format_type' => 'div',
     'format_settings' => array(

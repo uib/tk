@@ -24,6 +24,7 @@ features[field][] = node-service-field_description
 features[field][] = node-service-field_operator
 features[field][] = node-service-field_service_owner
 features[field][] = node-service-field_service_type
+features[field][] = node-service-field_summary
 features[field][] = node-service-field_support_contact
 features[field][] = node-service-field_usergroup
 features[field][] = node-service_owner-field_kode

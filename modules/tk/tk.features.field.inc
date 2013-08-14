@@ -48,7 +48,7 @@ function tk_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '3',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'inline',
@@ -69,7 +69,7 @@ function tk_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '7',
+        'weight' => '8',
       ),
     ),
   );
@@ -117,7 +117,7 @@ function tk_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '2',
+          'weight' => '3',
         ),
         'full' => array(
           'label' => 'above',
@@ -145,7 +145,7 @@ function tk_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '5',
+        'weight' => '6',
       ),
     ),
   );
@@ -232,6 +232,9 @@ function tk_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_description',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -249,7 +252,7 @@ function tk_field_default_fields() {
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
-      'type' => 'text_with_summary',
+      'type' => 'text_long',
     ),
     'field_instance' => array(
       'bundle' => 'service',
@@ -258,36 +261,25 @@ function tk_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '4',
-        ),
-        'full' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '0',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
-          'module' => 'text',
-          'settings' => array(
-            'trim_length' => 600,
-          ),
-          'type' => 'text_trimmed',
-          'weight' => '0',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
       'field_name' => 'field_description',
-      'label' => 'Beskrivelse',
-      'required' => 1,
+      'label' => 'Full beskrivelse',
+      'required' => 0,
       'settings' => array(
-        'display_summary' => 1,
-        'text_processing' => '0',
+        'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -295,10 +287,9 @@ function tk_field_default_fields() {
         'module' => 'text',
         'settings' => array(
           'rows' => '10',
-          'summary_rows' => 5,
         ),
-        'type' => 'text_textarea_with_summary',
-        'weight' => '8',
+        'type' => 'text_textarea',
+        'weight' => '10',
       ),
     ),
   );
@@ -311,6 +302,9 @@ function tk_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_operator',
+      'field_permissions' => array(
+        'type' => '2',
+      ),
       'foreign keys' => array(
         'users' => array(
           'columns' => array(
@@ -379,7 +373,7 @@ function tk_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete_tags',
-        'weight' => '6',
+        'weight' => '7',
       ),
     ),
   );
@@ -466,7 +460,7 @@ function tk_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete_tags',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
@@ -479,6 +473,9 @@ function tk_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_service_type',
+      'field_permissions' => array(
+        'type' => '2',
+      ),
       'foreign keys' => array(),
       'indexes' => array(
         'value' => array(
@@ -539,7 +536,77 @@ function tk_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '3',
+        'weight' => '4',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-service-field_summary'.
+  $fields['node-service-field_summary'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_summary',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'service',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '2',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_summary',
+      'label' => 'Kort beskrivelse',
+      'required' => 1,
+      'settings' => array(
+        'text_processing' => '1',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '3',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '1',
       ),
     ),
   );
@@ -635,7 +702,7 @@ function tk_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete_tags',
-        'weight' => '1',
+        'weight' => '2',
       ),
     ),
   );
@@ -706,7 +773,7 @@ function tk_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '4',
+        'weight' => '5',
       ),
     ),
   );
@@ -1077,14 +1144,15 @@ function tk_field_default_fields() {
   t('Addresse');
   t('Angir hvem som har tjeneste ansvar for denne tjenesten.');
   t('Angir hvem som kan benytte denne tjenesten. ');
-  t('Beskrivelse');
   t('Brukergrupper');
   t('Brukerstøtte');
   t('Driftsansvarlig');
+  t('Full beskrivelse');
   t('Her har du mulighet for å vekte hvor viktig en tjeneste er.');
   t('Hvor henvender bruker seg for å få service på denne tjenesten.');
   t('Identifikator');
   t('Klassifiserer om tjenesten er en tjeneste vi tilbyr til brukere eller om det er en «underliggende»/teknisk tjeneste.');
+  t('Kort beskrivelse');
   t('Krav');
   t('Kritikalitet');
   t('Nettside');
