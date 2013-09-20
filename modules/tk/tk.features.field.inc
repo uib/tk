@@ -69,7 +69,74 @@ function tk_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '8',
+        'weight' => '9',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-service-field_cost'.
+  $fields['node-service-field_cost'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_cost',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'gratis' => 'Gratis',
+          'avtale' => 'Etter avtale',
+          'prisliste' => 'Se prisliste',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'service',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 11,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_cost',
+      'label' => 'Kostnad',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '6',
       ),
     ),
   );
@@ -82,6 +149,9 @@ function tk_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_criticality',
+      'field_permissions' => array(
+        'type' => '2',
+      ),
       'foreign keys' => array(),
       'indexes' => array(
         'value' => array(
@@ -145,7 +215,7 @@ function tk_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '6',
+        'weight' => '10',
       ),
     ),
   );
@@ -158,6 +228,9 @@ function tk_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_demand',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -181,7 +254,7 @@ function tk_field_default_fields() {
       'bundle' => 'service',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Beskriv eventuelle krav for å kunne bruke tjenesten (hardware, software, målgrupper, etc)',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -216,10 +289,10 @@ function tk_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '5',
+          'rows' => '3',
         ),
         'type' => 'text_textarea',
-        'weight' => '9',
+        'weight' => '5',
       ),
     ),
   );
@@ -258,7 +331,7 @@ function tk_field_default_fields() {
       'bundle' => 'service',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Beskriv de viktigste egenskapene og funksjonene ved tjenesten og annen nyttig informasjon til sluttbrukere.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -271,12 +344,12 @@ function tk_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
       'field_name' => 'field_description',
-      'label' => 'Full beskrivelse',
+      'label' => 'Utvidet beskrivelse',
       'required' => 0,
       'settings' => array(
         'text_processing' => '1',
@@ -286,10 +359,80 @@ function tk_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '10',
+          'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '10',
+        'weight' => '2',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-service-field_field_howto_orde'.
+  $fields['node-service-field_field_howto_orde'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_field_howto_orde',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'service',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 17,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_field_howto_orde',
+      'label' => 'Bestilling',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '1',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '3',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '7',
       ),
     ),
   );
@@ -298,7 +441,7 @@ function tk_field_default_fields() {
   $fields['node-service-field_operator'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_operator',
@@ -359,7 +502,7 @@ function tk_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_operator',
-      'label' => 'Driftsansvarlig',
+      'label' => 'Driftsansvarlige',
       'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -372,8 +515,242 @@ function tk_field_default_fields() {
           'path' => '',
           'size' => '60',
         ),
+        'type' => 'entityreference_autocomplete',
+        'weight' => '16',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-service-field_ower_contact'.
+  $fields['node-service-field_ower_contact'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_ower_contact',
+      'field_permissions' => array(
+        'type' => '2',
+      ),
+      'foreign keys' => array(
+        'node' => array(
+          'columns' => array(
+            'target_id' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'target_id' => array(
+          0 => 'target_id',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'entityreference',
+      'settings' => array(
+        'handler' => 'base',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+          'sort' => array(
+            'type' => 'none',
+          ),
+          'target_bundles' => array(),
+        ),
+        'target_type' => 'user',
+      ),
+      'translatable' => '0',
+      'type' => 'entityreference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'service',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => 15,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_ower_contact',
+      'label' => 'Kontaktperson systemeier',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'entityreference',
+        'settings' => array(
+          'match_operator' => 'CONTAINS',
+          'path' => '',
+          'size' => '60',
+        ),
         'type' => 'entityreference_autocomplete_tags',
-        'weight' => '7',
+        'weight' => '13',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-service-field_quality'.
+  $fields['node-service-field_quality'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_quality',
+      'field_permissions' => array(
+        'type' => '1',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'service',
+      'default_value' => array(
+        0 => array(
+          'value' => 'Oppetid:
+Responstid:
+Leveringstid:',
+          'format' => 'plain_text',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 16,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_quality',
+      'label' => 'Kvalitetsmål',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '1',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '3',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '19',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-service-field_service_levels'.
+  $fields['node-service-field_service_levels'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_service_levels',
+      'field_permissions' => array(
+        'type' => '1',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'teknisk' => 'Teknisk drift',
+          'app' => 'Applikasjonsdrift',
+          'forvaltning' => 'Applikasjonsforvaltning',
+          'funksjonell' => 'Funksjonell støtte',
+          'support' => 'Brukerstøtte',
+          'na' => 'N/A',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'service',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Brukes kun når IT-avdelingen er driftsleverandør. Angi de nivåene IT-avdelingen er ansvarlig for. ',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 14,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_service_levels',
+      'label' => 'Driftsnivå',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '18',
       ),
     ),
   );
@@ -453,14 +830,297 @@ function tk_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'entityreference',
+        'module' => 'options',
         'settings' => array(
           'match_operator' => 'CONTAINS',
           'path' => '',
           'size' => '60',
         ),
-        'type' => 'entityreference_autocomplete_tags',
-        'weight' => '3',
+        'type' => 'options_select',
+        'weight' => '12',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-service-field_service_rotation'.
+  $fields['node-service-field_service_rotation'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_service_rotation',
+      'field_permissions' => array(
+        'type' => '1',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '150',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'service',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Beskriv hvordan tjenesten er omfattet av en av IT-avdelingen sine vaktordninger og eventuelle unntak mht. utkall.   ',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 10,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_service_rotation',
+      'label' => 'Vaktordning',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '17',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-service-field_service_state'.
+  $fields['node-service-field_service_state'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_service_state',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'planlagt' => 'Planlagt',
+          'pilot' => 'Pilot/Test',
+          'prod' => 'Produksjon',
+          'utfasing' => 'Utfasing',
+          'avsluttet' => 'Avslutte',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'service',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 8,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_service_state',
+      'label' => 'Livssyklus',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '11',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-service-field_service_status'.
+  $fields['node-service-field_service_status'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_service_status',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'normal' => 'Normal',
+          'ustabil' => 'Ustabil',
+          'nede' => 'Ute av drift',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'service',
+      'default_value' => array(
+        0 => array(
+          'value' => 'normal',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 9,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_service_status',
+      'label' => 'Driftsstatus',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '14',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-service-field_service_supplier'.
+  $fields['node-service-field_service_supplier'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_service_supplier',
+      'field_permissions' => array(
+        'type' => '1',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'ita' => 'IT-avdelingen',
+          'intern' => 'Annen intern enhet',
+          'ekstern' => 'Ekstern',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'service',
+      'default_value' => array(
+        0 => array(
+          'value' => 'ita',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 13,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_service_supplier',
+      'label' => 'Driftsleverandør',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '15',
       ),
     ),
   );
@@ -585,10 +1245,11 @@ function tk_field_default_fields() {
           'weight' => '2',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
+          'module' => 'text',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'type' => 'text_default',
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -596,14 +1257,14 @@ function tk_field_default_fields() {
       'label' => 'Kort beskrivelse',
       'required' => 1,
       'settings' => array(
-        'text_processing' => '1',
+        'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '3',
+          'rows' => '1',
         ),
         'type' => 'text_textarea',
         'weight' => '1',
@@ -695,14 +1356,14 @@ function tk_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'entityreference',
+        'module' => 'options',
         'settings' => array(
           'match_operator' => 'CONTAINS',
           'path' => '',
           'size' => '60',
         ),
-        'type' => 'entityreference_autocomplete_tags',
-        'weight' => '2',
+        'type' => 'options_select',
+        'weight' => '8',
       ),
     ),
   );
@@ -715,6 +1376,9 @@ function tk_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_usergroup',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(),
       'indexes' => array(
         'value' => array(
@@ -725,9 +1389,10 @@ function tk_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'ansatt' => 'Ansatt ved UiB',
-          'student' => 'Student ved UiB',
-          'ekstern' => 'Ekstern',
+          'ansatt' => 'Ansatt',
+          'student' => 'Student',
+          'gjest' => 'Besøkende',
+          'andre' => 'Andre',
         ),
         'allowed_values_function' => '',
       ),
@@ -773,7 +1438,7 @@ function tk_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '5',
+        'weight' => '3',
       ),
     ),
   );
@@ -1144,23 +1809,36 @@ function tk_field_default_fields() {
   t('Addresse');
   t('Angir hvem som har tjeneste ansvar for denne tjenesten.');
   t('Angir hvem som kan benytte denne tjenesten. ');
+  t('Beskriv de viktigste egenskapene og funksjonene ved tjenesten og annen nyttig informasjon til sluttbrukere.');
+  t('Beskriv eventuelle krav for å kunne bruke tjenesten (hardware, software, målgrupper, etc)');
+  t('Beskriv hvordan tjenesten er omfattet av en av IT-avdelingen sine vaktordninger og eventuelle unntak mht. utkall.   ');
+  t('Bestilling');
   t('Brukergrupper');
   t('Brukerstøtte');
-  t('Driftsansvarlig');
-  t('Full beskrivelse');
+  t('Brukes kun når IT-avdelingen er driftsleverandør. Angi de nivåene IT-avdelingen er ansvarlig for. ');
+  t('Driftsansvarlige');
+  t('Driftsleverandør');
+  t('Driftsnivå');
+  t('Driftsstatus');
   t('Her har du mulighet for å vekte hvor viktig en tjeneste er.');
   t('Hvor henvender bruker seg for å få service på denne tjenesten.');
   t('Identifikator');
   t('Klassifiserer om tjenesten er en tjeneste vi tilbyr til brukere eller om det er en «underliggende»/teknisk tjeneste.');
+  t('Kontaktperson systemeier');
   t('Kort beskrivelse');
+  t('Kostnad');
   t('Krav');
   t('Kritikalitet');
+  t('Kvalitetsmål');
+  t('Livssyklus');
   t('Nettside');
   t('Når er tjenesten tilgjengelig, når kan bruker forvente at tjenesten kan brukes.');
   t('Systemeier');
   t('Telefon');
   t('Tilgjengelighet');
   t('Tjenestetype');
+  t('Utvidet beskrivelse');
+  t('Vaktordning');
   t('Åpningstid');
 
   return $fields;
