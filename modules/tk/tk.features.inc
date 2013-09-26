@@ -26,10 +26,18 @@ function tk_views_api() {
  */
 function tk_node_info() {
   $items = array(
+    'article' => array(
+      'name' => t('Artikkel'),
+      'base' => 'node_content',
+      'description' => t('Generelle informasjonssider for tjenestekatalogen.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'service' => array(
       'name' => t('Tjeneste'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('Registrering av nye tjenester'),
       'has_title' => '1',
       'title_label' => t('Navn'),
       'help' => '',
@@ -37,7 +45,7 @@ function tk_node_info() {
     'service_owner' => array(
       'name' => t('Systemeier'),
       'base' => 'node_content',
-      'description' => t('Eier av en tjenesten. Navn på enhet, institusjon etc'),
+      'description' => t('Registrering av eier av en tjeneste. Navn på enhet, institusjon etc'),
       'has_title' => '1',
       'title_label' => t('Navn'),
       'help' => '',
@@ -45,7 +53,7 @@ function tk_node_info() {
     'support_contact' => array(
       'name' => t('Brukerstøtte'),
       'base' => 'node_content',
-      'description' => t('Hvor henvender bruker seg for å få brukerstøtte på en tjenesten.'),
+      'description' => t('Registrering av enhet der bruker skal henvende seg for å få hjelp (1.linje brukerstøtte) på en tjeneste.'),
       'has_title' => '1',
       'title_label' => t('Navn'),
       'help' => '',

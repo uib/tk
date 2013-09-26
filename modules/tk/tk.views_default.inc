@@ -65,6 +65,17 @@ function tk_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Tjenesteoversikt';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Innhold: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'service' => 'service',
+  );
   $handler->display->display_options['path'] = 'all-services';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Tjenesteoversikt';
@@ -110,20 +121,20 @@ function tk_views_default_views() {
   $handler->display->display_options['fields']['field_criticality']['id'] = 'field_criticality';
   $handler->display->display_options['fields']['field_criticality']['table'] = 'field_data_field_criticality';
   $handler->display->display_options['fields']['field_criticality']['field'] = 'field_criticality';
-  /* Felt: Innhold: Brukergrupper */
+  /* Felt: Innhold: Målgrupper */
   $handler->display->display_options['fields']['field_usergroup']['id'] = 'field_usergroup';
   $handler->display->display_options['fields']['field_usergroup']['table'] = 'field_data_field_usergroup';
   $handler->display->display_options['fields']['field_usergroup']['field'] = 'field_usergroup';
   $handler->display->display_options['fields']['field_usergroup']['delta_offset'] = '0';
-  /* Felt: Innhold: Krav */
+  /* Felt: Innhold: Hva er nødvendig for å bruke tjenesten */
   $handler->display->display_options['fields']['field_demand']['id'] = 'field_demand';
   $handler->display->display_options['fields']['field_demand']['table'] = 'field_data_field_demand';
   $handler->display->display_options['fields']['field_demand']['field'] = 'field_demand';
-  /* Felt: Innhold: Tilgjengelighet */
+  /* Felt: Innhold: Normal tilgjengelighet  */
   $handler->display->display_options['fields']['field_availability']['id'] = 'field_availability';
   $handler->display->display_options['fields']['field_availability']['table'] = 'field_data_field_availability';
   $handler->display->display_options['fields']['field_availability']['field'] = 'field_availability';
-  /* Felt: Innhold: Utvidet beskrivelse */
+  /* Felt: Innhold: Utvidet beskrivelse (hva er inkludert) */
   $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
   $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
   $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
@@ -157,16 +168,17 @@ function tk_views_default_views() {
     t('neste ›'),
     t('siste »'),
     t('Page'),
+    t('Tjenesteoversikt'),
     t('Data export'),
     t('Innhold entity referenced from field_support_contact'),
     t('Innhold entity referenced from field_service_owner'),
     t('NID'),
     t('Tjeneste'),
     t('Kritikalitet'),
-    t('Brukergrupper'),
-    t('Krav'),
-    t('Tilgjengelighet'),
-    t('Utvidet beskrivelse'),
+    t('Målgrupper'),
+    t('Hva er nødvendig for å bruke tjenesten'),
+    t('Normal tilgjengelighet '),
+    t('Utvidet beskrivelse (hva er inkludert)'),
     t('Support'),
     t('Systemeier'),
   );
