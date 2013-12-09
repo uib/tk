@@ -6,11 +6,12 @@
   font-size: 75%;
 }
 
-/*.group-sidebar div.field_label {
-  padding-top: 10px;
-}*/
+/* line 9, ../sass/uib_tk.scss */
+.field-label-above {
+  margin: 0 0 20px;
+}
+
 /* line 13, ../sass/uib_tk.scss */
-*
 .group-main {
   width: 68%;
   float: left;

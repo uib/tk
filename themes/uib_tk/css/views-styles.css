@@ -23,11 +23,10 @@
 }
 /* line 29, ../sass/views-styles.scss */
 .views-displays .secondary .open > a {
-  -moz-border-radius: 7px 7px 0 0;
   -webkit-border-radius: 7px 7px 0 0;
-  -o-border-radius: 7px 7px 0 0;
+  -moz-border-radius: 7px 7px 0 0;
   -ms-border-radius: 7px 7px 0 0;
-  -khtml-border-radius: 7px 7px 0 0;
+  -o-border-radius: 7px 7px 0 0;
   border-radius: 7px 7px 0 0;
 }
 /* line 31, ../sass/views-styles.scss */
@@ -40,19 +39,17 @@
 }
 /* line 38, ../sass/views-styles.scss */
 .views-displays .secondary .action-list li:first-child {
-  -moz-border-radius: 0 7px 0 0;
   -webkit-border-radius: 0 7px 0 0;
-  -o-border-radius: 0 7px 0 0;
+  -moz-border-radius: 0 7px 0 0;
   -ms-border-radius: 0 7px 0 0;
-  -khtml-border-radius: 0 7px 0 0;
+  -o-border-radius: 0 7px 0 0;
   border-radius: 0 7px 0 0;
 }
 /* line 41, ../sass/views-styles.scss */
 .views-displays .secondary .action-list li:last-child {
-  -moz-border-radius: 0 0 7px 7px;
   -webkit-border-radius: 0 0 7px 7px;
-  -o-border-radius: 0 0 7px 7px;
+  -moz-border-radius: 0 0 7px 7px;
   -ms-border-radius: 0 0 7px 7px;
-  -khtml-border-radius: 0 0 7px 7px;
+  -o-border-radius: 0 0 7px 7px;
   border-radius: 0 0 7px 7px;
 }
