@@ -173,7 +173,7 @@ function tk_field_default_fields() {
         'allowed_values' => array(
           'gratis' => 'Gratis',
           'avtale' => 'Etter avtale',
-          'prisliste' => 'Se prisliste',
+          'prisliste' => '<a href="https://it.uib.no/Prisliste_IT_tjenester">Se prisliste</a>',
         ),
         'allowed_values_function' => '',
       ),
