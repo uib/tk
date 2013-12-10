@@ -1873,6 +1873,9 @@ Leveringstid:',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_www',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(),
       'indexes' => array(),
       'locked' => '0',
@@ -1918,7 +1921,7 @@ Leveringstid:',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_www',
-      'label' => 'Nettside',
+      'label' => 'Her kan du melde inn feil',
       'required' => 0,
       'settings' => array(
         'attributes' => array(
@@ -1964,6 +1967,7 @@ Leveringstid:',
   t('Driftsleverandør');
   t('Driftsstatus');
   t('Her har du mulighet for å vekte hvor viktig en tjeneste er.');
+  t('Her kan du melde inn feil');
   t('Hva er nødvendig for å bruke tjenesten');
   t('Hva koster tjenesten');
   t('Hvor får jeg hjelp');
@@ -1976,7 +1980,6 @@ Leveringstid:',
   t('Kvalitetsmål');
   t('Livssyklus ');
   t('Målgrupper');
-  t('Nettside');
   t('Normal tilgjengelighet ');
   t('Når er tjenesten tilgjengelig, når kan bruker forvente at tjenesten kan brukes.');
   t('Systemeier');
