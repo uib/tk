@@ -129,3 +129,23 @@ function uib_tk_preprocess_block(&$variables, $hook) {
     }
   }
 }
+
+/**
+ * Implements template_preprocess_field().
+ */
+function tk_preprocess_field(&$variables) {
+  $field_name = $variables['element']['#field_name'];
+  $fields_help_text = array(
+    'field_availability',
+    'field_field_howto_orde',
+    'field_service_supplier',
+    'field_service_state',
+  );
+  if (in_array($field_name, $fields_help_text)) {
+    $variables['theme_hook_suggestions'][] = 'field__help_text';
+    $instance = field_info_instance('node', $field_name, 'service');
+    if ($instance['description'] != '') {
+      $variables['element']['#help'] = $instance['description'];
+    }
+  }
+}
