@@ -243,4 +243,7 @@ function tk_preprocess_field(&$variables) {
       $variables['element']['#help'] = $instance['description'];
     }
   }
+  if ($field_name == 'field_service_type') {
+    $variables['element']['#search'] = 'https://it.uib.no/ithjelp/index.php?title=Spesial%3AS%C3%B8k&profile=default&search=' . $variables['element']['0']['#markup'] . '&fulltext=Search';
+  }
 }
