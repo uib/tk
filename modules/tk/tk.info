@@ -1,7 +1,7 @@
 name = Tjenestekatalog
 description = Bla, bla
 core = 7.x
-package = Other
+package = UiB
 php = 5.2.4
 dependencies[] = entityreference
 dependencies[] = features
