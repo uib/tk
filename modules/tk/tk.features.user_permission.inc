@@ -10,6 +10,15 @@
 function tk_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: create article content.
+  $permissions['create article content'] = array(
+    'name' => 'create article content',
+    'roles' => array(
+      0 => 'tjenesteadmin',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: create field_criticality.
   $permissions['create field_criticality'] = array(
     'name' => 'create field_criticality',
@@ -88,6 +97,153 @@ function tk_user_default_permissions() {
       1 => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
+  );
+
+  // Exported permission: create service content.
+  $permissions['create service content'] = array(
+    'name' => 'create service content',
+    'roles' => array(
+      0 => 'druapladmin',
+      1 => 'tjenesteadmin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: create service_owner content.
+  $permissions['create service_owner content'] = array(
+    'name' => 'create service_owner content',
+    'roles' => array(
+      0 => 'druapladmin',
+      1 => 'tjenesteadmin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: create support_contact content.
+  $permissions['create support_contact content'] = array(
+    'name' => 'create support_contact content',
+    'roles' => array(
+      0 => 'druapladmin',
+      1 => 'tjenesteadmin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any article content.
+  $permissions['delete any article content'] = array(
+    'name' => 'delete any article content',
+    'roles' => array(
+      0 => 'tjenesteadmin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any service content.
+  $permissions['delete any service content'] = array(
+    'name' => 'delete any service content',
+    'roles' => array(
+      0 => 'druapladmin',
+      1 => 'tjenesteadmin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any service_owner content.
+  $permissions['delete any service_owner content'] = array(
+    'name' => 'delete any service_owner content',
+    'roles' => array(
+      0 => 'druapladmin',
+      1 => 'tjenesteadmin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any support_contact content.
+  $permissions['delete any support_contact content'] = array(
+    'name' => 'delete any support_contact content',
+    'roles' => array(
+      0 => 'druapladmin',
+      1 => 'tjenesteadmin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own article content.
+  $permissions['delete own article content'] = array(
+    'name' => 'delete own article content',
+    'roles' => array(
+      0 => 'tjenesteadmin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own service content.
+  $permissions['delete own service content'] = array(
+    'name' => 'delete own service content',
+    'roles' => array(
+      0 => 'druapladmin',
+      1 => 'tjenesteadmin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own service_owner content.
+  $permissions['delete own service_owner content'] = array(
+    'name' => 'delete own service_owner content',
+    'roles' => array(
+      0 => 'druapladmin',
+      1 => 'tjenesteadmin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own support_contact content.
+  $permissions['delete own support_contact content'] = array(
+    'name' => 'delete own support_contact content',
+    'roles' => array(
+      0 => 'druapladmin',
+      1 => 'tjenesteadmin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any article content.
+  $permissions['edit any article content'] = array(
+    'name' => 'edit any article content',
+    'roles' => array(
+      0 => 'tjenesteadmin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any service content.
+  $permissions['edit any service content'] = array(
+    'name' => 'edit any service content',
+    'roles' => array(
+      0 => 'druapladmin',
+      1 => 'tjenesteadmin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any service_owner content.
+  $permissions['edit any service_owner content'] = array(
+    'name' => 'edit any service_owner content',
+    'roles' => array(
+      0 => 'druapladmin',
+      1 => 'tjenesteadmin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any support_contact content.
+  $permissions['edit any support_contact content'] = array(
+    'name' => 'edit any support_contact content',
+    'roles' => array(
+      0 => 'druapladmin',
+      1 => 'tjenesteadmin',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: edit field_criticality.
@@ -170,6 +326,15 @@ function tk_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: edit own article content.
+  $permissions['edit own article content'] = array(
+    'name' => 'edit own article content',
+    'roles' => array(
+      0 => 'tjenesteadmin',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: edit own field_criticality.
   $permissions['edit own field_criticality'] = array(
     'name' => 'edit own field_criticality',
@@ -248,6 +413,36 @@ function tk_user_default_permissions() {
       1 => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own service content.
+  $permissions['edit own service content'] = array(
+    'name' => 'edit own service content',
+    'roles' => array(
+      0 => 'druapladmin',
+      1 => 'tjenesteadmin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own service_owner content.
+  $permissions['edit own service_owner content'] = array(
+    'name' => 'edit own service_owner content',
+    'roles' => array(
+      0 => 'druapladmin',
+      1 => 'tjenesteadmin',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own support_contact content.
+  $permissions['edit own support_contact content'] = array(
+    'name' => 'edit own support_contact content',
+    'roles' => array(
+      0 => 'druapladmin',
+      1 => 'tjenesteadmin',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: view field_criticality.
