@@ -1,0 +1,9 @@
+name = TK setup
+description = TK general configuration and settings
+core = 7.x
+package = UiB
+dependencies[] = features
+features[features_api][] = api:1
+features[user_role][] = druapladmin
+features[user_role][] = ita
+features[user_role][] = tjenesteadmin
