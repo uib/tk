@@ -9,3 +9,5 @@ dependencies[] = field_ui
 dependencies[] = help
 dependencies[] = views_ui
 dependencies[] = advanced_help
+dependencies[] = module_filter
+dependencies[] = admin_menu_toolbar
