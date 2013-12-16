@@ -17,7 +17,7 @@ mkdir $FILES
 chmod 777 $FILES
 
 rm -f $DB
-drush site-install standard --account-pass=admin --site-name='Tjenestekatalogen' --db-url=sqlite:sites/default/files/.ht.sqlite -y
+drush site-install minimal --account-pass=admin --site-name='Tjenestekatalogen' --db-url=sqlite:sites/default/files/.ht.sqlite -y
 chmod 444 $SETTINGS
 chmod 777 $DB
 
