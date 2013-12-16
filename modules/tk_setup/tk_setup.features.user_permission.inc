@@ -59,15 +59,6 @@ function tk_setup_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: access devel information.
-  $permissions['access devel information'] = array(
-    'name' => 'access devel information',
-    'roles' => array(
-      0 => 'druapladmin',
-    ),
-    'module' => 'devel',
-  );
-
   // Exported permission: access private fields.
   $permissions['access private fields'] = array(
     'name' => 'access private fields',
@@ -192,15 +183,6 @@ function tk_setup_user_default_permissions() {
       0 => 'druapladmin',
     ),
     'module' => 'menu',
-  );
-
-  // Exported permission: administer module filter.
-  $permissions['administer module filter'] = array(
-    'name' => 'administer module filter',
-    'roles' => array(
-      0 => 'druapladmin',
-    ),
-    'module' => 'module_filter',
   );
 
   // Exported permission: administer modules.
@@ -395,15 +377,6 @@ function tk_setup_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: execute php code.
-  $permissions['execute php code'] = array(
-    'name' => 'execute php code',
-    'roles' => array(
-      0 => 'druapladmin',
-    ),
-    'module' => 'devel',
-  );
-
   // Exported permission: flush caches.
   $permissions['flush caches'] = array(
     'name' => 'flush caches',
@@ -439,15 +412,6 @@ function tk_setup_user_default_permissions() {
       0 => 'druapladmin',
     ),
     'module' => 'user',
-  );
-
-  // Exported permission: switch users.
-  $permissions['switch users'] = array(
-    'name' => 'switch users',
-    'roles' => array(
-      0 => 'druapladmin',
-    ),
-    'module' => 'devel',
   );
 
   // Exported permission: translate interface.
