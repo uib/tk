@@ -23,3 +23,5 @@ chmod 777 $DB
 
 drush en tk tk_setup -y
 drush scr ../scripts/post-install.php
+
+drush en uib_devel -y
