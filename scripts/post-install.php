@@ -1,6 +1,7 @@
 <?php
 
 create_terms();
+create_sample_content();
 
 /**
  * Fill in some taxonomy terms
@@ -33,5 +34,48 @@ function create_terms() {
       $term->name = $term_name;
       taxonomy_term_save($term);
     }
+  }
+}
+
+function notify_created_node($node) {
+  print "Created $node->type $node->title as node $node->nid\n";
+}
+
+/**
+ * Create some sample content useful for testing
+ */
+function create_sample_content() {
+  $brita = new stdClass();
+  $brita->type = "support_contact";
+  $brita->title = "BRITA";
+  node_save($brita);
+  notify_created_node($brita);
+
+  $ita = new stdClass();
+  $ita->type = "service_owner";
+  $ita->title = "IT-avdelingen";
+  $ita->field_kode['und'][0]['value'] = 'ita';
+  node_save($ita);
+  notify_created_node($ita);
+
+  $services = array(
+    "iPhone 5C",
+    "iPhone 5S",
+    "Galaxy 4",
+    "Luminia",
+  );
+
+  foreach ($services as $service_name) {
+    $service = new stdClass();
+    $service->type = "service";
+    $service->title = $service_name;
+    $service->field_summary['und'][0]['value'] = 'Yada yada';
+    $service->field_support_contact['und'][0]['target_id'] = $brita->nid;
+    $service->field_service_owner['und'][0]['target_id'] = $ita->nid;
+    $service->field_operator['und'][0]['target_id'] = 1; // admin
+    $service->field_service_state['und'][0]['value'] = 'prod';
+    $service->field_usergroup['und'][0]['value'] = 'andre';
+    node_save($service);
+    notify_created_node($service);
   }
 }
