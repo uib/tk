@@ -5,6 +5,7 @@ package = UiB
 php = 5.2.4
 dependencies[] = dblog
 dependencies[] = devel
+dependencies[] = diff
 dependencies[] = field_ui
 dependencies[] = help
 dependencies[] = views_ui

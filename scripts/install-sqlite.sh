@@ -21,4 +21,4 @@ drush site-install minimal --account-pass=admin --site-name='Tjenestekatalogen' 
 chmod 444 $SETTINGS
 chmod 777 $DB
 
-drush en tk diff -y
+drush en tk tk_setup -y
