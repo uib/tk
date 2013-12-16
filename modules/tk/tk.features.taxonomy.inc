@@ -9,10 +9,10 @@
  */
 function tk_taxonomy_default_vocabularies() {
   return array(
-    'roller' => array(
+    'service_roles' => array(
       'name' => 'Roller',
-      'machine_name' => 'roller',
-      'description' => '',
+      'machine_name' => 'service_roles',
+      'description' => 'Nyttige tjenester for deg som er...',
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',

@@ -312,13 +312,6 @@ function tk_setup_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete terms in 1.
-  $permissions['delete terms in 1'] = array(
-    'name' => 'delete terms in 1',
-    'roles' => array(),
-    'module' => 'taxonomy',
-  );
-
   // Exported permission: delete terms in 2.
   $permissions['delete terms in 2'] = array(
     'name' => 'delete terms in 2',
@@ -347,13 +340,6 @@ function tk_setup_user_default_permissions() {
       0 => 'druapladmin',
     ),
     'module' => 'admin_menu',
-  );
-
-  // Exported permission: edit terms in 1.
-  $permissions['edit terms in 1'] = array(
-    'name' => 'edit terms in 1',
-    'roles' => array(),
-    'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in 2.
