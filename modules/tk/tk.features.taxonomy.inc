@@ -17,14 +17,6 @@ function tk_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
     ),
-    'tags' => array(
-      'name' => 'Tags',
-      'machine_name' => 'tags',
-      'description' => 'Use tags to group articles on similar topics into categories.',
-      'hierarchy' => '0',
-      'module' => 'taxonomy',
-      'weight' => '0',
-    ),
     'tjenesteorientert' => array(
       'name' => 'Tjenesteorientert',
       'machine_name' => 'tjenesteorientert',
