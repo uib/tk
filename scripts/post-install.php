@@ -61,15 +61,18 @@ function create_sample_content() {
   $services = array(
     "iPhone 5C",
     "iPhone 5S",
-    "Galaxy 4",
-    "Luminia",
+    "Galaxy S4",
+    "Galaxy Note 3",
+    "Lumia 520",
+    "Xperia Z1",
   );
 
   foreach ($services as $service_name) {
     $service = new stdClass();
     $service->type = "service";
     $service->title = $service_name;
-    $service->field_summary['und'][0]['value'] = 'Yada yada';
+    $service->field_summary['und'][0]['value'] = file_get_contents("http://loripsum.net/api/plaintext/1/short");
+    $service->field_description['und'][0]['value'] = file_get_contents("http://loripsum.net/api/plaintext/5");
     $service->field_support_contact['und'][0]['target_id'] = $brita->nid;
     $service->field_service_owner['und'][0]['target_id'] = $ita->nid;
     $service->field_operator['und'][0]['target_id'] = 1; // admin
