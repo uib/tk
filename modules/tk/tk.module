@@ -25,7 +25,39 @@ function tk_block_view($delta = '') {
   switch ($delta) {
     case 'traffic_light':
       $block['subject'] = "Driftstatus";
-      $block['content'] = "OK";
+
+      $bad = array();
+
+      $query = new EntityFieldQuery;
+      $result = $query
+        ->entityCondition('entity_type', 'node')
+        ->propertyCondition('type', 'service')
+        ->fieldCondition('field_service_status', 'value', 'normal', '!=')
+        ->execute();
+      if (!empty($result['node'])) {
+        $nodes = node_load_multiple(array_keys($result['node']));
+        foreach ($nodes as $node) {
+          $bad[$node->field_service_status['und'][0]['value']][] = $node;
+        }
+      }
+
+      if ($bad) {
+        $content = array();
+        foreach ($bad as $status => $services) {
+          $content[$status] = array(
+            '#theme' => 'item_list',
+            '#title' => $status,
+          );
+          foreach ($services as $service) {
+            $content[$status]['#items'][] = $service->title;
+          }
+        }
+        $block['content'] = $content;
+      }
+      else {
+        $block['content'] = t("Alle tjenester i normal drift");
+      }
+
       break;
   }
   return $block;
