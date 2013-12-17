@@ -5,3 +5,28 @@
  */
 
 include_once 'tk.features.inc';
+
+/**
+ * Implements hook_block_info().
+ */
+function tk_block_info() {
+  return array(
+    'traffic_light' => array(
+      'info' => t('Service status'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function tk_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'traffic_light':
+      $block['subject'] = "Driftstatus";
+      $block['content'] = "OK";
+      break;
+  }
+  return $block;
+}
