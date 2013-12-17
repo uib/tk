@@ -153,3 +153,4 @@ features[variable][] = taxonomy_menu_vocab_menu_service_roles
 features[variable][] = taxonomy_menu_vocab_parent_service_business_levels
 features[variable][] = taxonomy_menu_vocab_parent_service_roles
 features[views_view][] = all_services
+features[views_view][] = classfications

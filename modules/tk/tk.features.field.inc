@@ -791,20 +791,17 @@ Leveringstid:',
       'locked' => '0',
       'module' => 'entityreference',
       'settings' => array(
-        'handler' => 'base',
+        'handler' => 'views',
         'handler_settings' => array(
           'behaviors' => array(
             'views-select-list' => array(
               'status' => 0,
             ),
           ),
-          'sort' => array(
-            'type' => 'none',
-          ),
-          'target_bundles' => array(
-            'service_business_levels' => 'service_business_levels',
-            'service_classes' => 'service_classes',
-            'service_roles' => 'service_roles',
+          'view' => array(
+            'args' => array(),
+            'display_name' => 'entityreference_1',
+            'view_name' => 'classfications',
           ),
         ),
         'target_type' => 'taxonomy_term',
