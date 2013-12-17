@@ -234,7 +234,7 @@ function tk_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'taxonomy_menu_vocab_parent_service_roles';
-  $strongarm->value = '0';
+  $strongarm->value = '200';
   $export['taxonomy_menu_vocab_parent_service_roles'] = $strongarm;
 
   return $export;
