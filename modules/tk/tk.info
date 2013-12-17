@@ -53,6 +53,7 @@ features[field][] = node-support_contact-field_phone
 features[field][] = node-support_contact-field_www
 features[field_group][] = group_main|node|service|default
 features[field_group][] = group_sidebar|node|service|default
+features[menu_links][] = navigation:<front>
 features[node][] = article
 features[node][] = service
 features[node][] = service_owner
