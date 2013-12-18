@@ -17,7 +17,7 @@
 
 /* Component (SMACSS module) rules */
 @import "components/misc";
-// Optionally, add your own components here.
+@import "components/uib-tk";
 @import "print";
 
 /* SMACSS theme rules */

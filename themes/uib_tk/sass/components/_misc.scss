@@ -7,7 +7,6 @@
  * Additional useful selectors can be found in Zen's online documentation.
  * https://drupal.org/node/1707736
  */
-
 /**
  * Wireframes.
  */
@@ -80,13 +79,15 @@
 /* Wrapping link for logo. */
 .header__logo {
   float: left;
-  margin: 0;
+  margin: 1em 1em 1em 0;
   padding: 0;
 }
 
 /* Logo image. */
 .header__logo-image {
+  height: 100%;
   vertical-align: bottom;
+  width: 100%;
 }
 
 /* Wrapper for website name and slogan. */
@@ -97,7 +98,14 @@
 /* The name of the website. */
 .header__site-name {
   margin: 0;
-  @include adjust-font-size-to( $h1-font-size );
+  @include adjust-font-size-to( $h3-font-size );
+
+  @media all and (min-width: 480px) {
+    @include adjust-font-size-to( $h2-font-size );
+  }
+  @media all and (min-width: 760px) {
+    @include adjust-font-size-to( $h1-font-size );
+  }
 }
 
 /* The link around the name of the website. */
