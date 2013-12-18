@@ -55,7 +55,7 @@ function tk_block_view($delta = '') {
         $block['content'] = $content;
       }
       else {
-        $block['content'] = t("Alle tjenester i normal drift");
+        $block['content'] = '<div>' . t("Alle tjenester i normal drift") . '</div>';
       }
 
       break;

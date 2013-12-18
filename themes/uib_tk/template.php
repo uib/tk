@@ -118,15 +118,11 @@ function uib_tk_preprocess_region(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("block" in this case.)
  */
-/* -- Delete this line if you want to use this function
-function uib_tk_preprocess_block(&$variables, $hook) {
-  // Add a count to all the blocks in the region.
-  // $variables['classes_array'][] = 'count-' . $variables['block_id'];
 
-  // By default, Zen will use the block--no-wrapper.tpl.php for the main
-  // content. This optional bit of code undoes that:
-  //if ($variables['block_html_id'] == 'block-system-main') {
-  //  $variables['theme_hook_suggestions'] = array_diff($variables['theme_hook_suggestions'], array('block__no_wrapper'));
-  //}
+function uib_tk_preprocess_block(&$variables, $hook) {
+  if ($variables['block_html_id'] == 'block-tk-traffic-light') {
+    if (array_key_exists('nede', $variables['elements']) or array_key_exists('ustabil', $variables['elements'])) {
+      $variables['classes_array'][] = 'bad';
+    }
+  }
 }
-// */
