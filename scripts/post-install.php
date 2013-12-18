@@ -24,6 +24,14 @@ function create_terms() {
       "Allmennheten",
       "Administrasjon",
     ),
+    "service_classes" => array(
+      "Konto og tilgang",
+      "Kommunikasjon",
+      "E-post og kalender",
+      "Vev og samhandling",
+      "Lagring og sikkerhetskopiering",
+      "Hjelp og opplæring",
+    ),
   );
 
   foreach ($vocabulary_terms as $vocabulary_name => $term_names) {
