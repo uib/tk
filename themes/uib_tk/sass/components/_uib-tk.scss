@@ -53,19 +53,22 @@ nav {
 // Styles for main
 ////////////
 .view-id-service_classes {
-  .views-row {
+  .item-list {
     @include border-radius(0.5em);
     border: solid 3px #666;
     margin: 1em 0 0;
-    padding: 1em;
-    a {
-      text-decoration: none;
-      &:hover {
-        text-decoration: underline;
+    padding: 0.5em;
+    h3 {
+      margin: 0;
+      a {
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
     &:nth-child(10n+1) {
-      a {
+      h3 a {
         color: $profile-color-green;
         &:hover {
           color: darken($profile-color-green, 10%);
@@ -73,7 +76,7 @@ nav {
       }
     }
     &:nth-child(10n+2) {
-      a {
+      h3 a {
         color: $profile-color-red;
         &:hover {
           color: darken($profile-color-red, 10%);
@@ -81,7 +84,7 @@ nav {
       }
     }
     &:nth-child(10n+3) {
-      a {
+      h3 a {
         color: $profile-color-orange;
         &:hover {
           color: darken($profile-color-orange, 10%);
@@ -89,7 +92,7 @@ nav {
       }
     }
     &:nth-child(10n+4) {
-      a {
+      h3 a {
         color: $profile-color-cyan;
         &:hover {
           color: darken($profile-color-cyan, 10%);
@@ -97,7 +100,7 @@ nav {
       }
     }
     &:nth-child(10n+5) {
-      a {
+      h3 a {
         color: $profile-color-black;
         &:hover {
           color: darken($profile-color-black, 10%);
@@ -105,11 +108,25 @@ nav {
       }
     }
     &:nth-child(10n+6) {
-      a {
+      h3 a {
         color: $profile-color-black-light;
         &:hover {
           color: darken($profile-color-black-light, 10%);
         }
+      }
+    }
+    ul {
+      margin: 0;
+    }
+    li {
+      display: inline-block;
+      &:nth-child(n+2) {
+        &:before {
+          content: " ,";
+        }
+      }
+      div {
+        display: inline;
       }
     }
   }
