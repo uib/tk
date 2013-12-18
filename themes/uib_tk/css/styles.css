@@ -836,15 +836,48 @@ table {
     width: 60%;
     margin-left: 20%;
     margin-right: -80%;
+    padding-left: 0;
+    padding-right: 0;
   }
   /* line 201, ../sass/layouts/_responsive.scss */
+  .two-sidebars #node_service_full_group_main {
+    float: left;
+    width: 60%;
+    margin-left: 0%;
+    margin-right: -60%;
+  }
+  /* line 206, ../sass/layouts/_responsive.scss */
+  .two-sidebars #node_service_full_group_sidebar,
+  .two-sidebars .field-name-field-service-classification {
+    float: right;
+    width: 40%;
+    margin-right: 0%;
+    margin-left: -40%;
+  }
+  /* line 209, ../sass/layouts/_responsive.scss */
+  .two-sidebars .field-name-field-service-classification {
+    clear: right;
+  }
+  /* line 214, ../sass/layouts/_responsive.scss */
+  .two-sidebars #node_service_full_group_sidebar,
+  .two-sidebars .field-name-field-service-classification,
+  .two-sidebars #node_service_full_group_main {
+    padding-left: 10px;
+    padding-right: 10px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+  }
+  /* line 218, ../sass/layouts/_responsive.scss */
   .two-sidebars .region-sidebar-first {
     float: left;
     width: 20%;
     margin-left: 0%;
     margin-right: -20%;
   }
-  /* line 206, ../sass/layouts/_responsive.scss */
+  /* line 223, ../sass/layouts/_responsive.scss */
   .two-sidebars .region-sidebar-second {
     float: left;
     width: 20%;

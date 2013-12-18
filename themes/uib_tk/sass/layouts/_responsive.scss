@@ -195,8 +195,25 @@ $zen-auto-include-item-base: false;
     /* Span 3 columns, starting in 2nd column from left. */
     #content {
       @include zen-grid-item(3, 2);
+      @include zen-nested-container();
     }
 
+    #node_service_full_group_main {
+      @include zen-grid-item(3,1);
+    }
+
+    #node_service_full_group_sidebar,
+    .field-name-field-service-classification {
+      @include zen-grid-item(2,1, right);
+    }
+    .field-name-field-service-classification {
+      @include zen-clear(right);
+    }
+    #node_service_full_group_sidebar,
+    .field-name-field-service-classification,
+    #node_service_full_group_main {
+      @include zen-grid-item-base();
+    }
     /* Span 1 column, starting in 1st column from left. */
     .region-sidebar-first {
       @include zen-grid-item(1, 1);
