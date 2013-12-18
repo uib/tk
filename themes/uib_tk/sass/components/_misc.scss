@@ -75,11 +75,15 @@
 /**
  * Branding header.
  */
+.header {
+  padding-bottom: 1em;
+  padding-top: 1em;
+}
 
 /* Wrapping link for logo. */
 .header__logo {
   float: left;
-  margin: 1em 1em 1em 0;
+  margin-right: 1em;
   padding: 0;
 }
 
@@ -110,6 +114,9 @@
 
 /* The link around the name of the website. */
 .header__site-link {
+  display: table-cell;
+  height: 70px;
+  vertical-align: middle;
   &:link,
   &:visited {
     color: #000;
