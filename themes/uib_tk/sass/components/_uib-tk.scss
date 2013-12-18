@@ -36,20 +36,6 @@ nav {
 }
 
 ////////////
-// Styles for first sidebar
-////////////
-.region-sidebar-first {
-  div {
-    background-color: $bg-color-grey;
-    &:first-child {
-      h2 {
-        display: none;
-      }
-    }
-  }
-}
-
-////////////
 // Styles for main
 ////////////
 .view-id-service_classes {
@@ -128,6 +114,53 @@ nav {
       div {
         display: inline;
       }
+    }
+  }
+}
+
+////////////
+// Styles for first sidebar
+////////////
+.region-sidebar-first {
+  div {
+    background-color: $bg-color-grey;
+    &:first-child {
+      h2 {
+        display: none;
+      }
+    }
+  }
+}
+
+////////////
+// Styles for second sidebar
+////////////
+.region-sidebar-second {
+  #block-tk-traffic-light {
+    border: solid 3px $profile-color-green;
+    div {
+      padding: 0.5em;
+    }
+    h2 {
+      @include adjust-font-size-to($h4-font-size);
+      background-color: lighten($profile-color-green, 50%);
+      padding: 0em 0.5em;
+      text-transform: uppercase;
+    }
+
+    &.bad {
+      border-color: $profile-color-red;
+      h2 {
+        background-color: lighten($profile-color-red, 50%);
+      }
+    }
+    h3 {
+      @include adjust-font-size-to($h5-font-size);
+      margin: 0.5em;
+      text-transform: capitalize;
+    }
+    ul {
+      margin: 0.5em;
     }
   }
 }

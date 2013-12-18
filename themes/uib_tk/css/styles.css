@@ -1727,15 +1727,6 @@ nav a:hover {
 }
 
 /* line 42, ../sass/components/_uib-tk.scss */
-.region-sidebar-first div {
-  background-color: #eeeeee;
-}
-/* line 45, ../sass/components/_uib-tk.scss */
-.region-sidebar-first div:first-child h2 {
-  display: none;
-}
-
-/* line 56, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list {
   -webkit-border-radius: 0.5em;
   -moz-border-radius: 0.5em;
@@ -1746,81 +1737,126 @@ nav a:hover {
   margin: 1em 0 0;
   padding: 0.5em;
 }
-/* line 61, ../sass/components/_uib-tk.scss */
+/* line 47, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list h3 {
   margin: 0;
 }
-/* line 63, ../sass/components/_uib-tk.scss */
+/* line 49, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list h3 a {
   text-decoration: none;
 }
-/* line 65, ../sass/components/_uib-tk.scss */
+/* line 51, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list h3 a:hover {
   text-decoration: underline;
 }
-/* line 71, ../sass/components/_uib-tk.scss */
+/* line 57, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list:nth-child(10n+1) h3 a {
   color: #77af00;
 }
-/* line 73, ../sass/components/_uib-tk.scss */
+/* line 59, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list:nth-child(10n+1) h3 a:hover {
   color: #547c00;
 }
-/* line 79, ../sass/components/_uib-tk.scss */
+/* line 65, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list:nth-child(10n+2) h3 a {
   color: #aa0000;
 }
-/* line 81, ../sass/components/_uib-tk.scss */
+/* line 67, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list:nth-child(10n+2) h3 a:hover {
   color: #770000;
 }
-/* line 87, ../sass/components/_uib-tk.scss */
+/* line 73, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list:nth-child(10n+3) h3 a {
   color: #d95900;
 }
-/* line 89, ../sass/components/_uib-tk.scss */
+/* line 75, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list:nth-child(10n+3) h3 a:hover {
   color: #a64400;
 }
-/* line 95, ../sass/components/_uib-tk.scss */
+/* line 81, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list:nth-child(10n+4) h3 a {
   color: #009de0;
 }
-/* line 97, ../sass/components/_uib-tk.scss */
+/* line 83, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list:nth-child(10n+4) h3 a:hover {
   color: #0079ad;
 }
-/* line 103, ../sass/components/_uib-tk.scss */
+/* line 89, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list:nth-child(10n+5) h3 a {
   color: black;
 }
-/* line 105, ../sass/components/_uib-tk.scss */
+/* line 91, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list:nth-child(10n+5) h3 a:hover {
   color: black;
 }
-/* line 111, ../sass/components/_uib-tk.scss */
+/* line 97, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list:nth-child(10n+6) h3 a {
   color: #34332b;
 }
-/* line 113, ../sass/components/_uib-tk.scss */
+/* line 99, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list:nth-child(10n+6) h3 a:hover {
   color: #181814;
 }
-/* line 118, ../sass/components/_uib-tk.scss */
+/* line 104, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list ul {
   margin: 0;
 }
-/* line 121, ../sass/components/_uib-tk.scss */
+/* line 107, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list li {
   display: inline-block;
 }
-/* line 124, ../sass/components/_uib-tk.scss */
+/* line 110, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list li:nth-child(n+2):before {
   content: " ,";
 }
-/* line 128, ../sass/components/_uib-tk.scss */
+/* line 114, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list li div {
   display: inline;
+}
+
+/* line 125, ../sass/components/_uib-tk.scss */
+.region-sidebar-first div {
+  background-color: #eeeeee;
+}
+/* line 128, ../sass/components/_uib-tk.scss */
+.region-sidebar-first div:first-child h2 {
+  display: none;
+}
+
+/* line 139, ../sass/components/_uib-tk.scss */
+.region-sidebar-second #block-tk-traffic-light {
+  border: solid 3px #77af00;
+}
+/* line 141, ../sass/components/_uib-tk.scss */
+.region-sidebar-second #block-tk-traffic-light div {
+  padding: 0.5em;
+}
+/* line 144, ../sass/components/_uib-tk.scss */
+.region-sidebar-second #block-tk-traffic-light h2 {
+  font-size: 1em;
+  line-height: 1.5em;
+  background-color: #e5ffaf;
+  padding: 0em 0.5em;
+  text-transform: uppercase;
+}
+/* line 151, ../sass/components/_uib-tk.scss */
+.region-sidebar-second #block-tk-traffic-light.bad {
+  border-color: #aa0000;
+}
+/* line 153, ../sass/components/_uib-tk.scss */
+.region-sidebar-second #block-tk-traffic-light.bad h2 {
+  background-color: #ffaaaa;
+}
+/* line 157, ../sass/components/_uib-tk.scss */
+.region-sidebar-second #block-tk-traffic-light h3 {
+  font-size: 0.83em;
+  line-height: 1.80723em;
+  margin: 0.5em;
+  text-transform: capitalize;
+}
+/* line 162, ../sass/components/_uib-tk.scss */
+.region-sidebar-second #block-tk-traffic-light ul {
+  margin: 0.5em;
 }
 
 /**
