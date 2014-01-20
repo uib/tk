@@ -106,11 +106,6 @@ nav {
     }
     li {
       display: inline-block;
-      &:nth-child(n+2) {
-        &:before {
-          content: " ,";
-        }
-      }
       div {
         display: inline;
       }
