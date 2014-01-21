@@ -974,9 +974,9 @@ table {
 /* Logo image. */
 /* line 91, ../sass/components/_misc.scss */
 .header__logo-image {
-  height: 100%;
   vertical-align: bottom;
-  width: 100%;
+  width: 71px;
+  height: 71px;
 }
 
 /* Wrapper for website name and slogan. */
