@@ -15,7 +15,7 @@ function tk_views_default_views() {
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'All Services';
+  $view->human_name = 'All Services A-Å';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -35,7 +35,10 @@ function tk_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Stigende';
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Synkende';
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '50';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Elementer per side';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
   $handler->display->display_options['pager']['options']['tags']['first'] = '« første';
@@ -44,18 +47,18 @@ function tk_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['last'] = 'siste »';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'node';
-  /* Field: Content: Title */
+  /* Felt: Innhold: Tittel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Sort criterion: Content: Title */
+  /* Sorteringskriterium: Innhold: Tittel */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Filter criterion: Content: Type */
+  /* Filter criterion: Innhold: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -69,7 +72,7 @@ function tk_views_default_views() {
   $handler->display->display_options['title'] = 'Tjenesteoversikt';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Filter criterion: Innhold: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -96,54 +99,54 @@ function tk_views_default_views() {
   $handler->display->display_options['style_options']['newline_replacement'] = '|';
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Entity Reference: Referenced Entity */
+  /* Relasjon: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_support_contact_target_id']['id'] = 'field_support_contact_target_id';
   $handler->display->display_options['relationships']['field_support_contact_target_id']['table'] = 'field_data_field_support_contact';
   $handler->display->display_options['relationships']['field_support_contact_target_id']['field'] = 'field_support_contact_target_id';
-  /* Relationship: Entity Reference: Referenced Entity */
+  /* Relasjon: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_service_owner_target_id']['id'] = 'field_service_owner_target_id';
   $handler->display->display_options['relationships']['field_service_owner_target_id']['table'] = 'field_data_field_service_owner';
   $handler->display->display_options['relationships']['field_service_owner_target_id']['field'] = 'field_service_owner_target_id';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Nid */
+  /* Felt: Innhold: NID */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  /* Field: Content: Title */
+  /* Felt: Innhold: Tittel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'Tjeneste';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Kritikalitet */
+  /* Felt: Innhold: Kritikalitet */
   $handler->display->display_options['fields']['field_criticality']['id'] = 'field_criticality';
   $handler->display->display_options['fields']['field_criticality']['table'] = 'field_data_field_criticality';
   $handler->display->display_options['fields']['field_criticality']['field'] = 'field_criticality';
-  /* Field: Content: Målgrupper */
+  /* Felt: Innhold: Målgrupper */
   $handler->display->display_options['fields']['field_usergroup']['id'] = 'field_usergroup';
   $handler->display->display_options['fields']['field_usergroup']['table'] = 'field_data_field_usergroup';
   $handler->display->display_options['fields']['field_usergroup']['field'] = 'field_usergroup';
   $handler->display->display_options['fields']['field_usergroup']['delta_offset'] = '0';
-  /* Field: Content: Hva er nødvendig for å bruke tjenesten */
+  /* Felt: Innhold: Hva er nødvendig for å bruke tjenesten */
   $handler->display->display_options['fields']['field_demand']['id'] = 'field_demand';
   $handler->display->display_options['fields']['field_demand']['table'] = 'field_data_field_demand';
   $handler->display->display_options['fields']['field_demand']['field'] = 'field_demand';
-  /* Field: Content: Normal tilgjengelighet  */
+  /* Felt: Innhold: Normal tilgjengelighet  */
   $handler->display->display_options['fields']['field_availability']['id'] = 'field_availability';
   $handler->display->display_options['fields']['field_availability']['table'] = 'field_data_field_availability';
   $handler->display->display_options['fields']['field_availability']['field'] = 'field_availability';
-  /* Field: Content: Utvidet beskrivelse (hva er inkludert) */
+  /* Felt: Innhold: Utvidet beskrivelse (hva er inkludert) */
   $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
   $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
   $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
-  /* Field: Content: Nid */
+  /* Felt: Innhold: NID */
   $handler->display->display_options['fields']['nid_1']['id'] = 'nid_1';
   $handler->display->display_options['fields']['nid_1']['table'] = 'node';
   $handler->display->display_options['fields']['nid_1']['field'] = 'nid';
   $handler->display->display_options['fields']['nid_1']['relationship'] = 'field_support_contact_target_id';
   $handler->display->display_options['fields']['nid_1']['label'] = 'Support';
-  /* Field: Content: Nid */
+  /* Felt: Innhold: NID */
   $handler->display->display_options['fields']['nid_2']['id'] = 'nid_2';
   $handler->display->display_options['fields']['nid_2']['table'] = 'node';
   $handler->display->display_options['fields']['nid_2']['field'] = 'nid';
@@ -168,11 +171,10 @@ function tk_views_default_views() {
     t('siste »'),
     t('Page'),
     t('Tjenesteoversikt'),
-    t('more'),
     t('Data export'),
-    t('Content entity referenced from field_support_contact'),
-    t('Content entity referenced from field_service_owner'),
-    t('Nid'),
+    t('Innhold entity referenced from field_support_contact'),
+    t('Innhold entity referenced from field_service_owner'),
+    t('NID'),
     t('Tjeneste'),
     t('Kritikalitet'),
     t('Målgrupper'),
@@ -197,20 +199,26 @@ function tk_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'mer';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Bruk';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Nullstill';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortér på';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Stigende';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Synkende';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Taxonomy vocabulary: Name */
+  /* Felt: Taksonomivokabular: Navn */
   $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
   $handler->display->display_options['fields']['name_1']['table'] = 'taxonomy_vocabulary';
   $handler->display->display_options['fields']['name_1']['field'] = 'name';
   $handler->display->display_options['fields']['name_1']['label'] = '';
   $handler->display->display_options['fields']['name_1']['element_label_colon'] = FALSE;
-  /* Field: Taxonomy term: Name */
+  /* Felt: Taksonomi-termer: Navn */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['name']['field'] = 'name';
@@ -236,12 +244,12 @@ function tk_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $translatables['classfications'] = array(
     t('Master'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
+    t('mer'),
+    t('Bruk'),
+    t('Nullstill'),
+    t('Sortér på'),
+    t('Stigende'),
+    t('Synkende'),
     t('Entity Reference'),
   );
   $export['classfications'] = $view;
@@ -259,12 +267,19 @@ function tk_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'mer';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Bruk';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Nullstill';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortér på';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Stigende';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Synkende';
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '60';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
@@ -275,12 +290,12 @@ function tk_views_default_views() {
   );
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relationship: Entity Reference: Referencing entity */
+  /* Relasjon: Entity Reference: Referencing entity */
   $handler->display->display_options['relationships']['reverse_field_service_classification_node']['id'] = 'reverse_field_service_classification_node';
   $handler->display->display_options['relationships']['reverse_field_service_classification_node']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['relationships']['reverse_field_service_classification_node']['field'] = 'reverse_field_service_classification_node';
   $handler->display->display_options['relationships']['reverse_field_service_classification_node']['label'] = 'Services';
-  /* Field: Taxonomy term: Name */
+  /* Felt: Taksonomi-termer: Navn */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['name']['field'] = 'name';
@@ -290,14 +305,18 @@ function tk_views_default_views() {
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_taxonomy'] = TRUE;
-  /* Field: Content: Title */
+  /* Felt: Innhold: Tittel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['relationship'] = 'reverse_field_service_classification_node';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Filter criterion: Taxonomy vocabulary: Machine name */
+  /* Sorteringskriterium: Taksonomi-termer: Vekt */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  /* Filter criterion: Taksonomivokabular: Maskinnavn */
   $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
   $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
   $handler->display->display_options['filters']['machine_name']['field'] = 'machine_name';
@@ -310,12 +329,12 @@ function tk_views_default_views() {
   $handler->display->display_options['path'] = 'service-classes';
   $translatables['service_classes'] = array(
     t('Master'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
+    t('mer'),
+    t('Bruk'),
+    t('Nullstill'),
+    t('Sortér på'),
+    t('Stigende'),
+    t('Synkende'),
     t('Services'),
     t('Page'),
   );
