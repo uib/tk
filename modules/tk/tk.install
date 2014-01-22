@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Delete the usergroup field
+ */
+function tk_update_7000() {
+  field_delete_field('field_usergroup');
+}
