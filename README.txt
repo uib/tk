@@ -17,3 +17,8 @@ Make sure you have drush installed before you proceed to set up the database
 and initialize the application by invoking:
 
     (cd scripts && ./install-sqlite.sh)
+
+Alternatively manually configure postgres access and restore from the latest
+production dump by running:
+
+    ./scripts/pg-restore.sh
