@@ -45,7 +45,6 @@ features[field][] = node-service-field_service_type
 features[field][] = node-service-field_summary
 features[field][] = node-service-field_support_contact
 features[field][] = node-service-field_supporting_systems
-features[field][] = node-service-field_usergroup
 features[field][] = node-service_owner-field_kode
 features[field][] = node-support_contact-field_adress
 features[field][] = node-support_contact-field_opening

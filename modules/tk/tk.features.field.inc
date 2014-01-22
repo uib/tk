@@ -1603,81 +1603,6 @@ Leveringstid:',
     ),
   );
 
-  // Exported field: 'node-service-field_usergroup'.
-  $fields['node-service-field_usergroup'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_usergroup',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          'ansatt' => 'Ansatt',
-          'student' => 'Student',
-          'gjest' => 'Besøkende',
-          'andre' => 'Andre',
-        ),
-        'allowed_values_function' => '',
-      ),
-      'translatable' => '0',
-      'type' => 'list_text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'service',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'Angir hvem som kan benytte denne tjenesten. ',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '6',
-        ),
-        'full' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_key',
-          'weight' => '4',
-        ),
-        'teaser' => array(
-          'label' => 'inline',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '0',
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_usergroup',
-      'label' => 'Målgrupper',
-      'required' => 1,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_buttons',
-        'weight' => '3',
-      ),
-    ),
-  );
-
   // Exported field: 'node-service_owner-field_kode'.
   $fields['node-service_owner-field_kode'] = array(
     'field_config' => array(
@@ -2046,7 +1971,6 @@ Leveringstid:',
   // Included for use with string extractors like potx.
   t('Addresse');
   t('Angir hvem som har tjeneste ansvar for denne tjenesten.');
-  t('Angir hvem som kan benytte denne tjenesten. ');
   t('Beskriv de viktigste egenskapene og funksjonene ved tjenesten og annen nyttig informasjon til sluttbrukere.');
   t('Beskriv eventuelle krav for å kunne bruke tjenesten (hardware, software, målgrupper, etc)');
   t('Beskrivelse');
@@ -2069,7 +1993,6 @@ Leveringstid:',
   t('Kritikalitet');
   t('Kvalitetsmål');
   t('Livssyklus ');
-  t('Målgrupper');
   t('Normal tilgjengelighet ');
   t('Når er tjenesten tilgjengelig, når kan bruker forvente at tjenesten kan brukes.');
   t('Systemeier');

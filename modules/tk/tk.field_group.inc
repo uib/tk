@@ -38,7 +38,7 @@ function tk_field_group_info() {
     'format_settings' => array(
       'label' => '',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-main field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -77,7 +77,7 @@ function tk_field_group_info() {
     'format_settings' => array(
       'label' => '',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-sidebar field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
