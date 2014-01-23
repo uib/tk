@@ -123,7 +123,7 @@ function tk_views_default_views() {
   $handler->display->display_options['fields']['field_criticality']['id'] = 'field_criticality';
   $handler->display->display_options['fields']['field_criticality']['table'] = 'field_data_field_criticality';
   $handler->display->display_options['fields']['field_criticality']['field'] = 'field_criticality';
-  /* Felt: Innhold: Målgrupper */
+  /* Felt: Broken/missing handler */
   $handler->display->display_options['fields']['field_usergroup']['id'] = 'field_usergroup';
   $handler->display->display_options['fields']['field_usergroup']['table'] = 'field_data_field_usergroup';
   $handler->display->display_options['fields']['field_usergroup']['field'] = 'field_usergroup';
@@ -176,7 +176,7 @@ function tk_views_default_views() {
     t('NID'),
     t('Tjeneste'),
     t('Kritikalitet'),
-    t('Målgrupper'),
+    t('Broken handler field_data_field_usergroup.field_usergroup'),
     t('Hva er nødvendig for å bruke tjenesten'),
     t('Normal tilgjengelighet '),
     t('Utvidet beskrivelse (hva er inkludert)'),
