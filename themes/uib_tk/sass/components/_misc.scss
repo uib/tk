@@ -76,8 +76,12 @@
  * Branding header.
  */
 .header {
-  padding-bottom: 1em;
-  padding-top: 1em;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+  @media all and (min-width: 760px) {
+    padding-bottom: 1em;
+    padding-top: 1em;
+  }
 }
 
 /* Wrapping link for logo. */
@@ -89,9 +93,18 @@
 
 /* Logo image. */
 .header__logo-image {
+  height: $logo-size;
   vertical-align: bottom;
-  width: 71px;
-  height: 71px;
+  width: $logo-size;
+
+  @media all and (min-width: 480px) {
+    height: $logo-size*1.25;
+    width: $logo-size*1.25;
+  }
+  @media all and (min-width: 760px) {
+    height: $logo-size*1.5;
+    width: $logo-size*1.5;
+  }
 }
 
 /* Wrapper for website name and slogan. */
@@ -102,8 +115,10 @@
 /* The name of the website. */
 .header__site-name {
   margin: 0;
-  @include adjust-font-size-to( $h3-font-size );
-
+  @include adjust-font-size-to( $h5-font-size );
+  @media all and (min-width: 360px) {
+    @include adjust-font-size-to( $h4-font-size );
+  }
   @media all and (min-width: 480px) {
     @include adjust-font-size-to( $h2-font-size );
   }
@@ -115,17 +130,20 @@
 /* The link around the name of the website. */
 .header__site-link {
   display: table-cell;
-  height: 70px;
+  height: $logo-size;
   vertical-align: middle;
   &:link,
   &:visited {
     color: #000;
     text-decoration: none;
   }
-
   &:hover,
   &:focus {
     text-decoration: underline;
+  }
+
+  @media all and (min-width: 760px) {
+    height: $logo-size*1.5;
   }
 }
 

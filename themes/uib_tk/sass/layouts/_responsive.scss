@@ -70,6 +70,12 @@ $zen-auto-include-item-base: false;
     width: $zen-grid-width;
   }
 }
+@media all and (min-width: 700px) {
+  #main {
+    padding-top: $nav-height*0.75;
+  }
+}
+
 
 } // End of @if $zen-reverse-all-floats == true
 
@@ -156,7 +162,7 @@ $zen-auto-include-item-base: false;
  */
 @media all and (min-width: 960px) {
 
-  $zen-column-count: 5;
+  $zen-column-count: 10;
 
   /**
    * The layout when there is only one sidebar, the left one.
@@ -164,13 +170,37 @@ $zen-auto-include-item-base: false;
   .sidebar-first {
     /* Span 4 columns, starting in 2nd column from left. */
     #content {
-      @include zen-grid-item(4, 2);
+      @include zen-grid-item(8, 3);
     }
 
     /* Span 1 column, starting in 1st column from left. */
     .region-sidebar-first {
-      @include zen-grid-item(1, 1);
+      @include zen-grid-item(2, 1);
     }
+    #node_service_full_group_main,
+    .field-name-field-usergroup,
+    .main__page-title-prefix,
+    .page__title,
+    .tabs-primary {
+      @include zen-grid-item(6, 1);
+    }
+    #node_service_full_group_sidebar {
+      @include zen-grid-item(4, 1, right);
+    }
+    .field-name-field-usergroup,
+    #node_service_full_group_main,
+    .page__title,
+    .tabs-primary {
+      @include zen-clear(left);
+    }
+    #node_service_full_group_main,
+    .field-name-field-usergroup,
+    .main__page-title-prefix,
+    .page__title,
+    #node_service_full_group_sidebar {
+      @include zen-grid-item-base();
+    }
+
   }
 
   /**
@@ -179,12 +209,12 @@ $zen-auto-include-item-base: false;
   .sidebar-second {
     /* Span 4 columns, starting in 1st column from left. */
     #content {
-      @include zen-grid-item(4, 1);
+      @include zen-grid-item(8, 1);
     }
 
     /* Span 1 column, starting in 5th column from left. */
     .region-sidebar-second {
-      @include zen-grid-item(1, 5);
+      @include zen-grid-item(2, 9);
     }
   }
 
@@ -194,17 +224,17 @@ $zen-auto-include-item-base: false;
   .two-sidebars {
     /* Span 3 columns, starting in 2nd column from left. */
     #content {
-      @include zen-grid-item(3, 2);
+      @include zen-grid-item(6, 3);
       @include zen-nested-container();
     }
 
     #node_service_full_group_main {
-      @include zen-grid-item(3,1);
+      @include zen-grid-item(6,1);
     }
 
     #node_service_full_group_sidebar,
     .field-name-field-service-classification {
-      @include zen-grid-item(2,1, right);
+      @include zen-grid-item(4,1, right);
     }
     .field-name-field-service-classification {
       @include zen-clear(right);
@@ -216,12 +246,12 @@ $zen-auto-include-item-base: false;
     }
     /* Span 1 column, starting in 1st column from left. */
     .region-sidebar-first {
-      @include zen-grid-item(1, 1);
+      @include zen-grid-item(2, 1);
     }
 
     /* Span 1 column, starting in 5th column from left. */
     .region-sidebar-second {
-      @include zen-grid-item(1, 5);
+      @include zen-grid-item(2, 9);
     }
   }
 }

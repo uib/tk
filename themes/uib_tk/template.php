@@ -52,9 +52,12 @@ function uib_tk_preprocess_html(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("page" in this case.)
  */
-/* -- Delete this line if you want to use this function
 function uib_tk_preprocess_page(&$variables, $hook) {
-  $variables['sample_variable'] = t('Lorem ipsum.');
+  if (isset($variables['node'])) {
+    if ($variables['node']->type == 'service') {
+      $variables['title_prefix'] = '<div class="main__page-title-prefix">' . t('Tjenestebeskrivelse') . '</div>';
+    }
+  }
 }
 // */
 

@@ -39,10 +39,11 @@ nav {
 // Styles for main
 ////////////
 .view-id-service_classes {
+  margin-bottom: 1em;
   .item-list {
     @include border-radius(0.5em);
     border: solid 3px #666;
-    margin: 1em 0 0;
+    margin: 0 0 1em;
     padding: 0.5em;
     h3 {
       margin: 0;
@@ -112,17 +113,68 @@ nav {
     }
   }
 }
+.main__page-title-prefix {
+  @include adjust-font-size-to($h5-font-size);
+  background-color: $bg-color-grey;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.field-name-field-summary {
+  font-weight: bold;
+}
+
+////////////
+// Styles for node_service_full_group_sidebar
+////////////
+.node-service.view-mode-full {
+  .group-sidebar {
+    .field-label-above {
+      background-color: $bg-color-grey;
+      margin-bottom: 1em;
+    }
+    .field-label {
+        background-color: darken($bg-color-grey, 10%);
+    }
+    .field-label-inline {
+      .field-label {
+        background-color: transparent;
+      }
+    }
+    h2,
+    .field-item,
+    .field-label,
+    .field-item p {
+      @include adjust-font-size-to($h5-font-size);
+      padding: 0 0.5em;
+    }
+    .field-item p {
+      margin: 0;
+    }
+  }
+}
 
 ////////////
 // Styles for first sidebar
 ////////////
 .region-sidebar-first {
-  div {
+  .block-menu {
     background-color: $bg-color-grey;
     &:first-child {
       h2 {
         display: none;
       }
+    }
+  }
+  .menu {
+    margin-top: 0;
+    margin-bottom: 1em;
+    padding: 0;
+    .is-expanded & {
+      padding-left: 2em;
+    }
+    .menu__item.is-expanded {
+      list-style-image: none;
+      list-style-type: none;
     }
   }
 }
