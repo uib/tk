@@ -84,13 +84,6 @@ DROP INDEX public.field_revision_field_www_entity_type_idx;
 DROP INDEX public.field_revision_field_www_entity_id_idx;
 DROP INDEX public.field_revision_field_www_deleted_idx;
 DROP INDEX public.field_revision_field_www_bundle_idx;
-DROP INDEX public.field_revision_field_usergroup_revision_id_idx;
-DROP INDEX public.field_revision_field_usergroup_language_idx;
-DROP INDEX public.field_revision_field_usergroup_field_usergroup_value_idx;
-DROP INDEX public.field_revision_field_usergroup_entity_type_idx;
-DROP INDEX public.field_revision_field_usergroup_entity_id_idx;
-DROP INDEX public.field_revision_field_usergroup_deleted_idx;
-DROP INDEX public.field_revision_field_usergroup_bundle_idx;
 DROP INDEX public.field_revision_field_supporting_systems_revision_id_idx;
 DROP INDEX public.field_revision_field_supporting_systems_language_idx;
 DROP INDEX public.field_revision_field_supporting_systems_field_supporting_system;
@@ -273,13 +266,6 @@ DROP INDEX public.field_data_field_www_entity_type_idx;
 DROP INDEX public.field_data_field_www_entity_id_idx;
 DROP INDEX public.field_data_field_www_deleted_idx;
 DROP INDEX public.field_data_field_www_bundle_idx;
-DROP INDEX public.field_data_field_usergroup_revision_id_idx;
-DROP INDEX public.field_data_field_usergroup_language_idx;
-DROP INDEX public.field_data_field_usergroup_field_usergroup_value_idx;
-DROP INDEX public.field_data_field_usergroup_entity_type_idx;
-DROP INDEX public.field_data_field_usergroup_entity_id_idx;
-DROP INDEX public.field_data_field_usergroup_deleted_idx;
-DROP INDEX public.field_data_field_usergroup_bundle_idx;
 DROP INDEX public.field_data_field_supporting_systems_revision_id_idx;
 DROP INDEX public.field_data_field_supporting_systems_language_idx;
 DROP INDEX public.field_data_field_supporting_systems_field_supporting_systems_fo;
@@ -534,7 +520,6 @@ ALTER TABLE ONLY public.file_usage DROP CONSTRAINT file_usage_pkey;
 ALTER TABLE ONLY public.file_managed DROP CONSTRAINT file_managed_uri_key;
 ALTER TABLE ONLY public.file_managed DROP CONSTRAINT file_managed_pkey;
 ALTER TABLE ONLY public.field_revision_field_www DROP CONSTRAINT field_revision_field_www_pkey;
-ALTER TABLE ONLY public.field_revision_field_usergroup DROP CONSTRAINT field_revision_field_usergroup_pkey;
 ALTER TABLE ONLY public.field_revision_field_supporting_systems DROP CONSTRAINT field_revision_field_supporting_systems_pkey;
 ALTER TABLE ONLY public.field_revision_field_support_contact DROP CONSTRAINT field_revision_field_support_contact_pkey;
 ALTER TABLE ONLY public.field_revision_field_summary DROP CONSTRAINT field_revision_field_summary_pkey;
@@ -563,7 +548,6 @@ ALTER TABLE ONLY public.field_revision_body DROP CONSTRAINT field_revision_body_
 ALTER TABLE ONLY public.field_group DROP CONSTRAINT field_group_pkey;
 ALTER TABLE ONLY public.field_group DROP CONSTRAINT field_group_identifier_key;
 ALTER TABLE ONLY public.field_data_field_www DROP CONSTRAINT field_data_field_www_pkey;
-ALTER TABLE ONLY public.field_data_field_usergroup DROP CONSTRAINT field_data_field_usergroup_pkey;
 ALTER TABLE ONLY public.field_data_field_supporting_systems DROP CONSTRAINT field_data_field_supporting_systems_pkey;
 ALTER TABLE ONLY public.field_data_field_support_contact DROP CONSTRAINT field_data_field_support_contact_pkey;
 ALTER TABLE ONLY public.field_data_field_summary DROP CONSTRAINT field_data_field_summary_pkey;
@@ -704,7 +688,6 @@ DROP TABLE public.file_usage;
 DROP SEQUENCE public.file_managed_fid_seq;
 DROP TABLE public.file_managed;
 DROP TABLE public.field_revision_field_www;
-DROP TABLE public.field_revision_field_usergroup;
 DROP TABLE public.field_revision_field_supporting_systems;
 DROP TABLE public.field_revision_field_support_contact;
 DROP TABLE public.field_revision_field_summary;
@@ -733,7 +716,6 @@ DROP TABLE public.field_revision_body;
 DROP SEQUENCE public.field_group_id_seq;
 DROP TABLE public.field_group;
 DROP TABLE public.field_data_field_www;
-DROP TABLE public.field_data_field_usergroup;
 DROP TABLE public.field_data_field_supporting_systems;
 DROP TABLE public.field_data_field_support_contact;
 DROP TABLE public.field_data_field_summary;
@@ -4619,83 +4601,6 @@ COMMENT ON COLUMN field_data_field_supporting_systems.delta IS 'The sequence num
 
 
 --
--- Name: field_data_field_usergroup; Type: TABLE; Schema: public; Owner: tk_admin; Tablespace: 
---
-
-CREATE TABLE field_data_field_usergroup (
-    entity_type character varying(128) DEFAULT ''::character varying NOT NULL,
-    bundle character varying(128) DEFAULT ''::character varying NOT NULL,
-    deleted smallint DEFAULT 0 NOT NULL,
-    entity_id bigint NOT NULL,
-    revision_id bigint,
-    language character varying(32) DEFAULT ''::character varying NOT NULL,
-    delta bigint NOT NULL,
-    field_usergroup_value character varying(255),
-    CONSTRAINT field_data_field_usergroup_delta_check CHECK ((delta >= 0)),
-    CONSTRAINT field_data_field_usergroup_entity_id_check CHECK ((entity_id >= 0)),
-    CONSTRAINT field_data_field_usergroup_revision_id_check CHECK ((revision_id >= 0))
-);
-
-
-ALTER TABLE public.field_data_field_usergroup OWNER TO tk_admin;
-
---
--- Name: TABLE field_data_field_usergroup; Type: COMMENT; Schema: public; Owner: tk_admin
---
-
-COMMENT ON TABLE field_data_field_usergroup IS 'Data storage for field 9 (field_usergroup)';
-
-
---
--- Name: COLUMN field_data_field_usergroup.entity_type; Type: COMMENT; Schema: public; Owner: tk_admin
---
-
-COMMENT ON COLUMN field_data_field_usergroup.entity_type IS 'The entity type this data is attached to';
-
-
---
--- Name: COLUMN field_data_field_usergroup.bundle; Type: COMMENT; Schema: public; Owner: tk_admin
---
-
-COMMENT ON COLUMN field_data_field_usergroup.bundle IS 'The field instance bundle to which this row belongs, used when deleting a field instance';
-
-
---
--- Name: COLUMN field_data_field_usergroup.deleted; Type: COMMENT; Schema: public; Owner: tk_admin
---
-
-COMMENT ON COLUMN field_data_field_usergroup.deleted IS 'A boolean indicating whether this data item has been deleted';
-
-
---
--- Name: COLUMN field_data_field_usergroup.entity_id; Type: COMMENT; Schema: public; Owner: tk_admin
---
-
-COMMENT ON COLUMN field_data_field_usergroup.entity_id IS 'The entity id this data is attached to';
-
-
---
--- Name: COLUMN field_data_field_usergroup.revision_id; Type: COMMENT; Schema: public; Owner: tk_admin
---
-
-COMMENT ON COLUMN field_data_field_usergroup.revision_id IS 'The entity revision id this data is attached to, or NULL if the entity type is not versioned';
-
-
---
--- Name: COLUMN field_data_field_usergroup.language; Type: COMMENT; Schema: public; Owner: tk_admin
---
-
-COMMENT ON COLUMN field_data_field_usergroup.language IS 'The language for this data item.';
-
-
---
--- Name: COLUMN field_data_field_usergroup.delta; Type: COMMENT; Schema: public; Owner: tk_admin
---
-
-COMMENT ON COLUMN field_data_field_usergroup.delta IS 'The sequence number for this data item, used for multi-value fields';
-
-
---
 -- Name: field_data_field_www; Type: TABLE; Schema: public; Owner: tk_admin; Tablespace: 
 --
 
@@ -6830,83 +6735,6 @@ COMMENT ON COLUMN field_revision_field_supporting_systems.language IS 'The langu
 --
 
 COMMENT ON COLUMN field_revision_field_supporting_systems.delta IS 'The sequence number for this data item, used for multi-value fields';
-
-
---
--- Name: field_revision_field_usergroup; Type: TABLE; Schema: public; Owner: tk_admin; Tablespace: 
---
-
-CREATE TABLE field_revision_field_usergroup (
-    entity_type character varying(128) DEFAULT ''::character varying NOT NULL,
-    bundle character varying(128) DEFAULT ''::character varying NOT NULL,
-    deleted smallint DEFAULT 0 NOT NULL,
-    entity_id bigint NOT NULL,
-    revision_id bigint NOT NULL,
-    language character varying(32) DEFAULT ''::character varying NOT NULL,
-    delta bigint NOT NULL,
-    field_usergroup_value character varying(255),
-    CONSTRAINT field_revision_field_usergroup_delta_check CHECK ((delta >= 0)),
-    CONSTRAINT field_revision_field_usergroup_entity_id_check CHECK ((entity_id >= 0)),
-    CONSTRAINT field_revision_field_usergroup_revision_id_check CHECK ((revision_id >= 0))
-);
-
-
-ALTER TABLE public.field_revision_field_usergroup OWNER TO tk_admin;
-
---
--- Name: TABLE field_revision_field_usergroup; Type: COMMENT; Schema: public; Owner: tk_admin
---
-
-COMMENT ON TABLE field_revision_field_usergroup IS 'Revision archive storage for field 9 (field_usergroup)';
-
-
---
--- Name: COLUMN field_revision_field_usergroup.entity_type; Type: COMMENT; Schema: public; Owner: tk_admin
---
-
-COMMENT ON COLUMN field_revision_field_usergroup.entity_type IS 'The entity type this data is attached to';
-
-
---
--- Name: COLUMN field_revision_field_usergroup.bundle; Type: COMMENT; Schema: public; Owner: tk_admin
---
-
-COMMENT ON COLUMN field_revision_field_usergroup.bundle IS 'The field instance bundle to which this row belongs, used when deleting a field instance';
-
-
---
--- Name: COLUMN field_revision_field_usergroup.deleted; Type: COMMENT; Schema: public; Owner: tk_admin
---
-
-COMMENT ON COLUMN field_revision_field_usergroup.deleted IS 'A boolean indicating whether this data item has been deleted';
-
-
---
--- Name: COLUMN field_revision_field_usergroup.entity_id; Type: COMMENT; Schema: public; Owner: tk_admin
---
-
-COMMENT ON COLUMN field_revision_field_usergroup.entity_id IS 'The entity id this data is attached to';
-
-
---
--- Name: COLUMN field_revision_field_usergroup.revision_id; Type: COMMENT; Schema: public; Owner: tk_admin
---
-
-COMMENT ON COLUMN field_revision_field_usergroup.revision_id IS 'The entity revision id this data is attached to';
-
-
---
--- Name: COLUMN field_revision_field_usergroup.language; Type: COMMENT; Schema: public; Owner: tk_admin
---
-
-COMMENT ON COLUMN field_revision_field_usergroup.language IS 'The language for this data item.';
-
-
---
--- Name: COLUMN field_revision_field_usergroup.delta; Type: COMMENT; Schema: public; Owner: tk_admin
---
-
-COMMENT ON COLUMN field_revision_field_usergroup.delta IS 'The sequence number for this data item, used for multi-value fields';
 
 
 --
@@ -10798,7 +10626,7 @@ l10n_update_available_releases	a:15:{s:10:"admin_menu";a:1:{s:2:"nb";O:8:"stdCla
 --
 
 COPY cache_menu (cid, data, expire, created, serialized) FROM stdin;
-menu_custom	a:4:{s:10:"navigation";a:3:{s:9:"menu_name";s:10:"navigation";s:5:"title";s:10:"Navigering";s:11:"description";s:156:"<em>Navigasjonsmenyen</em> inneholder lenker som er ment for nettstedets bes\\303\\270kende. Noen moduler legger til lenker i <em>navigasjonsmenyen</em> automatisk.";}s:10:"management";a:3:{s:9:"menu_name";s:10:"management";s:5:"title";s:10:"Management";s:11:"description";s:77:"<em>Administrasjonsmenyen</em> inneholder lenker for administrative oppgaver.";}s:9:"user-menu";a:3:{s:9:"menu_name";s:9:"user-menu";s:5:"title";s:9:"User menu";s:11:"description";s:90:"<em>Brukermenyen</em> inneholder lenker relatert til brukerens konto samt utloggingslenka.";}s:9:"main-menu";a:3:{s:9:"menu_name";s:9:"main-menu";s:5:"title";s:9:"Hovedmeny";s:11:"description";s:116:"<em>Hovedmenyen</em> brukes p\\303\\245 mange nettsteder til visning av hoveddelene av nettstedet, ofte i en toppnavigasjon.";}}	0	1390315588	1
+menu_custom	a:4:{s:10:"navigation";a:3:{s:9:"menu_name";s:10:"navigation";s:5:"title";s:10:"Navigering";s:11:"description";s:156:"<em>Navigasjonsmenyen</em> inneholder lenker som er ment for nettstedets bes\\303\\270kende. Noen moduler legger til lenker i <em>navigasjonsmenyen</em> automatisk.";}s:10:"management";a:3:{s:9:"menu_name";s:10:"management";s:5:"title";s:10:"Management";s:11:"description";s:77:"<em>Administrasjonsmenyen</em> inneholder lenker for administrative oppgaver.";}s:9:"user-menu";a:3:{s:9:"menu_name";s:9:"user-menu";s:5:"title";s:9:"User menu";s:11:"description";s:90:"<em>Brukermenyen</em> inneholder lenker relatert til brukerens konto samt utloggingslenka.";}s:9:"main-menu";a:3:{s:9:"menu_name";s:9:"main-menu";s:5:"title";s:9:"Hovedmeny";s:11:"description";s:116:"<em>Hovedmenyen</em> brukes p\\303\\245 mange nettsteder til visning av hoveddelene av nettstedet, ofte i en toppnavigasjon.";}}	0	1390548415	1
 \.
 
 
@@ -10924,7 +10752,6 @@ SELECT pg_catalog.setval('date_formats_dfid_seq', 35, true);
 --
 
 COPY field_config (id, field_name, type, module, active, storage_type, storage_module, storage_active, locked, data, cardinality, translatable, deleted) FROM stdin;
-9	field_usergroup	list_text	list	1	field_sql_storage	field_sql_storage	1	0	a:8:{s:12:"entity_types";a:0:{}s:12:"foreign keys";a:0:{}s:7:"indexes";a:1:{s:5:"value";a:1:{i:0;s:5:"value";}}s:8:"settings";a:2:{s:14:"allowed_values";a:4:{s:6:"ansatt";s:6:"Ansatt";s:7:"student";s:7:"Student";s:5:"gjest";s:10:"Bes\\303\\270kende";s:5:"andre";s:5:"Andre";}s:23:"allowed_values_function";s:0:"";}s:12:"translatable";s:1:"0";s:7:"storage";a:5:{s:4:"type";s:17:"field_sql_storage";s:8:"settings";a:0:{}s:6:"module";s:17:"field_sql_storage";s:6:"active";s:1:"1";s:7:"details";a:1:{s:3:"sql";a:2:{s:18:"FIELD_LOAD_CURRENT";a:1:{s:26:"field_data_field_usergroup";a:1:{s:5:"value";s:21:"field_usergroup_value";}}s:19:"FIELD_LOAD_REVISION";a:1:{s:30:"field_revision_field_usergroup";a:1:{s:5:"value";s:21:"field_usergroup_value";}}}}}s:2:"id";s:1:"9";s:17:"field_permissions";a:1:{s:4:"type";s:1:"0";}}	-1	0	0
 11	field_adress	text_long	text	1	field_sql_storage	field_sql_storage	1	0	a:6:{s:12:"entity_types";a:0:{}s:12:"foreign keys";a:1:{s:6:"format";a:2:{s:5:"table";s:13:"filter_format";s:7:"columns";a:1:{s:6:"format";s:6:"format";}}}s:7:"indexes";a:1:{s:6:"format";a:1:{i:0;s:6:"format";}}s:8:"settings";a:0:{}s:12:"translatable";s:1:"0";s:7:"storage";a:4:{s:4:"type";s:17:"field_sql_storage";s:8:"settings";a:0:{}s:6:"module";s:17:"field_sql_storage";s:6:"active";i:1;}}	1	0	0
 1	field_availability	list_text	list	1	field_sql_storage	field_sql_storage	1	0	a:8:{s:12:"entity_types";a:0:{}s:12:"foreign keys";a:0:{}s:7:"indexes";a:1:{s:5:"value";a:1:{i:0;s:5:"value";}}s:8:"settings";a:2:{s:14:"allowed_values";a:3:{i:247;s:8:"24/7/365";s:10:"arbeidstid";s:19:"08:00-15:45 man-fre";s:4:"vakt";s:43:"07:00-22:00 man-fre (10:00-18:00 l\\303\\270r-s\\303\\270n)";}s:23:"allowed_values_function";s:0:"";}s:12:"translatable";s:1:"0";s:7:"storage";a:5:{s:4:"type";s:17:"field_sql_storage";s:8:"settings";a:0:{}s:6:"module";s:17:"field_sql_storage";s:6:"active";s:1:"1";s:7:"details";a:1:{s:3:"sql";a:2:{s:18:"FIELD_LOAD_CURRENT";a:1:{s:29:"field_data_field_availability";a:1:{s:5:"value";s:24:"field_availability_value";}}s:19:"FIELD_LOAD_REVISION";a:1:{s:33:"field_revision_field_availability";a:1:{s:5:"value";s:24:"field_availability_value";}}}}}s:2:"id";s:1:"1";s:17:"field_permissions";a:1:{s:4:"type";s:1:"0";}}	1	0	0
 30	field_service_rotation	list_text	list	1	field_sql_storage	field_sql_storage	1	0	a:8:{s:12:"translatable";s:1:"0";s:12:"entity_types";a:0:{}s:8:"settings";a:2:{s:14:"allowed_values";a:3:{s:6:"novakt";s:28:"Ikke inkludert i vaktordning";s:3:"inf";s:30:"Inkludert i infrastruktur vakt";s:7:"student";s:31:"Inkludert i studentst\\303\\270tte vakt";}s:23:"allowed_values_function";s:0:"";}s:7:"storage";a:5:{s:4:"type";s:17:"field_sql_storage";s:8:"settings";a:0:{}s:6:"module";s:17:"field_sql_storage";s:6:"active";s:1:"1";s:7:"details";a:1:{s:3:"sql";a:2:{s:18:"FIELD_LOAD_CURRENT";a:1:{s:33:"field_data_field_service_rotation";a:1:{s:5:"value";s:28:"field_service_rotation_value";}}s:19:"FIELD_LOAD_REVISION";a:1:{s:37:"field_revision_field_service_rotation";a:1:{s:5:"value";s:28:"field_service_rotation_value";}}}}}s:12:"foreign keys";a:0:{}s:7:"indexes";a:1:{s:5:"value";a:1:{i:0;s:5:"value";}}s:2:"id";s:2:"30";s:17:"field_permissions";a:1:{s:4:"type";s:1:"2";}}	1	0	0
@@ -10972,18 +10799,16 @@ COPY field_config_instance (id, field_id, field_name, entity_type, bundle, data,
 11	11	field_adress	node	support_contact	a:7:{s:13:"default_value";N;s:11:"description";s:0:"";s:7:"display";a:2:{s:7:"default";a:5:{s:5:"label";s:6:"inline";s:6:"module";s:4:"text";s:8:"settings";a:0:{}s:4:"type";s:12:"text_default";s:6:"weight";s:1:"3";}s:6:"teaser";a:4:{s:5:"label";s:5:"above";s:8:"settings";a:0:{}s:4:"type";s:6:"hidden";s:6:"weight";s:1:"0";}}s:5:"label";s:8:"Addresse";s:8:"required";i:0;s:8:"settings";a:2:{s:15:"text_processing";s:1:"1";s:18:"user_register_form";b:0;}s:6:"widget";a:5:{s:6:"active";i:1;s:6:"module";s:4:"text";s:8:"settings";a:1:{s:4:"rows";s:1:"3";}s:4:"type";s:13:"text_textarea";s:6:"weight";s:1:"4";}}	0
 12	12	field_opening	node	support_contact	a:7:{s:13:"default_value";N;s:11:"description";s:0:"";s:7:"display";a:2:{s:7:"default";a:5:{s:5:"label";s:6:"inline";s:6:"module";s:4:"text";s:8:"settings";a:0:{}s:4:"type";s:12:"text_default";s:6:"weight";s:1:"2";}s:6:"teaser";a:5:{s:5:"label";s:6:"inline";s:6:"module";s:4:"text";s:8:"settings";a:0:{}s:4:"type";s:12:"text_default";s:6:"weight";s:1:"0";}}s:5:"label";s:11:"\\303\\205pningstid";s:8:"required";i:0;s:8:"settings";a:2:{s:15:"text_processing";s:1:"0";s:18:"user_register_form";b:0;}s:6:"widget";a:5:{s:6:"active";i:1;s:6:"module";s:4:"text";s:8:"settings";a:1:{s:4:"size";s:2:"60";}s:4:"type";s:14:"text_textfield";s:6:"weight";s:1:"1";}}	0
 13	13	field_phone	node	support_contact	a:7:{s:13:"default_value";N;s:11:"description";s:0:"";s:7:"display";a:2:{s:7:"default";a:5:{s:5:"label";s:6:"inline";s:6:"module";s:4:"text";s:8:"settings";a:0:{}s:4:"type";s:12:"text_default";s:6:"weight";s:1:"0";}s:6:"teaser";a:5:{s:5:"label";s:6:"inline";s:6:"module";s:4:"text";s:8:"settings";a:0:{}s:4:"type";s:12:"text_default";s:6:"weight";s:1:"0";}}s:5:"label";s:7:"Telefon";s:8:"required";i:0;s:8:"settings";a:2:{s:15:"text_processing";s:1:"0";s:18:"user_register_form";b:0;}s:6:"widget";a:5:{s:6:"active";i:1;s:6:"module";s:4:"text";s:8:"settings";a:1:{s:4:"size";s:2:"60";}s:4:"type";s:14:"text_textfield";s:6:"weight";s:1:"2";}}	0
-9	9	field_usergroup	node	service	a:7:{s:13:"default_value";N;s:11:"description";s:44:"Angir hvem som kan benytte denne tjenesten. ";s:7:"display";a:3:{s:7:"default";a:5:{s:5:"label";s:5:"above";s:4:"type";s:12:"list_default";s:6:"weight";s:1:"6";s:8:"settings";a:0:{}s:6:"module";s:4:"list";}s:4:"full";a:5:{s:5:"label";s:5:"above";s:6:"module";s:4:"list";s:8:"settings";a:0:{}s:4:"type";s:8:"list_key";s:6:"weight";s:1:"4";}s:6:"teaser";a:4:{s:5:"label";s:6:"inline";s:4:"type";s:6:"hidden";s:6:"weight";s:1:"0";s:8:"settings";a:0:{}}}s:5:"label";s:11:"M\\303\\245lgrupper";s:8:"required";i:1;s:8:"settings";a:1:{s:18:"user_register_form";b:0;}s:6:"widget";a:5:{s:6:"weight";s:1:"3";s:4:"type";s:15:"options_buttons";s:6:"module";s:7:"options";s:6:"active";i:1;s:8:"settings";a:0:{}}}	0
 14	14	field_www	node	support_contact	a:7:{s:13:"default_value";N;s:11:"description";s:0:"";s:7:"display";a:2:{s:7:"default";a:5:{s:5:"label";s:6:"inline";s:6:"module";s:4:"link";s:8:"settings";a:0:{}s:4:"type";s:12:"link_default";s:6:"weight";s:1:"1";}s:6:"teaser";a:5:{s:5:"label";s:6:"inline";s:6:"module";s:4:"link";s:8:"settings";a:0:{}s:4:"type";s:10:"link_short";s:6:"weight";s:1:"0";}}s:5:"label";s:25:"Her kan du melde inn feil";s:8:"required";i:0;s:8:"settings";a:10:{s:10:"attributes";a:5:{s:5:"class";s:0:"";s:18:"configurable_title";i:0;s:3:"rel";s:0:"";s:6:"target";s:7:"default";s:5:"title";s:0:"";}s:7:"display";a:1:{s:10:"url_cutoff";s:2:"80";}s:13:"enable_tokens";i:1;s:10:"rel_remove";s:7:"default";s:5:"title";s:8:"required";s:15:"title_maxlength";s:3:"128";s:11:"title_value";s:0:"";s:3:"url";i:0;s:18:"user_register_form";b:0;s:12:"validate_url";i:1;}s:6:"widget";a:5:{s:6:"active";i:0;s:6:"module";s:4:"link";s:8:"settings";a:0:{}s:4:"type";s:10:"link_field";s:6:"weight";s:1:"3";}}	0
 6	6	field_service_owner	node	service	a:7:{s:13:"default_value";N;s:11:"description";s:0:"";s:7:"display";a:2:{s:7:"default";a:5:{s:5:"label";s:5:"above";s:4:"type";s:27:"entityreference_entity_view";s:6:"weight";s:2:"13";s:8:"settings";a:2:{s:5:"links";i:1;s:9:"view_mode";s:6:"teaser";}s:6:"module";s:15:"entityreference";}s:6:"teaser";a:4:{s:5:"label";s:5:"above";s:4:"type";s:6:"hidden";s:6:"weight";s:1:"6";s:8:"settings";a:0:{}}}s:5:"label";s:10:"Systemeier";s:8:"required";i:1;s:8:"settings";a:1:{s:18:"user_register_form";b:0;}s:6:"widget";a:5:{s:6:"active";i:1;s:6:"module";s:7:"options";s:8:"settings";a:3:{s:14:"match_operator";s:8:"CONTAINS";s:4:"path";s:0:"";s:4:"size";s:2:"60";}s:4:"type";s:14:"options_select";s:6:"weight";s:2:"12";}}	0
 2	2	field_criticality	node	service	a:7:{s:13:"default_value";a:1:{i:0;a:1:{s:5:"value";s:1:"3";}}s:11:"description";s:60:"Her har du mulighet for \\303\\245 vekte hvor viktig en tjeneste er.";s:7:"display";a:3:{s:7:"default";a:5:{s:5:"label";s:6:"inline";s:4:"type";s:12:"list_default";s:6:"weight";s:1:"4";s:8:"settings";a:0:{}s:6:"module";s:4:"list";}s:4:"full";a:5:{s:5:"label";s:5:"above";s:6:"module";s:4:"list";s:8:"settings";a:0:{}s:4:"type";s:8:"list_key";s:6:"weight";s:1:"1";}s:6:"teaser";a:4:{s:5:"label";s:5:"above";s:4:"type";s:6:"hidden";s:6:"weight";s:1:"0";s:8:"settings";a:0:{}}}s:5:"label";s:12:"Kritikalitet";s:8:"required";i:1;s:8:"settings";a:1:{s:18:"user_register_form";b:0;}s:6:"widget";a:5:{s:6:"active";i:1;s:6:"module";s:7:"options";s:8:"settings";a:0:{}s:4:"type";s:14:"options_select";s:6:"weight";s:2:"10";}}	0
-18	18	field_description	node	service	a:7:{s:13:"default_value";N;s:11:"description";s:107:"Beskriv de viktigste egenskapene og funksjonene ved tjenesten og annen nyttig informasjon til sluttbrukere.";s:7:"display";a:2:{s:7:"default";a:5:{s:5:"label";s:5:"above";s:4:"type";s:12:"text_default";s:6:"weight";s:2:"11";s:8:"settings";a:0:{}s:6:"module";s:4:"text";}s:6:"teaser";a:4:{s:5:"label";s:5:"above";s:4:"type";s:6:"hidden";s:6:"weight";s:1:"0";s:8:"settings";a:0:{}}}s:5:"label";s:38:"Utvidet beskrivelse (hva er inkludert)";s:8:"required";i:0;s:8:"settings";a:2:{s:15:"text_processing";s:1:"1";s:18:"user_register_form";b:0;}s:6:"widget";a:5:{s:6:"weight";s:1:"2";s:4:"type";s:13:"text_textarea";s:6:"module";s:4:"text";s:6:"active";i:1;s:8:"settings";a:1:{s:4:"rows";s:1:"5";}}}	0
 5	5	field_operator	node	service	a:7:{s:13:"default_value";N;s:11:"description";s:55:"Angir hvem som har tjeneste ansvar for denne tjenesten.";s:7:"display";a:2:{s:7:"default";a:5:{s:5:"label";s:6:"inline";s:4:"type";s:21:"entityreference_label";s:6:"weight";s:1:"6";s:8:"settings";a:1:{s:4:"link";b:0;}s:6:"module";s:15:"entityreference";}s:6:"teaser";a:4:{s:5:"label";s:5:"above";s:4:"type";s:6:"hidden";s:6:"weight";s:1:"8";s:8:"settings";a:0:{}}}s:5:"label";s:16:"Driftsansvarlige";s:8:"required";i:1;s:8:"settings";a:1:{s:18:"user_register_form";b:0;}s:6:"widget";a:5:{s:6:"weight";s:2:"16";s:4:"type";s:28:"entityreference_autocomplete";s:6:"module";s:15:"entityreference";s:6:"active";i:1;s:8:"settings";a:3:{s:14:"match_operator";s:8:"CONTAINS";s:4:"size";s:2:"60";s:4:"path";s:0:"";}}}	0
 19	19	field_service_state	node	service	a:7:{s:5:"label";s:11:"Livssyklus ";s:6:"widget";a:5:{s:6:"weight";s:2:"11";s:4:"type";s:14:"options_select";s:6:"module";s:7:"options";s:6:"active";i:1;s:8:"settings";a:0:{}}s:8:"settings";a:1:{s:18:"user_register_form";b:0;}s:7:"display";a:1:{s:7:"default";a:5:{s:5:"label";s:6:"inline";s:4:"type";s:12:"list_default";s:6:"weight";s:2:"12";s:8:"settings";a:0:{}s:6:"module";s:4:"list";}}s:8:"required";i:1;s:11:"description";s:0:"";s:13:"default_value";N;}	0
+18	18	field_description	node	service	a:7:{s:13:"default_value";N;s:11:"description";s:107:"Beskriv de viktigste egenskapene og funksjonene ved tjenesten og annen nyttig informasjon til sluttbrukere.";s:7:"display";a:2:{s:7:"default";a:5:{s:5:"label";s:6:"hidden";s:6:"module";s:4:"text";s:8:"settings";a:0:{}s:4:"type";s:12:"text_default";s:6:"weight";s:2:"11";}s:6:"teaser";a:4:{s:5:"label";s:5:"above";s:8:"settings";a:0:{}s:4:"type";s:6:"hidden";s:6:"weight";s:1:"0";}}s:5:"label";s:38:"Utvidet beskrivelse (hva er inkludert)";s:8:"required";i:0;s:8:"settings";a:2:{s:15:"text_processing";s:1:"1";s:18:"user_register_form";b:0;}s:6:"widget";a:5:{s:6:"active";i:1;s:6:"module";s:4:"text";s:8:"settings";a:1:{s:4:"rows";s:1:"5";}s:4:"type";s:13:"text_textarea";s:6:"weight";s:1:"2";}}	0
+17	17	field_summary	node	service	a:7:{s:13:"default_value";N;s:11:"description";s:0:"";s:7:"display";a:2:{s:7:"default";a:5:{s:5:"label";s:6:"hidden";s:6:"module";s:4:"text";s:8:"settings";a:0:{}s:4:"type";s:12:"text_default";s:6:"weight";s:1:"2";}s:6:"teaser";a:5:{s:5:"label";s:6:"hidden";s:6:"module";s:4:"text";s:8:"settings";a:0:{}s:4:"type";s:12:"text_default";s:6:"weight";s:1:"0";}}s:5:"label";s:11:"Beskrivelse";s:8:"required";i:1;s:8:"settings";a:2:{s:15:"text_processing";s:1:"0";s:18:"user_register_form";b:0;}s:6:"widget";a:5:{s:6:"active";i:1;s:6:"module";s:4:"text";s:8:"settings";a:1:{s:4:"rows";s:1:"1";}s:4:"type";s:13:"text_textarea";s:6:"weight";s:1:"1";}}	0
 20	20	field_service_status	node	service	a:7:{s:5:"label";s:12:"Driftsstatus";s:6:"widget";a:5:{s:6:"weight";s:2:"14";s:4:"type";s:14:"options_select";s:6:"module";s:7:"options";s:6:"active";i:1;s:8:"settings";a:0:{}}s:8:"settings";a:1:{s:18:"user_register_form";b:0;}s:7:"display";a:1:{s:7:"default";a:4:{s:5:"label";s:5:"above";s:4:"type";s:6:"hidden";s:6:"weight";s:2:"10";s:8:"settings";a:0:{}}}s:8:"required";i:0;s:11:"description";s:0:"";s:13:"default_value";a:1:{i:0;a:1:{s:5:"value";s:6:"normal";}}}	0
-17	17	field_summary	node	service	a:7:{s:13:"default_value";N;s:11:"description";s:0:"";s:7:"display";a:2:{s:7:"default";a:5:{s:5:"label";s:6:"inline";s:4:"type";s:12:"text_default";s:6:"weight";s:1:"2";s:8:"settings";a:0:{}s:6:"module";s:4:"text";}s:6:"teaser";a:5:{s:5:"label";s:6:"hidden";s:4:"type";s:12:"text_default";s:6:"weight";s:1:"0";s:8:"settings";a:0:{}s:6:"module";s:4:"text";}}s:5:"label";s:11:"Beskrivelse";s:8:"required";i:1;s:8:"settings";a:2:{s:15:"text_processing";s:1:"0";s:18:"user_register_form";b:0;}s:6:"widget";a:5:{s:6:"weight";s:1:"1";s:4:"type";s:13:"text_textarea";s:6:"module";s:4:"text";s:6:"active";i:1;s:8:"settings";a:1:{s:4:"rows";s:1:"1";}}}	0
 1	1	field_availability	node	service	a:7:{s:13:"default_value";N;s:11:"description";s:81:"N\\303\\245r er tjenesten tilgjengelig, n\\303\\245r kan bruker forvente at tjenesten kan brukes.";s:7:"display";a:2:{s:7:"default";a:5:{s:5:"label";s:6:"inline";s:4:"type";s:12:"list_default";s:6:"weight";s:2:"10";s:8:"settings";a:0:{}s:6:"module";s:4:"list";}s:6:"teaser";a:4:{s:5:"label";s:6:"inline";s:4:"type";s:6:"hidden";s:6:"weight";s:1:"2";s:8:"settings";a:0:{}}}s:5:"label";s:23:"Normal tilgjengelighet ";s:8:"required";i:0;s:8:"settings";a:1:{s:18:"user_register_form";b:0;}s:6:"widget";a:5:{s:6:"weight";s:1:"9";s:4:"type";s:14:"options_select";s:6:"module";s:7:"options";s:6:"active";i:1;s:8:"settings";a:0:{}}}	0
 29	29	field_supporting_systems	node	service	a:7:{s:5:"label";s:31:"Systemer som st\\303\\270tter tjenesten";s:6:"widget";a:5:{s:6:"weight";s:2:"20";s:4:"type";s:13:"text_textarea";s:6:"module";s:4:"text";s:6:"active";i:1;s:8:"settings";a:1:{s:4:"rows";s:1:"3";}}s:8:"settings";a:2:{s:15:"text_processing";s:1:"0";s:18:"user_register_form";b:0;}s:7:"display";a:1:{s:7:"default";a:5:{s:5:"label";s:5:"above";s:4:"type";s:12:"text_default";s:6:"weight";s:2:"10";s:8:"settings";a:0:{}s:6:"module";s:4:"text";}}s:8:"required";i:0;s:11:"description";s:0:"";s:13:"default_value";N;}	0
-32	32	field_service_classification	node	service	a:7:{s:13:"default_value";N;s:11:"description";s:0:"";s:7:"display";a:2:{s:7:"default";a:5:{s:5:"label";s:5:"above";s:6:"module";s:15:"entityreference";s:8:"settings";a:1:{s:4:"link";b:0;}s:4:"type";s:21:"entityreference_label";s:6:"weight";i:14;}s:6:"teaser";a:4:{s:5:"label";s:5:"above";s:8:"settings";a:0:{}s:4:"type";s:6:"hidden";s:6:"weight";i:0;}}s:5:"label";s:14:"Klassifisering";s:8:"required";i:0;s:8:"settings";a:2:{s:9:"behaviors";a:1:{s:14:"taxonomy-index";a:1:{s:6:"status";b:1;}}s:18:"user_register_form";b:0;}s:6:"widget";a:5:{s:6:"active";i:1;s:6:"module";s:7:"options";s:8:"settings";a:0:{}s:4:"type";s:15:"options_buttons";s:6:"weight";s:2:"21";}}	0
 25	25	field_service_levels	node	service	a:7:{s:5:"label";s:7:"Ytelser";s:6:"widget";a:5:{s:6:"weight";s:2:"18";s:4:"type";s:15:"options_buttons";s:6:"module";s:7:"options";s:6:"active";i:1;s:8:"settings";a:0:{}}s:8:"settings";a:1:{s:18:"user_register_form";b:0;}s:7:"display";a:1:{s:7:"default";a:5:{s:5:"label";s:6:"inline";s:4:"type";s:12:"list_default";s:6:"weight";s:1:"9";s:8:"settings";a:0:{}s:6:"module";s:4:"list";}}s:8:"required";i:0;s:11:"description";s:101:"Brukes kun n\\303\\245r IT-avdelingen er driftsleverand\\303\\270r. Angi de niv\\303\\245ene IT-avdelingen er ansvarlig for. ";s:13:"default_value";N;}	0
 28	28	field_field_howto_orde	node	service	a:7:{s:5:"label";s:16:"Hvordan bestille";s:6:"widget";a:5:{s:6:"weight";s:1:"7";s:4:"type";s:13:"text_textarea";s:6:"module";s:4:"text";s:6:"active";i:1;s:8:"settings";a:1:{s:4:"rows";s:1:"3";}}s:8:"settings";a:2:{s:15:"text_processing";s:1:"1";s:18:"user_register_form";b:0;}s:7:"display";a:1:{s:7:"default";a:5:{s:5:"label";s:5:"above";s:4:"type";s:12:"text_default";s:6:"weight";s:1:"8";s:8:"settings";a:0:{}s:6:"module";s:4:"text";}}s:8:"required";i:0;s:11:"description";s:0:"";s:13:"default_value";N;}	0
 24	24	field_service_supplier	node	service	a:7:{s:5:"label";s:17:"Driftsleverand\\303\\270r";s:6:"widget";a:5:{s:6:"weight";s:2:"15";s:4:"type";s:14:"options_select";s:6:"module";s:7:"options";s:6:"active";i:1;s:8:"settings";a:0:{}}s:8:"settings";a:1:{s:18:"user_register_form";b:0;}s:7:"display";a:1:{s:7:"default";a:5:{s:5:"label";s:6:"inline";s:4:"type";s:12:"list_default";s:6:"weight";s:2:"11";s:8:"settings";a:0:{}s:6:"module";s:4:"list";}}s:8:"required";i:0;s:11:"description";s:0:"";s:13:"default_value";a:1:{i:0;a:1:{s:5:"value";s:3:"ita";}}}	0
@@ -10993,6 +10818,7 @@ COPY field_config_instance (id, field_id, field_name, entity_type, bundle, data,
 27	27	field_quality	node	service	a:7:{s:5:"label";s:13:"Kvalitetsm\\303\\245l";s:6:"widget";a:5:{s:6:"weight";s:2:"19";s:4:"type";s:13:"text_textarea";s:6:"module";s:4:"text";s:6:"active";i:1;s:8:"settings";a:1:{s:4:"rows";s:1:"3";}}s:8:"settings";a:2:{s:15:"text_processing";s:1:"1";s:18:"user_register_form";b:0;}s:7:"display";a:1:{s:7:"default";a:5:{s:5:"label";s:5:"above";s:4:"type";s:12:"text_default";s:6:"weight";s:1:"8";s:8:"settings";a:0:{}s:6:"module";s:4:"text";}}s:8:"required";i:0;s:11:"description";s:0:"";s:13:"default_value";a:1:{i:0;a:2:{s:5:"value";s:36:"Oppetid:\\015\\012Responstid:\\015\\012Leveringstid:";s:6:"format";s:10:"plain_text";}}}	0
 26	26	field_ower_contact	node	service	a:7:{s:5:"label";s:24:"Kontaktperson systemeier";s:6:"widget";a:5:{s:6:"weight";s:2:"13";s:4:"type";s:33:"entityreference_autocomplete_tags";s:6:"module";s:15:"entityreference";s:6:"active";i:1;s:8:"settings";a:3:{s:14:"match_operator";s:8:"CONTAINS";s:4:"size";s:2:"60";s:4:"path";s:0:"";}}s:8:"settings";a:1:{s:18:"user_register_form";b:0;}s:7:"display";a:1:{s:7:"default";a:5:{s:5:"label";s:6:"inline";s:4:"type";s:21:"entityreference_label";s:6:"weight";s:1:"7";s:8:"settings";a:1:{s:4:"link";b:0;}s:6:"module";s:15:"entityreference";}}s:8:"required";i:0;s:11:"description";s:0:"";s:13:"default_value";N;}	0
 30	30	field_service_rotation	node	service	a:7:{s:5:"label";s:11:"Vaktordning";s:6:"widget";a:5:{s:6:"weight";s:2:"17";s:4:"type";s:14:"options_select";s:6:"module";s:7:"options";s:6:"active";i:1;s:8:"settings";a:0:{}}s:8:"settings";a:1:{s:18:"user_register_form";b:0;}s:7:"display";a:1:{s:7:"default";a:5:{s:5:"label";s:6:"inline";s:4:"type";s:12:"list_default";s:6:"weight";s:1:"5";s:8:"settings";a:0:{}s:6:"module";s:4:"list";}}s:8:"required";i:0;s:11:"description";s:0:"";s:13:"default_value";a:1:{i:0;a:1:{s:5:"value";s:6:"novakt";}}}	0
+32	32	field_service_classification	node	service	a:7:{s:13:"default_value";N;s:11:"description";s:0:"";s:7:"display";a:2:{s:7:"default";a:4:{s:5:"label";s:5:"above";s:8:"settings";a:0:{}s:4:"type";s:6:"hidden";s:6:"weight";s:2:"14";}s:6:"teaser";a:4:{s:5:"label";s:5:"above";s:8:"settings";a:0:{}s:4:"type";s:6:"hidden";s:6:"weight";i:0;}}s:5:"label";s:14:"Klassifisering";s:8:"required";i:0;s:8:"settings";a:2:{s:9:"behaviors";a:1:{s:14:"taxonomy-index";a:1:{s:6:"status";b:1;}}s:18:"user_register_form";b:0;}s:6:"widget";a:5:{s:6:"active";i:1;s:6:"module";s:7:"options";s:8:"settings";a:0:{}s:4:"type";s:15:"options_buttons";s:6:"weight";s:2:"21";}}	0
 \.
 
 
@@ -11675,53 +11501,6 @@ node	service	0	7	7	und	0	NetApp, LDAP, AD, Nettverk, Windows hjemmekatalog, Unix
 
 
 --
--- Data for Name: field_data_field_usergroup; Type: TABLE DATA; Schema: public; Owner: tk_admin
---
-
-COPY field_data_field_usergroup (entity_type, bundle, deleted, entity_id, revision_id, language, delta, field_usergroup_value) FROM stdin;
-node	service	0	22	23	und	0	ansatt
-node	service	0	22	23	und	1	student
-node	service	0	3	3	und	0	ansatt
-node	service	0	3	3	und	1	student
-node	service	0	18	19	und	0	ansatt
-node	service	0	18	19	und	1	student
-node	service	0	25	26	und	0	ansatt
-node	service	0	25	26	und	1	student
-node	service	0	26	27	und	0	ansatt
-node	service	0	30	31	und	0	ansatt
-node	service	0	30	31	und	1	student
-node	service	0	30	31	und	2	gjest
-node	service	0	30	31	und	3	andre
-node	service	0	11	12	und	0	ansatt
-node	service	0	16	17	und	0	ansatt
-node	service	0	4	4	und	0	ansatt
-node	service	0	14	15	und	0	ansatt
-node	service	0	24	25	und	0	ansatt
-node	service	0	11	12	und	1	student
-node	service	0	5	10	und	0	ansatt
-node	service	0	5	10	und	1	student
-node	service	0	5	10	und	2	gjest
-node	service	0	19	20	und	0	ansatt
-node	service	0	19	20	und	1	student
-node	service	0	17	18	und	0	ansatt
-node	service	0	17	18	und	1	student
-node	service	0	15	16	und	0	ansatt
-node	service	0	8	8	und	0	ansatt
-node	service	0	8	8	und	1	student
-node	service	0	8	8	und	2	gjest
-node	service	0	13	14	und	0	ansatt
-node	service	0	13	14	und	1	gjest
-node	service	0	7	7	und	0	ansatt
-node	service	0	12	13	und	0	ansatt
-node	service	0	12	13	und	1	student
-node	service	0	10	11	und	0	ansatt
-node	service	0	10	11	und	1	student
-node	service	0	10	11	und	2	gjest
-node	service	0	10	11	und	3	andre
-\.
-
-
---
 -- Data for Name: field_data_field_www; Type: TABLE DATA; Schema: public; Owner: tk_admin
 --
 
@@ -11737,8 +11516,6 @@ node	support_contact	0	29	30	und	0	https://bs.uib.no/	Issue-tracker til "webreda
 --
 
 COPY field_group (id, identifier, group_name, entity_type, bundle, mode, parent_name, data) FROM stdin;
-5	group_main|node|service|default	group_main	node	service	default		a:5:{s:5:"label";s:0:"";s:6:"weight";s:1:"0";s:8:"children";a:10:{i:0;s:24:"field_supporting_systems";i:1;s:22:"field_service_rotation";i:2;s:18:"field_service_type";i:3;s:14:"field_operator";i:4;s:18:"field_ower_contact";i:5;s:20:"field_service_levels";i:6;s:13:"field_summary";i:7;s:17:"field_criticality";i:8;s:17:"field_description";i:9;s:13:"field_quality";}s:11:"format_type";s:3:"div";s:15:"format_settings";a:3:{s:5:"label";s:0:"";s:17:"instance_settings";a:6:{s:7:"classes";s:27:" group-main field-group-div";s:11:"description";s:0:"";s:10:"show_label";s:1:"0";s:13:"label_element";s:2:"h3";s:6:"effect";s:4:"none";s:5:"speed";s:4:"fast";}s:9:"formatter";s:11:"collapsible";}}
-6	group_sidebar|node|service|default	group_sidebar	node	service	default		a:5:{s:5:"label";s:0:"";s:6:"weight";s:1:"1";s:8:"children";a:9:{i:0;s:15:"field_usergroup";i:1;s:21:"field_support_contact";i:2;s:19:"field_service_state";i:3;s:22:"field_field_howto_orde";i:4;s:12:"field_demand";i:5;s:22:"field_service_supplier";i:6;s:10:"field_cost";i:7;s:19:"field_service_owner";i:8;s:18:"field_availability";}s:11:"format_type";s:3:"div";s:15:"format_settings";a:3:{s:5:"label";s:0:"";s:17:"instance_settings";a:6:{s:7:"classes";s:30:" group-sidebar field-group-div";s:11:"description";s:0:"";s:10:"show_label";s:1:"0";s:13:"label_element";s:2:"h3";s:6:"effect";s:4:"none";s:5:"speed";s:4:"fast";}s:9:"formatter";s:11:"collapsible";}}
 \.
 
 
@@ -12441,56 +12218,6 @@ node	service	0	7	7	und	0	NetApp, LDAP, AD, Nettverk, Windows hjemmekatalog, Unix
 
 
 --
--- Data for Name: field_revision_field_usergroup; Type: TABLE DATA; Schema: public; Owner: tk_admin
---
-
-COPY field_revision_field_usergroup (entity_type, bundle, deleted, entity_id, revision_id, language, delta, field_usergroup_value) FROM stdin;
-node	service	0	22	23	und	0	ansatt
-node	service	0	22	23	und	1	student
-node	service	0	3	3	und	0	ansatt
-node	service	0	18	19	und	0	ansatt
-node	service	0	18	19	und	1	student
-node	service	0	3	3	und	1	student
-node	service	0	25	26	und	0	ansatt
-node	service	0	25	26	und	1	student
-node	service	0	26	27	und	0	ansatt
-node	service	0	5	5	und	0	ansatt
-node	service	0	5	5	und	1	student
-node	service	0	5	5	und	2	gjest
-node	service	0	30	31	und	0	ansatt
-node	service	0	30	31	und	1	student
-node	service	0	30	31	und	2	gjest
-node	service	0	30	31	und	3	andre
-node	service	0	11	12	und	0	ansatt
-node	service	0	11	12	und	1	student
-node	service	0	16	17	und	0	ansatt
-node	service	0	4	4	und	0	ansatt
-node	service	0	14	15	und	0	ansatt
-node	service	0	24	25	und	0	ansatt
-node	service	0	5	10	und	0	ansatt
-node	service	0	5	10	und	1	student
-node	service	0	5	10	und	2	gjest
-node	service	0	19	20	und	0	ansatt
-node	service	0	19	20	und	1	student
-node	service	0	17	18	und	0	ansatt
-node	service	0	17	18	und	1	student
-node	service	0	15	16	und	0	ansatt
-node	service	0	8	8	und	0	ansatt
-node	service	0	8	8	und	1	student
-node	service	0	8	8	und	2	gjest
-node	service	0	13	14	und	0	ansatt
-node	service	0	13	14	und	1	gjest
-node	service	0	7	7	und	0	ansatt
-node	service	0	12	13	und	0	ansatt
-node	service	0	12	13	und	1	student
-node	service	0	10	11	und	0	ansatt
-node	service	0	10	11	und	1	student
-node	service	0	10	11	und	2	gjest
-node	service	0	10	11	und	3	andre
-\.
-
-
---
 -- Data for Name: field_revision_field_www; Type: TABLE DATA; Schema: public; Owner: tk_admin
 --
 
@@ -12567,6 +12294,11 @@ SELECT pg_catalog.setval('flood_fid_seq', 28, true);
 
 COPY history (uid, nid, "timestamp") FROM stdin;
 15	25	1390224472
+15	5	1390315704
+15	4	1390489368
+5	26	1390547507
+5	15	1390547568
+5	5	1390547942
 12	11	1389782600
 12	5	1389782873
 \.
@@ -12655,15 +12387,17 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 34		default	Enable developer modules		none
 9	; misc/tabledrag.js	default	Re-order rows by numerical weight instead of dragging.		none
 69		default	In some browsers, this setting may result in a malformed page, an invisible cursor, non-selectable elements in forms, or other issues.		7.24
+18		default	Administration		7.26
 41		default	Adjust top margin		7.24
 58		default	Provides a dropdown menu to most administrative tasks and other common destinations (to users with the proper permissions).		7.24
-18		default	Administration		7.24
+25		default	Performance		7.26
 57		default	@count-anon / @count-auth		7.24
 42		default	Keep menu at top of page		7.24
 70		default	Collapse module groups on the <a href="!modules-url">%modules</a> page		7.24
+17		default	Development		7.26
 36		default	Current anonymous / authenticated users		7.24
-59		default	@project issue queue		7.24
-17		default	Development		7.24
+23		default	Menu		7.26
+55		default	Administration menu		7.26
 65		default	A better Toolbar.		7.24
 2	; misc/drupal.js	default	HTTP Result Code: !status		none
 3	; misc/drupal.js	default	An AJAX HTTP request terminated abnormally.		none
@@ -12677,9 +12411,8 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 24		default	Advanced settings		7.24
 43		default	If the Utility module was installed for this purpose, it can be safely disabled and uninstalled.		none
 1	; misc/drupal.js	default	An AJAX HTTP error occurred.		none
-23		default	Menu		7.24
-33		default	Run updates		7.24
-62		default	Hello <strong>@username</strong>		7.24
+40		default	Theme registry		7.26
+59		default	@project issue queue		7.26
 71		default	Collapse module groups on the <a href="@permissions-url">%permissions</a> page		7.24
 68		default	Displays the administration menu always at the top of the browser viewport (even when scrolling the page).		7.24
 20		default	None		7.26
@@ -12687,23 +12420,22 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 67		default	Shifts the site output down by approximately 20 pixels from the top of the viewport. If disabled, absolute- or fixed-positioned page elements may be covered by the administration menu.		7.24
 30		default	Plugins		7.24
 44		default	Move local tasks into menu		7.24
-25		default	Performance		7.24
+56		default	Adjust administration menu settings.		7.26
 72		default	Moves the tabs on all pages into the administration menu. Only possible for themes using the CSS classes <code>tabs primary</code> and <code>tabs secondary</code>.		7.24
 61		default	Developer modules to keep enabled		7.24
 45		default	Administration menu settings		none
 31		default	Every		7.24
 28		default	Permissions		7.26
-60		default	Flush all caches		7.24
+66		default	Class registry		7.26
 37		default	Disabled these modules: !module-list.		none
 19		default	Search		7.24
 64		default	Administration menu Toolbar style		none
-22		default	Modules		7.24
-27		default	Log out		7.24
-32		default	Run cron		7.24
-35		default	Disable developer modules		7.24
+32		default	Run cron		7.26
+60		default	Flush all caches		7.26
+27		default	Log out		7.26
 38		default	No developer modules are enabled.		none
 39		default	Menu link ID		none
-40		default	Theme registry		7.24
+62		default	Hello <strong>@username</strong>		7.26
 29		default	Shortcuts		7.24
 46		default	Parent link ID		none
 47		default	Display additional data for each menu item		none
@@ -12712,9 +12444,9 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 51		default	The administration menu module provides a dropdown menu arranged for one- or two-click access to most administrative tasks and other common destinations (to users with the proper permissions). Use the settings below to customize the appearance of the menu.		none
 53		default	The administration menu <a href="@settings">settings page</a> allows you to modify some elements of the menu's behavior and appearance. Since the appearance of the menu is dependent on your site theme, substantial customizations require modifications to your site's theme and CSS files. See the advanced module README.txt file for more information on theme and CSS customizations.		none
 54		default	The menu items displayed in the administration menu depend upon the actual permissions of the viewer. First, the administration menu is only displayed to users in roles with the <em>Access administration menu</em> (admin_menu module) permission. Second, a user must be a member of a role with the <em>Access administration pages</em> (system module) permission to view administrative links. And, third, only currently permitted links are displayed; for example, if a user is not a member of a role with the permissions <em>Administer permissions</em> (user module) and <em>Administer users</em> (user module), the <em>User management</em> menu item is not displayed.		none
-55		default	Administration menu		7.24
-56		default	Adjust administration menu settings.		7.24
-66		default	Class registry		7.24
+22		default	Modules		7.26
+33		default	Run updates		7.26
+35		default	Disable developer modules		7.26
 94		default	Next		none
 98		default	Reset to defaults		none
 107		default	Approve		none
@@ -12752,16 +12484,14 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 181		default	Date		none
 188		default	Test		none
 189		default	Number		none
-190		default	Message		none
-191		default	No log messages available.		none
 138		default	Comments		none
 93		default	Body		7.26
-194		default	The configuration options have been saved.		7.24
+102		default	Request new password via e-mail.		7.26
 104		default	Suffix		none
 112		default	Email address		none
 78		default	Display Drupal links		7.26
-175		default	Overview		7.24
-96		default	Pages		7.24
+91		default	User interface		7.26
+119		default	yes		7.26
 171		default	Download		none
 74		default	Access administration menu		7.26
 184		default	Daily		7.22
@@ -12772,53 +12502,55 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 79		default	Provide Drupal.org links in the administration menu.		7.26
 167		default	Content types		7.26
 169		default	Home page		none
+123		default	Actions		7.26
 89		default	Update data		none
 103		default	Prefix		none
 101		default	Create a new user account.		7.22
+175		default	Overview		7.26
 143		default	new		7.24
-80		default	Administration tools.		7.24
+87		default	CSS and JavaScript		7.26
 82		default	System links derived from menu router paths have been rebuilt.		none
 105		default	approve		none
 117		default	Replies		none
 81		default	Rebuild system links		none
 127		default	Remove		7.24
-124		default	disabled		7.24
-111		default	Username		7.24
-192		default	Password		7.24
+97		default	Save configuration		7.26
+96		default	Pages		7.26
+194		default	The configuration options have been saved.		7.26
 147		default	The title of the block as shown to the user.		7.24
 134		default	Explanation or submission guidelines		7.22
 185		default	Weekly		7.22
 146		default	Block title		7.24
 95		default	user		none
-102		default	Request new password via e-mail.		7.24
-123		default	Actions		7.24
-91		default	User interface		7.24
+80		default	Administration tools.		7.26
+88		default	Page and else		7.26
 174		default	updated		7.24
-109		default	Operations		7.24
+193		default	- None -		7.26
 149		default	Yes		7.24
 150		default	No		7.24
-97		default	Save configuration		7.24
+111		default	Username		7.26
 118		default	Closed		none
-193		default	- None -		7.24
-87		default	CSS and JavaScript		7.24
-119		default	yes		7.24
+86		default	!title cache cleared.		7.26
+190		default	Message		7.26
 180	; misc/machine-name.js	default	Edit		7.26
 76		default	Flush caches		7.26
 77		default	Access links to flush caches in the administration menu.		7.26
 83		default	Administration Development tools		none
 84		default	Administration and debugging functionality for developers and site builders.		7.24
 121		default	Subject		7.24
-88		default	Page and else		7.24
+191		default	No log messages available.		7.26
 145		default	Tags		7.24
 90	; sites/all/modules/admin_menu/admin_menu.admin.js	default	Also allow !name role to !permission?		none
 186		default	Display settings		7.22
-99		default	delete		7.24
-86		default	!title cache cleared.		7.24
+124		default	disabled		7.26
+192		default	Password		7.26
 173		default	view		7.26
 132		default	Enable		7.26
 133		default	Disable		7.26
 108		default	Delete		7.26
 148		default	Taxonomy		7.26
+109		default	Operations		7.26
+99		default	delete		7.26
 196		default	Image		none
 203		default	Pages at a given level are ordered first by weight and then by title.		none
 206		default	Add container		none
@@ -12872,49 +12604,49 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 323		default	Printer-friendly version		none
 324		default	Content type for child pages		none
 326		default	Remove from outline		none
+211		default	edit		7.26
 229		default	Help		7.26
-211		default	edit		7.24
 259		default	Region		7.24
 226		default	Preview		7.24
-247		default	History		7.24
-207		default	Settings		7.24
-311		default	no		7.24
-199		default	Types		7.24
-232		default	Update		7.24
+227		default	Save		7.26
+258		default	Refresh		7.26
+214		default	Go to previous page		7.26
+218		default	Go to next page		7.26
+207		default	Settings		7.26
 198		default	Help text		7.22
 234		default	Top		none
-214		default	Go to previous page		7.24
 233		default	Open		none
-277		default	Add term		7.24
+311		default	no		7.26
 201		default	root		7.24
 263		default	results		none
 264		default	search		none
 281		default	Keywords		none
-227		default	Save		7.24
 302		default	Configure		7.24
-218		default	Go to next page		7.24
 290		default	Unknown		7.22
 246		default	Format		7.24
 292		default	n/a		7.22
 205		default	Category		none
 244	; sites/all/modules/views/js/views-admin.js	default	Add		7.24
+199		default	Types		7.26
 306		default	status		7.24
 287		default	Statistics		7.24
 251		default	Vocabularies		none
 320		default	Parent item		7.24
 200		default	Required		7.24
 301		default	Continue		7.24
+232		default	Update		7.26
 289		default	You are not authorized to access this page.		7.24
 295		default	type		7.24
 220		default	Book		none
 269		default	Updated		7.24
 310		default	Contact		none
 204		default	none		7.24
-258		default	Refresh		7.24
 260		default	Visible		7.24
 309		default	Options		7.26
 245		default	View		7.26
 221		default	Export		7.26
+277		default	Add term		7.26
+247		default	History		7.26
 238		default	Wednesday		7.22
 237		default	Tuesday		7.22
 239		default	Thursday		7.22
@@ -12959,8 +12691,6 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 432		default	RSS - blogs		none
 433		default	Heading		none
 434		default	Search settings		none
-436		default	Warning		none
-440		default	OK		none
 441		default	OPML feed		none
 443		default	Number of news items in block		none
 444		default	View this feed's recent news.		none
@@ -12973,30 +12703,29 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 452		default	update items		none
 453		default	Category overview		none
 454		default	Categorize		none
-426		default	Widget type		7.24
+428		default	Count		7.26
 369		default	Left sidebar		7.26
-336		default	Page title		7.24
+338		default	Add block		7.26
 340		default	Bottom		none
 348		default	Logo		7.24
 442		default	configure		7.24
-418		default	E-mail address		7.24
 417		default	Role name		7.22
-349		default	Site name		7.24
+426		default	Widget type		7.26
 394		default	Hostname		none
-403		default	Revisions		7.24
-350		default	Site slogan		7.24
-388		default	Custom		7.24
+424		default	Field type		7.26
+403		default	Revisions		7.26
+354		default	Drupal		7.26
 397		default	Filter		7.24
-335		default	Add content		7.24
+357		default	PHP		7.26
 333		default	Year		none
-338		default	Add block		7.24
+385		default	Menu link		7.26
 393		default	Comment ID		none
-428		default	Count		7.24
 405		default	Poll duration		none
 407		default	Poll votes		none
 370		default	Right sidebar		7.26
 438		default	active		7.24
 437		default	blocked		7.24
+336		default	Page title		7.26
 423		default	Field name		none
 374		default	Selected		7.24
 345		default	@count days		7.24
@@ -13005,11 +12734,11 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 415		default	Vocabulary name		7.24
 365		default	Update available		none
 341		default	RSS		7.26
-351		default	Good		7.24
 332		default	Access denied		7.24
-385		default	Menu link		7.24
 402		default	Sticky at top of lists		7.24
-424		default	Field type		7.24
+364		default	Up to date		7.26
+349		default	Site name		7.26
+440		default	OK		7.26
 372		default	Inline		7.24
 344		default	1 day		7.24
 346		default	Configuration saved.		7.22
@@ -13017,13 +12746,16 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 347		default	Taxonomy terms		7.26
 391		default	Revision ID		7.26
 381		default	Send e-mail		7.26
+350		default	Site slogan		7.26
+388		default	Custom		7.26
+335		default	Add content		7.26
 400		default	Title field label		7.22
+436		default	Warning		7.26
+418		default	E-mail address		7.26
 435		default	Mode		7.22
+351		default	Good		7.26
 421		default	Time zone		7.22
 399		default	Locale		7.22
-354		default	Drupal		7.22
-357		default	PHP		7.22
-364		default	Up to date		7.22
 439		default	N/A		7.22
 455		default	The categories have been saved.		none
 456		default	URL:		none
@@ -13092,36 +12824,36 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 550		default	User login		7.26
 496		default	Administer content		7.26
 512		default	Navajo		7.22
-577		default	Uninstall		7.24
-541		default	Configuration		7.24
+519		default	Mon		7.26
+475		default	Media		7.26
+548		default	Appearance		7.26
 565		default	Referrer		none
-525		default	Sun		7.24
+522		default	Thu		7.26
 493		default	Remove a role from the selected users		7.24
 460		default	Nodes		7.26
 478		default	Month		none
 583		default	Set default		7.24
 517		default	Day		none
-551		default	Log in		7.24
-470		default	This field is required.		7.24
+559		default	reset		7.26
+551		default	Log in		7.26
 571		default	Text processing		7.22
-480		default	Widget		7.24
+470		default	This field is required.		7.26
 560		default	String		7.22
-475		default	Media		7.24
-521		default	Wed		7.24
+577		default	Uninstall		7.26
+525		default	Sun		7.26
 488		default	Code		7.22
-548		default	Appearance		7.24
+541		default	Configuration		7.26
 461		default	Authored by		7.24
-522		default	Thu		7.24
-519		default	Mon		7.24
+523		default	Fri		7.26
+520		default	Tue		7.26
 471		default	Maximum		7.24
 477		default	Caching		7.24
-559		default	reset		7.24
 579		default	Optional		7.22
-523		default	Fri		7.24
+480		default	Widget		7.26
 572		default	Maximum length		7.22
 486		default	Unlimited		7.22
 573		default	Rows		7.22
-520		default	Tue		7.24
+521		default	Wed		7.26
 580		default	Order		7.24
 504		default	Tonga		7.22
 538		default	am		7.22
@@ -13288,9 +13020,8 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 815		default	Key		7.26
 817		default	Arabic		7.22
 811		default	Leave blank for %anonymous.		7.24
-806		default	Add user		7.24
-818		default	English		7.24
-812		default	Hidden		7.24
+818		default	English		7.26
+812		default	Hidden		7.26
 808		default	Size of textfield		7.22
 821		default	Spanish		7.22
 819		default	French		7.22
@@ -13384,6 +13115,7 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 766		default	South Africa		7.22
 800		default	Zambia		7.22
 801		default	Zimbabwe		7.22
+806		default	Add user		7.26
 837		default	The category %category has been added.		none
 838		default	aggregator - @title		none
 839		default	1 item		none
@@ -13437,7 +13169,6 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 929		default	Autocomplete taxonomy		none
 932		default	Send yourself a copy.		none
 933		default	Your message has been sent.		none
-938		default	Info		none
 946		default	No statistics available.		none
 950		default	Enabled filters		none
 951		default	critical		none
@@ -13454,44 +13185,45 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 911		default	Greater than		none
 912		default	Less than		none
 931		default	Right		none
-939		default	People		7.24
+948		default	Site information		7.26
 957		default	open		7.24
 872		default	Deleted		none
 935		default	role		7.24
 850		default	Full text		none
 873		default	Languages		7.26
 862		default	@time ago		7.24
-861		default	Member for		7.24
+871		default	Request new password		7.26
 945		default	warning		none
 930		default	Left		none
-948		default	Site information		7.24
-904		default	Workflow		7.24
-841		default	Add menu		7.24
+939		default	People		7.26
+904		default	Workflow		7.26
+841		default	Add menu		7.26
+879		default	Delete menu		7.26
 858		default	Show only users where		7.24
 943		default	Are you sure you want to delete the term %title?		7.24
-843		default	‹ previous		7.24
-844		default	next ›		7.24
+844		default	next ›		7.26
+861		default	Member for		7.26
 942		default	Created new term %term.		7.24
-871		default	Request new password		7.24
-879		default	Delete menu		7.24
+870		default	Front page		7.26
+878		default	Edit menu		7.26
 866	; misc/tableselect.js	default	Deselect all rows in this table		none
 880		default	Publishing options		7.24
 940		default	list terms		7.24
-878		default	Edit menu		7.24
+848		default	View user profile.		7.26
 876		default	Allowed values list		7.22
-852		default	Upload picture		7.24
 913		default	any		7.24
 857		default	The changes have been saved.		7.24
 903		default	Configure permissions		7.24
 884		default	Locale settings		7.22
-848		default	View user profile.		7.24
+947		default	Last run !time ago		7.26
 854		default	Language file		7.22
 893		default	Aug		7.22
 928		default	First day of week		7.22
-947		default	Last run !time ago		7.22
+938		default	Info		7.26
 840		default	@count items		7.24
 900		default	Long		7.26
-870		default	Front page		7.24
+843		default	‹ previous		7.26
+852		default	Upload picture		7.26
 944		default	Deleted term %name.		7.24
 881		default	Create new revision		7.24
 941		default	add terms		7.24
@@ -13556,30 +13288,30 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 965		default	Syndicate		7.26
 1061	; misc/ajax.js	default	Please wait...		none
 988		default	Date created		7.26
+990		default	Standard		7.26
 1028		default	Themes		none
 1043		default	Default options		7.22
 1014		default	New comments		none
-1022		default	Manage the actions defined for your site.		7.24
-1054		default	Timezone		7.24
-982		default	Cron		7.24
-1069		default	Tasks		7.24
-1042		default	You are here		7.24
-1064		default	Go to first page		7.24
+982		default	Cron		7.26
+1035		default	Protected		7.26
+1069		default	Tasks		7.26
+1054		default	Timezone		7.26
+1064		default	Go to first page		7.26
+1065		default	Go to last page		7.26
 1041		default	promoted		7.24
 1040		default	not promoted		7.24
 1039		default	sticky		7.24
 1038		default	not sticky		7.24
 962		default	Deleting a term will delete all its children if there are any. This action cannot be undone.		7.24
-990		default	Standard		7.24
-1011		default	Formats		7.24
-1065		default	Go to last page		7.24
-1066		default	Go to page @number		7.24
+1011		default	Formats		7.26
+1022		default	Manage the actions defined for your site.		7.26
+1066		default	Go to page @number		7.26
+1056		default	Password strength:		7.26
 1006		default	%type settings		7.22
 1053		default	Default value		7.22
 981		default	Your settings have been saved.		7.22
 1070		default	Delete role		7.22
-1056		default	Password strength:		7.24
-1057		default	Passwords match:		7.24
+1057		default	Passwords match:		7.26
 1032		default	not published		7.24
 1046		default	Processing		7.26
 1015		default	Redirect to URL		7.26
@@ -13601,7 +13333,7 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 1001		default	British Virgin Islands		7.22
 1002		default	U.S. Virgin Islands		7.22
 1003		default	Vietnam		7.22
-1035		default	Protected		7.22
+1042		default	You are here		7.26
 1048		default	disable		7.22
 1017		default	The username %name has not been activated or is blocked.		7.22
 971		default	Revisions for %title		7.22
@@ -13650,21 +13382,20 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 1166		default	Show descriptions		none
 1167		default	Subtitle		none
 1168		default	Language code		none
-1158		default	Your signature will be publicly displayed at the end of your comments.		7.24
-1086		default	Blocks		7.24
+1104		default	Add vocabulary		7.26
 1125		default	Decimal		none
-1104		default	Add vocabulary		7.24
+1072		default	List menus		7.26
 1133		default	Defines numeric field types.		7.24
 1118		default	Used in		none
 1078		default	Western Sahara		7.22
 1128		default	Precision		none
 1099		default	Block body		7.24
-1115		default	Manage fields		7.24
+1140		default	Index		7.26
 1079		default	English name		7.22
 1080		default	Native name		7.22
-1151		default	!title !required		7.24
-1140		default	Index		7.24
-1072		default	List menus		7.24
+1158		default	Your signature will be publicly displayed at the end of your comments.		7.26
+1086		default	Blocks		7.26
+1119		default	Add existing field		7.26
 1089		default	Save blocks		7.24
 1090		default	The block settings have been updated.		7.24
 1100		default	The content of the block as shown to the user.		7.24
@@ -13694,8 +13425,9 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 1105		default	edit vocabulary		7.24
 1091		default	'%name' block		7.24
 1095		default	Show block on specific pages		7.24
+1115		default	Manage fields		7.26
+1151		default	!title !required		7.26
 1097		default	The block configuration has been saved.		7.24
-1119		default	Add existing field		7.24
 1135		default	Check boxes/radio buttons		7.26
 1136		default	Single on/off checkbox		7.26
 1117		default	Trimmed		7.26
@@ -13779,11 +13511,10 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 1231		default	ok		none
 1180		default	...		none
 1251		default	Aggregator		none
-1222		default	« first		7.24
+1223		default	last »		7.26
 1240		default	Path to custom logo		7.24
 1221		default	edit menu		7.24
-1223		default	last »		7.24
-1264		default	My account		7.24
+1172		default	Menu link title		7.26
 1229		default	Show only items where		7.24
 1228		default	Defines a file field type.		7.24
 1237		default	Add role		7.22
@@ -13791,12 +13522,13 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 1244		default	- None selected -		7.22
 1203		default	Account blocked		7.24
 1242		default	Updated term %term.		7.24
-1263		default	Clean URLs		7.24
-1232		default	Rebuild permissions		7.22
+1232		default	Rebuild permissions		7.26
+1222		default	« first		7.26
 1201		default	Preview trimmed version		7.22
 1202		default	Preview full version		7.22
 1198		default	Page not found		7.24
-1172		default	Menu link title		7.24
+1264		default	My account		7.26
+1263		default	Clean URLs		7.26
 1176		default	Menu name		7.24
 1174		default	The path '@link_path' is either invalid or you do not have access to it.		7.24
 1177		default	Are you sure you want to delete the custom menu %title?		7.24
@@ -13857,14 +13589,14 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 1365		default	Latest version:		none
 1366		default	Development version:		none
 1326		default	authenticated user		7.26
-1283		default	@count weeks		7.24
-1325		default	Account		7.24
+1325		default	Account		7.26
+1282		default	1 week		7.26
 1322		default	Locked		none
+1285		default	@count min		7.26
 1335		default	No update data available		none
 1295		default	Bulgarian		7.22
-1287		default	@count sec		7.24
+1283		default	@count weeks		7.26
 1277		default	Context		7.24
-1282		default	1 week		7.24
 1312		default	Featured		7.24
 1284		default	1 min		7.22
 1286		default	1 sec		7.24
@@ -13885,7 +13617,7 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 1311		default	Turkish		7.22
 1294		default	Vatican		7.22
 1330		default	Check for updates		7.22
-1285		default	@count min		7.24
+1287		default	@count sec		7.26
 1280		default	1 year		7.24
 1281		default	@count years		7.24
 1279		default	Taxonomy vocabulary		7.26
@@ -13962,23 +13694,23 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 1373		default	Default order		none
 1396		default	Or		none
 1443		default	Display a message to the user		7.26
-1403		default	Reports		7.24
-1369		default	Field settings		7.24
+1369		default	Field settings		7.26
+1410		default	Install profile		7.26
 1394		default	Hide descriptions		7.24
 1446		default	Block current user		7.26
-1425		default	Configure an advanced action		7.24
-1370		default	Skip to main content		7.24
-1418		default	sort by @s		7.24
+1425		default	Configure an advanced action		7.26
+1403		default	Reports		7.26
+1418		default	sort by @s		7.26
+1381		default	Add new field		7.26
 1407		default	Toggle display		7.24
 1413		default	Default theme		7.26
 1395		default	Compress layout by hiding descriptions.		7.24
 1419		default	Sorry, unrecognized username or password. <a href="@password">Have you forgotten your password?</a>		7.24
 1405		default	URL of picture to display for users with no custom picture selected. Leave blank for none.		7.24
-1381		default	Add new field		7.24
 1404		default	Default picture		7.24
-1410		default	Install profile		7.22
-1414		default	Web server		7.22
-1409		default	Configuration file		7.22
+1414		default	Web server		7.26
+1409		default	Configuration file		7.26
+1370		default	Skip to main content		7.26
 1420		default	Publish content		7.26
 1461		default	After a user has been deleted		none
 1462		default	After a user has logged in		none
@@ -14038,19 +13770,19 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 1496		default	The translation file %filename ended unexpectedly at line %line.		none
 1543		default	Drupal core		none
 1500		default	The custom menu %title has been deleted.		7.24
-1508		default	Web services		7.24
-1537		default	List, edit, or add user roles.		7.24
+1537		default	List, edit, or add user roles.		7.26
+1512		default	Error message		7.26
 1545		default	Relations		7.24
-1486		default	Translate		7.24
+1508		default	Web services		7.26
 1540		default	Direction		7.22
-1512		default	Error message		7.24
+1486		default	Translate		7.26
+1503		default	Not enabled		7.26
 1549		default	Administration theme		7.24
 1514		default	Delete content type		7.22
 1533		default	1 month		7.24
 1535		default	Save order		7.22
 1517		default	edit permissions		7.22
 1538		default	edit role		7.22
-1547		default	Confirm password		7.24
 1507		default	@module (<span class="admin-enabled">enabled</span>)		7.24
 1501		default	@type %title has been deleted.		7.24
 1560		default	Afar		7.22
@@ -14064,8 +13796,8 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 1557		default	Macao S.A.R., China		7.22
 1558		default	Saint Pierre and Miquelon		7.22
 1559		default	Serbia		7.22
-1503		default	Not enabled		7.22
-1534		default	@count months		7.24
+1534		default	@count months		7.26
+1547		default	Confirm password		7.26
 1525		default	User account		7.26
 1509		default	Save permissions		7.24
 1506		default	@module (<span class="admin-disabled">disabled</span>)		7.24
@@ -14145,22 +13877,22 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 1649		default	Toolbar		none
 1629		default	The comment you are replying to does not exist.		none
 1625		default	Path to custom icon		7.24
-1563		default	Warning message		7.24
+1606		default	Primary tabs		7.26
 1617		default	Decimal point		none
 1623		default	Comma		none
-1615		default	Status report		7.24
-1588		default	Manage tagging, categorization, and classification of your content.		7.24
-1647		default	File system		7.24
+1588		default	Manage tagging, categorization, and classification of your content.		7.26
+1645		default	List links		7.26
+1615		default	Status report		7.26
 1608		default	Enable or disable the display of certain page elements.		7.24
 1609		default	Add new content		7.22
-1645		default	List links		7.24
+1647		default	File system		7.26
+1563		default	Warning message		7.26
 1607		default	Secondary tabs		7.24
-1621		default	Notify user of new account		7.24
 1610		default	Boolean		7.26
 1562		default	Komi		7.22
 1561		default	Somali		7.22
 1605		default	Timor-Leste		7.22
-1606		default	Primary tabs		7.24
+1621		default	Notify user of new account		7.26
 1614		default	First sidebar		7.26
 1651		default	Posted in		none
 1652		default	Comment: unauthorized comment submitted or comment submitted to a closed post %subject.		none
@@ -14244,22 +13976,22 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 1747	; modules/node/node.js	default	By @name		none
 1685		default	Multilingual support		7.22
 1740		default	No fields available.		none
-1672		default	Translate interface		7.24
-1736		default	Add link		7.24
+1736		default	Add link		7.26
+1683		default	PHP extensions		7.26
 1748	; modules/menu/menu.js	default	Not in menu		none
 1661		default	@type %title has been updated.		7.24
-1673		default	Add language		7.24
+1672		default	Translate interface		7.26
+1673		default	Add language		7.26
 1738		default	Username or e-mail address		7.24
 1729		default	Main menu		7.26
 1655		default	All languages		7.22
 1730		default	Hindi		7.22
 1751		default	User autocomplete		7.24
-1683		default	PHP extensions		7.22
+1743		default	Vertical Tabs		7.26
 1709		default	The website encountered an unexpected error. Please try again later.		7.22
 1666		default	You do not have any administrative items.		7.24
 1658		default	The size of the file.		7.26
 1728		default	Provides a framework for unit and functional testing.		7.24
-1743		default	Vertical Tabs		7.24
 1752		default	Initializing.		7.26
 1755		default	HTTP POST is required.		none
 1756		default	Your page will be a part of the selected book.		none
@@ -14325,16 +14057,16 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 1840		default	GD2 image manipulation toolkit		none
 1841		default	The GD toolkit is installed and working properly.		none
 1842		default	Define the image quality for JPEG manipulations. Ranges from 0 to 100. Higher values mean better image quality but bigger files.		none
+1783		default	Language settings		7.26
 1788		default	Visitors		7.24
 1780		default	contact		none
-1783		default	Language settings		7.24
+1832		default	Update notifications		7.26
 1798		default	The content type %name has been updated.		7.22
 1772		default	(@language)		none
 1793		default	Who's new		7.26
 1763	; modules/node/node.js	default	New revision		none
 1778		default	Poll		none
 1779		default	Views today		none
-1764		default	To change the current user password, enter the new password in both fields.		7.24
 1754		default	Please continue to <a href="@error_url">the error page</a>		7.24
 1789		default	The maximum length of the field in characters.		7.22
 1796		default	list links		7.24
@@ -14343,11 +14075,11 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 1925		default	Belarusian		7.22
 1926		default	Bihari		7.22
 1800		default	Catalan		7.22
-1832		default	Update notifications		7.22
+1790		default	Machine-readable name		7.26
 1799		default	The content type %name has been added.		7.22
 1776		default	The title of the node.		7.26
 1757		default	0 sec		7.26
-1790		default	Machine-readable name		7.24
+1764		default	To change the current user password, enter the new password in both fields.		7.26
 1777		default	The date the node was posted.		7.26
 1843		default	The GD image toolkit requires that the GD module for PHP be installed and configured properly. For more information see <a href="@url">PHP's image documentation</a>.		none
 1844		default	JPEG quality must be a number between 0 and 100.		none
@@ -14549,7 +14281,7 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 2052		default	Zhuang		7.22
 2053		default	Chinese, Simplified		7.22
 2055		default	Zulu		7.22
-2057		default	sort ascending		7.24
+2057		default	sort ascending		7.26
 2059		default	Operations on Unicode strings are emulated on a best-effort basis. Install the <a href="@url">PHP mbstring extension</a> for improved Unicode support.		none
 2060		default	Multibyte string function overloading in PHP is active and must be disabled. Check the php.ini <em>mbstring.func_overload</em> setting. Please refer to the <a href="@url">PHP mbstring documentation</a> for more information.		none
 2061		default	Multibyte string input conversion in PHP is active and must be disabled. Check the php.ini <em>mbstring.encoding_translation</em> setting. Please refer to the <a href="@url">PHP mbstring documentation</a> for more information.		none
@@ -14611,9 +14343,9 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 2122		default	Show block only on book pages		none
 2203		default	Short but meaningful name for this collection of related forums.		none
 2204		default	Description and guidelines for forums within this container.		none
-2064		default	Standard PHP		7.22
-2065		default	PHP Mbstring Extension		7.22
-2066		default	Unicode library		7.22
+2064		default	Standard PHP		7.26
+2065		default	PHP Mbstring Extension		7.26
+2066		default	Unicode library		7.26
 2091		default	No blocks in this region		7.24
 2123		default	If <em>Show block on all pages</em> is selected, the block will contain the automatically generated menus for all of the site's books. If <em>Show block only on book pages</em> is selected, the block will contain only the one menu corresponding to the current page's book. In this case, if the current page is not in a book, no block will be displayed. The <em>Page specific visibility settings</em> or other visibility settings can be used in addition to selectively display this block.		none
 2124		default	This is the top-level page in this book.		none
@@ -14682,18 +14414,18 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 2200		default	Short but meaningful name for this collection of threaded discussions.		none
 2201		default	Description and guidelines for discussions within this forum.		none
 2255		default	OpenID identities		none
-2147		default	Top 'access denied' errors		7.24
-2148		default	View 'access denied' errors (403s).		7.24
-2145		default	Top 'page not found' errors		7.24
-2146		default	View 'page not found' errors (404s).		7.24
-2197		default	Web page addresses and e-mail addresses turn into links automatically.		7.24
-2144		default	View events that have recently been logged.		7.24
-2195		default	Lines and paragraphs break automatically.		7.24
-2158		default	Strong		7.24
+2148		default	View 'access denied' errors (403s).		7.26
+2145		default	Top 'page not found' errors		7.26
+2146		default	View 'page not found' errors (404s).		7.26
+2158		default	Strong		7.26
+2195		default	Lines and paragraphs break automatically.		7.26
+2147		default	Top 'access denied' errors		7.26
+2197		default	Web page addresses and e-mail addresses turn into links automatically.		7.26
 2135		default	Allows users to comment on and discuss published content.		7.24
 2142		default	Enables the use of both personal and site-wide contact forms.		7.24
 2149		default	Logs and records system events to the database.		7.24
-2199		default	Compose tips		7.24
+2199		default	Compose tips		7.26
+2144		default	View events that have recently been logged.		7.26
 2205		default	Containers are displayed in ascending order by weight (containers with equal weights are displayed alphabetically).		none
 2206		default	Deleting a forum or container will also delete its sub-forums, if any. To delete posts in this forum, visit <a href="@content">content administration</a> first. This action cannot be undone.		none
 2207		default	Default number of forum topics displayed per page.		none
@@ -14731,9 +14463,9 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 2252		default	Delete earlier revision		none
 2254		default	To use OpenID you must first establish an identity on a public or private OpenID server. If you do not have an OpenID and would like one, look into one of the <a href="@openid-providers">free public providers</a>. You can find out more about OpenID at <a href="@openid-net">this website</a>.		none
 2228		default	The machine-readable name must contain only lowercase letters, numbers, and underscores.		none
-2224		default	Translate the built in interface and optionally other text.		7.24
-2250		default	Add content type		7.24
-2220		default	This account's default language for e-mails.		7.24
+2250		default	Add content type		7.26
+2220		default	This account's default language for e-mails.		7.26
+2223		default	Configure languages for content and the user interface.		7.26
 2226		default	Submission form settings		7.22
 2214		default	Manages the display of online help.		7.24
 2218		default	Built-in interface		7.22
@@ -14741,7 +14473,7 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 2225		default	Adds language handling functionality and enables the translation of the user interface to languages other than English.		7.24
 2253		default	Allows content to be submitted to the site and displayed on pages.		7.24
 2236		default	language		7.24
-2223		default	Configure languages for content and the user interface.		7.24
+2224		default	Translate the built in interface and optionally other text.		7.26
 2257		default	The alias %alias is already in use in this language.		none
 2258		default	The alias has been saved.		none
 2259		default	Are you sure you want to delete path alias %title?		none
@@ -14917,32 +14649,32 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 2458		default	Writable (<em>private</em> download method)		none
 2460		default	Some modules have database schema updates to install. You should run the <a href="@update">database update script</a> immediately.		none
 2461		default	The update.php script is accessible to everyone without authentication check, which is a security risk. You must change the $update_free_access value in your settings.php back to FALSE.		none
-2430		default	Choose which image toolkit to use if you have installed optional toolkits.		7.24
-2432		default	Date and time		7.24
-2434		default	Enable or disable clean URLs for your site.		7.24
-2431		default	RSS publishing		7.24
-2436		default	Get a status report about your site's operation and any detected problems.		7.24
+2432		default	Date and time		7.26
+2434		default	Enable or disable clean URLs for your site.		7.26
+2431		default	RSS publishing		7.26
+2436		default	Get a status report about your site's operation and any detected problems.		7.26
+2439		default	PHP register globals		7.26
 2395		default	Shortcut icon settings		7.24
-2429		default	Image toolkit		7.24
+2430		default	Choose which image toolkit to use if you have installed optional toolkits.		7.26
 2397		default	Use the default shortcut icon.		7.24
 2398		default	Check here if you want the theme to use the default shortcut icon.		7.24
 2399		default	The path to the image file you would like to use as your custom shortcut icon.		7.24
 2400		default	Upload icon image		7.24
 2401		default	If you don't have direct file access to the server, use this field to upload your shortcut icon.		7.24
-2408		default	Default 403 (access denied) page		7.24
+2409		default	Default 404 (not found) page		7.26
 2422		default	These options control the default display settings for your entire site, across all themes. Unless they have been overridden by a specific theme, these settings will be used.		7.22
-2439		default	PHP register globals		7.22
-2442		default	PHP memory limit		7.22
-2451		default	For more information, see the online handbook entry for <a href="@cron-handbook">configuring cron jobs</a>.		7.22
-2454		default	You can <a href="@cron">run cron manually</a>.		7.22
-2453		default	Cron maintenance tasks		7.22
-2457		default	Writable (<em>public</em> download method)		7.22
-2459		default	Database updates		7.22
-2462		default	Access to update.php		7.22
-2409		default	Default 404 (not found) page		7.24
+2442		default	PHP memory limit		7.26
+2451		default	For more information, see the online handbook entry for <a href="@cron-handbook">configuring cron jobs</a>.		7.26
+2454		default	You can <a href="@cron">run cron manually</a>.		7.26
+2453		default	Cron maintenance tasks		7.26
+2457		default	Writable (<em>public</em> download method)		7.26
+2459		default	Database updates		7.26
+2462		default	Access to update.php		7.26
+2408		default	Default 403 (access denied) page		7.26
 2402		default	@module (<span class="admin-missing">missing</span>)		7.24
 2421		default	This page shows you all available administration tasks for each module.		7.24
 2419		default	No modules are available to uninstall.		7.22
+2429		default	Image toolkit		7.26
 2425		default	Powered by Drupal		7.26
 2466		default	Weight value must be numeric.		none
 2467		default	Are you sure you want to reset the vocabulary %title to alphabetical order?		none
@@ -14999,19 +14731,19 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 2496		default	The name for this role. Example: "moderator", "editorial board", "site architect".		7.22
 2497		default	The role has been renamed.		7.22
 2517		default	Block the selected users		7.24
-2513		default	Signature settings		7.24
-2514		default	Delete picture		7.24
-2515		default	Check this box to delete your current picture.		7.24
+2514		default	Delete picture		7.26
+2515		default	Check this box to delete your current picture.		7.26
 2477		default	Allows content to be translated into different languages.		7.24
 2492		default	Notify user when account is activated.		7.24
 2493		default	Notify user when account is blocked.		7.24
-2512		default	Enter the password that accompanies your username.		7.24
+2513		default	Signature settings		7.26
 2510		default	Who's online		7.26
 2463		default	Handles general site configuration for administrators.		7.24
 2523		default	Manages the user registration and login system.		7.24
 2464		default	Reset to alphabetical		7.24
+2524		default	Garland		7.26
 2516		default	Unblock the selected users		7.24
-2524		default	Garland		7.24
+2512		default	Enter the password that accompanies your username.		7.26
 2494		default	Picture guidelines		7.24
 2535		default	Your server is capable of displaying file upload progress, but does not have the required libraries. It is recommended to install the <a href="http://pecl.php.net/package/uploadprogress">PECL uploadprogress library</a> (preferred) or to install <a href="http://us2.php.net/apc">APC</a>.		none
 2536		default	Your server is capable of displaying file upload progress using APC RFC1867. Note that only one upload at a time is supported. It is recommended to use the <a href="http://pecl.php.net/package/uploadprogress">PECL uploadprogress library</a> if possible.		none
@@ -15072,18 +14804,19 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 2624		default	Return to list		none
 2625		default	Clear results after each complete test suite run		none
 2542		default	Interface		7.24
-2573		default	Type of data to store.		7.24
+2572		default	- Select a widget -		7.26
 2544		default	@size MB		7.26
 2570		default	@field_name (Locked)		none
 2591		default	%name must be a positive integer.		none
 2604		default	Sidebar first		7.24
-2563		default	Allow users to add additional date formats.		7.24
-2566		default	Configure date formats for each locale		7.24
-2594		default	Regional settings		7.24
-2608		default	Structure		7.24
+2562		default	Add format		7.26
+2566		default	Configure date formats for each locale		7.26
+2594		default	Regional settings		7.26
+2608		default	Structure		7.26
+2571		default	- Select a field type -		7.26
 2558		default	Region settings		7.24
 2598		default	Page bottom		7.26
-2571		default	- Select a field type -		7.24
+2573		default	Type of data to store.		7.26
 2545		default	@size GB		7.26
 2546		default	@size TB		7.26
 2547		default	@size PB		7.26
@@ -15092,13 +14825,12 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 2550		default	@size YB		7.26
 2597		default	Page top		7.26
 2543		default	@size KB		7.26
-2562		default	Add format		7.24
+2563		default	Allow users to add additional date formats.		7.26
 2569		default	manage fields		7.22
-2572		default	- Select a widget -		7.24
-2574		default	Form element to edit the data.		7.24
-2586		default	@type: @field (@label)		7.24
-2575		default	- Select an existing field -		7.24
-2576		default	Field to share		7.24
+2574		default	Form element to edit the data.		7.26
+2586		default	@type: @field (@label)		7.26
+2575		default	- Select an existing field -		7.26
+2576		default	Field to share		7.26
 2553		default	Text format		7.26
 2589		default	'Unlimited' will provide an 'Add more' button so the users can add as many values as they like.		7.22
 2723		default	Term count		7.26
@@ -15144,7 +14876,6 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 2668		default	The email address left by the comment author.		none
 2669		default	The home page URL left by the comment author.		none
 2671		default	The URL of the comment.		none
-2651		default	Seven		7.24
 2673		default	The URL of the comment's edit page.		none
 2674		default	The date the comment was posted.		none
 2676		default	The node the comment was posted to.		none
@@ -15152,7 +14883,6 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 2679		default	New comment count		none
 2680		default	The number of comments posted on a node since the reader last viewed it.		none
 2657		default	Secondary menu		7.24
-2656		default	Cancel account		7.24
 2658		default	Administrator role		7.24
 2684		default	The type of the node.		7.26
 2686		default	The language the node is written in.		7.26
@@ -15175,7 +14905,9 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 2712		default	The unique ID of the taxonomy term.		7.26
 2713		default	The name of the taxonomy term.		7.26
 2702		default	The slogan of the site.		7.26
+2651		default	Seven		7.26
 2663	; modules/block/block.js	default	Not restricted		none
+2656		default	Cancel account		7.26
 2659	; modules/node/node.js	default	No revision		none
 2654		default	Submitted by !username on !datetime		7.22
 2648		default	Check for updates of disabled modules and themes		7.22
@@ -15305,8 +15037,8 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 2857		default	A correctly configured <a href="@cron">cron maintenance task</a> is required to update feeds automatically.		none
 2907		default	Adding and managing book content		none
 2956		default	Threaded list		none
+2806		default	Status message		7.26
 2796		default	No strings available.		7.22
-2806		default	Status message		7.24
 2858		default	<acronym title="Outline Processor Markup Language">OPML</acronym> is an XML format used to exchange multiple feeds between aggregators. A single OPML document may contain a collection of many feeds. Drupal can parse such a file and import all feeds at once, saving you the effort of adding them manually. You may either upload a local file from your computer or enter a URL where Drupal can download it.		none
 2859		default	Administer news feeds		none
 2860		default	View news feeds		none
@@ -15491,12 +15223,12 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 3037		default	Defines list field types. Use with Options to create selection lists.		7.24
 3047		default	This field stores varchar text in the database.		7.26
 3048		default	Long text		7.26
+3064		default	Edit field settings.		7.26
 3049		default	This field stores long text in the database.		7.26
 3051		default	This field stores long text in the database along with optional summary text.		7.26
-3064		default	Edit field settings.		7.22
-3065		default	Change widget type.		7.22
-3066		default	Edit instance settings.		7.22
-3067		default	Delete instance.		7.22
+3065		default	Change widget type.		7.26
+3066		default	Edit instance settings.		7.26
+3067		default	Delete instance.		7.26
 3052		default	Filtered text (user selects text format)		7.22
 3032		default	Allowed HTML tags in labels: @tags		7.22
 3033		default	The value of this field is being determined by the %function function and may not be changed.		7.22
@@ -15551,8 +15283,7 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 3134		default	The text format %format has been updated.		none
 3136		default	The Filter module allows administrators to configure text formats. A text format defines the HTML tags, codes, and other input allowed in content and comments, and is a key feature in guarding against potentially damaging input from malicious users. For more information, see the online handbook entry for <a href="@filter">Filter module</a>.		none
 3137		default	Applying filters to text		none
-3091		default	Field list		7.24
-3092		default	Manage display		7.24
+3091		default	Field list		7.26
 3135		default	Text formats		7.26
 3073		default	Updated field %label field settings.		7.22
 3083		default	Required field		7.22
@@ -15568,6 +15299,7 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 3077		default	Changed the widget for field %label.		7.22
 3090		default	Save and add fields		7.22
 3127		default	All roles may use this format		7.22
+3092		default	Manage display		7.26
 3138		default	Each text format uses filters to manipulate text, and most formats apply several different filters to text in a specific order. Each filter is designed for a specific purpose, and generally either adds, removes, or transforms elements within user-entered text before it is displayed. A filter does not change the actual content, but instead, modifies it temporarily before it is displayed. One filter may remove unapproved HTML tags, while another automatically adds HTML to make URLs display as clickable links.		none
 3139		default	Defining text formats		none
 3140		default	One format is included by default: <em>Plain text</em> (which removes all HTML tags). Additional formats may be created by your installation profile when you install Drupal, and more can be created by an administrator on the <a href="@text-formats">Text formats page</a>.		none
@@ -15611,13 +15343,13 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 3186		default	A <em>forum topic</em> starts a new discussion thread within a forum.		none
 3187		default	Control forum hierarchy settings.		none
 3188		default	Forum navigation vocabulary		none
-3149		default	Correct faulty and chopped off HTML		7.24
-3150		default	Display any HTML as plain text		7.24
-3145		default	More information about text formats		7.24
-3158		default	No HTML tags allowed.		7.24
+3150		default	Display any HTML as plain text		7.26
+3145		default	More information about text formats		7.26
+3158		default	No HTML tags allowed.		7.26
 3159		default	Filters content in preparation for display.		7.24
 3189		default	Provides discussion forums.		7.24
-3148		default	Convert URLs into links		7.24
+3148		default	Convert URLs into links		7.26
+3149		default	Correct faulty and chopped off HTML		7.26
 3190		default	Follow these steps to set up and start using your website:		none
 3191		default	<strong>Start posting content</strong> Finally, you can <a href="@content">add new content</a> for your website.		none
 3192		default	For more information, refer to the specific topics listed in the next section or to the <a href="@handbook">online Drupal handbooks</a>. You may also post at the <a href="@forum">Drupal forum</a> or view the wide range of <a href="@support">other support options</a> available.		none
@@ -15767,8 +15499,8 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 3361		default	Are you sure you want to reset the link %item to its default values?		none
 3362		default	The menu link was reset to its default settings.		none
 3372		default	<strong>Warning:</strong> There are currently @count menu links in %title. They will be deleted (system-defined links will be reset).		none
-3332		default	Session language detection configuration		7.24
-3331		default	URL language detection configuration		7.24
+3331		default	URL language detection configuration		7.26
+3351		default	The text to be used for this link in the menu.		7.26
 3349		default	add link		7.24
 3329		default	Language switcher (@type)		7.26
 3321		default	Administer languages		7.26
@@ -15776,7 +15508,8 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 3326		default	Determine the language from a request/session parameter.		7.24
 3327		default	Follow the user's language preference.		7.24
 3328		default	Determine the language from the browser's language settings.		7.24
-3333		default	Localize		7.24
+3332		default	Session language detection configuration		7.26
+3333		default	Localize		7.26
 3325		default	Determine the language from the URL (Path prefix or domain).		7.24
 3344		default	August	Long month name	7.22
 3323		default	Order of language detection methods for content. If a version of content is available in the detected language, it will be displayed.		7.26
@@ -15786,14 +15519,13 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 3367		default	Source for the Secondary links		7.24
 3366		default	No Secondary links		7.24
 3350		default	There are no menu links yet. <a href="@link">Add link</a>.		7.24
-3351		default	The text to be used for this link in the menu.		7.24
-3352		default	The path for this menu link. This can be an internal Drupal path such as %add-node or an external URL such as %drupal. Enter %front to link to the front page.		7.24
-3353		default	Menu links that are not enabled will not be listed in any menu.		7.24
-3354		default	Show as expanded		7.24
-3355		default	If selected and this menu link has children, the menu will always appear expanded.		7.24
-3356		default	Parent link		7.24
-3357		default	The maximum depth for a link and all its children is fixed at !maxdepth. Some menu links may not be available as parents if selecting them would exceed this limit.		7.24
-3358		default	Optional. In the menu, the heavier links will sink and the lighter links will be positioned nearer the top.		7.24
+3352		default	The path for this menu link. This can be an internal Drupal path such as %add-node or an external URL such as %drupal. Enter %front to link to the front page.		7.26
+3353		default	Menu links that are not enabled will not be listed in any menu.		7.26
+3354		default	Show as expanded		7.26
+3355		default	If selected and this menu link has children, the menu will always appear expanded.		7.26
+3356		default	Parent link		7.26
+3357		default	The maximum depth for a link and all its children is fixed at !maxdepth. Some menu links may not be available as parents if selecting them would exceed this limit.		7.26
+3358		default	Optional. In the menu, the heavier links will sink and the lighter links will be positioned nearer the top.		7.26
 3371		default	<strong>Warning:</strong> There is currently 1 menu link in %title. It will be deleted (system-defined items will be reset).		7.24
 3324		default	Order of language detection methods for user interface text. If a translation of user interface text is available in the detected language, it will be displayed.		7.26
 3373		default	Managing menus		none
@@ -15853,9 +15585,9 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 3402		default	Author username and publish date will be displayed.		7.22
 3395		default	No content types available. <a href="@link">Add content type</a>.		7.22
 3394		default	manage display		7.22
+3385		default	Add new menus to your site, edit existing menus, and rename and reorganize menu links.		7.26
 3392		default	The <em>Management</em> menu contains links for administrative tasks.		7.24
 3393		default	The <em>Main</em> menu is used on many sites to show the major sections of the site, often in a top navigation bar.		7.24
-3385		default	Add new menus to your site, edit existing menus, and rename and reorganize menu links.		7.24
 3406		default	Publish selected content		7.24
 3380		default	Menu links with smaller weights are displayed before links with larger weights.		7.24
 3387		default	Edit menu link		7.24
@@ -15908,8 +15640,8 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 3445		default	View content revisions		7.26
 3446		default	Revert content revisions		7.26
 3447		default	Delete content revisions		7.26
-3470		default	Find and manage content.		7.24
-3467		default	Node Access Permissions		7.22
+3470		default	Find and manage content.		7.26
+3467		default	Node Access Permissions		7.26
 3439		default	The content on this page has either been modified by another user, or you have already submitted modifications using this form. As a result, your changes cannot be saved.		7.22
 3453		default	Show block for specific content types		7.24
 3458		default	Make content sticky		7.26
@@ -16072,14 +15804,14 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 3630		default	default theme		7.24
 3632		default	Use the administration theme when editing or creating content		7.24
 3636		default	The %theme theme has been disabled.		7.24
-3655		default	Number of posts on front page		7.24
-3656		default	The maximum number of posts displayed on overview pages such as the front page.		7.24
-3658		default	This page is displayed when no other content matches the requested document. Leave blank to display a generic "page not found" page.		7.24
+3656		default	The maximum number of posts displayed on overview pages such as the front page.		7.26
+3658		default	This page is displayed when no other content matches the requested document. Leave blank to display a generic "page not found" page.		7.26
 3647		default	Would you like to continue with the above?		7.24
 3633		default	The %theme theme has been enabled.		7.24
 3623		default	Screenshot for !theme theme		7.24
-3654		default	How this is used depends on your site's theme.		7.24
+3655		default	Number of posts on front page		7.26
 3638		default	%theme is now the default theme.		7.24
+3654		default	How this is used depends on your site's theme.		7.26
 3668		default	Default download method		none
 3669		default	This setting is used as the preferred download method. The use of public files is more efficient, but does not provide any access control.		none
 3670		default	No image toolkits were detected. Drupal includes support for <a href='!gd-link'>PHP's built-in image processing functions</a> but they were not detected on this system. You should consult your system administrator to have them enabled, or try using a third party toolkit.		none
@@ -16134,7 +15866,6 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 3855		default	Use the administration toolbar		none
 3856		default	Toggle drawer visibility		none
 3708		default	You must enable the @required module to install @module.		7.24
-3681		default	Add date type		7.24
 3706		default	Enabled themes		7.24
 3705		default	Enabled theme		7.24
 3693		default	No custom date formats available. <a href="@link">Add date format</a>.		7.22
@@ -16148,6 +15879,7 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 3679		default	Users may set their own time zone at registration.		7.22
 3690		default	Required by: !module-list		7.24
 3689		default	Requires: !module-list		7.24
+3681		default	Add date type		7.26
 3735		default	The System module also handles basic configuration options for your site, including <a href="@date-time-settings">Date and time settings</a>, <a href="@file-system">File system settings</a>, <a href="@clean-url">Clean URL support</a>, <a href="@site-info">Site name and other information</a>, and a <a href="@maintenance-mode">Maintenance mode</a> for taking your site temporarily offline.		none
 3736		default	Configuring actions		none
 3737		default	Actions are individual tasks that the system can do, such as unpublishing a piece of content or banning a user. Modules, such as the <a href="@trigger-help">Trigger module</a>, can fire these actions when certain system events happen; for example, when a new post is added or when a user logs in. Modules may also provide additional actions. Visit the <a href="@actions">Actions page</a> to configure actions.		none
@@ -16176,16 +15908,15 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 4464		default	Install new theme		none
 3767		default	System help		7.26
 3746		default	Administer modules		7.26
-3781		default	Configure default and theme specific settings.		7.24
-3788		default	Development tools.		7.24
-3791		default	Logging and errors		7.24
-3789		default	Maintenance mode		7.24
-3790		default	Take the site offline for maintenance or bring it back online.		7.24
-3785		default	Media tools.		7.24
-3782		default	IP address blocking		7.24
-3783		default	Manage blocked IP addresses.		7.24
-3786		default	Tools related to web services.		7.24
-3776		default	Administer blocks, content types, menus, etc.		7.24
+3788		default	Development tools.		7.26
+3791		default	Logging and errors		7.26
+3789		default	Maintenance mode		7.26
+3790		default	Take the site offline for maintenance or bring it back online.		7.26
+3785		default	Media tools.		7.26
+3782		default	IP address blocking		7.26
+3783		default	Manage blocked IP addresses.		7.26
+3786		default	Tools related to web services.		7.26
+3776		default	Administer blocks, content types, menus, etc.		7.26
 3779		default	Disable theme		7.24
 3747		default	Administer site configuration		7.26
 3738		default	Set and configure the default theme for your website.  Alternative <a href="@themes">themes</a> are available.		7.22
@@ -16195,7 +15926,8 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 3751		default	Use the site in maintenance mode		7.26
 3752		default	View site reports		7.26
 3753		default	Block IP addresses		7.26
-3777		default	Select and configure your theme		7.24
+3777		default	Select and configure your theme		7.26
+3781		default	Configure default and theme specific settings.		7.26
 3773		default	@zone: @date		7.22
 3765		default	Select the desired local time and time zone. Dates and times throughout this site will be displayed using this time zone.		7.22
 3775		default	AHAH callback		7.22
@@ -16237,29 +15969,29 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 3852		default	The vocabulary which supplies the options for this field.		none
 3853		default	The Toolbar module displays links to top-level administration menu items and links from other modules at the top of the screen. For more information, see the online handbook entry for <a href="@toolbar">Toolbar module</a>.		none
 3854		default	Displaying administrative links		none
-3809		default	Settings related to formatting and authoring content.		7.24
-3793		default	Regional and language		7.24
-3794		default	Regional settings, localization and translation.		7.24
-3796		default	Configure display formats for date and time.		7.24
-3800		default	Configure display format strings for date and time.		7.24
-3797		default	Add new date type.		7.24
-3795		default	Settings for the site's default time zone and country.		7.24
-3803		default	Search and metadata		7.24
-3804		default	Local site search, metadata and SEO.		7.24
-3805		default	General system related configuration.		7.24
-3806		default	Tools that enhance the user interface.		7.24
-3807		default	Content workflow, editorial workflow tools.		7.24
+3793		default	Regional and language		7.26
+3794		default	Regional settings, localization and translation.		7.26
+3796		default	Configure display formats for date and time.		7.26
+3800		default	Configure display format strings for date and time.		7.26
+3797		default	Add new date type.		7.26
+3795		default	Settings for the site's default time zone and country.		7.26
+3803		default	Search and metadata		7.26
+3804		default	Local site search, metadata and SEO.		7.26
+3805		default	General system related configuration.		7.26
+3806		default	Tools that enhance the user interface.		7.26
+3807		default	Content workflow, editorial workflow tools.		7.26
+3813		default	%profile_name (%profile-%version)		7.26
 3820		default	No terms available. <a href="@link">Add term</a>.		7.24
-3813		default	%profile_name (%profile-%version)		7.22
-3814		default	more information		7.22
-3816		default	To run cron from outside the site, go to <a href="!cron">!cron</a>		7.22
-3808		default	Content authoring		7.24
+3814		default	more information		7.26
+3816		default	To run cron from outside the site, go to <a href="!cron">!cron</a>		7.26
+3818		default	Your configuration has been saved.		7.26
+3809		default	Settings related to formatting and authoring content.		7.26
 3846		default	Edit terms in %vocabulary		7.26
-3818		default	Your configuration has been saved.		7.24
 3842		default	You can reorganize the terms in %capital_name using their drag-and-drop handles, and group terms under a parent term by sliding them under and to the right of the parent.		7.24
 3819		default	No vocabularies available. <a href="@link">Add vocabulary</a>.		7.24
 3848		default	Taxonomy term page		7.26
 3847		default	Delete terms from %vocabulary		7.26
+3808		default	Content authoring		7.26
 3845		default	Administer vocabularies and terms		7.26
 3849		default	Term reference		7.26
 3851		default	Autocomplete term widget (tagging)		7.26
@@ -16474,22 +16206,22 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 4078		default	Cancel accounts		none
 4088		default	Blocked user: %name %email.		none
 4089		default	There is currently 1 user online.		none
-4051		default	User module history view element.		7.24
+4058		default	Spaces are allowed; punctuation is not allowed except for periods, hyphens, apostrophes, and underscores.		7.26
 4074		default	Cancel the selected user accounts		7.24
 4054		default	Change own username		7.26
 4055		default	Cancel own user account		7.26
 4057		default	Select method for cancelling own account		7.26
-4050		default	User module timezone form element.		7.24
-4058		default	Spaces are allowed; punctuation is not allowed except for periods, hyphens, apostrophes, and underscores.		7.24
-4079		default	To make your password stronger:		7.24
-4080		default	Make it at least 6 characters		7.24
-4081		default	Add lowercase letters		7.24
-4082		default	Add uppercase letters		7.24
-4083		default	Add numbers		7.24
-4084		default	Add punctuation		7.24
-4085		default	Make it different from your username		7.24
-4086		default	Weak		7.24
-4087		default	Fair		7.24
+4050		default	User module timezone form element.		7.26
+4051		default	User module history view element.		7.26
+4079		default	To make your password stronger:		7.26
+4080		default	Make it at least 6 characters		7.26
+4081		default	Add lowercase letters		7.26
+4082		default	Add uppercase letters		7.26
+4083		default	Add numbers		7.26
+4084		default	Add punctuation		7.26
+4085		default	Make it different from your username		7.26
+4086		default	Weak		7.26
+4087		default	Fair		7.26
 4033		default	Your account will be removed and all account information deleted. All of your content will be assigned to the %anonymous-name user.		7.24
 4034		default	Your account will be removed and all account information deleted. All of your content will also be deleted.		7.24
 4052		default	Administer permissions		7.26
@@ -16544,23 +16276,23 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 4156		default	Cannot rename field %table.%name to %name_new: target field already exists.		none
 4158		default	Number of recent blog posts to display		none
 4159		default	@node_type comment		none
-4093		default	Find and manage people interacting with your site.		7.24
-4122		default	Overview of fields on all entity types.		7.24
+4122		default	Overview of fields on all entity types.		7.26
+4131		default	Term name textfield		7.26
 4157		default	Use this page to create a new custom block.		7.22
 4109		default	A simple one-column, tableless, fluid width administration theme.		7.24
-4134		default	Enter your current password to change the %mail or %pass. !request_new.		7.24
+4135		default	Current password		7.26
 4108		default	A multi-column theme which can be configured to modify colors and switch between fixed and fluid width layouts.		7.24
 4121		default	Field API to add fields to entities like nodes and users.		7.24
+4139		default	Configure user accounts.		7.26
 4125		default	Show more content		7.22
 4133		default	Password reset instructions will be mailed to %email. You must log out to use the password reset link in the e-mail.		7.22
 4104		default	Content width		7.24
-4131		default	Term name textfield		7.24
-4132		default	Term description textarea		7.24
-4139		default	Configure user accounts.		7.24
+4132		default	Term description textarea		7.26
+4134		default	Enter your current password to change the %mail or %pass. !request_new.		7.26
+4093		default	Find and manage people interacting with your site.		7.26
 4105		default	Fluid width		7.24
 4106		default	Fixed width		7.24
 4107		default	Specify whether the content will wrap to a fixed width or will fluidly expand to the width of the browser window.		7.24
-4135		default	Current password		7.24
 4163		default	A field has a <em>label</em> (the name displayed in the user interface) and a <em>machine name</em> (the name used internally). The label can be changed after you create the field, if needed, but the machine name cannot be changed after you have created the field.		none
 4164		default	What type of data the field will store		none
 4165		default	Each field can store one type of data (text, number, file, etc.). When you define a field, you choose a particular <em>field type</em>, which corresponds to the type of data you want to store. The field type cannot be changed after you have created the field.		none
@@ -16725,13 +16457,13 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 4339		default	The URL of the account edit page.		none
 4340		default	Nonce from @endpoint rejected because it is not correctly formatted, nonce: @nonce.		none
 4341		default	Nonce received from @endpoint is out of range (time difference: @intervals). Check possible clock skew.		none
-4306		default	Weight for added field		7.24
+4283		default	Site details		7.26
 4307		default	Custom display settings		7.24
+4305		default	Weight for new field		7.26
 4309		default	The %view_mode mode now uses custom display settings. You might want to <a href="@url">configure them</a>.		7.22
 4296		default	Māori		7.22
 4310		default	User interface for the Field API.		7.24
-4305		default	Weight for new field		7.24
-4283		default	Site details		7.24
+4306		default	Weight for added field		7.26
 4342		default	Nonce replay attempt blocked from @ip, nonce: @nonce.		none
 4343		default	Comment display		none
 4346		default	delivery callback not found		none
@@ -16778,12 +16510,12 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 4392		default	Linked to file		none
 4395		default	Undefined language (@langcode)		none
 4383		default	No field is displayed.		7.24
-4393		default	Shown when hovering over the menu link.		7.24
 4384		default	No field is hidden.		7.24
 4381		default	- Select a value -		7.24
 4385		default	Format settings:		7.22
-4376		default	Recent log messages		7.24
-4344		default	New field name		7.24
+4376		default	Recent log messages		7.26
+4344		default	New field name		7.26
+4393		default	Shown when hovering over the menu link.		7.26
 4398		default	Use the overlay for administrative pages.		none
 4399		default	Show administrative pages on top of the page you started from.		none
 4400		default	A <a href="@php-code">PHP code</a> text format has been created.		none
@@ -16835,18 +16567,18 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 4460		default	Stores temporary data for system_update_7061.		none
 4461		default	Administrative toolbar		none
 4462		default	Install new module or theme		none
-4458		default	Administer settings.		7.24
-4416		default	Manage automatic site maintenance tasks.		7.24
-4459		default	View reports, updates, and errors.		7.24
+4416		default	Manage automatic site maintenance tasks.		7.26
+4459		default	View reports, updates, and errors.		7.26
+4409		default	Optionally, specify a relative URL to display as the front page.  Leave blank to display the default content feed.		7.26
 4430		default	Weight for @block block		7.24
 4419		default	Subdirectory in the file upload directory where pictures will be stored.		7.24
 4431		default	Region for @block block		7.24
-4409		default	Optionally, specify a relative URL to display as the front page.  Leave blank to display the default content feed.		7.24
+4410		default	Error pages		7.26
 4418		default	Weight for added term		7.24
 4420		default	Pictures larger than this will be scaled down to this size.		7.24
-4410		default	Error pages		7.24
-4422		default	Your virtual face or picture. Pictures larger than @dimensions pixels will be scaled down.		7.24
-4457		default	Select and configure your themes.		7.24
+4457		default	Select and configure your themes.		7.26
+4422		default	Your virtual face or picture. Pictures larger than @dimensions pixels will be scaled down.		7.26
+4458		default	Administer settings.		7.26
 4396		default	Format: %time. The date format is YYYY-MM-DD and %timezone is the time zone offset from UTC. Leave blank to use the time of form submission.		7.24
 4467		default	Renamed the 'post comments without approval' permission to 'skip comment approval'.		none
 4468		default	Nothing		none
@@ -16885,26 +16617,26 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 4537		default	SQLite		none
 4538		default	Database file		none
 4539		default	The absolute path to the file where @drupal data will be stored. This must be writable by the web server and should exist outside of the web root.		none
-4500		default	Enable @title menu link		7.24
 4471		default	Update @title		7.22
-4482		default	Parent for @title		7.24
+4483		default	New field label		7.26
 4481		default	Weight for row @number		7.24
 4523		default	Use an already detected language for URLs if none is found.		7.24
-4466		default	Manage user accounts, roles, and permissions.		7.24
-4483		default	New field label		7.24
-4484		default	Parent for new field		7.24
-4485		default	Type of new field		7.24
-4486		default	Widget for new field		7.24
-4487		default	Existing field label		7.24
-4488		default	Parent for existing field		7.24
-4489		default	Existing field to share		7.24
-4490		default	Widget for existing field		7.24
+4482		default	Parent for @title		7.26
+4484		default	Parent for new field		7.26
+4485		default	Type of new field		7.26
+4486		default	Widget for new field		7.26
+4487		default	Existing field label		7.26
+4488		default	Parent for existing field		7.26
+4489		default	Existing field to share		7.26
+4490		default	Widget for existing field		7.26
+4472		default	A unique machine-readable name. Can only contain lowercase letters, numbers, and underscores.		7.26
 4493		default	Parents for @title		7.24
 4491		default	Label display for @title		7.22
 4492		default	Formatter for @title		7.22
 4526		default	%type_name: Edit any content		7.26
 4527		default	%type_name: Delete own content		7.26
 4528		default	%type_name: Delete any content		7.26
+4466		default	Manage user accounts, roles, and permissions.		7.26
 4522		default	URL fallback		7.24
 4494		default	Visibility for @title		7.24
 4524		default	%type_name: Create new content		7.26
@@ -16918,7 +16650,7 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 4495		default	There is data for this field in the database. The field settings can no longer be changed.		7.22
 4501		default	A unique name to construct the URL for the menu. It must only contain lowercase letters, numbers and hyphens.		7.24
 4525		default	%type_name: Edit own content		7.26
-4472		default	A unique machine-readable name. Can only contain lowercase letters, numbers, and underscores.		7.24
+4500		default	Enable @title menu link		7.26
 4470		default	%type: !message in %function (line %line of %file).		7.24
 4540		default	The directory you specified is not writable by the web server.		none
 4544		default	Strong	Font weight	none
@@ -16961,8 +16693,10 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 4599		default	Failed to connect to the server. The server reports the following message: !message For more help installing or updating code on your server, see the <a href="@handbook_url">handbook</a>.		none
 4600		default	Unable to parse info file: %info_file.		none
 4601		default	The info file (%info_file) does not define a 'name' attribute.		none
-4546		default	Read more<span class="element-invisible"> about @title</span>		7.24
+4546		default	Read more<span class="element-invisible"> about @title</span>		7.26
+4560		default	Database system		7.26
 4558		default	View the administration theme		7.26
+4561		default	Database system version		7.26
 4586		default	List (integer)		7.26
 4568		default	Disable the account and keep its content.		7.24
 4591		default	The possible values this field can contain. Enter one value per line, in the format key|label.		7.22
@@ -16971,14 +16705,12 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 4569		default	Disable the account and unpublish its content.		7.24
 4570		default	Delete the account and make its content belong to the %anonymous-name user.		7.24
 4571		default	Delete the account and its content.		7.24
-4543		default	No fields are present yet.		7.24
 4588		default	List (float)		7.26
 4592		default	The key is the stored value, and must be numeric. The label will be used in displayed values and edit forms.		7.22
 4593		default	The label is optional: if a line contains a single number, it will be used as key and label.		7.22
 4594		default	Lists of labels are also accepted (one label per line), only if the field does not hold any values yet. Numeric keys will be automatically generated from the positions in the list.		7.22
 4830		default	Original		7.22
-4560		default	Database system		7.22
-4561		default	Database system version		7.22
+4543		default	No fields are present yet.		7.26
 4598		default	Allowed values list: some values are being removed while currently in use.		7.22
 4602		default	The testing framework requires the PHP memory limit to be at least %memory_minimum_limit. The current value is %memory_limit. <a href="@url">Follow these steps to continue</a>.		none
 4603		default	You can find <a href="@module_url">modules</a> and <a href="@theme_url">themes</a> on <a href="@drupal_org_url">drupal.org</a>. The following file extensions are supported: %extensions.		none
@@ -17087,22 +16819,22 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 4682		default	Field type(s) in use - see <a href="@fields-page">Field list</a>		7.26
 4688		default	Value		none
 4723		default	Down		7.24
+4707		default	Breadcrumb		7.26
 474		default	Medium		7.26
 4725		default	Operator		7.22
-4712		default	Advanced		7.24
+16		default	Home		7.26
 197		default	Center		none
 4696		default	Depth		none
 4731		default	Rules		7.24
-4707		default	Breadcrumb		7.24
+4712		default	Advanced		7.26
 4685		default	Uyghur		7.22
-4679		default	Subscribe to !feed-title		7.24
 4710		default	Term name		none
-4664		default	User module account form elements.		7.24
+4718		default	Exists		7.26
 4724		default	Arguments		7.26
 4722		default	Normal menu item		none
-16		default	Home		7.24
+4664		default	User module account form elements.		7.26
 809		default	Authoring information		7.24
-4673		default	A unique machine-readable name containing letters, numbers, and underscores.		7.24
+4679		default	Subscribe to !feed-title		7.26
 4713		default	Up		7.24
 262		default	Display		7.24
 4716		default	List type		7.24
@@ -17113,7 +16845,7 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 4701		default	Access		7.26
 4709		default	Term		7.26
 593		default	Term description		7.26
-4718		default	Exists		7.22
+4673		default	A unique machine-readable name containing letters, numbers, and underscores.		7.26
 183		default	Reset		7.26
 4729		default	Sort by		7.26
 4732		default	Enter one page per line as Drupal paths. The '*' character is a wildcard. Example paths are %blog for the blog page and %blog-wildcard for every personal blog. %front is the front page.		none
@@ -17177,16 +16909,17 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 4819		default	The page has been updated and saved.		none
 4826		default	Delete and save		none
 4827		default	Added		none
+4734		default	Tokens		7.26
 4778		default	Current user's language		7.24
-4734		default	Tokens		7.24
-4758		default	Attached files		7.24
+4758		default	Attached files		7.26
+4755		default	Node author		7.26
 4739		default	Second		none
-4755		default	Node author		7.24
+4735		default	Node title		7.26
 1101		default	Menus		7.26
 4775		default	Unordered list		7.24
 4746		default	Parent menu item		none
 4799		default	Administrative title		7.24
-4735		default	Node title		7.24
+425		default	Global settings		7.26
 4748		default	Storage		7.24
 4779		default	Default site language		7.24
 4773		default	Top level book		none
@@ -17195,7 +16928,7 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 1199		default	Language neutral		7.24
 4796		default	In code		7.24
 4780		default	No language		none
-425		default	Global settings		7.24
+4791		default	CTools CSS Cache		7.26
 4782		default	No menu entry		none
 4783		default	Normal menu entry		none
 4784		default	Menu tab		none
@@ -17204,12 +16937,11 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 4788		default	Menu selection requires the activation of menu module.		none
 4789		default	The lower the weight the higher/further left it will appear.		none
 4761		default	Pager		7.24
-4791		default	CTools CSS Cache		7.22
+3821		default	There is currently no content classified with this term.		7.26
 4793		default	A library of helpful tools by Merlin of Chaos.		7.24
 4772		default	More link		7.24
 4794		default	Performs bulk exporting of data objects known about by Chaos tools.		7.24
 4825		default	Shows how to use the power of Chaos AJAX.		7.24
-3821		default	There is currently no content classified with this term.		7.24
 1620		default	Revision information		7.24
 1499		default	Create @name		7.24
 2557		default	The name of the site.		7.26
@@ -17264,33 +16996,32 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 2797		default	@count disallowed HTML string(s) in %file		none
 3991		default	The directory %directory does not exist or is not writable.		none
 4912		default	All your translations are up to date		none
-4901		default	Group name (a-z, 0-9, _)		7.24
 4885		default	Package		7.24
 4869		default	Target type		7.22
-4893		default	Create feature		7.24
+4840		default	Entities		7.26
+4877		default	Manage		7.26
+4908		default	Translation updates		7.26
+360		default	Available updates		7.26
 4867		default	Ascending		none
 4868		default	Descending		none
 4844		default	Granularity		none
-4882		default	Feature		7.24
-4879		default	State		7.24
 4866		default	Contains		7.22
-4835		default	Diff		7.24
+4881		default	Features		7.26
 1775		default	Comment count		none
 4899		default	Fieldgroup		7.24
-4894		default	Create a new feature.		7.24
-4908		default	Translation updates		7.24
-360		default	Available updates		7.24
-4840		default	Entities		7.24
-4877		default	Manage		7.24
-4888		default	Enable and disable features.		7.24
-2801	; misc/vertical-tabs.js	default	(active tab)		7.24
+4888		default	Enable and disable features.		7.26
+4895		default	Manage features.		7.26
+4893		default	Create feature		7.26
+4894		default	Create a new feature.		7.26
+2801	; misc/vertical-tabs.js	default	(active tab)		7.26
+4910		default	Translation update status		7.26
+4900		default	Fieldset		7.26
 2483		default	Disabled themes		7.24
 4884		default	Unavailable		7.24
 4839		default	View changes		7.24
-4900		default	Fieldset		7.24
-4881		default	Features		7.24
-4895		default	Manage features.		7.24
-4838		default	List revisions		7.24
+4838		default	List revisions		7.26
+4911		default	There are available updates		7.26
+4901		default	Group name (a-z, 0-9, _)		7.26
 219		default	Import		7.26
 4874		default	Autocomplete		7.26
 4897		default	Administer features		7.26
@@ -17301,12 +17032,13 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 4906		default	Create field		7.26
 4904		default	Field group label		7.22
 1511		default	Effect		7.22
+4835		default	Diff		7.26
+4882		default	Feature		7.26
 4872		default	Autocomplete matching		7.22
 4873		default	Starts with		7.22
 4871		default	No link		7.22
+4879		default	State		7.26
 4907		default	Update mode		7.22
-4910		default	Translation update status		7.22
-4911		default	There are available updates		7.22
 3436		default	Revisions allow you to track differences between multiple versions of your content, and revert back to older versions.		7.22
 4913		default	No projects or languages to update.		none
 4914		default	Select one or more languages to download and update. If you select none, all of them will be updated.		none
@@ -17389,8 +17121,7 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 4919		default	Never (manually)		7.22
 4920		default	Select how frequently you want to automatically check for updated translations for installed modules and themes.		7.22
 4921		default	Store downloaded files		7.22
-4939		default	There are new or updated translations available for currently installed modules and themes. To check for updates, you can visit the <a href="@check_manually">translation update page</a>.		7.22
-4968		default	Passed		7.22
+4968		default	Passed		7.26
 4966		default	Immediately		7.24
 4949		default	Provides automatic downloads and updates for translations.		7.24
 4955		default	Importing: %name.		7.24
@@ -17462,8 +17193,6 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 5090		default	OR		none
 5091		default	Recent posts		none
 4864		default	Display links		7.22
-136		default	Disabled		7.24
-5010		default	Is one of		7.24
 5084		default	Average		7.24
 5062		default	Theme		7.24
 5045		default	Filter the modules list.		7.24
@@ -17473,6 +17202,8 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 5051		default	Tag		7.24
 137		default	Enabled		7.26
 5004		default	Title, as link (default)		7.26
+5010		default	Is one of		7.26
+136		default	Disabled		7.26
 5094		default	Link text		none
 5095		default	Both		none
 5098		default	Existing Views		none
@@ -17547,12 +17278,7 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 5202		default	Custom date format		none
 5203		default	Show All		none
 5204		default	Comments are responses to node content.		none
-5205		default	!group: !title		7.24
-5096		default	Edit view		7.24
-5118		default	in		7.24
-5206		default	Is empty (NULL)		7.24
-5160		default	empty		7.24
-5207		default	not empty		7.24
+5205		default	!group: !title		7.26
 5122		default	Display name		7.24
 5100		default	Filters		7.24
 5146		default	Information		7.24
@@ -17565,6 +17291,11 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 5169		default	Ordered list		7.24
 5128		default	views		7.26
 5097		default	Administer views		7.26
+5118		default	in		7.26
+5206		default	Is empty (NULL)		7.26
+5160		default	empty		7.26
+5207		default	not empty		7.26
+5096		default	Edit view		7.26
 5195		default	Invalid display id @display		7.22
 5165		default	Items to display		7.22
 5119		default	Feed settings		7.22
@@ -17655,14 +17386,14 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 5303		default	has all		none
 5304		default	Require this relationship		none
 5306		default	desc		none
-5284		default	not in		7.24
-5285		default	<>		7.24
+5285		default	<>		7.26
 5238		default	Create customized lists and queries from your database.		7.24
 5305		default	asc		7.24
 5220		default	Delete link		7.26
 5402		default	Updated year		7.26
 5403		default	Updated month		7.26
 5208		default	Upload date		7.26
+5284		default	not in		7.26
 5286		default	Is all of		7.22
 5287		default	Is none of		7.22
 5288		default	not		7.22
@@ -17876,11 +17607,7 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 2661	; modules/node/content_types.js	default	Requires a title		none
 3473	; modules/node/content_types.js	default	Don't display post information		none
 607		default	Default language		7.22
-5584		default	Overview of fields used in all views.		7.24
-5546		default	Add new view		7.24
-5551		default	Add view from template		7.24
-5543		default	Is not empty (NOT NULL)		7.24
-4480		default	Weight for @title		7.24
+4480		default	Weight for @title		7.26
 5557		default	All displays		7.24
 5542		default	In database		7.24
 5556		default	Database overriding code		7.24
@@ -17895,56 +17622,60 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 5547		default	Content revisions		7.26
 5593	/admin/config/regional/language	default	Navigation bar		7.26
 5594	/admin/config/regional/language	default	Second sidebar		7.26
+5543		default	Is not empty (NOT NULL)		7.26
+5584		default	Overview of fields used in all views.		7.26
+5546		default	Add new view		7.26
+5551		default	Add view from template		7.26
 5598	/admin/config/regional/language	default	Eier av en tjenesten. Navn på enhet, institusjon etc		7.22
 5600	/admin/config/regional/language	default	Hvor henvender bruker seg for å få brukerstøtte på en tjenesten.		7.22
 3315		default	With multiple languages enabled, interface text can be translated, registered users may select their preferred language, and authors can assign a specific language to content. <a href="@translations">Download contributed translations</a> from Drupal.org.		7.22
 865	; misc/tableselect.js	default	Select all rows in this table		none
 5635	/	default	User menu		7.26
-3146		default	Limit allowed HTML tags		7.24
-3147		default	Convert line breaks into HTML (i.e. <code>&lt;br&gt;</code> and <code>&lt;p&gt;</code>)		7.24
+5601	/admin/config/regional/language	default	LDAP authentication allows authentication against an LDAP server.  It\n        may be used alongside other authentication means such as built in drupal authentication,\n        open id, etc.  More detailed help is available on drupal.org at !helplink.		7.26
+5602	/admin/config/regional/language	default	LDAP Servers stores "LDAP server configurations" so other modules\n    can connect to them and leverage their data.  LDAP authentication and LDAP authorization\n    are two such modules.  Generally only one LDAP Server Configuration is needed.\n    When multiple LDAP server configurations are needed, each is not necessarily\n    a separate physical LDAP server; they may have different binding users or some\n    other configuration difference.		7.26
 4213		default	Footer first column		7.24
-1998		default	Norwegian Bokmål		7.24
-5601	/admin/config/regional/language	default	LDAP authentication allows authentication against an LDAP server.  It\n        may be used alongside other authentication means such as built in drupal authentication,\n        open id, etc.  More detailed help is available on drupal.org at !helplink.		7.24
-5602	/admin/config/regional/language	default	LDAP Servers stores "LDAP server configurations" so other modules\n    can connect to them and leverage their data.  LDAP authentication and LDAP authorization\n    are two such modules.  Generally only one LDAP Server Configuration is needed.\n    When multiple LDAP server configurations are needed, each is not necessarily\n    a separate physical LDAP server; they may have different binding users or some\n    other configuration difference.		7.24
-4314		default	Node module element		7.24
-4663		default	User name and password		7.24
-5632	/node/1	default	Language settings for the user account.		7.24
-5603	/admin/config/regional/language	default	UiB TK		7.24
-2198		default	Configure how content input by users is filtered, including allowed HTML tags. Also allows enabling of module-provided filters.		7.24
-3129		default	Add text format		7.24
-5604	/admin/config/regional/language	default	Diff settings.		7.24
-5605	/admin/config/regional/language	default	Entity settings.		7.24
-5606	/admin/config/regional/language	default	Field support and settings overview.		7.24
-3792		default	Settings for logging and alerts modules. Various modules can route Drupal's system events to different destinations, such as syslog, database, email, etc.		7.24
-813		default	Enable or disable page caching for anonymous users and set CSS and JS bandwidth optimization options.		7.24
-2428		default	Tell Drupal where to store uploaded files and how they are accessed.		7.24
-4140		default	Configure default behavior of users, including registration requirements, e-mails, fields, and user pictures.		7.24
-5607	/admin/config/regional/language	default	LDAP Configuration		7.24
-5608	/admin/config/regional/language	default	LDAP authentication, authorization, provisioning, etc.		7.24
-5609	/admin/config/regional/language	default	1. Settings		7.24
-5610	/admin/config/regional/language	default	2. Servers		7.24
-5611	/admin/config/regional/language	default	Add LDAP Server Configuration		7.24
-5612	/admin/config/regional/language	default	Authentication		7.24
-5613	/admin/config/regional/language	default	Configure LDAP Authentication		7.24
-3330		default	Detection and selection		7.24
-4938		default	Automatic update configuration		7.24
-1424		default	Manage actions		7.24
-4415		default	Change site name, e-mail address, slogan, default front page, and number of posts per page, error pages.		7.24
-5614	/admin/config/regional/language	default	Module filter		7.24
+5603	/admin/config/regional/language	default	UiB TK		7.26
+2198		default	Configure how content input by users is filtered, including allowed HTML tags. Also allows enabling of module-provided filters.		7.26
+3129		default	Add text format		7.26
+5604	/admin/config/regional/language	default	Diff settings.		7.26
+5605	/admin/config/regional/language	default	Entity settings.		7.26
+5606	/admin/config/regional/language	default	Field support and settings overview.		7.26
+2428		default	Tell Drupal where to store uploaded files and how they are accessed.		7.26
+4140		default	Configure default behavior of users, including registration requirements, e-mails, fields, and user pictures.		7.26
+5607	/admin/config/regional/language	default	LDAP Configuration		7.26
+5608	/admin/config/regional/language	default	LDAP authentication, authorization, provisioning, etc.		7.26
+5609	/admin/config/regional/language	default	1. Settings		7.26
+5610	/admin/config/regional/language	default	2. Servers		7.26
+5611	/admin/config/regional/language	default	Add LDAP Server Configuration		7.26
+3330		default	Detection and selection		7.26
+4938		default	Automatic update configuration		7.26
+1424		default	Manage actions		7.26
+4415		default	Change site name, e-mail address, slogan, default front page, and number of posts per page, error pages.		7.26
+5614	/admin/config/regional/language	default	Module filter		7.26
+3787		default	Configure the site description, the number of items per feed and whether feeds should be titles/teasers/full-text.		7.26
+4645		default	Extend site functionality.		7.26
+2521		default	Determine access to features by selecting permissions for roles.		7.26
+5616	/admin/config/regional/language	default	Report and troubleshoot field permissions.		7.26
+1087		default	Configure what block content appears in your site's sidebars and other regions.		7.26
+3471		default	Manage content types, including default status, front page promotion, comment settings, etc.		7.26
+3146		default	Limit allowed HTML tags		7.26
+3147		default	Convert line breaks into HTML (i.e. <code>&lt;br&gt;</code> and <code>&lt;p&gt;</code>)		7.26
+4263		default	!local-task-title!active		7.26
 5615	/admin/config/regional/language	default	Configure settings for Module Filter.		7.24
-3787		default	Configure the site description, the number of items per feed and whether feeds should be titles/teasers/full-text.		7.24
-4645		default	Extend site functionality.		7.24
-2521		default	Determine access to features by selecting permissions for roles.		7.24
-5616	/admin/config/regional/language	default	Report and troubleshoot field permissions.		7.24
-1087		default	Configure what block content appears in your site's sidebars and other regions.		7.24
-3471		default	Manage content types, including default status, front page promotion, comment settings, etc.		7.24
-4263		default	!local-task-title!active		7.24
+4314		default	Node module element		7.26
+4663		default	User name and password		7.26
+5632	/node/1	default	Language settings for the user account.		7.26
+1998		default	Norwegian Bokmål		7.26
 325		default	Update options		7.24
 5617	/js/admin_menu/cache/fb53bd2bcb74cc85031670020515ea8a	default			7.26
 5599	/admin/config/regional/language	default	Brukerstøtte		7.26
 5618	/admin/content	default	Revision comparison		7.26
 5633	/	default	Inline differences		7.26
 5634	/	default	Management		7.26
+3792		default	Settings for logging and alerts modules. Various modules can route Drupal's system events to different destinations, such as syslog, database, email, etc.		7.26
+813		default	Enable or disable page caching for anonymous users and set CSS and JS bandwidth optimization options.		7.26
+5612	/admin/config/regional/language	default	Authentication		7.26
+5613	/admin/config/regional/language	default	Configure LDAP Authentication		7.26
 5639	/	default	Is new		7.26
 5640	/	default	Whether the node is new and not saved to the database yet.		7.26
 5641	/	default	Whether the node is published or unpublished.		7.26
@@ -18004,11 +17735,11 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 5867	/	default	Telefon		7.26
 5869	/	default	Tjenestetype		7.26
 5870	/	default	Åpningstid		7.26
+1650		default	Enter your @s username.		7.26
+5871	/node?destination=node	default	unknown error: 6		7.26
 5865	/	default	Nettside		7.24
-5871	/node?destination=node	default	unknown error: 6		7.24
 2866		default	Specify pages by using their paths. Enter one path per line. The '*' character is a wildcard. Example paths are %blog for the blog page and %blog-wildcard for every personal blog. %front is the front page.		7.24
 1094		default	Show this block only for the selected role(s). If you select no roles, the block will be visible to all users.		7.24
-1650		default	Enter your @s username.		7.24
 2885		default	A brief description of your block. Used on the <a href="@overview">Blocks administration page</a>.		7.24
 1660		default	@type %title has been created.		7.24
 5802	/	default	Combine fields filter		7.26
@@ -18080,7 +17811,7 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 5927	/index.php	default	Format to parse the object. Use "string" for string (default), and "json" for JSON.		7.26
 5930	/index.php	default	Print this help message. See `drush help help` for more options.		7.26
 5545		default	Asc		7.26
-5872	/admin/structure/types/manage/service_owner	default	Compare revisions		7.24
+5872	/admin/structure/types/manage/service_owner	default	Compare revisions		7.26
 5881	/index.php	default	Cache !mess cid: !cid		7.26
 5878	/admin/structure/types/manage/service_owner	default	Offset		7.26
 448		default	Last update		7.26
@@ -18717,12 +18448,12 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 6587	/index.php	default	Simple (with optional filter by bundle)		7.26
 6588	/index.php	default	Render Views filters as select list		7.26
 6589	/index.php	default	Provides a select list for Views filters on this field. This should not be used when there are over 100 entities, as it might cause an out of memory error.		7.26
-6561	/index.php	default	Bootstrap to phase !phase.		7.24
-6585	/index.php	default	Do you really want to continue?		7.24
-6578	/index.php	default	Legend: 		7.24
-6579	/index.php	default	Code:       drush features-revert will remove the overrides.		7.24
-6580	/index.php	default	Overrides:  drush features-update will update the exported feature with the displayed overrides		7.24
-6581	/index.php	default	Component: !component		7.24
+6561	/index.php	default	Bootstrap to phase !phase.		7.26
+6578	/index.php	default	Legend: 		7.26
+6579	/index.php	default	Code:       drush features-revert will remove the overrides.		7.26
+6580	/index.php	default	Overrides:  drush features-update will update the exported feature with the displayed overrides		7.26
+6581	/index.php	default	Component: !component		7.26
+6585	/index.php	default	Do you really want to continue?		7.26
 6584	/index.php	default	Module appears to already exist in !dir		7.24
 6590	/index.php	default	Created module: !module in !directory		7.24
 6542	/index.php	default	Show a listing of most recent 10 messages of type php.		7.26
@@ -18731,72 +18462,70 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 6595	/admin/structure/types/manage/service	default	Disable in order to keep configuration without having it active.		7.26
 6596	/admin/structure/types/manage/service	default	LdapTypeDefault		7.26
 6597	/admin/structure/types/manage/service	default	LdapTypeActiveDirectory		7.26
-6642	/admin/structure/types/manage/service	default	Primary navigation links		7.24
-6643	/admin/structure/types/manage/service	default	Add the primary_links (local tasks) as content.		7.24
-6644	/admin/structure/types/manage/service	default	Page elements		7.24
-6645	/admin/structure/types/manage/service	default	Add the page title as content.		7.24
-6646	/admin/structure/types/manage/service	default	Tabs		7.24
-6647	/admin/structure/types/manage/service	default	Add the tabs (local tasks) as content.		7.24
-6648	/admin/structure/types/manage/service	default	Add the help text of the current page as content.		7.24
+6642	/admin/structure/types/manage/service	default	Primary navigation links		7.26
+6643	/admin/structure/types/manage/service	default	Add the primary_links (local tasks) as content.		7.26
+6644	/admin/structure/types/manage/service	default	Page elements		7.26
+6645	/admin/structure/types/manage/service	default	Add the page title as content.		7.26
+6646	/admin/structure/types/manage/service	default	Tabs		7.26
+6647	/admin/structure/types/manage/service	default	Add the tabs (local tasks) as content.		7.26
+6648	/admin/structure/types/manage/service	default	Add the help text of the current page as content.		7.26
 6612	/admin/structure/types/manage/service	default	Anonymous Bind. Use no credentials to bind to ldap server.\n            Will not work on most ldaps.		7.26
 6613	/admin/structure/types/manage/service	default	DN for non-anonymous search		7.26
 6614	/admin/structure/types/manage/service	default	Password for non-anonymous search		7.26
 6615	/admin/structure/types/manage/service	default	Clear existing password from database.  Check this when switching away from service account binding.		7.26
 6616	/admin/structure/types/manage/service	default	Base DNs for LDAP users, groups, and other entries this server configuration.		7.26
-6650	/admin/structure/types/manage/service	default	Add the secondary_links (local tasks) as content.		7.24
-6651	/admin/structure/types/manage/service	default	Feed icons		7.24
-6652	/admin/structure/types/manage/service	default	Add the site feed_icons statement as content.		7.24
-6653	/admin/structure/types/manage/service	default	Site logo		7.24
-6654	/admin/structure/types/manage/service	default	Add the logo trail as content.		7.24
-6655	/admin/structure/types/manage/service	default	Add the slogan trail as content.		7.24
-6657	/admin/structure/types/manage/service	default	Add the breadcrumb trail as content.		7.24
-6658	/admin/structure/types/manage/service	default	Status messages		7.24
-6659	/admin/structure/types/manage/service	default	Add the status messages of the current page as content.		7.24
-6660	/admin/structure/types/manage/service	default	General form		7.24
-6661	/admin/structure/types/manage/service	default	Everything in the form that is not displayed by other content.		7.24
-6662	/admin/structure/types/manage/service	default	Form		7.24
-6663	/admin/structure/types/manage/service	default	Entity field		7.24
-6664	/admin/structure/types/manage/service	default	User signature		7.24
-6665	/admin/structure/types/manage/service	default	The signature of a user.		7.24
-6666	/admin/structure/types/manage/service	default	User picture		7.24
-6667	/admin/structure/types/manage/service	default	The picture of a user.		7.24
-6668	/admin/structure/types/manage/service	default	User profile		7.24
-6669	/admin/structure/types/manage/service	default	The profile of a user.		7.24
-6670	/admin/structure/types/manage/service	default	Entity extra field		7.24
-6671	/admin/structure/types/manage/service	default	Term description.		7.24
-6672	/admin/structure/types/manage/service	default	List of related terms		7.24
-6673	/admin/structure/types/manage/service	default	Terms related to an existing term; may be child, siblings or top level.		7.24
-6674	/admin/structure/types/manage/service	default	Custom content		7.24
-6675	/admin/structure/types/manage/service	default	Node form publishing options		7.24
-6676	/admin/structure/types/manage/service	default	Publishing options on the Node form.		7.24
-6677	/admin/structure/types/manage/service	default	Node form author information		7.24
-6678	/admin/structure/types/manage/service	default	Author information on the Node form.		7.24
-6679	/admin/structure/types/manage/service	default	Node form languages		7.24
-6680	/admin/structure/types/manage/service	default	The language selection form.		7.24
-6681	/admin/structure/types/manage/service	default	Node form revision log message		7.24
-6682	/admin/structure/types/manage/service	default	Revision log message for the node.		7.24
-6683	/admin/structure/types/manage/service	default	Node form submit buttons		7.24
-6684	/admin/structure/types/manage/service	default	Submit buttons for the node form.		7.24
-6685	/admin/structure/types/manage/service	default	Node form title field		7.24
-6686	/admin/structure/types/manage/service	default	The node title form.		7.24
-6687	/admin/structure/types/manage/service	default	Node terms		7.24
-6688	/admin/structure/types/manage/service	default	Taxonomy terms of the referenced node.		7.24
-6689	/admin/structure/types/manage/service	default	Node links		7.24
-6690	/admin/structure/types/manage/service	default	Node links of the referenced node.		7.24
-6691	/admin/structure/types/manage/service	default	Node last updated date		7.24
-6693	/admin/structure/types/manage/service	default	Node body		7.24
-6694	/admin/structure/types/manage/service	default	The body of the referenced node.		7.24
-6695	/admin/structure/types/manage/service	default	Node created date		7.24
-6696	/admin/structure/types/manage/service	default	The date the referenced node was created.		7.24
-6697	/admin/structure/types/manage/service	default	Node type description		7.24
-6698	/admin/structure/types/manage/service	default	Node type description.		7.24
-6699	/admin/structure/types/manage/service	default	A list of files attached to the node.		7.24
-6700	/admin/structure/types/manage/service	default	The author of the referenced node.		7.24
-6701	/admin/structure/types/manage/service	default	The title of the referenced node.		7.24
-6702	/admin/structure/types/manage/service	default	Node content		7.24
-6703	/admin/structure/types/manage/service	default	The content of the referenced node.		7.24
-6704	/admin/structure/types/manage/service	default	Existing node		7.24
-6705	/admin/structure/types/manage/service	default	Add a node from your site as content.		7.24
+6651	/admin/structure/types/manage/service	default	Feed icons		7.26
+6652	/admin/structure/types/manage/service	default	Add the site feed_icons statement as content.		7.26
+6653	/admin/structure/types/manage/service	default	Site logo		7.26
+6654	/admin/structure/types/manage/service	default	Add the logo trail as content.		7.26
+6655	/admin/structure/types/manage/service	default	Add the slogan trail as content.		7.26
+6657	/admin/structure/types/manage/service	default	Add the breadcrumb trail as content.		7.26
+6658	/admin/structure/types/manage/service	default	Status messages		7.26
+6660	/admin/structure/types/manage/service	default	General form		7.26
+6661	/admin/structure/types/manage/service	default	Everything in the form that is not displayed by other content.		7.26
+6662	/admin/structure/types/manage/service	default	Form		7.26
+6663	/admin/structure/types/manage/service	default	Entity field		7.26
+6664	/admin/structure/types/manage/service	default	User signature		7.26
+6665	/admin/structure/types/manage/service	default	The signature of a user.		7.26
+6666	/admin/structure/types/manage/service	default	User picture		7.26
+6667	/admin/structure/types/manage/service	default	The picture of a user.		7.26
+6668	/admin/structure/types/manage/service	default	User profile		7.26
+6669	/admin/structure/types/manage/service	default	The profile of a user.		7.26
+6670	/admin/structure/types/manage/service	default	Entity extra field		7.26
+6671	/admin/structure/types/manage/service	default	Term description.		7.26
+6672	/admin/structure/types/manage/service	default	List of related terms		7.26
+6673	/admin/structure/types/manage/service	default	Terms related to an existing term; may be child, siblings or top level.		7.26
+6674	/admin/structure/types/manage/service	default	Custom content		7.26
+6675	/admin/structure/types/manage/service	default	Node form publishing options		7.26
+6676	/admin/structure/types/manage/service	default	Publishing options on the Node form.		7.26
+6677	/admin/structure/types/manage/service	default	Node form author information		7.26
+6678	/admin/structure/types/manage/service	default	Author information on the Node form.		7.26
+6679	/admin/structure/types/manage/service	default	Node form languages		7.26
+6680	/admin/structure/types/manage/service	default	The language selection form.		7.26
+6681	/admin/structure/types/manage/service	default	Node form revision log message		7.26
+6682	/admin/structure/types/manage/service	default	Revision log message for the node.		7.26
+6683	/admin/structure/types/manage/service	default	Node form submit buttons		7.26
+6684	/admin/structure/types/manage/service	default	Submit buttons for the node form.		7.26
+6685	/admin/structure/types/manage/service	default	Node form title field		7.26
+6686	/admin/structure/types/manage/service	default	The node title form.		7.26
+6687	/admin/structure/types/manage/service	default	Node terms		7.26
+6688	/admin/structure/types/manage/service	default	Taxonomy terms of the referenced node.		7.26
+6689	/admin/structure/types/manage/service	default	Node links		7.26
+6690	/admin/structure/types/manage/service	default	Node links of the referenced node.		7.26
+6691	/admin/structure/types/manage/service	default	Node last updated date		7.26
+6693	/admin/structure/types/manage/service	default	Node body		7.26
+6694	/admin/structure/types/manage/service	default	The body of the referenced node.		7.26
+6695	/admin/structure/types/manage/service	default	Node created date		7.26
+6696	/admin/structure/types/manage/service	default	The date the referenced node was created.		7.26
+6697	/admin/structure/types/manage/service	default	Node type description		7.26
+6698	/admin/structure/types/manage/service	default	Node type description.		7.26
+6699	/admin/structure/types/manage/service	default	A list of files attached to the node.		7.26
+6700	/admin/structure/types/manage/service	default	The author of the referenced node.		7.26
+6701	/admin/structure/types/manage/service	default	The title of the referenced node.		7.26
+6702	/admin/structure/types/manage/service	default	Node content		7.26
+6703	/admin/structure/types/manage/service	default	The content of the referenced node.		7.26
+6704	/admin/structure/types/manage/service	default	Existing node		7.26
+6705	/admin/structure/types/manage/service	default	Add a node from your site as content.		7.26
 3639		default	User verification status in comments		7.24
 2392		default	Check here if you want the theme to use the logo supplied with it.		7.24
 1408		default	If you don't have direct file access to the server, use this field to upload your logo.		7.24
@@ -18810,6 +18539,7 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 6712	/admin/appearance/settings/uib_tk	default	Append a separator to the end of the breadcrumb		7.24
 6713	/admin/appearance/settings/uib_tk	default	Useful when the breadcrumb is placed just before the title.		7.24
 6714	/admin/appearance/settings/uib_tk	default	Append the content title to the end of the breadcrumb		7.24
+6650	/admin/structure/types/manage/service	default	Add the secondary_links (local tasks) as content.		7.26
 6718	/admin/appearance/settings/uib_tk	default	Specify the HTML ID of the element that the accessible-but-hidden “skip link” should link to. (<a href="!link">Read more about skip links</a>.)		7.22
 6725	/admin/appearance/settings/uib_tk	default	IE 6-8 require a JavaScript polyfill solution to add basic support of HTML5 and CSS3 media queries. If you prefer to use another polyfill solution, such as <a href="!link">Modernizr</a>, you can disable these options. Mobile devices require a few meta tags for responsive designs.		7.22
 4274		default	These options control the display settings for the %name theme. When your site is displayed using this theme, these settings will be used.		7.22
@@ -18820,17 +18550,11 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 10	; misc/tabledrag.js	default	Show row weights		none
 11	; misc/tabledrag.js	default	Hide row weights		none
 13	; misc/tabledrag.js	default	Changes made in this table will not be saved until the form is submitted.		none
-6737	/admin/structure/types/manage/service/fields	default	Liste (tekst)		7.22
-6738	/admin/structure/types/manage/service/fields	default	Avkrysningsbokser/radioknapper		7.22
-6739	/admin/structure/types/manage/service/fields	default	Utvalgsliste		7.22
 6740	/admin/structure/types/manage/service/fields	default	Lang tekst og sammendrag		7.22
 6741	/admin/structure/types/manage/service/fields	default	Tekstområde med et sammendrag		7.22
-6742	/admin/structure/types/manage/service/fields	default	Lang tekst		7.22
-6743	/admin/structure/types/manage/service/fields	default	Tekstområde (flere rader)		7.22
-6744	/admin/structure/types/manage/service/fields	default	Liste (heltall)		7.22
 6746	/admin/structure/types/manage/service/fields	default	This fieldgroup renders the inner content in a simple div with the titel as legend.		7.22
 6747	/admin/structure/types/manage/service/fields	default	This fieldgroup renders the inner content in a fieldset with the titel as legend.		7.22
-6735	/	default	Ingress		7.24
+6737	/admin/structure/types/manage/service/fields	default	Liste (tekst)		7.26
 6716	/admin/appearance/settings/uib_tk	default	Accessibility and support settings		7.24
 6717	/admin/appearance/settings/uib_tk	default	Anchor ID for the “skip link”		7.24
 6719	/admin/appearance/settings/uib_tk	default	Text for the “skip link”		7.24
@@ -18845,26 +18569,32 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 6730	/admin/appearance/settings/uib_tk	default	<a href="!link">Wireframes</a> are useful when prototyping a website.		7.24
 3631		default	Choose "Default theme" to always use the same theme as the rest of the site.		7.24
 4110		default	This theme demonstrates Drupal's default HTML markup and CSS styles. To learn how to build your own theme and override Drupal's default code, see the <a href="http://drupal.org/theme-guide">Theming Guide</a>.		7.24
-4964		default	=		7.24
-5200		default	Is not one of		7.24
-6763	/admin/structure/types/manage/service/fields	default	Add new group		7.24
-6745	/admin/structure/types/manage/service/fields	default	Div		7.24
-6748	/admin/structure/types/manage/service/fields	default	Vertical tabs group		7.24
-6749	/admin/structure/types/manage/service/fields	default	This fieldgroup renders child groups in its own vertical tabs wrapper.		7.24
-6750	/admin/structure/types/manage/service/fields	default	Vertical tab		7.24
-6751	/admin/structure/types/manage/service/fields	default	This fieldgroup renders the content in a fieldset, part of vertical tabs group.		7.24
-6752	/admin/structure/types/manage/service/fields	default	This fieldgroup renders child groups in its own horizontal tabs wrapper.		7.24
-6754	/admin/structure/types/manage/service/fields	default	This fieldgroup renders the content in a fieldset, part of horizontal tabs group.		7.24
-6755	/admin/structure/types/manage/service/fields	default	This fieldgroup renders groups on separate pages.		7.24
-6756	/admin/structure/types/manage/service/fields	default	Multipage		7.24
-6757	/admin/structure/types/manage/service/fields	default	This fieldgroup renders the content in a page.		7.24
-6758	/admin/structure/types/manage/service/fields	default	Accordion group		7.24
-6759	/admin/structure/types/manage/service/fields	default	This fieldgroup renders child groups as jQuery accordion.		7.24
-6760	/admin/structure/types/manage/service/fields	default	Accordion item		7.24
-6761	/admin/structure/types/manage/service/fields	default	This fieldgroup renders the content in a div, part of accordion group.		7.24
-6753	/admin/structure/types/manage/service/fields	default	Horizontal tab item		7.24
-6764	/admin/structure/types/manage/service/fields	default	Weight for new group		7.24
+5200		default	Is not one of		7.26
+6735	/	default	Ingress		7.26
+6745	/admin/structure/types/manage/service/fields	default	Div		7.26
+6748	/admin/structure/types/manage/service/fields	default	Vertical tabs group		7.26
+6749	/admin/structure/types/manage/service/fields	default	This fieldgroup renders child groups in its own vertical tabs wrapper.		7.26
+6750	/admin/structure/types/manage/service/fields	default	Vertical tab		7.26
+6751	/admin/structure/types/manage/service/fields	default	This fieldgroup renders the content in a fieldset, part of vertical tabs group.		7.26
+6752	/admin/structure/types/manage/service/fields	default	This fieldgroup renders child groups in its own horizontal tabs wrapper.		7.26
+6754	/admin/structure/types/manage/service/fields	default	This fieldgroup renders the content in a fieldset, part of horizontal tabs group.		7.26
+6755	/admin/structure/types/manage/service/fields	default	This fieldgroup renders groups on separate pages.		7.26
+6756	/admin/structure/types/manage/service/fields	default	Multipage		7.26
+6757	/admin/structure/types/manage/service/fields	default	This fieldgroup renders the content in a page.		7.26
+6758	/admin/structure/types/manage/service/fields	default	Accordion group		7.26
+6759	/admin/structure/types/manage/service/fields	default	This fieldgroup renders child groups as jQuery accordion.		7.26
+6760	/admin/structure/types/manage/service/fields	default	Accordion item		7.26
+6761	/admin/structure/types/manage/service/fields	default	This fieldgroup renders the content in a div, part of accordion group.		7.26
+6753	/admin/structure/types/manage/service/fields	default	Horizontal tab item		7.26
+6764	/admin/structure/types/manage/service/fields	default	Weight for new group		7.26
 6762	/admin/structure/types/manage/service/fields	default	<Hidden>		7.24
+4964		default	=		7.26
+6738	/admin/structure/types/manage/service/fields	default	Avkrysningsbokser/radioknapper		7.26
+6739	/admin/structure/types/manage/service/fields	default	Utvalgsliste		7.26
+6742	/admin/structure/types/manage/service/fields	default	Lang tekst		7.26
+6743	/admin/structure/types/manage/service/fields	default	Tekstområde (flere rader)		7.26
+6744	/admin/structure/types/manage/service/fields	default	Liste (heltall)		7.26
+6763	/admin/structure/types/manage/service/fields	default	Add new group		7.26
 3071		default	These settings apply to the %field field everywhere it is used. These settings impact the way that data is stored in the database and cannot be changed once data has been created.		7.22
 3082		default	These settings apply only to the %field field when used in the %type type.		7.22
 1504		default	Instructions to present to the user below this field on the editing form.<br />Allowed HTML tags: @tags		7.22
@@ -18910,9 +18640,9 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 6778	/admin/structure/types/manage/service/fields/field_summary?destinations[0]=admin/structure/types/manage/service/fields	default	View own value for field %field		7.26
 6779	/admin/structure/types/manage/service/fields/field_summary?destinations[0]=admin/structure/types/manage/service/fields	default	View field		7.26
 6780	/admin/structure/types/manage/service/fields/field_summary?destinations[0]=admin/structure/types/manage/service/fields	default	View anyone's value for field %field		7.26
-6765	/admin/structure/types/manage/service/fields	default	Fieldgroups		7.24
-6767	/admin/structure/types/manage/service/fields	default	Select source view mode or form		7.24
-6768	/admin/structure/types/manage/service/fields	default	Clone fieldgroups from selected view mode to the current display		7.24
+6765	/admin/structure/types/manage/service/fields	default	Fieldgroups		7.26
+6767	/admin/structure/types/manage/service/fields	default	Select source view mode or form		7.26
+6768	/admin/structure/types/manage/service/fields	default	Clone fieldgroups from selected view mode to the current display		7.26
 4308		default	Use custom display settings for the following view modes		7.24
 6800	/admin/people/permissions/4	default	Administer Module Filter		7.26
 4229		default	View, edit and delete all content regardless of permission restrictions.		7.26
@@ -18994,8 +18724,8 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 6878	/admin/people	default	flush caches		7.24
 6879	/admin/people	default	display drupal links		7.24
 492		default	Add a role to the selected users		7.24
-6880	/user/2/edit?destination=admin/people	default	This email address is automatically set and may not be changed.		7.24
 6881	/user/2/edit?destination=admin/people	default	The password cannot be changed using this website		7.24
+6880	/user/2/edit?destination=admin/people	default	This email address is automatically set and may not be changed.		7.26
 6892	/user/2/edit?destination=admin/people	default	Africa/Brazzaville		7.22
 6893	/user/2/edit?destination=admin/people	default	Africa/Bujumbura		7.22
 6894	/user/2/edit?destination=admin/people	default	Africa/Cairo		7.22
@@ -19411,12 +19141,10 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 7328	/admin/config/people/accounts/display	default	Brukerkonto		7.22
 7329	/node/3/edit	default	!diff_entity_label		7.22
 7330	/node/3/edit	default	Changes		7.22
+7321	/admin/structure/types/manage/service	default	Overview of plugins used in all views.		7.26
 7302	/index.php	default	There were no extensions that could be enabled.		7.24
-7319	/admin/structure/types/manage/service	default	Used in views		7.24
-7320	/admin/structure/types/manage/service	default	Views plugins		7.24
-7321	/admin/structure/types/manage/service	default	Overview of plugins used in all views.		7.24
-7322	/admin/structure/types/manage/service	default	Manage customized lists of content.		7.24
-7323	/admin/structure/types/manage/service	default	Break lock		7.24
+7322	/admin/structure/types/manage/service	default	Manage customized lists of content.		7.26
+7323	/admin/structure/types/manage/service	default	Break lock		7.26
 7333	/admin/structure/views/view/all_services	default	Click on an item to edit that item's details.		7.24
 7334	/admin/structure/views/view/all_services	default	* All changes are stored temporarily. Click Save to make your changes permanent. Click Cancel to discard your changes.		7.24
 7335	/admin/structure/views/view/all_services	default	Modify the display(s) of your view below or add new displays.		7.24
@@ -19439,6 +19167,8 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 7331	/node?destination=node	default	unknown error: 5		7.24
 7332	/node?destination=node	default	Sorry, unrecognized username or password.		7.24
 7303	/index.php	default	This action will permanently remove any customizations made to this view.		7.26
+7319	/admin/structure/types/manage/service	default	Used in views		7.26
+7320	/admin/structure/types/manage/service	default	Views plugins		7.26
 5232	; sites/all/modules/views/js/views-admin.js	default	Remove group		none
 7393	sites/all/modules/views/js/views-admin.js	default	Apply (all displays)		none
 7395	sites/all/modules/views/js/views-admin.js	default	Apply (this display)		none
@@ -19535,10 +19265,6 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 4950		default	Edited translations are kept, only previously imported ones are overwritten and new translations are added		7.22
 7451	/admin/config/regional/language/update	default	Note that this comes with a performance penalty, so it is not recommended.		7.22
 7452	/admin/config/regional/language/update	default	A path relative to the Drupal installation directory where translation files will be stored, e.g. sites/all/translations. Saved translation files can be reused by other installations. If left empty the downloaded translation will not be saved.		7.22
-7453	/admin/config	default	LDAP Extension Loaded		7.22
-3466		default	If the site is experiencing problems with permissions to content, you may have to rebuild the permissions cache. Rebuilding will remove all privileges to content and replace them with permissions based on the current modules and settings. Rebuilding may take some time if there is a lot of content or complex permission settings. After rebuilding has completed, content will automatically use the new permissions.		7.22
-308		default	Error		7.22
-4667		default	Update notifications are not enabled. It is <strong>highly recommended</strong> that you enable the update manager module from the <a href="@module">module administration page</a> in order to stay up-to-date on new releases. For more information, <a href="@update">Update status handbook page</a>.		7.22
 7455	/admin/structure/types/manage/service/fields	default	Tekst		7.22
 7456	/admin/structure/types/manage/service/fields	default	Tekstfelt		7.22
 7457	/admin/structure/types/manage/service/fields/field_service_owner	default	Target bundles		7.22
@@ -19552,12 +19278,14 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 7436	/index.php	default	csv only: Surround each field in quotes (default:1)		7.26
 7437	/index.php	default	Export myviewname:views_data_export_1 and write the output to output.csv in the current directory		7.26
 7454	/	default	Driftsansvarlige		7.26
-7418	/admin/structure/views/view/all_services/edit	default	CSV		7.24
-7419	/admin/structure/views/view/all_services/edit	default	,		7.24
-7420	/admin/structure/views/view/all_services/edit	default	1		7.24
-7438	/index.php	default	;		7.24
-7443	/index.php	default	Do you really want to revert !component?		7.24
-7444	/index.php	default	Reverted !component.		7.24
+7453	/admin/config	default	LDAP Extension Loaded		7.26
+3466		default	If the site is experiencing problems with permissions to content, you may have to rebuild the permissions cache. Rebuilding will remove all privileges to content and replace them with permissions based on the current modules and settings. Rebuilding may take some time if there is a lot of content or complex permission settings. After rebuilding has completed, content will automatically use the new permissions.		7.26
+308		default	Error		7.26
+7419	/admin/structure/views/view/all_services/edit	default	,		7.26
+7420	/admin/structure/views/view/all_services/edit	default	1		7.26
+7438	/index.php	default	;		7.26
+7443	/index.php	default	Do you really want to revert !component?		7.26
+7444	/index.php	default	Reverted !component.		7.26
 7446	/admin/people	default	create field_criticality		7.24
 7447	/admin/people	default	edit field_criticality		7.24
 7448	/admin/people	default	edit own field_criticality		7.24
@@ -19566,8 +19294,9 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 7429	/index.php	default	The name of the view		7.26
 7415	/index.php	default	XLS file		7.26
 7416	/index.php	default	Display the view as a xls file.		7.26
+4667		default	Update notifications are not enabled. It is <strong>highly recommended</strong> that you enable the update manager module from the <a href="@module">module administration page</a> in order to stay up-to-date on new releases. For more information, <a href="@update">Update status handbook page</a>.		7.26
+7418	/admin/structure/views/view/all_services/edit	default	CSV		7.26
 7466	/node/add/service	default	Utvidet beskrivelse		7.22
-7467	/admin/structure/types/manage/service/fields	default	Autofullfør		7.22
 7468	/all-services	default	Beskriv hvordan tjenesten er omfattet av en av IT-avdelingen sine vaktordninger og eventuelle unntak mht. utkall.   		7.22
 7469	/all-services	default	Bestilling		7.22
 7472	/all-services	default	Driftsnivå		7.22
@@ -19600,8 +19329,9 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 7515	/node/7	default	Systemer som støtter tjenesten		7.26
 7478	/all-services	default	Vaktordning		7.26
 7514	/node/add	default	Ytelser		7.26
-1830		default	The <em>From</em> address in automated e-mails sent during registration and new password requests, and other notifications. (Use an address ending in your site's domain to help prevent this e-mail being flagged as spam.)		7.24
-569		default	Default front page		7.24
+7499	/node/5	default	Show latest difference		7.26
+7467	/admin/structure/types/manage/service/fields	default	Autofullfør		7.26
+569		default	Default front page		7.26
 7459	/admin/people	default	create field_ower_contact		7.24
 7460	/admin/people	default	edit field_ower_contact		7.24
 7461	/admin/people	default	edit own field_ower_contact		7.24
@@ -19610,7 +19340,7 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 7485	/admin/structure/views/view/all_services	default	Artikkel		7.26
 7516	/index.php	default	Connected		7.24
 7517	/index.php	default	Successful		7.24
-7499	/node/5	default	Show latest difference		7.24
+1830		default	The <em>From</em> address in automated e-mails sent during registration and new password requests, and other notifications. (Use an address ending in your site's domain to help prevent this e-mail being flagged as spam.)		7.26
 7488	/admin/structure/views/ajax/display/all_services/page/title	default	Apply and continue		7.24
 7486	/admin/structure/views/ajax/display/all_services/page/title	default	This @display_type (override)		7.24
 7489	/admin/structure/views/view/all_services	default	The view %name has been saved.		7.24
@@ -19994,8 +19724,8 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 7945	/index.php	default	Klassifisering		7.26
 7946	/index.php	default	Get an overview of all content.		7.26
 4056		default	Note: content may be kept, unpublished, deleted or transferred to the %anonymous-name user depending on the configured <a href="@user-settings-url">user settings</a>.		7.26
-7933	/admin/modules	default	Vocabulary terms		7.24
-7934	/admin/modules	default	All the terms in a vocabulary.		7.24
+7933	/admin/modules	default	Vocabulary terms		7.26
+7934	/admin/modules	default	All the terms in a vocabulary.		7.26
 7935	/admin/people	default	administer taxonomy		7.24
 5884	/index.php	default	Optional. Site specifications, delimited by commas. Typically, list subdirectory name(s) under /sites.		7.26
 5887	/index.php	default	The full path and filename in which the archive should be stored. If omitted, it will be saved to the drush-backups directory and a filename will be generated.		7.26
@@ -20031,13 +19761,13 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 7948	/index.php	default	'!name' cache was cleared!insitename		7.26
 7938	/index.php	default	Content entity referenced from field_support_contact		7.24
 7939	/index.php	default	Content entity referenced from field_service_owner		7.24
-7941	/index.php	default	Broken handler @table.@field		7.24
 7432	/index.php	default	csv,doc,txt,xls or xml. These options are ignored if the display_id passed is a "views_data_export" display.		7.26
 7936	/index.php	default	The path where your theme will be created. Defaults to: sites/all/themes		7.26
 7937	/index.php	default	Create a sub-theme in the specified directory without RTL stylesheets.		7.26
 7315	/index.php	default	You can import an exported definition by pasting the exported object code into the field below.		7.26
 7480	/admin/structure/types	default	Registrering av enhet der bruker skal henvende seg for å få hjelp (1.linje brukerstøtte) på en tjeneste.		7.26
 7940	/index.php	default	Services		7.26
+7941	/index.php	default	Broken handler @table.@field		7.26
 7950	/index.php	default	Do you wish to run all pending updates?		7.26
 7550	/index.php	default	Start the IRC bot as a background process.		7.26
 7596	/index.php	default	Create menus and menu items.		7.26
@@ -20061,26 +19791,22 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 313		default	Node		7.26
 7957	/index.php	default	Finished performing updates.		7.26
 271		default	Text		7.26
-7958	/index.php	default	Command !command needs the following module(s) enabled to run: !dependencies.		7.24
-7959	/index.php	default	The drush command '!args' could not be executed.		7.24
 7960	/index.php	default	!extension is already enabled.		7.24
-7961	/index.php	default	Navigering		7.24
-7962	/index.php	default	Hovedmeny		7.24
-7966	/index.php	default	Broken/missing handler		7.24
-7967	/index.php	default	The following modules will be reverted: !modules		7.24
-6649	/admin/structure/types/manage/service	default	Secondary navigation links		7.24
-6656	/admin/structure/types/manage/service	default	Add the action links (local tasks) as content.		7.24
-7969	/	default	Node form menu settings		7.24
-7970	/	default	Menu settings on the Node form.		7.24
 7311	/index.php	default	%title has been created.		7.26
 7963	/index.php	default	Menu links		7.26
 7964	/index.php	default	Menu items		7.26
 7965	/index.php	default	Nyttige tjenester for deg som er...		7.26
 6773	/admin/structure/types/manage/service/fields/field_summary?destinations[0]=admin/structure/types/manage/service/fields	default	Create own value for field %field		7.26
-6692	/admin/structure/types/manage/service	default	The date the referenced node was last updated.		7.24
-7971	/	default	A-Å		7.24
-7972	/node/9	default	Strongarm		7.24
-7973	/node/9	default	Manage Drupal variable settings that have been strongarmed.		7.24
+6649	/admin/structure/types/manage/service	default	Secondary navigation links		7.26
+6656	/admin/structure/types/manage/service	default	Add the action links (local tasks) as content.		7.26
+7969	/	default	Node form menu settings		7.26
+7970	/	default	Menu settings on the Node form.		7.26
+7961	/index.php	default	Navigering		7.26
+7962	/index.php	default	Hovedmeny		7.26
+7958	/index.php	default	Command !command needs the following module(s) enabled to run: !dependencies.		7.26
+7959	/index.php	default	The drush command '!args' could not be executed.		7.26
+7966	/index.php	default	Broken/missing handler		7.26
+7967	/index.php	default	The following modules will be reverted: !modules		7.26
 6715	/admin/appearance/settings/uib_tk	default	Useful when the breadcrumb is not placed just before the title.		7.24
 7974	/admin/appearance/settings/uib_tk	default	Specify the HTML ID of the element that the accessible-but-hidden “skip link” should link to. Note: that element should have the <code>tabindex="-1"</code> attribute to prevent an accessibility bug in webkit browsers. (<a href="!link">Read more about skip links</a>.)		7.24
 7975	/admin/appearance/settings/uib_tk	default	IE 6-8 require a JavaScript polyfill solution to add basic support of HTML5 and CSS3 media queries. If you prefer to use another polyfill solution, such as <a href="!link">Modernizr</a>, you can disable these options. Respond.js only works if <a href="@url">Aggregate CSS</a> is enabled. Mobile devices require a few meta tags for responsive designs.		7.24
@@ -20088,7 +19814,6 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 7976	/admin/structure/taxonomy/service_roles/add	default	Added term %term to taxonomy menu %menu_name.		7.24
 7977	/admin/appearance	default	Theme for an application exposing the services of the IT-department at the University of Bergen		7.24
 7978	/admin/appearance	default	Zen sub-themes are the ultimate starting themes for Drupal 7. Read the <a href="https://drupal.org/node/873778">online docs</a> or the included README-FIRST.txt on how to create a theme with Zen.		7.24
-3657		default	This page is displayed when the requested document is denied to the current user. Leave blank to display a generic "access denied" page.		7.24
 7979	/admin/structure/views/view/service_classes	default	Get an overview of <a href="@url">all content</a>.		7.24
 6815	/admin/people	default	administer blocks		7.24
 7980	/admin/people	default	administer menu		7.24
@@ -20102,7 +19827,6 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 7986	/admin/people	default	delete terms in 1		7.24
 7542	/admin/people	default	view field_service_levels		7.24
 6874	/admin/people	default	view own field_service_type		7.24
-824		default	A valid e-mail address. All e-mails from the system will be sent to this address. The e-mail address is not made public and will only be used if you wish to receive a new password or wish to receive certain news or notifications by e-mail.		7.24
 1257		default	Aggregates syndicated content (RSS, RDF, and Atom feeds).		7.24
 3004		default	Provides a dashboard page in the administrative interface for organizing administrative tasks and tracking information within your site.		7.24
 7730	/admin/modules	default	Adds 'All Day' functionality to date fields, including an 'All Day' theme and 'All Day' checkboxes for the Date select and Date popup widgets.		7.24
@@ -20130,6 +19854,10 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 8001	/admin/structure/taxonomy/service_roles/edit	default	Menu path type		7.24
 8002	/admin/structure/taxonomy/service_roles/edit	default	The path will be taxonomy/term/tid if <em>Default</em> has been selected.<br />The menu path will be passed through drupal_get_path_alias() function so all aliases will be applied.		7.24
 21		default	Weight		7.26
+7971	/	default	A-Å		7.26
+7972	/node/9	default	Strongarm		7.26
+7973	/node/9	default	Manage Drupal variable settings that have been strongarmed.		7.26
+824		default	A valid e-mail address. All e-mails from the system will be sent to this address. The e-mail address is not made public and will only be used if you wish to receive a new password or wish to receive certain news or notifications by e-mail.		7.26
 8003	/admin/structure/taxonomy/service_roles/edit	default	Synchronise changes to this vocabulary		7.24
 8004	/admin/structure/taxonomy/service_roles/edit	default	Every time a term is added/deleted/modified, the corresponding menu link will be altered too.		7.24
 8005	/admin/structure/taxonomy/service_roles/edit	default	Display number of items		7.24
@@ -20164,22 +19892,20 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 3368		default	Select the source for the Secondary links. An advanced option allows you to use the same source for both Main links (currently %main) and Secondary links: if your source menu has two levels of hierarchy, the top level menu links will appear in the Main links, and the children of the active link will appear in the Secondary links.		7.24
 8033	/admin/structure/taxonomy/service_business_levels/edit	default	The Taxonomy Menu has been removed.		7.24
 8034	/admin/structure/menu/add	default	a		7.24
-8035	/admin/config/people/accounts/fields	default	HTML element		7.24
-8036	/admin/config/people/accounts/fields	default	This fieldgroup renders the inner content in a HTML element with classes and attributes.		7.24
-8037	/admin/config/people/accounts/fields	default	This fieldgroup renders the inner content in a simple div with the title as legend.		7.24
-8038	/admin/config/people/accounts/fields	default	HTML5		7.24
-8039	/admin/config/people/accounts/fields	default	This fieldgroup renders the inner content in a semantic HTML5 wrapper		7.24
-8040	/admin/config/people/accounts/fields	default	This fieldgroup renders the inner content in a fieldset with the title as legend.		7.24
-8041	/admin/config/people/accounts/fields	default	Horizontal tabs group		7.24
-8042	/admin/config/people/accounts/fields	default	Horizontal tab		7.24
-8043	/admin/config/people/accounts/fields	default	Multipage group		7.24
-8044	/admin/config/people/accounts/fields	default	Label for new group		7.24
-8045	/admin/config/people/accounts/fields	default	Parent for new group		7.24
-8046	/admin/config/people/accounts/fields	default	Machine name for new group		7.24
-6766	/admin/structure/types/manage/service/fields	default	<p class="fieldgroup-help">Fields can be dragged into groups with unlimited nesting. Each fieldgroup format comes with a configuration form, specific for that format type.<br />Note that some formats come in pair. These types have a html wrapper to nest its fieldgroup children. E.g. Place accordion items into the accordion, vertical tabs in vertical tab group and horizontal tabs in the horizontal tab group. There is one exception to this rule, you can use a vertical tab without a wrapper when the additional settings tabs are available. E.g. node forms.</p>		7.24
 8047	/admin/config/people/ldap	default	Use secure pages or secure login module to redirect to SSL (https)		7.24
 8048	/admin/config/people/ldap	default	Run entire site with SSL (https)		7.24
 8049	/admin/config/people/ldap	default	Remove logon block and redirect all /user page to https via webserver redirect		7.24
+8036	/admin/config/people/accounts/fields	default	This fieldgroup renders the inner content in a HTML element with classes and attributes.		7.26
+8037	/admin/config/people/accounts/fields	default	This fieldgroup renders the inner content in a simple div with the title as legend.		7.26
+8038	/admin/config/people/accounts/fields	default	HTML5		7.26
+8039	/admin/config/people/accounts/fields	default	This fieldgroup renders the inner content in a semantic HTML5 wrapper		7.26
+8040	/admin/config/people/accounts/fields	default	This fieldgroup renders the inner content in a fieldset with the title as legend.		7.26
+8041	/admin/config/people/accounts/fields	default	Horizontal tabs group		7.26
+8042	/admin/config/people/accounts/fields	default	Horizontal tab		7.26
+8043	/admin/config/people/accounts/fields	default	Multipage group		7.26
+8044	/admin/config/people/accounts/fields	default	Label for new group		7.26
+8045	/admin/config/people/accounts/fields	default	Parent for new group		7.26
+8046	/admin/config/people/accounts/fields	default	Machine name for new group		7.26
 8050	/admin/config/people/ldap	default	Require HTTPS on Credential Pages		7.24
 8051	/admin/config/people/ldap	default	If checked, modules using LDAP will not allow credentials to\n      be entered on or submitted to HTTP pages, only HTTPS. This option should be used with an\n      approach to get all logon forms to be https, such as:		7.24
 8052	/admin/config/people/ldap	default	Encryption		7.24
@@ -20289,13 +20015,11 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 8154	/admin/structure/views/ajax/display/all_services/page/pager_options	default	When checked, users can determine how many items should be skipped at the beginning.		7.24
 8155	/admin/structure/views/ajax/display/all_services/page/pager_options	default	Offset label		7.24
 8156	/admin/structure/views/ajax/display/all_services/page/pager_options	default	Label to use in the exposed offset form element.		7.24
-8157	/admin/structure/taxonomy/service_roles/edit	default	Sebra		7.24
 8158	/admin/structure/views/ajax/add-item/service_classes/page/sort	default	Expose this sort to visitors, to allow them to change it		7.24
 8159	/admin/structure/views/ajax/add-item/service_classes/page/sort	default	This sort is not exposed. Expose it to allow the users to change it.		7.24
 8160	/admin/structure/views/ajax/add-item/service_classes/page/sort	default	Expose sort		7.24
 8161	/admin/structure/views/ajax/add-item/service_classes/page/sort	default	Sort ascending		7.24
 8162	/admin/structure/views/ajax/add-item/service_classes/page/sort	default	Sort descending		7.24
-8163	/	default	Alle tjenester i normal drift		7.24
 8164	/admin/structure/views/ajax/display/service_classes/page/style_options	default	Style options		7.24
 8165	/admin/structure/views/ajax/display/service_classes/page/style_options	default	Grouping field Nr.@number		7.24
 8166	/admin/structure/views/ajax/display/service_classes/page/style_options	default	Use rendered output to group rows		7.24
@@ -20327,6 +20051,7 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 8188	/index.php	default	Show all warnings.		7.26
 8189	/index.php	default	Show only critical warnings.		7.26
 7314	/index.php	default	%title could not be updated.		7.26
+8157	/admin/structure/taxonomy/service_roles/edit	default	Sebra		7.26
 8190	/index.php	default	Run the specified review(s), "all" runs all reviews, also accepts a comma separated list (no spaces).		7.26
 8191	/index.php	default	Run the comment review.		7.26
 8192	/index.php	default	Run the style review (default).		7.26
@@ -20875,6 +20600,22 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 5852	/	default	no results behavior		7.26
 5880	/admin/structure/types/manage/service_owner	default	Tittel		7.26
 7968	/	default	Innhold referencing Taksonomi-termer from field_service_classification		7.26
+6659	/admin/structure/types/manage/service	default	Add the status messages of the current page as content.		7.26
+6692	/admin/structure/types/manage/service	default	The date the referenced node was last updated.		7.26
+8163	/	default	Alle tjenester i normal drift		7.26
+8226	/	default	Configure how the modules page looks and acts.		7.26
+4939		default	There are new or updated translations available for currently installed modules and themes. To check for updates, you can visit the <a href="@check_manually">translation update page</a>.		7.26
+8227	/admin/reports/status	default	Public files directory		7.26
+8228	/admin/reports/status	default	Temporary files directory		7.26
+8229	/admin/reports/status	default	Not fully protected		7.26
+8230	/admin/reports/status	default	See <a href="@url">@url</a> for information about the recommended .htaccess file which should be added to the %directory directory to help protect against arbitrary code execution.		7.26
+8231	/admin/reports/status	default	Views Data Export temporary directory		7.26
+8035	/admin/config/people/accounts/fields	default	HTML element		7.26
+6766	/admin/structure/types/manage/service/fields	default	<p class="fieldgroup-help">Fields can be dragged into groups with unlimited nesting. Each fieldgroup format comes with a configuration form, specific for that format type.<br />Note that some formats come in pair. These types have a html wrapper to nest its fieldgroup children. E.g. Place accordion items into the accordion, vertical tabs in vertical tab group and horizontal tabs in the horizontal tab group. There is one exception to this rule, you can use a vertical tab without a wrapper when the additional settings tabs are available. E.g. node forms.</p>		7.26
+8232	/index.php	default	Broken handler field_data_field_usergroup.field_usergroup		7.26
+8233	/index.php	default	Current state already matches defaults, aborting.		7.26
+8234	/node/5	default	Tjenestebeskrivelse		7.26
+3657		default	This page is displayed when the requested document is denied to the current user. Leave blank to display a generic "access denied" page.		7.26
 \.
 
 
@@ -20882,7 +20623,7 @@ COPY locales_source (lid, location, textgroup, source, context, version) FROM st
 -- Name: locales_source_lid_seq; Type: SEQUENCE SET; Schema: public; Owner: tk_admin
 --
 
-SELECT pg_catalog.setval('locales_source_lid_seq', 8225, true);
+SELECT pg_catalog.setval('locales_source_lid_seq', 8234, true);
 
 
 --
@@ -26502,6 +26243,7 @@ main-menu	Hovedmeny	<em>Hovedmenyen</em> brukes på mange nettsteder til visning
 --
 
 COPY menu_links (menu_name, mlid, plid, link_path, router_path, link_title, options, module, hidden, external, has_children, expanded, weight, depth, customized, p1, p2, p3, p4, p5, p6, p7, p8, p9, updated) FROM stdin;
+navigation	317	0	user/login	user/login	Logg inn	a:1:{s:10:"attributes";a:1:{s:5:"title";s:0:"";}}	menu	0	0	0	0	35	1	1	317	0	0	0	0	0	0	0	0	0
 navigation	175	0	l10n_client/save	l10n_client/save		a:0:{}	system	0	0	0	0	0	1	0	175	0	0	0	0	0	0	0	0	0
 navigation	3	0	filter/tips	filter/tips	Compose tips	a:0:{}	system	1	0	0	0	0	1	0	3	0	0	0	0	0	0	0	0	0
 management	176	157	admin/config/regional/language/update	admin/config/regional/language/update	Translation updates	a:1:{s:10:"attributes";a:1:{s:5:"title";s:30:"Automatic update configuration";}}	system	-1	0	0	0	20	5	0	1	7	37	157	176	0	0	0	0	0
@@ -26780,7 +26522,7 @@ management	304	291	admin/structure/types/manage/%/fields/%	admin/structure/types
 -- Name: menu_links_mlid_seq; Type: SEQUENCE SET; Schema: public; Owner: tk_admin
 --
 
-SELECT pg_catalog.setval('menu_links_mlid_seq', 316, true);
+SELECT pg_catalog.setval('menu_links_mlid_seq', 317, true);
 
 
 --
@@ -26788,6 +26530,41 @@ SELECT pg_catalog.setval('menu_links_mlid_seq', 316, true);
 --
 
 COPY menu_router (path, load_functions, to_arg_functions, access_callback, access_arguments, page_callback, page_arguments, delivery_callback, fit, number_parts, context, tab_parent, tab_root, title, title_callback, title_arguments, theme_callback, theme_arguments, type, description, "position", weight, include_file) FROM stdin;
+node			user_access	a:1:{i:0;s:14:"access content";}	node_page_default	a:0:{}		1	1	0		node		t			a:0:{}	0			0	
+rss.xml			user_access	a:1:{i:0;s:14:"access content";}	node_feed	a:2:{i:0;b:0;i:1;a:0:{}}		1	1	0		rss.xml	RSS feed	t			a:0:{}	0			0	
+batch			1	a:0:{}	system_batch_page	a:0:{}		1	1	0		batch		t		_system_batch_theme	a:0:{}	0			0	modules/system/system.admin.inc
+admin			user_access	a:1:{i:0;s:27:"access administration pages";}	system_admin_menu_block_page	a:0:{}		1	1	0		admin	Administration	t			a:0:{}	6			9	modules/system/system.admin.inc
+user			1	a:0:{}	user_page	a:0:{}		1	1	0		user	User account	user_menu_title			a:0:{}	6			-10	modules/user/user.pages.inc
+service-classes			views_access	a:1:{i:0;a:2:{i:0;s:16:"views_check_perm";i:1;a:1:{i:0;s:14:"access content";}}}	views_page	a:2:{i:0;s:15:"service_classes";i:1;s:4:"page";}		1	1	0		service-classes		t			a:0:{}	0			0	
+all-services			views_access	a:1:{i:0;a:2:{i:0;s:16:"views_check_perm";i:1;a:1:{i:0;s:14:"access content";}}}	views_page	a:2:{i:0;s:12:"all_services";i:1;s:4:"page";}		1	1	0		all-services	A-Å	t			a:0:{}	6			10	
+admin/tasks			user_access	a:1:{i:0;s:27:"access administration pages";}	system_admin_menu_block_page	a:0:{}		3	2	1	admin	admin	Tasks	t			a:0:{}	140			-20	modules/system/system.admin.inc
+l10n_client/save			0	a:0:{}	l10n_update_client_save_string	a:0:{}		3	2	0		l10n_client/save		t			a:0:{}	6			0	
+user/login			user_is_anonymous	a:0:{}	user_page	a:0:{}		3	2	1	user	user	Log in	t			a:0:{}	140			0	modules/user/user.pages.inc
+admin_menu/flush-cache			user_access	a:1:{i:0;s:12:"flush caches";}	admin_menu_flush_cache	a:0:{}		3	2	0		admin_menu/flush-cache		t			a:0:{}	0			0	sites/all/modules/admin_menu/admin_menu.inc
+admin_menu/toggle-modules			user_access	a:1:{i:0;s:18:"administer modules";}	admin_menu_toggle_modules	a:0:{}		3	2	0		admin_menu/toggle-modules		t			a:0:{}	0			0	sites/all/modules/admin_menu/admin_menu.inc
+node/add			_node_add_access	a:0:{}	node_add_page	a:0:{}		3	2	0		node/add	Add content	t			a:0:{}	6			0	modules/node/node.pages.inc
+taxonomy/autocomplete			user_access	a:1:{i:0;s:14:"access content";}	taxonomy_autocomplete	a:0:{}		3	2	0		taxonomy/autocomplete	Autocomplete taxonomy	t			a:0:{}	0			0	modules/taxonomy/taxonomy.pages.inc
+admin/compact			user_access	a:1:{i:0;s:27:"access administration pages";}	system_admin_compact_page	a:0:{}		3	2	0		admin/compact	Compact mode	t			a:0:{}	0			0	modules/system/system.admin.inc
+filter/tips			1	a:0:{}	filter_tips_long	a:0:{}		3	2	0		filter/tips	Compose tips	t			a:0:{}	20			0	modules/filter/filter.pages.inc
+user/register			user_register_access	a:0:{}	drupal_get_form	a:1:{i:0;s:18:"user_register_form";}		3	2	1	user	user	Create new account	t			a:0:{}	132			0	
+system/files			1	a:0:{}	file_download	a:1:{i:0;s:7:"private";}		3	2	0		system/files	File download	t			a:0:{}	0			0	
+admin/index			user_access	a:1:{i:0;s:27:"access administration pages";}	system_admin_index	a:0:{}		3	2	1	admin	admin	Index	t			a:0:{}	132			-18	modules/system/system.admin.inc
+user/ldaphelp			ldap_authentication_show_ldap_help_link	a:0:{}	drupal_goto	a:1:{i:0;s:20:"https://sebra.uib.no";}		3	2	1	user	user	Sebra	t			a:0:{}	132			0	
+system/temporary			1	a:0:{}	file_download	a:1:{i:0;s:9:"temporary";}		3	2	0		system/temporary	Temporary files	t			a:0:{}	0			0	
+system/timezone			1	a:0:{}	system_timezone	a:0:{}		3	2	0		system/timezone	Time zone	t			a:0:{}	0			0	modules/system/system.admin.inc
+admin/config			user_access	a:1:{i:0;s:27:"access administration pages";}	system_admin_config_page	a:0:{}		3	2	0		admin/config	Configuration	t			a:0:{}	6	Administer settings.		0	modules/system/system.admin.inc
+user/logout			user_is_logged_in	a:0:{}	user_logout	a:0:{}		3	2	0		user/logout	Log out	t			a:0:{}	6			10	modules/user/user.pages.inc
+user/password			ldap_authentication_show_reset_pwd	a:0:{}	drupal_get_form	a:1:{i:0;s:9:"user_pass";}		3	2	1	user	user	Request new password	t			a:0:{}	132			0	modules/user/user.pages.inc
+user/autocomplete			user_access	a:1:{i:0;s:20:"access user profiles";}	user_autocomplete	a:0:{}		3	2	0		user/autocomplete	User autocomplete	t			a:0:{}	0			0	modules/user/user.pages.inc
+admin/appearance			user_access	a:1:{i:0;s:17:"administer themes";}	system_themes_page	a:0:{}		3	2	0		admin/appearance	Appearance	t			a:0:{}	6	Select and configure your themes.	left	-6	modules/system/system.admin.inc
+admin/content			user_access	a:1:{i:0;s:23:"access content overview";}	drupal_get_form	a:1:{i:0;s:18:"node_admin_content";}		3	2	0		admin/content	Content	t			a:0:{}	6	Find and manage content.		-10	modules/node/node.admin.inc
+admin/modules			user_access	a:1:{i:0;s:18:"administer modules";}	drupal_get_form	a:1:{i:0;s:14:"system_modules";}		3	2	0		admin/modules	Modules	t			a:0:{}	6	Extend site functionality.		-2	modules/system/system.admin.inc
+admin/reports			user_access	a:1:{i:0;s:19:"access site reports";}	system_admin_menu_block_page	a:0:{}		3	2	0		admin/reports	Reports	t			a:0:{}	6	View reports, updates, and errors.	left	5	modules/system/system.admin.inc
+admin/structure			user_access	a:1:{i:0;s:27:"access administration pages";}	system_admin_menu_block_page	a:0:{}		3	2	0		admin/structure	Structure	t			a:0:{}	6	Administer blocks, content types, menus, etc.	right	-8	modules/system/system.admin.inc
+data/tk.csv			views_access	a:1:{i:0;a:2:{i:0;s:16:"views_check_perm";i:1;a:1:{i:0;s:14:"access content";}}}	views_page	a:2:{i:0;s:12:"all_services";i:1;s:19:"views_data_export_1";}		3	2	0		data/tk.csv		t			a:0:{}	0			0	
+system/ajax			1	a:0:{}	ajax_form_callback	a:0:{}	ajax_deliver	3	2	0		system/ajax	AHAH callback	t		ajax_base_page_theme	a:0:{}	0			0	includes/form.inc
+admin/people			user_access	a:1:{i:0;s:16:"administer users";}	user_admin	a:1:{i:0;s:4:"list";}		3	2	0		admin/people	People	t			a:0:{}	6	Manage user accounts, roles, and permissions.	left	-4	modules/user/user.admin.inc
+views/ajax			1	a:0:{}	views_ajax	a:0:{}	ajax_deliver	3	2	0		views/ajax	Views	t		ajax_base_page_theme	a:0:{}	0	Ajax callback for view loading.		0	sites/all/modules/views/includes/ajax.inc
 node/%	a:1:{i:1;s:9:"node_load";}		node_access	a:2:{i:0;s:4:"view";i:1;i:1;}	node_page_view	a:1:{i:0;i:1;}		2	2	0		node/%		node_page_title	a:1:{i:0;i:1;}		a:0:{}	6			0	
 user/%	a:1:{i:1;s:9:"user_load";}		user_view_access	a:1:{i:0;i:1;}	user_view_page	a:1:{i:0;i:1;}		2	2	0		user/%	My account	user_page_title	a:1:{i:0;i:1;}		a:0:{}	6			0	
 admin/content/node			user_access	a:1:{i:0;s:23:"access content overview";}	drupal_get_form	a:1:{i:0;s:18:"node_admin_content";}		7	3	1	admin/content	admin/content	Content	t			a:0:{}	140			-10	modules/node/node.admin.inc
@@ -26845,41 +26622,6 @@ admin/structure/types/list			user_access	a:1:{i:0;s:24:"administer content types
 admin/structure/taxonomy/list			user_access	a:1:{i:0;s:19:"administer taxonomy";}	drupal_get_form	a:1:{i:0;s:30:"taxonomy_overview_vocabularies";}		15	4	1	admin/structure/taxonomy	admin/structure/taxonomy	List	t			a:0:{}	140			-10	modules/taxonomy/taxonomy.admin.inc
 admin/structure/menu/list			user_access	a:1:{i:0;s:15:"administer menu";}	menu_overview_page	a:0:{}		15	4	1	admin/structure/menu	admin/structure/menu	List menus	t			a:0:{}	140			-10	modules/menu/menu.admin.inc
 taxonomy/term/%/view	a:1:{i:2;s:18:"taxonomy_term_load";}		user_access	a:1:{i:0;s:14:"access content";}	taxonomy_term_page	a:1:{i:0;i:2;}		13	4	1	taxonomy/term/%	taxonomy/term/%	View	t			a:0:{}	140			0	modules/taxonomy/taxonomy.pages.inc
-views/ajax			1	a:0:{}	views_ajax	a:0:{}	ajax_deliver	3	2	0		views/ajax	Views	t		ajax_base_page_theme	a:0:{}	0	Ajax callback for view loading.		0	sites/all/modules/views/includes/ajax.inc
-node			user_access	a:1:{i:0;s:14:"access content";}	node_page_default	a:0:{}		1	1	0		node		t			a:0:{}	0			0	
-rss.xml			user_access	a:1:{i:0;s:14:"access content";}	node_feed	a:2:{i:0;b:0;i:1;a:0:{}}		1	1	0		rss.xml	RSS feed	t			a:0:{}	0			0	
-batch			1	a:0:{}	system_batch_page	a:0:{}		1	1	0		batch		t		_system_batch_theme	a:0:{}	0			0	modules/system/system.admin.inc
-admin			user_access	a:1:{i:0;s:27:"access administration pages";}	system_admin_menu_block_page	a:0:{}		1	1	0		admin	Administration	t			a:0:{}	6			9	modules/system/system.admin.inc
-user			1	a:0:{}	user_page	a:0:{}		1	1	0		user	User account	user_menu_title			a:0:{}	6			-10	modules/user/user.pages.inc
-service-classes			views_access	a:1:{i:0;a:2:{i:0;s:16:"views_check_perm";i:1;a:1:{i:0;s:14:"access content";}}}	views_page	a:2:{i:0;s:15:"service_classes";i:1;s:4:"page";}		1	1	0		service-classes		t			a:0:{}	0			0	
-all-services			views_access	a:1:{i:0;a:2:{i:0;s:16:"views_check_perm";i:1;a:1:{i:0;s:14:"access content";}}}	views_page	a:2:{i:0;s:12:"all_services";i:1;s:4:"page";}		1	1	0		all-services	A-Å	t			a:0:{}	6			10	
-admin/tasks			user_access	a:1:{i:0;s:27:"access administration pages";}	system_admin_menu_block_page	a:0:{}		3	2	1	admin	admin	Tasks	t			a:0:{}	140			-20	modules/system/system.admin.inc
-l10n_client/save			0	a:0:{}	l10n_update_client_save_string	a:0:{}		3	2	0		l10n_client/save		t			a:0:{}	6			0	
-user/login			user_is_anonymous	a:0:{}	user_page	a:0:{}		3	2	1	user	user	Log in	t			a:0:{}	140			0	modules/user/user.pages.inc
-admin_menu/flush-cache			user_access	a:1:{i:0;s:12:"flush caches";}	admin_menu_flush_cache	a:0:{}		3	2	0		admin_menu/flush-cache		t			a:0:{}	0			0	sites/all/modules/admin_menu/admin_menu.inc
-admin_menu/toggle-modules			user_access	a:1:{i:0;s:18:"administer modules";}	admin_menu_toggle_modules	a:0:{}		3	2	0		admin_menu/toggle-modules		t			a:0:{}	0			0	sites/all/modules/admin_menu/admin_menu.inc
-node/add			_node_add_access	a:0:{}	node_add_page	a:0:{}		3	2	0		node/add	Add content	t			a:0:{}	6			0	modules/node/node.pages.inc
-taxonomy/autocomplete			user_access	a:1:{i:0;s:14:"access content";}	taxonomy_autocomplete	a:0:{}		3	2	0		taxonomy/autocomplete	Autocomplete taxonomy	t			a:0:{}	0			0	modules/taxonomy/taxonomy.pages.inc
-admin/compact			user_access	a:1:{i:0;s:27:"access administration pages";}	system_admin_compact_page	a:0:{}		3	2	0		admin/compact	Compact mode	t			a:0:{}	0			0	modules/system/system.admin.inc
-filter/tips			1	a:0:{}	filter_tips_long	a:0:{}		3	2	0		filter/tips	Compose tips	t			a:0:{}	20			0	modules/filter/filter.pages.inc
-user/register			user_register_access	a:0:{}	drupal_get_form	a:1:{i:0;s:18:"user_register_form";}		3	2	1	user	user	Create new account	t			a:0:{}	132			0	
-system/files			1	a:0:{}	file_download	a:1:{i:0;s:7:"private";}		3	2	0		system/files	File download	t			a:0:{}	0			0	
-admin/index			user_access	a:1:{i:0;s:27:"access administration pages";}	system_admin_index	a:0:{}		3	2	1	admin	admin	Index	t			a:0:{}	132			-18	modules/system/system.admin.inc
-user/ldaphelp			ldap_authentication_show_ldap_help_link	a:0:{}	drupal_goto	a:1:{i:0;s:20:"https://sebra.uib.no";}		3	2	1	user	user	Sebra	t			a:0:{}	132			0	
-system/temporary			1	a:0:{}	file_download	a:1:{i:0;s:9:"temporary";}		3	2	0		system/temporary	Temporary files	t			a:0:{}	0			0	
-system/timezone			1	a:0:{}	system_timezone	a:0:{}		3	2	0		system/timezone	Time zone	t			a:0:{}	0			0	modules/system/system.admin.inc
-admin/config			user_access	a:1:{i:0;s:27:"access administration pages";}	system_admin_config_page	a:0:{}		3	2	0		admin/config	Configuration	t			a:0:{}	6	Administer settings.		0	modules/system/system.admin.inc
-user/logout			user_is_logged_in	a:0:{}	user_logout	a:0:{}		3	2	0		user/logout	Log out	t			a:0:{}	6			10	modules/user/user.pages.inc
-user/password			ldap_authentication_show_reset_pwd	a:0:{}	drupal_get_form	a:1:{i:0;s:9:"user_pass";}		3	2	1	user	user	Request new password	t			a:0:{}	132			0	modules/user/user.pages.inc
-user/autocomplete			user_access	a:1:{i:0;s:20:"access user profiles";}	user_autocomplete	a:0:{}		3	2	0		user/autocomplete	User autocomplete	t			a:0:{}	0			0	modules/user/user.pages.inc
-admin/appearance			user_access	a:1:{i:0;s:17:"administer themes";}	system_themes_page	a:0:{}		3	2	0		admin/appearance	Appearance	t			a:0:{}	6	Select and configure your themes.	left	-6	modules/system/system.admin.inc
-admin/content			user_access	a:1:{i:0;s:23:"access content overview";}	drupal_get_form	a:1:{i:0;s:18:"node_admin_content";}		3	2	0		admin/content	Content	t			a:0:{}	6	Find and manage content.		-10	modules/node/node.admin.inc
-admin/modules			user_access	a:1:{i:0;s:18:"administer modules";}	drupal_get_form	a:1:{i:0;s:14:"system_modules";}		3	2	0		admin/modules	Modules	t			a:0:{}	6	Extend site functionality.		-2	modules/system/system.admin.inc
-admin/reports			user_access	a:1:{i:0;s:19:"access site reports";}	system_admin_menu_block_page	a:0:{}		3	2	0		admin/reports	Reports	t			a:0:{}	6	View reports, updates, and errors.	left	5	modules/system/system.admin.inc
-admin/structure			user_access	a:1:{i:0;s:27:"access administration pages";}	system_admin_menu_block_page	a:0:{}		3	2	0		admin/structure	Structure	t			a:0:{}	6	Administer blocks, content types, menus, etc.	right	-8	modules/system/system.admin.inc
-data/tk.csv			views_access	a:1:{i:0;a:2:{i:0;s:16:"views_check_perm";i:1;a:1:{i:0;s:14:"access content";}}}	views_page	a:2:{i:0;s:12:"all_services";i:1;s:19:"views_data_export_1";}		3	2	0		data/tk.csv		t			a:0:{}	0			0	
-system/ajax			1	a:0:{}	ajax_form_callback	a:0:{}	ajax_deliver	3	2	0		system/ajax	AHAH callback	t		ajax_base_page_theme	a:0:{}	0			0	includes/form.inc
-admin/people			user_access	a:1:{i:0;s:16:"administer users";}	user_admin	a:1:{i:0;s:4:"list";}		3	2	0		admin/people	People	t			a:0:{}	6	Manage user accounts, roles, and permissions.	left	-4	modules/user/user.admin.inc
 user/%/edit/account	a:1:{i:1;a:1:{s:18:"user_category_load";a:2:{i:0;s:4:"%map";i:1;s:6:"%index";}}}		user_edit_access	a:1:{i:0;i:1;}	drupal_get_form	a:2:{i:0;s:17:"user_profile_form";i:1;i:1;}		11	4	1	user/%/edit	user/%	Account	t			a:0:{}	140			0	modules/user/user.pages.inc
 admin/modules/list/confirm			user_access	a:1:{i:0;s:18:"administer modules";}	drupal_get_form	a:1:{i:0;s:14:"system_modules";}		15	4	0		admin/modules/list/confirm	List	t			a:0:{}	4			0	modules/system/system.admin.inc
 admin/people/permissions/list			user_access	a:1:{i:0;s:22:"administer permissions";}	drupal_get_form	a:1:{i:0;s:22:"user_admin_permissions";}		15	4	1	admin/people/permissions	admin/people	Permissions	t			a:0:{}	140	Determine access to features by selecting permissions for roles.		-8	modules/user/user.admin.inc
@@ -26909,9 +26651,6 @@ admin/appearance/settings/seven			_system_themes_access	a:1:{i:0;O:8:"stdClass":
 admin/appearance/settings/stark			_system_themes_access	a:1:{i:0;O:8:"stdClass":12:{s:8:"filename";s:23:"themes/stark/stark.info";s:4:"name";s:5:"stark";s:4:"type";s:5:"theme";s:5:"owner";s:45:"themes/engines/phptemplate/phptemplate.engine";s:6:"status";s:1:"0";s:9:"bootstrap";s:1:"0";s:14:"schema_version";s:2:"-1";s:6:"weight";s:1:"0";s:4:"info";a:14:{s:4:"name";s:5:"Stark";s:11:"description";s:208:"This theme demonstrates Drupal's default HTML markup and CSS styles. To learn how to build your own theme and override Drupal's default code, see the <a href="http://drupal.org/theme-guide">Theming Guide</a>.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:10:"layout.css";s:23:"themes/stark/layout.css";}}s:6:"engine";s:11:"phptemplate";s:7:"regions";a:9:{s:13:"sidebar_first";s:12:"Left sidebar";s:14:"sidebar_second";s:13:"Right sidebar";s:7:"content";s:7:"Content";s:6:"header";s:6:"Header";s:6:"footer";s:6:"Footer";s:11:"highlighted";s:11:"Highlighted";s:4:"help";s:4:"Help";s:8:"page_top";s:8:"Page top";s:11:"page_bottom";s:11:"Page bottom";}s:8:"features";a:9:{i:0;s:4:"logo";i:1;s:7:"favicon";i:2;s:4:"name";i:3;s:6:"slogan";i:4;s:17:"node_user_picture";i:5;s:20:"comment_user_picture";i:6;s:25:"comment_user_verification";i:7;s:9:"main_menu";i:8;s:14:"secondary_menu";}s:10:"screenshot";s:27:"themes/stark/screenshot.png";s:3:"php";s:5:"5.2.4";s:7:"scripts";a:0:{}s:14:"regions_hidden";a:2:{i:0;s:8:"page_top";i:1;s:11:"page_bottom";}s:28:"overlay_supplemental_regions";a:1:{i:0;s:11:"page_bottom";}}s:6:"prefix";s:11:"phptemplate";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:10:"layout.css";s:23:"themes/stark/layout.css";}}s:6:"engine";s:11:"phptemplate";}}	drupal_get_form	a:2:{i:0;s:21:"system_theme_settings";i:1;s:5:"stark";}		15	4	1	admin/appearance/settings	admin/appearance	Stark	t			a:0:{}	132			0	modules/system/system.admin.inc
 admin/config/regional/translate			user_access	a:1:{i:0;s:19:"translate interface";}	locale_translate_overview_screen	a:0:{}		15	4	0		admin/config/regional/translate	Translate interface	t			a:0:{}	6	Translate the built in interface and optionally other text.		-5	modules/locale/locale.admin.inc
 admin/appearance/settings/uib_tk			_system_themes_access	a:1:{i:0;O:8:"stdClass":14:{s:8:"filename";s:39:"sites/all/themes/uib/uib_tk/uib_tk.info";s:4:"name";s:6:"uib_tk";s:4:"type";s:5:"theme";s:5:"owner";s:45:"themes/engines/phptemplate/phptemplate.engine";s:6:"status";s:1:"1";s:9:"bootstrap";s:1:"0";s:14:"schema_version";s:2:"-1";s:6:"weight";s:1:"0";s:4:"info";a:14:{s:10:"screenshot";s:42:"sites/all/themes/uib/uib_tk/screenshot.png";s:4:"name";s:6:"UiB TK";s:11:"description";s:95:"Theme for an application exposing the services of the IT-department at the University of Bergen";s:4:"core";s:3:"7.x";s:10:"base theme";s:3:"zen";s:11:"stylesheets";a:1:{s:3:"all";a:4:{s:16:"system.menus.css";s:44:"sites/all/themes/uib/uib_tk/system.menus.css";s:19:"system.messages.css";s:47:"sites/all/themes/uib/uib_tk/system.messages.css";s:16:"system.theme.css";s:44:"sites/all/themes/uib/uib_tk/system.theme.css";s:14:"css/styles.css";s:42:"sites/all/themes/uib/uib_tk/css/styles.css";}}s:7:"regions";a:11:{s:6:"header";s:6:"Header";s:10:"navigation";s:14:"Navigation bar";s:11:"highlighted";s:11:"Highlighted";s:4:"help";s:4:"Help";s:7:"content";s:7:"Content";s:13:"sidebar_first";s:13:"First sidebar";s:14:"sidebar_second";s:14:"Second sidebar";s:6:"footer";s:6:"Footer";s:6:"bottom";s:11:"Page bottom";s:8:"page_top";s:8:"Page top";s:11:"page_bottom";s:11:"Page bottom";}s:8:"features";a:8:{i:0;s:4:"logo";i:1;s:4:"name";i:2;s:6:"slogan";i:3;s:17:"node_user_picture";i:4;s:20:"comment_user_picture";i:5;s:7:"favicon";i:6;s:9:"main_menu";i:7;s:14:"secondary_menu";}s:8:"settings";a:10:{s:14:"zen_breadcrumb";s:3:"yes";s:24:"zen_breadcrumb_separator";s:5:" \\342\\200\\272 ";s:19:"zen_breadcrumb_home";s:1:"1";s:23:"zen_breadcrumb_trailing";s:1:"0";s:20:"zen_breadcrumb_title";s:1:"0";s:20:"zen_skip_link_anchor";s:9:"main-menu";s:18:"zen_skip_link_text";s:18:"Jump to navigation";s:22:"zen_html5_respond_meta";a:3:{i:0;s:7:"respond";i:1;s:5:"html5";i:2;s:4:"meta";}s:20:"zen_rebuild_registry";s:1:"1";s:14:"zen_wireframes";s:1:"0";}s:6:"engine";s:11:"phptemplate";s:3:"php";s:5:"5.2.4";s:7:"scripts";a:0:{}s:14:"regions_hidden";a:2:{i:0;s:8:"page_top";i:1;s:11:"page_bottom";}s:28:"overlay_supplemental_regions";a:1:{i:0;s:11:"page_bottom";}}s:11:"base_themes";a:1:{s:3:"zen";s:3:"Zen";}s:6:"prefix";s:11:"phptemplate";s:11:"stylesheets";a:1:{s:3:"all";a:4:{s:16:"system.menus.css";s:44:"sites/all/themes/uib/uib_tk/system.menus.css";s:19:"system.messages.css";s:47:"sites/all/themes/uib/uib_tk/system.messages.css";s:16:"system.theme.css";s:44:"sites/all/themes/uib/uib_tk/system.theme.css";s:14:"css/styles.css";s:42:"sites/all/themes/uib/uib_tk/css/styles.css";}}s:6:"engine";s:11:"phptemplate";s:10:"base_theme";s:3:"zen";}}	drupal_get_form	a:2:{i:0;s:21:"system_theme_settings";i:1;s:6:"uib_tk";}		15	4	1	admin/appearance/settings	admin/appearance	UiB TK	t			a:0:{}	132			0	modules/system/system.admin.inc
-admin/config/regional/settings			user_access	a:1:{i:0;s:29:"administer site configuration";}	drupal_get_form	a:1:{i:0;s:24:"system_regional_settings";}		15	4	0		admin/config/regional/settings	Regional settings	t			a:0:{}	6	Settings for the site's default time zone and country.		-20	modules/system/system.admin.inc
-admin/people/permissions/roles			user_access	a:1:{i:0;s:22:"administer permissions";}	drupal_get_form	a:1:{i:0;s:16:"user_admin_roles";}		15	4	1	admin/people/permissions	admin/people	Roles	t			a:0:{}	132	List, edit, or add user roles.		-5	modules/user/user.admin.inc
-admin/structure/views/settings			user_access	a:1:{i:0;s:16:"administer views";}	drupal_get_form	a:1:{i:0;s:29:"views_ui_admin_settings_basic";}		15	4	1	admin/structure/views	admin/structure/views	Settings	t			a:0:{}	132			0	sites/all/modules/views/includes/admin.inc
 admin/appearance/settings/zen			_system_themes_access	a:1:{i:0;O:8:"stdClass":13:{s:8:"filename";s:29:"sites/all/themes/zen/zen.info";s:4:"name";s:3:"zen";s:4:"type";s:5:"theme";s:5:"owner";s:45:"themes/engines/phptemplate/phptemplate.engine";s:6:"status";s:1:"0";s:9:"bootstrap";s:1:"0";s:14:"schema_version";s:2:"-1";s:6:"weight";s:1:"0";s:4:"info";a:17:{s:4:"name";s:3:"Zen";s:11:"description";s:195:"Zen sub-themes are the ultimate starting themes for Drupal 7. Read the <a href="https://drupal.org/node/873778">online docs</a> or the included README-FIRST.txt on how to create a theme with Zen.";s:10:"screenshot";s:49:"sites/all/themes/zen/zen-internals/screenshot.png";s:4:"core";s:3:"7.x";s:6:"engine";s:11:"phptemplate";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:16:"system.menus.css";s:37:"sites/all/themes/zen/system.menus.css";}}s:7:"regions";a:11:{s:6:"header";s:6:"Header";s:10:"navigation";s:14:"Navigation bar";s:11:"highlighted";s:11:"Highlighted";s:4:"help";s:4:"Help";s:7:"content";s:7:"Content";s:13:"sidebar_first";s:13:"First sidebar";s:14:"sidebar_second";s:14:"Second sidebar";s:6:"footer";s:6:"Footer";s:6:"bottom";s:11:"Page bottom";s:8:"page_top";s:8:"Page top";s:11:"page_bottom";s:11:"Page bottom";}s:8:"settings";a:11:{s:14:"zen_breadcrumb";s:3:"yes";s:24:"zen_breadcrumb_separator";s:5:" \\342\\200\\272 ";s:19:"zen_breadcrumb_home";s:1:"1";s:23:"zen_breadcrumb_trailing";s:1:"0";s:20:"zen_breadcrumb_title";s:1:"0";s:10:"zen_layout";s:23:"zen-responsive-sidebars";s:20:"zen_skip_link_anchor";s:9:"main-menu";s:18:"zen_skip_link_text";s:18:"Jump to navigation";s:22:"zen_html5_respond_meta";a:3:{i:0;s:7:"respond";i:1;s:5:"html5";i:2;s:4:"meta";}s:20:"zen_rebuild_registry";s:1:"0";s:14:"zen_wireframes";s:1:"0";}s:7:"plugins";a:1:{s:6:"panels";a:1:{s:7:"layouts";s:14:"panels-layouts";}}s:7:"version";s:7:"7.x-5.4";s:7:"project";s:3:"zen";s:9:"datestamp";s:10:"1377107504";s:8:"features";a:9:{i:0;s:4:"logo";i:1;s:7:"favicon";i:2;s:4:"name";i:3;s:6:"slogan";i:4;s:17:"node_user_picture";i:5;s:20:"comment_user_picture";i:6;s:25:"comment_user_verification";i:7;s:9:"main_menu";i:8;s:14:"secondary_menu";}s:3:"php";s:5:"5.2.4";s:7:"scripts";a:0:{}s:14:"regions_hidden";a:2:{i:0;s:8:"page_top";i:1;s:11:"page_bottom";}s:28:"overlay_supplemental_regions";a:1:{i:0;s:11:"page_bottom";}}s:10:"sub_themes";a:1:{s:6:"uib_tk";s:6:"UiB TK";}s:6:"prefix";s:11:"phptemplate";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:16:"system.menus.css";s:37:"sites/all/themes/zen/system.menus.css";}}s:6:"engine";s:11:"phptemplate";}}	drupal_get_form	a:2:{i:0;s:21:"system_theme_settings";i:1;s:3:"zen";}		15	4	1	admin/appearance/settings	admin/appearance	Zen	t			a:0:{}	132			0	modules/system/system.admin.inc
 admin/config/people/accounts			user_access	a:1:{i:0;s:16:"administer users";}	drupal_get_form	a:1:{i:0;s:19:"user_admin_settings";}		15	4	0		admin/config/people/accounts	Account settings	t			a:0:{}	6	Configure default behavior of users, including registration requirements, e-mails, fields, and user pictures.		-10	modules/user/user.admin.inc
 admin/config/administration/admin_menu			user_access	a:1:{i:0;s:29:"administer site configuration";}	drupal_get_form	a:1:{i:0;s:25:"admin_menu_theme_settings";}		15	4	0		admin/config/administration/admin_menu	Administration menu	t			a:0:{}	6	Adjust administration menu settings.		0	sites/all/modules/admin_menu/admin_menu.inc
@@ -26930,7 +26669,9 @@ admin/config/development/maintenance			user_access	a:1:{i:0;s:29:"administer sit
 admin/config/user-interface/modulefilter			user_access	a:1:{i:0;s:24:"administer module filter";}	drupal_get_form	a:1:{i:0;s:22:"module_filter_settings";}		15	4	0		admin/config/user-interface/modulefilter	Module filter	t			a:0:{}	6	Configure how the modules page looks and acts.		0	sites/all/modules/module_filter/module_filter.admin.inc
 admin/config/development/performance			user_access	a:1:{i:0;s:29:"administer site configuration";}	drupal_get_form	a:1:{i:0;s:27:"system_performance_settings";}		15	4	0		admin/config/development/performance	Performance	t			a:0:{}	6	Enable or disable page caching for anonymous users and set CSS and JS bandwidth optimization options.		-20	modules/system/system.admin.inc
 admin/config/services/rss-publishing			user_access	a:1:{i:0;s:29:"administer site configuration";}	drupal_get_form	a:1:{i:0;s:25:"system_rss_feeds_settings";}		15	4	0		admin/config/services/rss-publishing	RSS publishing	t			a:0:{}	6	Configure the site description, the number of items per feed and whether feeds should be titles/teasers/full-text.		0	modules/system/system.admin.inc
-admin/config/system/actions/orphan			user_access	a:1:{i:0;s:18:"administer actions";}	system_actions_remove_orphans	a:0:{}		31	5	0		admin/config/system/actions/orphan	Remove orphans	t			a:0:{}	0			0	modules/system/system.admin.inc
+admin/config/regional/settings			user_access	a:1:{i:0;s:29:"administer site configuration";}	drupal_get_form	a:1:{i:0;s:24:"system_regional_settings";}		15	4	0		admin/config/regional/settings	Regional settings	t			a:0:{}	6	Settings for the site's default time zone and country.		-20	modules/system/system.admin.inc
+admin/people/permissions/roles			user_access	a:1:{i:0;s:22:"administer permissions";}	drupal_get_form	a:1:{i:0;s:16:"user_admin_roles";}		15	4	1	admin/people/permissions	admin/people	Roles	t			a:0:{}	132	List, edit, or add user roles.		-5	modules/user/user.admin.inc
+admin/structure/views/settings			user_access	a:1:{i:0;s:16:"administer views";}	drupal_get_form	a:1:{i:0;s:29:"views_ui_admin_settings_basic";}		15	4	1	admin/structure/views	admin/structure/views	Settings	t			a:0:{}	132			0	sites/all/modules/views/includes/admin.inc
 admin/config/system/site-information			user_access	a:1:{i:0;s:29:"administer site configuration";}	drupal_get_form	a:1:{i:0;s:32:"system_site_information_settings";}		15	4	0		admin/config/system/site-information	Site information	t			a:0:{}	6	Change site name, e-mail address, slogan, default front page, and number of posts per page, error pages.		-20	modules/system/system.admin.inc
 admin/config/content/formats			user_access	a:1:{i:0;s:18:"administer filters";}	drupal_get_form	a:1:{i:0;s:21:"filter_admin_overview";}		15	4	0		admin/config/content/formats	Text formats	t			a:0:{}	6	Configure how content input by users is filtered, including allowed HTML tags. Also allows enabling of module-provided filters.		0	modules/filter/filter.admin.inc
 admin/reports/fields/views-fields			user_access	a:1:{i:0;s:16:"administer views";}	views_ui_field_list	a:0:{}		15	4	1	admin/reports/fields	admin/reports/fields	Used in views	t			a:0:{}	132	Overview of fields used in all views.		0	sites/all/modules/views/includes/admin.inc
@@ -26955,6 +26696,7 @@ admin/config/regional/language/add			user_access	a:1:{i:0;s:20:"administer langu
 admin/config/content/formats/add			user_access	a:1:{i:0;s:18:"administer filters";}	filter_admin_format_page	a:0:{}		31	5	1	admin/config/content/formats	admin/config/content/formats	Add text format	t			a:0:{}	388			1	modules/filter/filter.admin.inc
 admin/config/regional/translate/export			user_access	a:1:{i:0;s:19:"translate interface";}	locale_translate_export_screen	a:0:{}		31	5	1	admin/config/regional/translate	admin/config/regional/translate	Export	t			a:0:{}	132			30	modules/locale/locale.admin.inc
 admin/config/system/actions/manage			user_access	a:1:{i:0;s:18:"administer actions";}	system_actions_manage	a:0:{}		31	5	1	admin/config/system/actions	admin/config/system/actions	Manage actions	t			a:0:{}	140	Manage the actions defined for your site.		-2	modules/system/system.admin.inc
+admin/config/system/actions/orphan			user_access	a:1:{i:0;s:18:"administer actions";}	system_actions_remove_orphans	a:0:{}		31	5	0		admin/config/system/actions/orphan	Remove orphans	t			a:0:{}	0			0	modules/system/system.admin.inc
 admin/config/regional/translate/translate			user_access	a:1:{i:0;s:19:"translate interface";}	locale_translate_seek_screen	a:0:{}		31	5	1	admin/config/regional/translate	admin/config/regional/translate	Translate	t			a:0:{}	132			10	modules/locale/locale.admin.inc
 admin/structure/features/%/view	a:1:{i:3;a:1:{s:12:"feature_load";a:2:{i:0;i:3;i:1;b:1;}}}		user_access	a:1:{i:0;s:19:"administer features";}	drupal_get_form	a:2:{i:0;s:25:"features_admin_components";i:1;i:3;}		29	5	1	admin/structure/features/%	admin/structure/features/%	View	t			a:0:{}	140	Display components of a feature.		-10	sites/all/modules/features/features.admin.inc
 ctools/context/ajax/access/add			user_access	a:1:{i:0;s:14:"access content";}	ctools_access_ajax_add	a:0:{}		31	5	0		ctools/context/ajax/access/add		t		ajax_base_page_theme	a:0:{}	0			0	sites/all/modules/ctools/includes/context-access-admin.inc
@@ -26979,7 +26721,6 @@ admin/config/regional/date-time/locale			user_access	a:1:{i:0;s:29:"administer s
 user/reset/%/%/%	a:3:{i:2;N;i:3;N;i:4;N;}		1	a:0:{}	drupal_get_form	a:4:{i:0;s:15:"user_pass_reset";i:1;i:2;i:2;i:3;i:3;i:4;}		24	5	0		user/reset/%/%/%	Reset password	t			a:0:{}	0			0	modules/user/user.pages.inc
 admin/structure/block/list/seven			_block_themes_access	a:1:{i:0;O:8:"stdClass":12:{s:8:"filename";s:23:"themes/seven/seven.info";s:4:"name";s:5:"seven";s:4:"type";s:5:"theme";s:5:"owner";s:45:"themes/engines/phptemplate/phptemplate.engine";s:6:"status";s:1:"0";s:9:"bootstrap";s:1:"0";s:14:"schema_version";s:2:"-1";s:6:"weight";s:1:"0";s:4:"info";a:15:{s:4:"name";s:5:"Seven";s:11:"description";s:65:"A simple one-column, tableless, fluid width administration theme.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:11:"stylesheets";a:1:{s:6:"screen";a:2:{s:9:"reset.css";s:22:"themes/seven/reset.css";s:9:"style.css";s:22:"themes/seven/style.css";}}s:8:"settings";a:1:{s:20:"shortcut_module_link";s:1:"1";}s:7:"regions";a:5:{s:7:"content";s:7:"Content";s:4:"help";s:4:"Help";s:8:"page_top";s:8:"Page top";s:11:"page_bottom";s:11:"Page bottom";s:13:"sidebar_first";s:13:"First sidebar";}s:14:"regions_hidden";a:3:{i:0;s:13:"sidebar_first";i:1;s:8:"page_top";i:2;s:11:"page_bottom";}s:6:"engine";s:11:"phptemplate";s:8:"features";a:9:{i:0;s:4:"logo";i:1;s:7:"favicon";i:2;s:4:"name";i:3;s:6:"slogan";i:4;s:17:"node_user_picture";i:5;s:20:"comment_user_picture";i:6;s:25:"comment_user_verification";i:7;s:9:"main_menu";i:8;s:14:"secondary_menu";}s:10:"screenshot";s:27:"themes/seven/screenshot.png";s:3:"php";s:5:"5.2.4";s:7:"scripts";a:0:{}s:28:"overlay_supplemental_regions";a:1:{i:0;s:11:"page_bottom";}}s:6:"prefix";s:11:"phptemplate";s:11:"stylesheets";a:1:{s:6:"screen";a:2:{s:9:"reset.css";s:22:"themes/seven/reset.css";s:9:"style.css";s:22:"themes/seven/style.css";}}s:6:"engine";s:11:"phptemplate";}}	block_admin_display	a:1:{i:0;s:5:"seven";}		31	5	1	admin/structure/block	admin/structure/block	Seven	t			a:0:{}	132			0	modules/block/block.admin.inc
 admin/config/regional/translate/update			user_access	a:1:{i:0;s:19:"translate interface";}	l10n_update_admin_overview	a:0:{}		31	5	1	admin/config/regional/translate	admin/config/regional/translate	Update	t			a:0:{}	132	Available updates		20	sites/all/modules/l10n_update/l10n_update.admin.inc
-admin/structure/block/demo/bartik			_block_themes_access	a:1:{i:0;O:8:"stdClass":12:{s:8:"filename";s:25:"themes/bartik/bartik.info";s:4:"name";s:6:"bartik";s:4:"type";s:5:"theme";s:5:"owner";s:45:"themes/engines/phptemplate/phptemplate.engine";s:6:"status";s:1:"0";s:9:"bootstrap";s:1:"0";s:14:"schema_version";s:2:"-1";s:6:"weight";s:1:"0";s:4:"info";a:15:{s:4:"name";s:6:"Bartik";s:11:"description";s:48:"A flexible, recolorable theme with many regions.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:11:"stylesheets";a:2:{s:3:"all";a:3:{s:14:"css/layout.css";s:28:"themes/bartik/css/layout.css";s:13:"css/style.css";s:27:"themes/bartik/css/style.css";s:14:"css/colors.css";s:28:"themes/bartik/css/colors.css";}s:5:"print";a:1:{s:13:"css/print.css";s:27:"themes/bartik/css/print.css";}}s:7:"regions";a:17:{s:6:"header";s:6:"Header";s:4:"help";s:4:"Help";s:8:"page_top";s:8:"Page top";s:11:"page_bottom";s:11:"Page bottom";s:11:"highlighted";s:11:"Highlighted";s:8:"featured";s:8:"Featured";s:7:"content";s:7:"Content";s:13:"sidebar_first";s:13:"Sidebar first";s:14:"sidebar_second";s:14:"Sidebar second";s:14:"triptych_first";s:14:"Triptych first";s:15:"triptych_middle";s:15:"Triptych middle";s:13:"triptych_last";s:13:"Triptych last";s:18:"footer_firstcolumn";s:19:"Footer first column";s:19:"footer_secondcolumn";s:20:"Footer second column";s:18:"footer_thirdcolumn";s:19:"Footer third column";s:19:"footer_fourthcolumn";s:20:"Footer fourth column";s:6:"footer";s:6:"Footer";}s:8:"settings";a:1:{s:20:"shortcut_module_link";s:1:"0";}s:6:"engine";s:11:"phptemplate";s:8:"features";a:9:{i:0;s:4:"logo";i:1;s:7:"favicon";i:2;s:4:"name";i:3;s:6:"slogan";i:4;s:17:"node_user_picture";i:5;s:20:"comment_user_picture";i:6;s:25:"comment_user_verification";i:7;s:9:"main_menu";i:8;s:14:"secondary_menu";}s:10:"screenshot";s:28:"themes/bartik/screenshot.png";s:3:"php";s:5:"5.2.4";s:7:"scripts";a:0:{}s:14:"regions_hidden";a:2:{i:0;s:8:"page_top";i:1;s:11:"page_bottom";}s:28:"overlay_supplemental_regions";a:1:{i:0;s:11:"page_bottom";}}s:6:"prefix";s:11:"phptemplate";s:11:"stylesheets";a:2:{s:3:"all";a:3:{s:14:"css/layout.css";s:28:"themes/bartik/css/layout.css";s:13:"css/style.css";s:27:"themes/bartik/css/style.css";s:14:"css/colors.css";s:28:"themes/bartik/css/colors.css";}s:5:"print";a:1:{s:13:"css/print.css";s:27:"themes/bartik/css/print.css";}}s:6:"engine";s:11:"phptemplate";}}	block_admin_demo	a:1:{i:0;s:6:"bartik";}		31	5	0		admin/structure/block/demo/bartik	Bartik	t		_block_custom_theme	a:1:{i:0;s:6:"bartik";}	0			0	modules/block/block.admin.inc
 admin/structure/block/list/zen			_block_themes_access	a:1:{i:0;O:8:"stdClass":13:{s:8:"filename";s:29:"sites/all/themes/zen/zen.info";s:4:"name";s:3:"zen";s:4:"type";s:5:"theme";s:5:"owner";s:45:"themes/engines/phptemplate/phptemplate.engine";s:6:"status";s:1:"0";s:9:"bootstrap";s:1:"0";s:14:"schema_version";s:2:"-1";s:6:"weight";s:1:"0";s:4:"info";a:17:{s:4:"name";s:3:"Zen";s:11:"description";s:195:"Zen sub-themes are the ultimate starting themes for Drupal 7. Read the <a href="https://drupal.org/node/873778">online docs</a> or the included README-FIRST.txt on how to create a theme with Zen.";s:10:"screenshot";s:49:"sites/all/themes/zen/zen-internals/screenshot.png";s:4:"core";s:3:"7.x";s:6:"engine";s:11:"phptemplate";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:16:"system.menus.css";s:37:"sites/all/themes/zen/system.menus.css";}}s:7:"regions";a:11:{s:6:"header";s:6:"Header";s:10:"navigation";s:14:"Navigation bar";s:11:"highlighted";s:11:"Highlighted";s:4:"help";s:4:"Help";s:7:"content";s:7:"Content";s:13:"sidebar_first";s:13:"First sidebar";s:14:"sidebar_second";s:14:"Second sidebar";s:6:"footer";s:6:"Footer";s:6:"bottom";s:11:"Page bottom";s:8:"page_top";s:8:"Page top";s:11:"page_bottom";s:11:"Page bottom";}s:8:"settings";a:11:{s:14:"zen_breadcrumb";s:3:"yes";s:24:"zen_breadcrumb_separator";s:5:" \\342\\200\\272 ";s:19:"zen_breadcrumb_home";s:1:"1";s:23:"zen_breadcrumb_trailing";s:1:"0";s:20:"zen_breadcrumb_title";s:1:"0";s:10:"zen_layout";s:23:"zen-responsive-sidebars";s:20:"zen_skip_link_anchor";s:9:"main-menu";s:18:"zen_skip_link_text";s:18:"Jump to navigation";s:22:"zen_html5_respond_meta";a:3:{i:0;s:7:"respond";i:1;s:5:"html5";i:2;s:4:"meta";}s:20:"zen_rebuild_registry";s:1:"0";s:14:"zen_wireframes";s:1:"0";}s:7:"plugins";a:1:{s:6:"panels";a:1:{s:7:"layouts";s:14:"panels-layouts";}}s:7:"version";s:7:"7.x-5.4";s:7:"project";s:3:"zen";s:9:"datestamp";s:10:"1377107504";s:8:"features";a:9:{i:0;s:4:"logo";i:1;s:7:"favicon";i:2;s:4:"name";i:3;s:6:"slogan";i:4;s:17:"node_user_picture";i:5;s:20:"comment_user_picture";i:6;s:25:"comment_user_verification";i:7;s:9:"main_menu";i:8;s:14:"secondary_menu";}s:3:"php";s:5:"5.2.4";s:7:"scripts";a:0:{}s:14:"regions_hidden";a:2:{i:0;s:8:"page_top";i:1;s:11:"page_bottom";}s:28:"overlay_supplemental_regions";a:1:{i:0;s:11:"page_bottom";}}s:10:"sub_themes";a:1:{s:6:"uib_tk";s:6:"UiB TK";}s:6:"prefix";s:11:"phptemplate";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:16:"system.menus.css";s:37:"sites/all/themes/zen/system.menus.css";}}s:6:"engine";s:11:"phptemplate";}}	block_admin_display	a:1:{i:0;s:3:"zen";}		31	5	1	admin/structure/block	admin/structure/block	Zen	t			a:0:{}	132			0	modules/block/block.admin.inc
 admin/config/people/ldap/authentication			user_access	a:1:{i:0;s:29:"administer site configuration";}	drupal_get_form	a:1:{i:0;s:30:"ldap_authentication_admin_form";}		31	5	1	admin/config/people/ldap	admin/config/people/ldap	Authentication	t			a:0:{}	132	Configure LDAP Authentication		2	sites/all/modules/ldap/ldap_authentication/ldap_authentication.admin.inc
 admin/config/content/diff/entities			user_access	a:1:{i:0;s:29:"administer site configuration";}	drupal_get_form	a:2:{i:0;s:33:"diff_admin_global_entity_settings";i:1;s:4:"node";}		31	5	1	admin/config/content/diff	admin/config/content/diff	Entities	t			a:0:{}	132	Entity settings.		0	sites/all/modules/diff/diff.admin.inc
@@ -26996,9 +26737,8 @@ admin/structure/menu/manage/%	a:1:{i:4;s:9:"menu_load";}		user_access	a:1:{i:0;s
 admin/structure/types/manage/%	a:1:{i:4;s:14:"node_type_load";}		user_access	a:1:{i:0;s:24:"administer content types";}	drupal_get_form	a:2:{i:0;s:14:"node_type_form";i:1;i:4;}		30	5	0		admin/structure/types/manage/%	Edit content type	node_type_page_title	a:1:{i:0;i:4;}		a:0:{}	6			0	modules/node/content_types.inc
 node/%/revisions/%/view	a:2:{i:1;a:1:{s:9:"node_load";a:1:{i:0;i:3;}}i:3;N;}		diff_node_revision_access	a:1:{i:0;i:1;}	node_show	a:2:{i:0;i:1;i:1;b:1;}		21	5	0		node/%/revisions/%/view	Revisions	t			a:0:{}	6			0	
 node/%/revisions/view/latest	a:1:{i:1;s:9:"node_load";}		diff_node_revision_access	a:1:{i:0;i:1;}	diff_latest	a:1:{i:0;i:1;}		23	5	1	node/%/revisions/view	node/%	Show latest difference	t			a:0:{}	132			0	sites/all/modules/diff/diff.pages.inc
+admin/structure/block/demo/bartik			_block_themes_access	a:1:{i:0;O:8:"stdClass":12:{s:8:"filename";s:25:"themes/bartik/bartik.info";s:4:"name";s:6:"bartik";s:4:"type";s:5:"theme";s:5:"owner";s:45:"themes/engines/phptemplate/phptemplate.engine";s:6:"status";s:1:"0";s:9:"bootstrap";s:1:"0";s:14:"schema_version";s:2:"-1";s:6:"weight";s:1:"0";s:4:"info";a:15:{s:4:"name";s:6:"Bartik";s:11:"description";s:48:"A flexible, recolorable theme with many regions.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:11:"stylesheets";a:2:{s:3:"all";a:3:{s:14:"css/layout.css";s:28:"themes/bartik/css/layout.css";s:13:"css/style.css";s:27:"themes/bartik/css/style.css";s:14:"css/colors.css";s:28:"themes/bartik/css/colors.css";}s:5:"print";a:1:{s:13:"css/print.css";s:27:"themes/bartik/css/print.css";}}s:7:"regions";a:17:{s:6:"header";s:6:"Header";s:4:"help";s:4:"Help";s:8:"page_top";s:8:"Page top";s:11:"page_bottom";s:11:"Page bottom";s:11:"highlighted";s:11:"Highlighted";s:8:"featured";s:8:"Featured";s:7:"content";s:7:"Content";s:13:"sidebar_first";s:13:"Sidebar first";s:14:"sidebar_second";s:14:"Sidebar second";s:14:"triptych_first";s:14:"Triptych first";s:15:"triptych_middle";s:15:"Triptych middle";s:13:"triptych_last";s:13:"Triptych last";s:18:"footer_firstcolumn";s:19:"Footer first column";s:19:"footer_secondcolumn";s:20:"Footer second column";s:18:"footer_thirdcolumn";s:19:"Footer third column";s:19:"footer_fourthcolumn";s:20:"Footer fourth column";s:6:"footer";s:6:"Footer";}s:8:"settings";a:1:{s:20:"shortcut_module_link";s:1:"0";}s:6:"engine";s:11:"phptemplate";s:8:"features";a:9:{i:0;s:4:"logo";i:1;s:7:"favicon";i:2;s:4:"name";i:3;s:6:"slogan";i:4;s:17:"node_user_picture";i:5;s:20:"comment_user_picture";i:6;s:25:"comment_user_verification";i:7;s:9:"main_menu";i:8;s:14:"secondary_menu";}s:10:"screenshot";s:28:"themes/bartik/screenshot.png";s:3:"php";s:5:"5.2.4";s:7:"scripts";a:0:{}s:14:"regions_hidden";a:2:{i:0;s:8:"page_top";i:1;s:11:"page_bottom";}s:28:"overlay_supplemental_regions";a:1:{i:0;s:11:"page_bottom";}}s:6:"prefix";s:11:"phptemplate";s:11:"stylesheets";a:2:{s:3:"all";a:3:{s:14:"css/layout.css";s:28:"themes/bartik/css/layout.css";s:13:"css/style.css";s:27:"themes/bartik/css/style.css";s:14:"css/colors.css";s:28:"themes/bartik/css/colors.css";}s:5:"print";a:1:{s:13:"css/print.css";s:27:"themes/bartik/css/print.css";}}s:6:"engine";s:11:"phptemplate";}}	block_admin_demo	a:1:{i:0;s:6:"bartik";}		31	5	0		admin/structure/block/demo/bartik	Bartik	t		_block_custom_theme	a:1:{i:0;s:6:"bartik";}	0			0	modules/block/block.admin.inc
 node/%/revisions/%/delete	a:2:{i:1;a:1:{s:9:"node_load";a:1:{i:0;i:3;}}i:3;N;}		diff_node_revision_access	a:2:{i:0;i:1;i:1;s:6:"delete";}	drupal_get_form	a:2:{i:0;s:28:"node_revision_delete_confirm";i:1;i:1;}		21	5	0		node/%/revisions/%/delete	Delete earlier revision	t			a:0:{}	6			0	modules/node/node.pages.inc
-admin/structure/menu/manage/%/delete	a:1:{i:4;s:9:"menu_load";}		user_access	a:1:{i:0;s:15:"administer menu";}	menu_delete_menu_page	a:1:{i:0;i:4;}		61	6	0		admin/structure/menu/manage/%/delete	Delete menu	t			a:0:{}	6			0	modules/menu/menu.admin.inc
-admin/structure/menu/item/%/delete	a:1:{i:4;s:14:"menu_link_load";}		user_access	a:1:{i:0;s:15:"administer menu";}	menu_item_delete_page	a:1:{i:0;i:4;}		61	6	0		admin/structure/menu/item/%/delete	Delete menu link	t			a:0:{}	6			0	modules/menu/menu.admin.inc
 admin/structure/block/demo/garland			_block_themes_access	a:1:{i:0;O:8:"stdClass":12:{s:8:"filename";s:27:"themes/garland/garland.info";s:4:"name";s:7:"garland";s:4:"type";s:5:"theme";s:5:"owner";s:45:"themes/engines/phptemplate/phptemplate.engine";s:6:"status";s:1:"1";s:9:"bootstrap";s:1:"0";s:14:"schema_version";s:2:"-1";s:6:"weight";s:1:"0";s:4:"info";a:15:{s:4:"name";s:7:"Garland";s:11:"description";s:111:"A multi-column theme which can be configured to modify colors and switch between fixed and fluid width layouts.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:11:"stylesheets";a:2:{s:3:"all";a:1:{s:9:"style.css";s:24:"themes/garland/style.css";}s:5:"print";a:1:{s:9:"print.css";s:24:"themes/garland/print.css";}}s:8:"settings";a:1:{s:13:"garland_width";s:5:"fluid";}s:6:"engine";s:11:"phptemplate";s:7:"regions";a:9:{s:13:"sidebar_first";s:12:"Left sidebar";s:14:"sidebar_second";s:13:"Right sidebar";s:7:"content";s:7:"Content";s:6:"header";s:6:"Header";s:6:"footer";s:6:"Footer";s:11:"highlighted";s:11:"Highlighted";s:4:"help";s:4:"Help";s:8:"page_top";s:8:"Page top";s:11:"page_bottom";s:11:"Page bottom";}s:8:"features";a:9:{i:0;s:4:"logo";i:1;s:7:"favicon";i:2;s:4:"name";i:3;s:6:"slogan";i:4;s:17:"node_user_picture";i:5;s:20:"comment_user_picture";i:6;s:25:"comment_user_verification";i:7;s:9:"main_menu";i:8;s:14:"secondary_menu";}s:10:"screenshot";s:29:"themes/garland/screenshot.png";s:3:"php";s:5:"5.2.4";s:7:"scripts";a:0:{}s:14:"regions_hidden";a:2:{i:0;s:8:"page_top";i:1;s:11:"page_bottom";}s:28:"overlay_supplemental_regions";a:1:{i:0;s:11:"page_bottom";}}s:6:"prefix";s:11:"phptemplate";s:11:"stylesheets";a:2:{s:3:"all";a:1:{s:9:"style.css";s:24:"themes/garland/style.css";}s:5:"print";a:1:{s:9:"print.css";s:24:"themes/garland/print.css";}}s:6:"engine";s:11:"phptemplate";}}	block_admin_demo	a:1:{i:0;s:7:"garland";}		31	5	0		admin/structure/block/demo/garland	Garland	t		_block_custom_theme	a:1:{i:0;s:7:"garland";}	0			0	modules/block/block.admin.inc
 admin/structure/features/%/recreate	a:1:{i:3;a:1:{s:12:"feature_load";a:2:{i:0;i:3;i:1;b:1;}}}		user_access	a:1:{i:0;s:19:"administer features";}	drupal_get_form	a:2:{i:0;s:20:"features_export_form";i:1;i:3;}		29	5	1	admin/structure/features/%	admin/structure/features/%	Recreate	t			a:0:{}	132	Recreate an existing feature.		11	sites/all/modules/features/features.admin.inc
 node/%/revisions/%/revert	a:2:{i:1;a:1:{s:9:"node_load";a:1:{i:0;i:3;}}i:3;N;}		diff_node_revision_access	a:2:{i:0;i:1;i:1;s:6:"update";}	drupal_get_form	a:2:{i:0;s:28:"node_revision_revert_confirm";i:1;i:1;}		21	5	0		node/%/revisions/%/revert	Revert to earlier revision	t			a:0:{}	6			0	modules/node/node.pages.inc
@@ -27007,9 +26747,6 @@ admin/structure/block/demo/seven			_block_themes_access	a:1:{i:0;O:8:"stdClass":
 admin/structure/block/demo/stark			_block_themes_access	a:1:{i:0;O:8:"stdClass":12:{s:8:"filename";s:23:"themes/stark/stark.info";s:4:"name";s:5:"stark";s:4:"type";s:5:"theme";s:5:"owner";s:45:"themes/engines/phptemplate/phptemplate.engine";s:6:"status";s:1:"0";s:9:"bootstrap";s:1:"0";s:14:"schema_version";s:2:"-1";s:6:"weight";s:1:"0";s:4:"info";a:14:{s:4:"name";s:5:"Stark";s:11:"description";s:208:"This theme demonstrates Drupal's default HTML markup and CSS styles. To learn how to build your own theme and override Drupal's default code, see the <a href="http://drupal.org/theme-guide">Theming Guide</a>.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:10:"layout.css";s:23:"themes/stark/layout.css";}}s:6:"engine";s:11:"phptemplate";s:7:"regions";a:9:{s:13:"sidebar_first";s:12:"Left sidebar";s:14:"sidebar_second";s:13:"Right sidebar";s:7:"content";s:7:"Content";s:6:"header";s:6:"Header";s:6:"footer";s:6:"Footer";s:11:"highlighted";s:11:"Highlighted";s:4:"help";s:4:"Help";s:8:"page_top";s:8:"Page top";s:11:"page_bottom";s:11:"Page bottom";}s:8:"features";a:9:{i:0;s:4:"logo";i:1;s:7:"favicon";i:2;s:4:"name";i:3;s:6:"slogan";i:4;s:17:"node_user_picture";i:5;s:20:"comment_user_picture";i:6;s:25:"comment_user_verification";i:7;s:9:"main_menu";i:8;s:14:"secondary_menu";}s:10:"screenshot";s:27:"themes/stark/screenshot.png";s:3:"php";s:5:"5.2.4";s:7:"scripts";a:0:{}s:14:"regions_hidden";a:2:{i:0;s:8:"page_top";i:1;s:11:"page_bottom";}s:28:"overlay_supplemental_regions";a:1:{i:0;s:11:"page_bottom";}}s:6:"prefix";s:11:"phptemplate";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:10:"layout.css";s:23:"themes/stark/layout.css";}}s:6:"engine";s:11:"phptemplate";}}	block_admin_demo	a:1:{i:0;s:5:"stark";}		31	5	0		admin/structure/block/demo/stark	Stark	t		_block_custom_theme	a:1:{i:0;s:5:"stark";}	0			0	modules/block/block.admin.inc
 admin/structure/views/view/%	a:1:{i:4;s:19:"views_ui_cache_load";}		user_access	a:1:{i:0;s:16:"administer views";}	views_ui_edit_page	a:1:{i:0;i:4;}		30	5	0		admin/structure/views/view/%		views_ui_edit_page_title	a:1:{i:0;i:4;}		a:0:{}	6			0	sites/all/modules/views/includes/admin.inc
 admin/structure/features/%/status	a:1:{i:3;a:1:{s:12:"feature_load";a:2:{i:0;i:3;i:1;b:1;}}}		user_access	a:1:{i:0;s:19:"administer features";}	features_feature_status	a:1:{i:0;i:3;}		29	5	0		admin/structure/features/%/status	Status	t			a:0:{}	0	Javascript status call back.		0	sites/all/modules/features/features.admin.inc
-admin/config/people/accounts/display/full			_field_ui_view_mode_menu_access	a:5:{i:0;s:4:"user";i:1;s:4:"user";i:2;s:4:"full";i:3;s:11:"user_access";i:4;s:16:"administer users";}	drupal_get_form	a:4:{i:0;s:30:"field_ui_display_overview_form";i:1;s:4:"user";i:2;s:4:"user";i:3;s:4:"full";}		63	6	1	admin/config/people/accounts/display	admin/config/people/accounts	Brukerkonto	t			a:0:{}	132			0	modules/field_ui/field_ui.admin.inc
-admin/structure/block/manage/%/%	a:2:{i:4;N;i:5;N;}		user_access	a:1:{i:0;s:17:"administer blocks";}	drupal_get_form	a:3:{i:0;s:21:"block_admin_configure";i:1;i:4;i:2;i:5;}		60	6	0		admin/structure/block/manage/%/%	Configure block	t			a:0:{}	6			0	modules/block/block.admin.inc
-admin/config/regional/language/delete/%	a:1:{i:5;N;}		user_access	a:1:{i:0;s:20:"administer languages";}	drupal_get_form	a:2:{i:0;s:28:"locale_languages_delete_form";i:1;i:5;}		62	6	0		admin/config/regional/language/delete/%	Confirm	t			a:0:{}	6			0	modules/locale/locale.admin.inc
 admin/structure/block/demo/uib_tk			_block_themes_access	a:1:{i:0;O:8:"stdClass":14:{s:8:"filename";s:39:"sites/all/themes/uib/uib_tk/uib_tk.info";s:4:"name";s:6:"uib_tk";s:4:"type";s:5:"theme";s:5:"owner";s:45:"themes/engines/phptemplate/phptemplate.engine";s:6:"status";s:1:"1";s:9:"bootstrap";s:1:"0";s:14:"schema_version";s:2:"-1";s:6:"weight";s:1:"0";s:4:"info";a:14:{s:10:"screenshot";s:42:"sites/all/themes/uib/uib_tk/screenshot.png";s:4:"name";s:6:"UiB TK";s:11:"description";s:95:"Theme for an application exposing the services of the IT-department at the University of Bergen";s:4:"core";s:3:"7.x";s:10:"base theme";s:3:"zen";s:11:"stylesheets";a:1:{s:3:"all";a:4:{s:16:"system.menus.css";s:44:"sites/all/themes/uib/uib_tk/system.menus.css";s:19:"system.messages.css";s:47:"sites/all/themes/uib/uib_tk/system.messages.css";s:16:"system.theme.css";s:44:"sites/all/themes/uib/uib_tk/system.theme.css";s:14:"css/styles.css";s:42:"sites/all/themes/uib/uib_tk/css/styles.css";}}s:7:"regions";a:11:{s:6:"header";s:6:"Header";s:10:"navigation";s:14:"Navigation bar";s:11:"highlighted";s:11:"Highlighted";s:4:"help";s:4:"Help";s:7:"content";s:7:"Content";s:13:"sidebar_first";s:13:"First sidebar";s:14:"sidebar_second";s:14:"Second sidebar";s:6:"footer";s:6:"Footer";s:6:"bottom";s:11:"Page bottom";s:8:"page_top";s:8:"Page top";s:11:"page_bottom";s:11:"Page bottom";}s:8:"features";a:8:{i:0;s:4:"logo";i:1;s:4:"name";i:2;s:6:"slogan";i:3;s:17:"node_user_picture";i:4;s:20:"comment_user_picture";i:5;s:7:"favicon";i:6;s:9:"main_menu";i:7;s:14:"secondary_menu";}s:8:"settings";a:10:{s:14:"zen_breadcrumb";s:3:"yes";s:24:"zen_breadcrumb_separator";s:5:" \\342\\200\\272 ";s:19:"zen_breadcrumb_home";s:1:"1";s:23:"zen_breadcrumb_trailing";s:1:"0";s:20:"zen_breadcrumb_title";s:1:"0";s:20:"zen_skip_link_anchor";s:9:"main-menu";s:18:"zen_skip_link_text";s:18:"Jump to navigation";s:22:"zen_html5_respond_meta";a:3:{i:0;s:7:"respond";i:1;s:5:"html5";i:2;s:4:"meta";}s:20:"zen_rebuild_registry";s:1:"1";s:14:"zen_wireframes";s:1:"0";}s:6:"engine";s:11:"phptemplate";s:3:"php";s:5:"5.2.4";s:7:"scripts";a:0:{}s:14:"regions_hidden";a:2:{i:0;s:8:"page_top";i:1;s:11:"page_bottom";}s:28:"overlay_supplemental_regions";a:1:{i:0;s:11:"page_bottom";}}s:11:"base_themes";a:1:{s:3:"zen";s:3:"Zen";}s:6:"prefix";s:11:"phptemplate";s:11:"stylesheets";a:1:{s:3:"all";a:4:{s:16:"system.menus.css";s:44:"sites/all/themes/uib/uib_tk/system.menus.css";s:19:"system.messages.css";s:47:"sites/all/themes/uib/uib_tk/system.messages.css";s:16:"system.theme.css";s:44:"sites/all/themes/uib/uib_tk/system.theme.css";s:14:"css/styles.css";s:42:"sites/all/themes/uib/uib_tk/css/styles.css";}}s:6:"engine";s:11:"phptemplate";s:10:"base_theme";s:3:"zen";}}	block_admin_demo	a:1:{i:0;s:6:"uib_tk";}		31	5	0		admin/structure/block/demo/uib_tk	UiB TK	t		_block_custom_theme	a:1:{i:0;s:6:"uib_tk";}	0			0	modules/block/block.admin.inc
 admin/structure/block/demo/zen			_block_themes_access	a:1:{i:0;O:8:"stdClass":13:{s:8:"filename";s:29:"sites/all/themes/zen/zen.info";s:4:"name";s:3:"zen";s:4:"type";s:5:"theme";s:5:"owner";s:45:"themes/engines/phptemplate/phptemplate.engine";s:6:"status";s:1:"0";s:9:"bootstrap";s:1:"0";s:14:"schema_version";s:2:"-1";s:6:"weight";s:1:"0";s:4:"info";a:17:{s:4:"name";s:3:"Zen";s:11:"description";s:195:"Zen sub-themes are the ultimate starting themes for Drupal 7. Read the <a href="https://drupal.org/node/873778">online docs</a> or the included README-FIRST.txt on how to create a theme with Zen.";s:10:"screenshot";s:49:"sites/all/themes/zen/zen-internals/screenshot.png";s:4:"core";s:3:"7.x";s:6:"engine";s:11:"phptemplate";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:16:"system.menus.css";s:37:"sites/all/themes/zen/system.menus.css";}}s:7:"regions";a:11:{s:6:"header";s:6:"Header";s:10:"navigation";s:14:"Navigation bar";s:11:"highlighted";s:11:"Highlighted";s:4:"help";s:4:"Help";s:7:"content";s:7:"Content";s:13:"sidebar_first";s:13:"First sidebar";s:14:"sidebar_second";s:14:"Second sidebar";s:6:"footer";s:6:"Footer";s:6:"bottom";s:11:"Page bottom";s:8:"page_top";s:8:"Page top";s:11:"page_bottom";s:11:"Page bottom";}s:8:"settings";a:11:{s:14:"zen_breadcrumb";s:3:"yes";s:24:"zen_breadcrumb_separator";s:5:" \\342\\200\\272 ";s:19:"zen_breadcrumb_home";s:1:"1";s:23:"zen_breadcrumb_trailing";s:1:"0";s:20:"zen_breadcrumb_title";s:1:"0";s:10:"zen_layout";s:23:"zen-responsive-sidebars";s:20:"zen_skip_link_anchor";s:9:"main-menu";s:18:"zen_skip_link_text";s:18:"Jump to navigation";s:22:"zen_html5_respond_meta";a:3:{i:0;s:7:"respond";i:1;s:5:"html5";i:2;s:4:"meta";}s:20:"zen_rebuild_registry";s:1:"0";s:14:"zen_wireframes";s:1:"0";}s:7:"plugins";a:1:{s:6:"panels";a:1:{s:7:"layouts";s:14:"panels-layouts";}}s:7:"version";s:7:"7.x-5.4";s:7:"project";s:3:"zen";s:9:"datestamp";s:10:"1377107504";s:8:"features";a:9:{i:0;s:4:"logo";i:1;s:7:"favicon";i:2;s:4:"name";i:3;s:6:"slogan";i:4;s:17:"node_user_picture";i:5;s:20:"comment_user_picture";i:6;s:25:"comment_user_verification";i:7;s:9:"main_menu";i:8;s:14:"secondary_menu";}s:3:"php";s:5:"5.2.4";s:7:"scripts";a:0:{}s:14:"regions_hidden";a:2:{i:0;s:8:"page_top";i:1;s:11:"page_bottom";}s:28:"overlay_supplemental_regions";a:1:{i:0;s:11:"page_bottom";}}s:10:"sub_themes";a:1:{s:6:"uib_tk";s:6:"UiB TK";}s:6:"prefix";s:11:"phptemplate";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:16:"system.menus.css";s:37:"sites/all/themes/zen/system.menus.css";}}s:6:"engine";s:11:"phptemplate";}}	block_admin_demo	a:1:{i:0;s:3:"zen";}		31	5	0		admin/structure/block/demo/zen	Zen	t		_block_custom_theme	a:1:{i:0;s:3:"zen";}	0			0	modules/block/block.admin.inc
 admin/structure/types/manage/%/edit	a:1:{i:4;s:14:"node_type_load";}		user_access	a:1:{i:0;s:24:"administer content types";}	drupal_get_form	a:2:{i:0;s:14:"node_type_form";i:1;i:4;}		61	6	1	admin/structure/types/manage/%	admin/structure/types/manage/%	Edit	t			a:0:{}	140			0	modules/node/content_types.inc
@@ -27026,7 +26763,12 @@ admin/structure/block/list/seven/add			user_access	a:1:{i:0;s:17:"administer blo
 admin/structure/block/list/stark/add			user_access	a:1:{i:0;s:17:"administer blocks";}	drupal_get_form	a:1:{i:0;s:20:"block_add_block_form";}		63	6	1	admin/structure/block/list/stark	admin/structure/block	Add block	t			a:0:{}	388			0	modules/block/block.admin.inc
 admin/structure/block/list/zen/add			user_access	a:1:{i:0;s:17:"administer blocks";}	drupal_get_form	a:1:{i:0;s:20:"block_add_block_form";}		63	6	1	admin/structure/block/list/zen	admin/structure/block	Add block	t			a:0:{}	388			0	modules/block/block.admin.inc
 admin/structure/menu/manage/%/add	a:1:{i:4;s:9:"menu_load";}		user_access	a:1:{i:0;s:15:"administer menu";}	drupal_get_form	a:4:{i:0;s:14:"menu_edit_item";i:1;s:3:"add";i:2;N;i:3;i:4;}		61	6	1	admin/structure/menu/manage/%	admin/structure/menu/manage/%	Add link	t			a:0:{}	388			0	modules/menu/menu.admin.inc
+admin/config/people/accounts/display/full			_field_ui_view_mode_menu_access	a:5:{i:0;s:4:"user";i:1;s:4:"user";i:2;s:4:"full";i:3;s:11:"user_access";i:4;s:16:"administer users";}	drupal_get_form	a:4:{i:0;s:30:"field_ui_display_overview_form";i:1;s:4:"user";i:2;s:4:"user";i:3;s:4:"full";}		63	6	1	admin/config/people/accounts/display	admin/config/people/accounts	Brukerkonto	t			a:0:{}	132			0	modules/field_ui/field_ui.admin.inc
+admin/structure/block/manage/%/%	a:2:{i:4;N;i:5;N;}		user_access	a:1:{i:0;s:17:"administer blocks";}	drupal_get_form	a:3:{i:0;s:21:"block_admin_configure";i:1;i:4;i:2;i:5;}		60	6	0		admin/structure/block/manage/%/%	Configure block	t			a:0:{}	6			0	modules/block/block.admin.inc
+admin/config/regional/language/delete/%	a:1:{i:5;N;}		user_access	a:1:{i:0;s:20:"administer languages";}	drupal_get_form	a:2:{i:0;s:28:"locale_languages_delete_form";i:1;i:5;}		62	6	0		admin/config/regional/language/delete/%	Confirm	t			a:0:{}	6			0	modules/locale/locale.admin.inc
 admin/config/people/ip-blocking/delete/%	a:1:{i:5;s:15:"blocked_ip_load";}		user_access	a:1:{i:0;s:18:"block IP addresses";}	drupal_get_form	a:2:{i:0;s:25:"system_ip_blocking_delete";i:1;i:5;}		62	6	0		admin/config/people/ip-blocking/delete/%	Delete IP address	t			a:0:{}	6			0	modules/system/system.admin.inc
+admin/structure/menu/manage/%/delete	a:1:{i:4;s:9:"menu_load";}		user_access	a:1:{i:0;s:15:"administer menu";}	menu_delete_menu_page	a:1:{i:0;i:4;}		61	6	0		admin/structure/menu/manage/%/delete	Delete menu	t			a:0:{}	6			0	modules/menu/menu.admin.inc
+admin/structure/menu/item/%/delete	a:1:{i:4;s:14:"menu_link_load";}		user_access	a:1:{i:0;s:15:"administer menu";}	menu_item_delete_page	a:1:{i:0;i:4;}		61	6	0		admin/structure/menu/item/%/delete	Delete menu link	t			a:0:{}	6			0	modules/menu/menu.admin.inc
 admin/config/regional/translate/delete/%	a:1:{i:5;N;}		user_access	a:1:{i:0;s:19:"translate interface";}	locale_translate_delete_page	a:1:{i:0;i:5;}		62	6	0		admin/config/regional/translate/delete/%	Delete string	t			a:0:{}	6			0	modules/locale/locale.admin.inc
 admin/config/regional/language/edit/%	a:1:{i:5;N;}		user_access	a:1:{i:0;s:20:"administer languages";}	drupal_get_form	a:2:{i:0;s:26:"locale_languages_edit_form";i:1;i:5;}		62	6	0		admin/config/regional/language/edit/%	Edit language	t			a:0:{}	6			0	modules/locale/locale.admin.inc
 admin/structure/menu/item/%/edit	a:1:{i:4;s:14:"menu_link_load";}		user_access	a:1:{i:0;s:15:"administer menu";}	drupal_get_form	a:4:{i:0;s:14:"menu_edit_item";i:1;s:4:"edit";i:2;i:4;i:3;N;}		61	6	0		admin/structure/menu/item/%/edit	Edit menu link	t			a:0:{}	6			0	modules/menu/menu.admin.inc
@@ -27228,7 +26970,7 @@ COPY queue (item_id, name, data, expire, created) FROM stdin;
 -- Name: queue_item_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tk_admin
 --
 
-SELECT pg_catalog.setval('queue_item_id_seq', 65, true);
+SELECT pg_catalog.setval('queue_item_id_seq', 66, true);
 
 
 --
@@ -28653,7 +28395,7 @@ COPY sequences (value) FROM stdin;
 -- Name: sequences_value_seq; Type: SEQUENCE SET; Schema: public; Owner: tk_admin
 --
 
-SELECT pg_catalog.setval('sequences_value_seq', 41, true);
+SELECT pg_catalog.setval('sequences_value_seq', 42, true);
 
 
 --
@@ -28661,14 +28403,6 @@ SELECT pg_catalog.setval('sequences_value_seq', 41, true);
 --
 
 COPY sessions (uid, sid, ssid, hostname, "timestamp", cache, session) FROM stdin;
-12	j7N76EQdHwygXeVR1oUdB9XYqVAFhwGjQ8kPQj_gMUc	j7N76EQdHwygXeVR1oUdB9XYqVAFhwGjQ8kPQj_gMUc	129.177.9.119	1387541461	0	
-5	XvSGcQisYkMtSM-p2Q9l2I_-j89WJIfSn8mbdNRX8tk	XvSGcQisYkMtSM-p2Q9l2I_-j89WJIfSn8mbdNRX8tk	129.177.9.105	1387549727	0	
-2	LU3SdofRnW5zoappXPywH7NitUshNbbN8geTeaaQjoY	LU3SdofRnW5zoappXPywH7NitUshNbbN8geTeaaQjoY	129.177.116.73	1387464636	0	
-36	2ZR4Dl7CyKKQXcksZdYLDPK7eFT374ajB1OzBdm6imE	2ZR4Dl7CyKKQXcksZdYLDPK7eFT374ajB1OzBdm6imE	2001:700:200:11:19bd:f300:4547:d7b6	1389184982	0	
-12	nG9fR5Rq2R3jjHhMzt9-yDB-eeeHHv7_2zRD5mrgNWA	nG9fR5Rq2R3jjHhMzt9-yDB-eeeHHv7_2zRD5mrgNWA	129.177.9.119	1390231092	0	
-15	63gImXeK3jmljgfs0DdLKc74cZXDOuuDKewv9XGOrP0	63gImXeK3jmljgfs0DdLKc74cZXDOuuDKewv9XGOrP0	2001:700:200:9:d1ce:1984:9bcf:3ee2	1390313536	0	
-15	hYJB3MqsTyC6ZAmUGAK5vQvq41Mctb2r-H8Rnj_z1cc	hYJB3MqsTyC6ZAmUGAK5vQvq41Mctb2r-H8Rnj_z1cc	2001:700:200:11:153:1096:56a8:256	1387467476	0	
-1	wR6udKN5RJHtHWdMG1In_76gJs5ahiRp5vDteUbUZyQ	wR6udKN5RJHtHWdMG1In_76gJs5ahiRp5vDteUbUZyQ	129.177.10.212	1387470740	0	
 \.
 
 
@@ -28677,112 +28411,112 @@ COPY sessions (uid, sid, ssid, hostname, "timestamp", cache, session) FROM stdin
 --
 
 COPY system (filename, name, type, owner, status, bootstrap, schema_version, weight, info) FROM stdin;
+modules/simpletest/tests/ajax_forms_test.module	ajax_forms_test	module		0	0	-1	0	a:10:{s:4:"name";s:26:"AJAX form test mock module";s:11:"description";s:25:"Test for AJAX form calls.";s:4:"core";s:3:"7.x";s:7:"package";s:7:"Testing";s:7:"version";s:4:"7.26";s:6:"hidden";b:1;s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+modules/simpletest/tests/requirements2_test.module	requirements2_test	module		0	0	-1	0	a:10:{s:4:"name";s:19:"Requirements 2 Test";s:11:"description";s:98:"Tests that a module is not installed when the one it depends on fails hook_requirements('install).";s:12:"dependencies";a:2:{i:0;s:18:"requirements1_test";i:1;s:7:"comment";}s:7:"package";s:7:"Testing";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:6:"hidden";b:1;s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+sites/all/modules/stage_file_proxy/stage_file_proxy.module	stage_file_proxy	module		0	0	-1	0	a:11:{s:4:"name";s:16:"Stage File Proxy";s:11:"description";s:80:"Proxies files from production server so you don't have to transfer them manually";s:4:"core";s:3:"7.x";s:7:"version";s:7:"7.x-1.4";s:7:"project";s:16:"stage_file_proxy";s:9:"datestamp";s:10:"1373465751";s:12:"dependencies";a:0:{}s:7:"package";s:5:"Other";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
 modules/search/search.module	search	module		0	0	-1	0	a:11:{s:4:"name";s:6:"Search";s:11:"description";s:36:"Enables site-wide keyword searching.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:5:"files";a:2:{i:0;s:19:"search.extender.inc";i:1;s:11:"search.test";}s:9:"configure";s:28:"admin/config/search/settings";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:10:"search.css";s:25:"modules/search/search.css";}}s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/date/date_api/date_api.module	date_api	module		0	0	-1	0	a:12:{s:4:"name";s:8:"Date API";s:11:"description";s:45:"A Date API that can be used by other modules.";s:7:"package";s:9:"Date/Time";s:4:"core";s:3:"7.x";s:3:"php";s:3:"5.2";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:8:"date.css";s:40:"sites/all/modules/date/date_api/date.css";}}s:5:"files";a:2:{i:0;s:15:"date_api.module";i:1;s:16:"date_api_sql.inc";}s:7:"version";s:7:"7.x-2.7";s:7:"project";s:4:"date";s:9:"datestamp";s:10:"1387659206";s:12:"dependencies";a:0:{}s:9:"bootstrap";i:0;}
-sites/all/modules/ctools/ctools_custom_content/ctools_custom_content.module	ctools_custom_content	module		0	0	-1	0	a:11:{s:4:"name";s:20:"Custom content panes";s:11:"description";s:79:"Create custom, exportable, reusable content panes for applications like Panels.";s:4:"core";s:3:"7.x";s:7:"package";s:16:"Chaos tool suite";s:12:"dependencies";a:1:{i:0;s:6:"ctools";}s:7:"version";s:7:"7.x-1.3";s:7:"project";s:6:"ctools";s:9:"datestamp";s:10:"1365013512";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-modules/update/tests/ccc_update_test.module	ccc_update_test	module		0	0	-1	0	a:10:{s:4:"name";s:15:"CCC Update test";s:11:"description";s:41:"Support module for update module testing.";s:7:"package";s:7:"Testing";s:4:"core";s:3:"7.x";s:6:"hidden";b:1;s:12:"dependencies";a:0:{}s:7:"version";N;s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-sites/all/modules/uib/tk_setup/tk_setup.module	tk_setup	module		0	0	-1	0	a:10:{s:4:"name";s:8:"TK setup";s:11:"description";s:37:"TK general configuration and settings";s:4:"core";s:3:"7.x";s:7:"package";s:3:"UiB";s:3:"php";s:5:"5.2.4";s:12:"dependencies";a:15:{i:0;s:10:"admin_menu";i:1;s:5:"block";i:2;s:8:"features";i:3;s:11:"field_group";i:4;s:17:"field_permissions";i:5;s:6:"filter";i:6;s:5:"image";i:7;s:6:"locale";i:8;s:4:"menu";i:9;s:4:"node";i:10;s:9:"strongarm";i:11;s:6:"system";i:12;s:8:"taxonomy";i:13;s:4:"user";i:14;s:5:"views";}s:8:"features";a:5:{s:6:"ctools";a:1:{i:0;s:21:"strongarm:strongarm:1";}s:12:"features_api";a:1:{i:0;s:5:"api:1";}s:15:"user_permission";a:42:{i:0;s:26:"access administration menu";i:1;s:27:"access administration pages";i:2;s:16:"access all views";i:3;s:14:"access content";i:4;s:23:"access content overview";i:5;s:21:"access private fields";i:6;s:31:"access site in maintenance mode";i:7;s:19:"access site reports";i:8;s:20:"access user profiles";i:9;s:18:"administer actions";i:10;s:17:"administer blocks";i:11;s:24:"administer content types";i:12;s:19:"administer features";i:13;s:28:"administer field permissions";i:14;s:22:"administer fieldgroups";i:15;s:18:"administer filters";i:16;s:23:"administer image styles";i:17;s:20:"administer languages";i:18;s:15:"administer menu";i:19;s:18:"administer modules";i:20;s:16:"administer nodes";i:21;s:22:"administer permissions";i:22;s:29:"administer site configuration";i:23;s:27:"administer software updates";i:24;s:19:"administer taxonomy";i:25;s:17:"administer themes";i:26;s:16:"administer users";i:27;s:16:"administer views";i:28;s:18:"block IP addresses";i:29;s:18:"bypass node access";i:30;s:14:"cancel account";i:31;s:19:"change own username";i:32;s:16:"delete revisions";i:33;s:20:"display drupal links";i:34;s:12:"flush caches";i:35;s:15:"manage features";i:36;s:16:"revert revisions";i:37;s:34:"select account cancellation method";i:38;s:19:"translate interface";i:39;s:28:"view own unpublished content";i:40;s:14:"view revisions";i:41;s:29:"view the administration theme";}s:9:"user_role";a:3:{i:0;s:11:"druapladmin";i:1;s:3:"ita";i:2;s:13:"tjenesteadmin";}s:8:"variable";a:1:{i:0;s:21:"theme_uib_tk_settings";}}s:7:"version";N;s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-sites/all/modules/feeds_xpathparser/feeds_xpathparser.module	feeds_xpathparser	module		0	0	-1	0	a:11:{s:4:"name";s:18:"Feeds XPath Parser";s:11:"description";s:42:"Parse an XML or HTML document using XPath.";s:7:"package";s:5:"Feeds";s:12:"dependencies";a:1:{i:0;s:5:"feeds";}s:5:"files";a:9:{i:0;s:24:"FeedsXPathParserBase.inc";i:1;s:24:"FeedsXPathParserHTML.inc";i:2;s:23:"FeedsXPathParserXML.inc";i:3;s:31:"FeedsXPathParserQueryParser.inc";i:4;s:28:"FeedsXPathParserDOMXPath.inc";i:5;s:28:"tests/feeds_xpathparser.test";i:6;s:40:"tests/feeds_xpathparser_parser_html.test";i:7;s:39:"tests/feeds_xpathparser_parser_xml.test";i:8;s:41:"tests/feeds_xpathparser_query_parser.test";}s:4:"core";s:3:"7.x";s:7:"version";s:13:"7.x-1.0-beta4";s:7:"project";s:17:"feeds_xpathparser";s:9:"datestamp";s:10:"1368138912";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/variable/variable_advanced/variable_advanced.module	variable_advanced	module		0	0	-1	0	a:11:{s:4:"name";s:17:"Variable advanced";s:11:"description";s:105:"Provides access to advanced low level variables. By using this you will be able to break your site badly.";s:12:"dependencies";a:1:{i:0;s:8:"variable";}s:7:"package";s:8:"Variable";s:4:"core";s:3:"7.x";s:7:"version";s:7:"7.x-2.3";s:7:"project";s:8:"variable";s:9:"datestamp";s:10:"1376034993";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-sites/all/modules/entityreference/tests/modules/entityreference_feeds_test/entityreference_feeds_test.module	entityreference_feeds_test	module		0	0	-1	0	a:12:{s:4:"name";s:41:"Entityreference - Feeds integration tests";s:11:"description";s:65:"Support module for the Entityreference - Feeds integration tests.";s:7:"package";s:7:"Testing";s:4:"core";s:3:"7.x";s:6:"hidden";b:1;s:12:"dependencies";a:3:{i:0;s:5:"feeds";i:1;s:8:"feeds_ui";i:2;s:15:"entityreference";}s:7:"version";s:7:"7.x-1.1";s:7:"project";s:15:"entityreference";s:9:"datestamp";s:10:"1384973110";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-sites/all/modules/i18n/i18n_field/i18n_field.module	i18n_field	module		0	0	-1	0	a:11:{s:4:"name";s:17:"Field translation";s:11:"description";s:26:"Translate field properties";s:12:"dependencies";a:2:{i:0;s:5:"field";i:1;s:11:"i18n_string";}s:7:"package";s:35:"Multilingual - Internationalization";s:4:"core";s:3:"7.x";s:5:"files";a:2:{i:0;s:14:"i18n_field.inc";i:1;s:15:"i18n_field.test";}s:7:"version";s:8:"7.x-1.10";s:7:"project";s:4:"i18n";s:9:"datestamp";s:10:"1377069696";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/coder/coder_sniffer/Test/bad.module	bad	module		0	0	-1	0	a:11:{s:5:"files";a:2:{i:0;s:25:"includes/non-existing.php";i:1;s:11:"bad.tpl.php";}s:6:"hidden";b:1;s:7:"version";s:7:"7.x-2.1";s:4:"core";s:3:"7.x";s:7:"project";s:5:"coder";s:9:"datestamp";s:10:"1387025611";s:12:"dependencies";a:0:{}s:11:"description";s:0:"";s:7:"package";s:5:"Other";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/ldap/ldap_views/ldap_views.module	ldap_views	module		0	0	-1	0	a:11:{s:4:"name";s:10:"LDAP Views";s:11:"description";s:38:"Implements LDAP integration with Views";s:7:"package";s:37:"Lightweight Directory Access Protocol";s:12:"dependencies";a:2:{i:0;s:10:"ldap_query";i:1;s:5:"views";}s:4:"core";s:3:"7.x";s:5:"files";a:11:{i:0;s:17:"ldap_views.module";i:1;s:18:"ldap_views.install";i:2;s:40:"plugins/ldap_views_plugin_query_ldap.inc";i:3;s:40:"handlers/ldap_views_handler_argument.inc";i:4;s:50:"handlers/ldap_views_handler_argument_attribute.inc";i:5;s:37:"handlers/ldap_views_handler_field.inc";i:6;s:47:"handlers/ldap_views_handler_field_attribute.inc";i:7;s:38:"handlers/ldap_views_handler_filter.inc";i:8;s:48:"handlers/ldap_views_handler_filter_attribute.inc";i:9;s:36:"handlers/ldap_views_handler_sort.inc";i:10;s:46:"handlers/ldap_views_handler_sort_attribute.inc";}s:7:"version";s:14:"7.x-1.0-beta12";s:7:"project";s:4:"ldap";s:9:"datestamp";s:10:"1345503423";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/views/views.module	views	module		1	0	7301	10	a:12:{s:4:"name";s:5:"Views";s:11:"description";s:55:"Create customized lists and queries from your database.";s:7:"package";s:5:"Views";s:4:"core";s:3:"7.x";s:3:"php";s:3:"5.2";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:13:"css/views.css";s:37:"sites/all/modules/views/css/views.css";}}s:12:"dependencies";a:1:{i:0;s:6:"ctools";}s:5:"files";a:297:{i:0;s:31:"handlers/views_handler_area.inc";i:1;s:38:"handlers/views_handler_area_result.inc";i:2;s:36:"handlers/views_handler_area_text.inc";i:3;s:43:"handlers/views_handler_area_text_custom.inc";i:4;s:36:"handlers/views_handler_area_view.inc";i:5;s:35:"handlers/views_handler_argument.inc";i:6;s:40:"handlers/views_handler_argument_date.inc";i:7;s:43:"handlers/views_handler_argument_formula.inc";i:8;s:47:"handlers/views_handler_argument_many_to_one.inc";i:9;s:40:"handlers/views_handler_argument_null.inc";i:10;s:43:"handlers/views_handler_argument_numeric.inc";i:11;s:42:"handlers/views_handler_argument_string.inc";i:12;s:52:"handlers/views_handler_argument_group_by_numeric.inc";i:13;s:32:"handlers/views_handler_field.inc";i:14;s:40:"handlers/views_handler_field_counter.inc";i:15;s:40:"handlers/views_handler_field_boolean.inc";i:16;s:49:"handlers/views_handler_field_contextual_links.inc";i:17;s:39:"handlers/views_handler_field_custom.inc";i:18;s:37:"handlers/views_handler_field_date.inc";i:19;s:39:"handlers/views_handler_field_entity.inc";i:20;s:39:"handlers/views_handler_field_markup.inc";i:21;s:37:"handlers/views_handler_field_math.inc";i:22;s:40:"handlers/views_handler_field_numeric.inc";i:23;s:47:"handlers/views_handler_field_prerender_list.inc";i:24;s:46:"handlers/views_handler_field_time_interval.inc";i:25;s:43:"handlers/views_handler_field_serialized.inc";i:26;s:45:"handlers/views_handler_field_machine_name.inc";i:27;s:36:"handlers/views_handler_field_url.inc";i:28;s:33:"handlers/views_handler_filter.inc";i:29;s:50:"handlers/views_handler_filter_boolean_operator.inc";i:30;s:57:"handlers/views_handler_filter_boolean_operator_string.inc";i:31;s:41:"handlers/views_handler_filter_combine.inc";i:32;s:38:"handlers/views_handler_filter_date.inc";i:33;s:42:"handlers/views_handler_filter_equality.inc";i:34;s:47:"handlers/views_handler_filter_entity_bundle.inc";i:35;s:50:"handlers/views_handler_filter_group_by_numeric.inc";i:36;s:45:"handlers/views_handler_filter_in_operator.inc";i:37;s:45:"handlers/views_handler_filter_many_to_one.inc";i:38;s:41:"handlers/views_handler_filter_numeric.inc";i:39;s:40:"handlers/views_handler_filter_string.inc";i:40;s:39:"handlers/views_handler_relationship.inc";i:41;s:53:"handlers/views_handler_relationship_groupwise_max.inc";i:42;s:31:"handlers/views_handler_sort.inc";i:43;s:36:"handlers/views_handler_sort_date.inc";i:44;s:39:"handlers/views_handler_sort_formula.inc";i:45;s:48:"handlers/views_handler_sort_group_by_numeric.inc";i:46;s:46:"handlers/views_handler_sort_menu_hierarchy.inc";i:47;s:38:"handlers/views_handler_sort_random.inc";i:48;s:17:"includes/base.inc";i:49;s:21:"includes/handlers.inc";i:50;s:20:"includes/plugins.inc";i:51;s:17:"includes/view.inc";i:52;s:60:"modules/aggregator/views_handler_argument_aggregator_fid.inc";i:53;s:60:"modules/aggregator/views_handler_argument_aggregator_iid.inc";i:54;s:69:"modules/aggregator/views_handler_argument_aggregator_category_cid.inc";i:55;s:64:"modules/aggregator/views_handler_field_aggregator_title_link.inc";i:56;s:62:"modules/aggregator/views_handler_field_aggregator_category.inc";i:57;s:70:"modules/aggregator/views_handler_field_aggregator_item_description.inc";i:58;s:57:"modules/aggregator/views_handler_field_aggregator_xss.inc";i:59;s:67:"modules/aggregator/views_handler_filter_aggregator_category_cid.inc";i:60;s:54:"modules/aggregator/views_plugin_row_aggregator_rss.inc";i:61;s:56:"modules/book/views_plugin_argument_default_book_root.inc";i:62;s:59:"modules/comment/views_handler_argument_comment_user_uid.inc";i:63;s:47:"modules/comment/views_handler_field_comment.inc";i:64;s:53:"modules/comment/views_handler_field_comment_depth.inc";i:65;s:52:"modules/comment/views_handler_field_comment_link.inc";i:66;s:60:"modules/comment/views_handler_field_comment_link_approve.inc";i:67;s:59:"modules/comment/views_handler_field_comment_link_delete.inc";i:68;s:57:"modules/comment/views_handler_field_comment_link_edit.inc";i:69;s:58:"modules/comment/views_handler_field_comment_link_reply.inc";i:70;s:57:"modules/comment/views_handler_field_comment_node_link.inc";i:71;s:56:"modules/comment/views_handler_field_comment_username.inc";i:72;s:61:"modules/comment/views_handler_field_ncs_last_comment_name.inc";i:73;s:56:"modules/comment/views_handler_field_ncs_last_updated.inc";i:74;s:52:"modules/comment/views_handler_field_node_comment.inc";i:75;s:57:"modules/comment/views_handler_field_node_new_comments.inc";i:76;s:62:"modules/comment/views_handler_field_last_comment_timestamp.inc";i:77;s:57:"modules/comment/views_handler_filter_comment_user_uid.inc";i:78;s:57:"modules/comment/views_handler_filter_ncs_last_updated.inc";i:79;s:53:"modules/comment/views_handler_filter_node_comment.inc";i:80;s:53:"modules/comment/views_handler_sort_comment_thread.inc";i:81;s:60:"modules/comment/views_handler_sort_ncs_last_comment_name.inc";i:82;s:55:"modules/comment/views_handler_sort_ncs_last_updated.inc";i:83;s:48:"modules/comment/views_plugin_row_comment_rss.inc";i:84;s:49:"modules/comment/views_plugin_row_comment_view.inc";i:85;s:52:"modules/contact/views_handler_field_contact_link.inc";i:86;s:43:"modules/field/views_handler_field_field.inc";i:87;s:59:"modules/field/views_handler_relationship_entity_reverse.inc";i:88;s:51:"modules/field/views_handler_argument_field_list.inc";i:89;s:58:"modules/field/views_handler_argument_field_list_string.inc";i:90;s:49:"modules/field/views_handler_filter_field_list.inc";i:91;s:57:"modules/filter/views_handler_field_filter_format_name.inc";i:92;s:52:"modules/locale/views_handler_field_node_language.inc";i:93;s:53:"modules/locale/views_handler_filter_node_language.inc";i:94;s:54:"modules/locale/views_handler_argument_locale_group.inc";i:95;s:57:"modules/locale/views_handler_argument_locale_language.inc";i:96;s:51:"modules/locale/views_handler_field_locale_group.inc";i:97;s:54:"modules/locale/views_handler_field_locale_language.inc";i:98;s:55:"modules/locale/views_handler_field_locale_link_edit.inc";i:99;s:52:"modules/locale/views_handler_filter_locale_group.inc";i:100;s:55:"modules/locale/views_handler_filter_locale_language.inc";i:101;s:54:"modules/locale/views_handler_filter_locale_version.inc";i:102;s:53:"modules/node/views_handler_argument_dates_various.inc";i:103;s:53:"modules/node/views_handler_argument_node_language.inc";i:104;s:48:"modules/node/views_handler_argument_node_nid.inc";i:105;s:49:"modules/node/views_handler_argument_node_type.inc";i:106;s:48:"modules/node/views_handler_argument_node_vid.inc";i:107;s:57:"modules/node/views_handler_argument_node_uid_revision.inc";i:108;s:59:"modules/node/views_handler_field_history_user_timestamp.inc";i:109;s:41:"modules/node/views_handler_field_node.inc";i:110;s:46:"modules/node/views_handler_field_node_link.inc";i:111;s:53:"modules/node/views_handler_field_node_link_delete.inc";i:112;s:51:"modules/node/views_handler_field_node_link_edit.inc";i:113;s:50:"modules/node/views_handler_field_node_revision.inc";i:114;s:55:"modules/node/views_handler_field_node_revision_link.inc";i:115;s:62:"modules/node/views_handler_field_node_revision_link_delete.inc";i:116;s:62:"modules/node/views_handler_field_node_revision_link_revert.inc";i:117;s:46:"modules/node/views_handler_field_node_path.inc";i:118;s:46:"modules/node/views_handler_field_node_type.inc";i:119;s:60:"modules/node/views_handler_filter_history_user_timestamp.inc";i:120;s:49:"modules/node/views_handler_filter_node_access.inc";i:121;s:49:"modules/node/views_handler_filter_node_status.inc";i:122;s:47:"modules/node/views_handler_filter_node_type.inc";i:123;s:55:"modules/node/views_handler_filter_node_uid_revision.inc";i:124;s:51:"modules/node/views_plugin_argument_default_node.inc";i:125;s:52:"modules/node/views_plugin_argument_validate_node.inc";i:126;s:42:"modules/node/views_plugin_row_node_rss.inc";i:127;s:43:"modules/node/views_plugin_row_node_view.inc";i:128;s:52:"modules/profile/views_handler_field_profile_date.inc";i:129;s:52:"modules/profile/views_handler_field_profile_list.inc";i:130;s:58:"modules/profile/views_handler_filter_profile_selection.inc";i:131;s:48:"modules/search/views_handler_argument_search.inc";i:132;s:51:"modules/search/views_handler_field_search_score.inc";i:133;s:46:"modules/search/views_handler_filter_search.inc";i:134;s:50:"modules/search/views_handler_sort_search_score.inc";i:135;s:47:"modules/search/views_plugin_row_search_view.inc";i:136;s:57:"modules/statistics/views_handler_field_accesslog_path.inc";i:137;s:50:"modules/system/views_handler_argument_file_fid.inc";i:138;s:43:"modules/system/views_handler_field_file.inc";i:139;s:53:"modules/system/views_handler_field_file_extension.inc";i:140;s:52:"modules/system/views_handler_field_file_filemime.inc";i:141;s:47:"modules/system/views_handler_field_file_uri.inc";i:142;s:50:"modules/system/views_handler_field_file_status.inc";i:143;s:51:"modules/system/views_handler_filter_file_status.inc";i:144;s:52:"modules/taxonomy/views_handler_argument_taxonomy.inc";i:145;s:57:"modules/taxonomy/views_handler_argument_term_node_tid.inc";i:146;s:63:"modules/taxonomy/views_handler_argument_term_node_tid_depth.inc";i:147;s:72:"modules/taxonomy/views_handler_argument_term_node_tid_depth_modifier.inc";i:148;s:58:"modules/taxonomy/views_handler_argument_vocabulary_vid.inc";i:149;s:67:"modules/taxonomy/views_handler_argument_vocabulary_machine_name.inc";i:150;s:49:"modules/taxonomy/views_handler_field_taxonomy.inc";i:151;s:54:"modules/taxonomy/views_handler_field_term_node_tid.inc";i:152;s:55:"modules/taxonomy/views_handler_field_term_link_edit.inc";i:153;s:55:"modules/taxonomy/views_handler_filter_term_node_tid.inc";i:154;s:61:"modules/taxonomy/views_handler_filter_term_node_tid_depth.inc";i:155;s:56:"modules/taxonomy/views_handler_filter_vocabulary_vid.inc";i:156;s:65:"modules/taxonomy/views_handler_filter_vocabulary_machine_name.inc";i:157;s:62:"modules/taxonomy/views_handler_relationship_node_term_data.inc";i:158;s:65:"modules/taxonomy/views_plugin_argument_validate_taxonomy_term.inc";i:159;s:63:"modules/taxonomy/views_plugin_argument_default_taxonomy_tid.inc";i:160;s:67:"modules/tracker/views_handler_argument_tracker_comment_user_uid.inc";i:161;s:65:"modules/tracker/views_handler_filter_tracker_comment_user_uid.inc";i:162;s:65:"modules/tracker/views_handler_filter_tracker_boolean_operator.inc";i:163;s:51:"modules/system/views_handler_filter_system_type.inc";i:164;s:56:"modules/translation/views_handler_argument_node_tnid.inc";i:165;s:63:"modules/translation/views_handler_field_node_link_translate.inc";i:166;s:65:"modules/translation/views_handler_field_node_translation_link.inc";i:167;s:54:"modules/translation/views_handler_filter_node_tnid.inc";i:168;s:60:"modules/translation/views_handler_filter_node_tnid_child.inc";i:169;s:62:"modules/translation/views_handler_relationship_translation.inc";i:170;s:48:"modules/user/views_handler_argument_user_uid.inc";i:171;s:55:"modules/user/views_handler_argument_users_roles_rid.inc";i:172;s:41:"modules/user/views_handler_field_user.inc";i:173;s:50:"modules/user/views_handler_field_user_language.inc";i:174;s:46:"modules/user/views_handler_field_user_link.inc";i:175;s:53:"modules/user/views_handler_field_user_link_cancel.inc";i:176;s:51:"modules/user/views_handler_field_user_link_edit.inc";i:177;s:46:"modules/user/views_handler_field_user_mail.inc";i:178;s:46:"modules/user/views_handler_field_user_name.inc";i:179;s:53:"modules/user/views_handler_field_user_permissions.inc";i:180;s:49:"modules/user/views_handler_field_user_picture.inc";i:181;s:47:"modules/user/views_handler_field_user_roles.inc";i:182;s:50:"modules/user/views_handler_filter_user_current.inc";i:183;s:47:"modules/user/views_handler_filter_user_name.inc";i:184;s:54:"modules/user/views_handler_filter_user_permissions.inc";i:185;s:48:"modules/user/views_handler_filter_user_roles.inc";i:186;s:59:"modules/user/views_plugin_argument_default_current_user.inc";i:187;s:51:"modules/user/views_plugin_argument_default_user.inc";i:188;s:52:"modules/user/views_plugin_argument_validate_user.inc";i:189;s:43:"modules/user/views_plugin_row_user_view.inc";i:190;s:31:"plugins/views_plugin_access.inc";i:191;s:36:"plugins/views_plugin_access_none.inc";i:192;s:36:"plugins/views_plugin_access_perm.inc";i:193;s:36:"plugins/views_plugin_access_role.inc";i:194;s:41:"plugins/views_plugin_argument_default.inc";i:195;s:45:"plugins/views_plugin_argument_default_php.inc";i:196;s:47:"plugins/views_plugin_argument_default_fixed.inc";i:197;s:45:"plugins/views_plugin_argument_default_raw.inc";i:198;s:42:"plugins/views_plugin_argument_validate.inc";i:199;s:50:"plugins/views_plugin_argument_validate_numeric.inc";i:200;s:46:"plugins/views_plugin_argument_validate_php.inc";i:201;s:30:"plugins/views_plugin_cache.inc";i:202;s:35:"plugins/views_plugin_cache_none.inc";i:203;s:35:"plugins/views_plugin_cache_time.inc";i:204;s:32:"plugins/views_plugin_display.inc";i:205;s:43:"plugins/views_plugin_display_attachment.inc";i:206;s:38:"plugins/views_plugin_display_block.inc";i:207;s:40:"plugins/views_plugin_display_default.inc";i:208;s:38:"plugins/views_plugin_display_embed.inc";i:209;s:41:"plugins/views_plugin_display_extender.inc";i:210;s:37:"plugins/views_plugin_display_feed.inc";i:211;s:37:"plugins/views_plugin_display_page.inc";i:212;s:43:"plugins/views_plugin_exposed_form_basic.inc";i:213;s:37:"plugins/views_plugin_exposed_form.inc";i:214;s:52:"plugins/views_plugin_exposed_form_input_required.inc";i:215;s:42:"plugins/views_plugin_localization_core.inc";i:216;s:37:"plugins/views_plugin_localization.inc";i:217;s:42:"plugins/views_plugin_localization_none.inc";i:218;s:30:"plugins/views_plugin_pager.inc";i:219;s:35:"plugins/views_plugin_pager_full.inc";i:220;s:35:"plugins/views_plugin_pager_mini.inc";i:221;s:35:"plugins/views_plugin_pager_none.inc";i:222;s:35:"plugins/views_plugin_pager_some.inc";i:223;s:30:"plugins/views_plugin_query.inc";i:224;s:38:"plugins/views_plugin_query_default.inc";i:225;s:28:"plugins/views_plugin_row.inc";i:226;s:35:"plugins/views_plugin_row_fields.inc";i:227;s:39:"plugins/views_plugin_row_rss_fields.inc";i:228;s:30:"plugins/views_plugin_style.inc";i:229;s:38:"plugins/views_plugin_style_default.inc";i:230;s:35:"plugins/views_plugin_style_grid.inc";i:231;s:35:"plugins/views_plugin_style_list.inc";i:232;s:40:"plugins/views_plugin_style_jump_menu.inc";i:233;s:38:"plugins/views_plugin_style_mapping.inc";i:234;s:34:"plugins/views_plugin_style_rss.inc";i:235;s:38:"plugins/views_plugin_style_summary.inc";i:236;s:48:"plugins/views_plugin_style_summary_jump_menu.inc";i:237;s:50:"plugins/views_plugin_style_summary_unformatted.inc";i:238;s:36:"plugins/views_plugin_style_table.inc";i:239;s:43:"tests/handlers/views_handler_area_text.test";i:240;s:47:"tests/handlers/views_handler_argument_null.test";i:241;s:49:"tests/handlers/views_handler_argument_string.test";i:242;s:39:"tests/handlers/views_handler_field.test";i:243;s:47:"tests/handlers/views_handler_field_boolean.test";i:244;s:46:"tests/handlers/views_handler_field_custom.test";i:245;s:47:"tests/handlers/views_handler_field_counter.test";i:246;s:44:"tests/handlers/views_handler_field_date.test";i:247;s:49:"tests/handlers/views_handler_field_file_size.test";i:248;s:44:"tests/handlers/views_handler_field_math.test";i:249;s:43:"tests/handlers/views_handler_field_url.test";i:250;s:43:"tests/handlers/views_handler_field_xss.test";i:251;s:48:"tests/handlers/views_handler_filter_combine.test";i:252;s:45:"tests/handlers/views_handler_filter_date.test";i:253;s:49:"tests/handlers/views_handler_filter_equality.test";i:254;s:52:"tests/handlers/views_handler_filter_in_operator.test";i:255;s:48:"tests/handlers/views_handler_filter_numeric.test";i:256;s:47:"tests/handlers/views_handler_filter_string.test";i:257;s:45:"tests/handlers/views_handler_sort_random.test";i:258;s:43:"tests/handlers/views_handler_sort_date.test";i:259;s:38:"tests/handlers/views_handler_sort.test";i:260;s:60:"tests/test_plugins/views_test_plugin_access_test_dynamic.inc";i:261;s:59:"tests/test_plugins/views_test_plugin_access_test_static.inc";i:262;s:59:"tests/test_plugins/views_test_plugin_style_test_mapping.inc";i:263;s:39:"tests/plugins/views_plugin_display.test";i:264;s:46:"tests/styles/views_plugin_style_jump_menu.test";i:265;s:36:"tests/styles/views_plugin_style.test";i:266;s:41:"tests/styles/views_plugin_style_base.test";i:267;s:44:"tests/styles/views_plugin_style_mapping.test";i:268;s:48:"tests/styles/views_plugin_style_unformatted.test";i:269;s:23:"tests/views_access.test";i:270;s:24:"tests/views_analyze.test";i:271;s:22:"tests/views_basic.test";i:272;s:33:"tests/views_argument_default.test";i:273;s:35:"tests/views_argument_validator.test";i:274;s:29:"tests/views_exposed_form.test";i:275;s:31:"tests/field/views_fieldapi.test";i:276;s:25:"tests/views_glossary.test";i:277;s:24:"tests/views_groupby.test";i:278;s:25:"tests/views_handlers.test";i:279;s:23:"tests/views_module.test";i:280;s:22:"tests/views_pager.test";i:281;s:40:"tests/views_plugin_localization_test.inc";i:282;s:29:"tests/views_translatable.test";i:283;s:22:"tests/views_query.test";i:284;s:24:"tests/views_upgrade.test";i:285;s:34:"tests/views_test.views_default.inc";i:286;s:58:"tests/comment/views_handler_argument_comment_user_uid.test";i:287;s:56:"tests/comment/views_handler_filter_comment_user_uid.test";i:288;s:45:"tests/node/views_node_revision_relations.test";i:289;s:61:"tests/taxonomy/views_handler_relationship_node_term_data.test";i:290;s:45:"tests/user/views_handler_field_user_name.test";i:291;s:43:"tests/user/views_user_argument_default.test";i:292;s:44:"tests/user/views_user_argument_validate.test";i:293;s:26:"tests/user/views_user.test";i:294;s:22:"tests/views_cache.test";i:295;s:21:"tests/views_view.test";i:296;s:19:"tests/views_ui.test";}s:7:"version";s:7:"7.x-3.7";s:7:"project";s:5:"views";s:9:"datestamp";s:10:"1365499236";s:9:"bootstrap";i:0;}
-sites/all/modules/i18n/i18n_sync/i18n_sync.module	i18n_sync	module		0	0	-1	0	a:11:{s:4:"name";s:24:"Synchronize translations";s:11:"description";s:74:"Synchronizes taxonomy and fields accross translations of the same content.";s:12:"dependencies";a:2:{i:0;s:4:"i18n";i:1;s:11:"translation";}s:7:"package";s:35:"Multilingual - Internationalization";s:4:"core";s:3:"7.x";s:5:"files";a:5:{i:0;s:16:"i18n_sync.module";i:1;s:17:"i18n_sync.install";i:2;s:20:"i18n_sync.module.inc";i:3;s:18:"i18n_sync.node.inc";i:4;s:14:"i18n_sync.test";}s:7:"version";s:8:"7.x-1.10";s:7:"project";s:4:"i18n";s:9:"datestamp";s:10:"1377069696";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/taxonomy_menu/taxonomy_menu.module	taxonomy_menu	module		1	0	7000	0	a:11:{s:4:"core";s:3:"7.x";s:12:"dependencies";a:2:{i:0;s:8:"taxonomy";i:1;s:4:"menu";}s:11:"description";s:39:"Adds links to taxonomy terms to a menu.";s:4:"name";s:13:"Taxonomy menu";s:7:"package";s:13:"Taxonomy menu";s:5:"files";a:5:{i:0;s:23:"taxonomy_menu.batch.inc";i:1;s:26:"taxonomy_menu.database.inc";i:2;s:20:"taxonomy_menu.module";i:3;s:18:"taxonomy_menu.test";i:4;s:21:"taxonomy_menu.install";}s:7:"version";s:7:"7.x-1.4";s:7:"project";s:13:"taxonomy_menu";s:9:"datestamp";s:10:"1346896425";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/field_group/tests/field_group_test.module	field_group_test	module		0	0	-1	0	a:11:{s:4:"name";s:15:"Fieldgroup Test";s:11:"description";s:26:"Test module for fieldgroup";s:4:"core";s:3:"7.x";s:7:"package";s:10:"Fieldgroup";s:7:"version";s:7:"7.x-1.3";s:7:"project";s:11:"field_group";s:9:"datestamp";s:10:"1380124361";s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+themes/bartik/bartik.info	bartik	theme	themes/engines/phptemplate/phptemplate.engine	0	0	-1	0	a:15:{s:4:"name";s:6:"Bartik";s:11:"description";s:48:"A flexible, recolorable theme with many regions.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:11:"stylesheets";a:2:{s:3:"all";a:3:{s:14:"css/layout.css";s:28:"themes/bartik/css/layout.css";s:13:"css/style.css";s:27:"themes/bartik/css/style.css";s:14:"css/colors.css";s:28:"themes/bartik/css/colors.css";}s:5:"print";a:1:{s:13:"css/print.css";s:27:"themes/bartik/css/print.css";}}s:7:"regions";a:17:{s:6:"header";s:6:"Header";s:4:"help";s:4:"Help";s:8:"page_top";s:8:"Page top";s:11:"page_bottom";s:11:"Page bottom";s:11:"highlighted";s:11:"Highlighted";s:8:"featured";s:8:"Featured";s:7:"content";s:7:"Content";s:13:"sidebar_first";s:13:"Sidebar first";s:14:"sidebar_second";s:14:"Sidebar second";s:14:"triptych_first";s:14:"Triptych first";s:15:"triptych_middle";s:15:"Triptych middle";s:13:"triptych_last";s:13:"Triptych last";s:18:"footer_firstcolumn";s:19:"Footer first column";s:19:"footer_secondcolumn";s:20:"Footer second column";s:18:"footer_thirdcolumn";s:19:"Footer third column";s:19:"footer_fourthcolumn";s:20:"Footer fourth column";s:6:"footer";s:6:"Footer";}s:8:"settings";a:1:{s:20:"shortcut_module_link";s:1:"0";}s:6:"engine";s:11:"phptemplate";s:8:"features";a:9:{i:0;s:4:"logo";i:1;s:7:"favicon";i:2;s:4:"name";i:3;s:6:"slogan";i:4;s:17:"node_user_picture";i:5;s:20:"comment_user_picture";i:6;s:25:"comment_user_verification";i:7;s:9:"main_menu";i:8;s:14:"secondary_menu";}s:10:"screenshot";s:28:"themes/bartik/screenshot.png";s:3:"php";s:5:"5.2.4";s:7:"scripts";a:0:{}s:14:"regions_hidden";a:2:{i:0;s:8:"page_top";i:1;s:11:"page_bottom";}s:28:"overlay_supplemental_regions";a:1:{i:0;s:11:"page_bottom";}}
 sites/all/modules/service_links/services/hungarian_services.module	hungarian_services	module		0	0	-1	0	a:11:{s:4:"name";s:18:"Hungarian Services";s:11:"description";s:35:"Provide the Hungarian Service: iWiW";s:4:"core";s:3:"7.x";s:7:"package";s:24:"Service Links - Services";s:12:"dependencies";a:1:{i:0;s:13:"service_links";}s:7:"version";s:7:"7.x-2.1";s:5:"files";a:1:{i:0;s:25:"hungarian_services.module";}s:7:"project";s:13:"service_links";s:9:"datestamp";s:10:"1317978709";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/geofield/modules/geofield_map/geofield_map.module	geofield_map	module		0	0	-1	0	a:11:{s:4:"name";s:12:"Geofield Map";s:11:"description";s:48:"Provides a basic mapping interface for Geofield.";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:8:"geofield";}s:5:"files";a:2:{i:0;s:31:"includes/geofield_map.views.inc";i:1;s:42:"includes/geofield_map_plugin_style_map.inc";}s:7:"version";s:7:"7.x-1.2";s:7:"project";s:8:"geofield";s:9:"datestamp";s:10:"1372735859";s:7:"package";s:5:"Other";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/flag/flag_bookmark/flag_bookmark.module	flag_bookmark	module		0	0	-1	0	a:11:{s:4:"name";s:13:"Flag Bookmark";s:11:"description";s:55:"Provides an example bookmark flag and supporting views.";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:4:"flag";}s:7:"package";s:5:"Flags";s:7:"version";s:7:"7.x-3.2";s:7:"project";s:4:"flag";s:9:"datestamp";s:10:"1379063829";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
 sites/all/modules/l10n_update/l10n_update.module	l10n_update	module		1	0	7004	0	a:11:{s:4:"name";s:19:"Localization update";s:11:"description";s:58:"Provides automatic downloads and updates for translations.";s:12:"dependencies";a:1:{i:0;s:6:"locale";}s:4:"core";s:3:"7.x";s:7:"package";s:12:"Multilingual";s:5:"files";a:11:{i:0;s:21:"l10n_update.admin.inc";i:1;s:19:"l10n_update.api.php";i:2;s:21:"l10n_update.batch.inc";i:3;s:21:"l10n_update.check.inc";i:4;s:21:"l10n_update.drush.inc";i:5;s:15:"l10n_update.inc";i:6;s:19:"l10n_update.install";i:7;s:22:"l10n_update.locale.inc";i:8;s:18:"l10n_update.module";i:9;s:22:"l10n_update.parser.inc";i:10;s:23:"l10n_update.project.inc";}s:7:"version";s:13:"7.x-1.0-beta3";s:7:"project";s:11:"l10n_update";s:9:"datestamp";s:10:"1328563848";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 sites/all/modules/variable/variable_realm/variable_realm.module	variable_realm	module		0	0	-1	0	a:11:{s:4:"name";s:14:"Variable realm";s:11:"description";s:49:"API to use variable realms from different modules";s:12:"dependencies";a:1:{i:0;s:8:"variable";}s:7:"package";s:8:"Variable";s:4:"core";s:3:"7.x";s:7:"version";s:7:"7.x-2.3";s:5:"files";a:2:{i:0;s:24:"variable_realm.class.inc";i:1;s:30:"variable_realm_union.class.inc";}s:7:"project";s:8:"variable";s:9:"datestamp";s:10:"1376034993";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 sites/all/modules/eu-cookie-compliance/eu_cookie_compliance.module	eu_cookie_compliance	module		0	0	-1	0	a:12:{s:4:"name";s:20:"EU Cookie Compliance";s:11:"description";s:82:"This module aims at making the website compliant with the new EU cookie regulation";s:4:"core";s:3:"7.x";s:9:"configure";s:40:"admin/config/system/eu-cookie-compliance";s:7:"version";s:8:"7.x-1.12";s:7:"project";s:20:"eu-cookie-compliance";s:9:"datestamp";s:10:"1384944505";s:12:"dependencies";a:0:{}s:7:"package";s:5:"Other";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+modules/taxonomy/taxonomy.module	taxonomy	module		1	0	7011	0	a:10:{s:4:"name";s:8:"Taxonomy";s:11:"description";s:38:"Enables the categorization of content.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:7:"options";}s:5:"files";a:2:{i:0;s:15:"taxonomy.module";i:1;s:13:"taxonomy.test";}s:9:"configure";s:24:"admin/structure/taxonomy";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/ctools/ctools_plugin_example/ctools_plugin_example.module	ctools_plugin_example	module		0	0	-1	0	a:11:{s:4:"name";s:35:"Chaos Tools (CTools) Plugin Example";s:11:"description";s:75:"Shows how an external module can provide ctools plugins (for Panels, etc.).";s:7:"package";s:16:"Chaos tool suite";s:12:"dependencies";a:4:{i:0;s:6:"ctools";i:1;s:6:"panels";i:2;s:12:"page_manager";i:3;s:13:"advanced_help";}s:4:"core";s:3:"7.x";s:7:"version";s:7:"7.x-1.3";s:7:"project";s:6:"ctools";s:9:"datestamp";s:10:"1365013512";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+sites/all/modules/panels/panels_mini/panels_mini.module	panels_mini	module		0	0	-1	0	a:11:{s:4:"name";s:11:"Mini panels";s:11:"description";s:89:"Create mini panels that can be used as blocks by Drupal and panes by other panel modules.";s:7:"package";s:6:"Panels";s:12:"dependencies";a:1:{i:0;s:6:"panels";}s:4:"core";s:3:"7.x";s:5:"files";a:1:{i:0;s:42:"plugins/export_ui/panels_mini_ui.class.php";}s:7:"version";s:7:"7.x-3.3";s:7:"project";s:6:"panels";s:9:"datestamp";s:10:"1345319572";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/ctools/ctools.module	ctools	module		1	0	6008	0	a:11:{s:4:"name";s:11:"Chaos tools";s:11:"description";s:46:"A library of helpful tools by Merlin of Chaos.";s:4:"core";s:3:"7.x";s:7:"package";s:16:"Chaos tool suite";s:5:"files";a:3:{i:0;s:20:"includes/context.inc";i:1;s:22:"includes/math-expr.inc";i:2;s:21:"includes/stylizer.inc";}s:7:"version";s:7:"7.x-1.3";s:7:"project";s:6:"ctools";s:9:"datestamp";s:10:"1365013512";s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 sites/all/modules/subpathauto/subpathauto.module	subpathauto	module		0	0	-1	0	a:12:{s:4:"name";s:12:"Sub-pathauto";s:11:"description";s:56:"Provides support for extending sub-paths of URL aliases.";s:4:"core";s:3:"7.x";s:9:"configure";s:33:"admin/config/search/path/subpaths";s:5:"files";a:1:{i:0;s:16:"subpathauto.test";}s:7:"version";s:7:"7.x-1.3";s:7:"project";s:11:"subpathauto";s:9:"datestamp";s:10:"1347990612";s:12:"dependencies";a:0:{}s:7:"package";s:5:"Other";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/context/context.module	context	module		0	0	-1	0	a:11:{s:4:"name";s:7:"Context";s:12:"dependencies";a:1:{i:0;s:6:"ctools";}s:11:"description";s:66:"Provide modules with a cache that lasts for a single page request.";s:7:"package";s:7:"Context";s:4:"core";s:3:"7.x";s:5:"files";a:3:{i:0;s:18:"tests/context.test";i:1;s:29:"tests/context.conditions.test";i:2;s:28:"tests/context.reactions.test";}s:7:"version";s:7:"7.x-3.1";s:7:"project";s:7:"context";s:9:"datestamp";s:10:"1381976667";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-modules/simpletest/tests/common_test_cron_helper.module	common_test_cron_helper	module		0	0	-1	0	a:10:{s:4:"name";s:23:"Common Test Cron Helper";s:11:"description";s:56:"Helper module for CronRunTestCase::testCronExceptions().";s:7:"package";s:7:"Testing";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:6:"hidden";b:1;s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-modules/aggregator/aggregator.module	aggregator	module		0	0	-1	0	a:11:{s:4:"name";s:10:"Aggregator";s:11:"description";s:57:"Aggregates syndicated content (RSS, RDF, and Atom feeds).";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:5:"files";a:1:{i:0;s:15:"aggregator.test";}s:9:"configure";s:41:"admin/config/services/aggregator/settings";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:14:"aggregator.css";s:33:"modules/aggregator/aggregator.css";}}s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/flag/tests/flagaccesstest/flagaccesstest.module	flagaccesstest	module		0	0	-1	0	a:12:{s:4:"name";s:26:"Flag hook_flag_access test";s:11:"description";s:26:"Tests for hook_flag_access";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:4:"flag";}s:7:"package";s:5:"Flags";s:6:"hidden";b:1;s:7:"version";s:7:"7.x-3.2";s:7:"project";s:4:"flag";s:9:"datestamp";s:10:"1379063829";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-sites/all/modules/media/modules/media_wysiwyg_view_mode/media_wysiwyg_view_mode.module	media_wysiwyg_view_mode	module		0	0	-1	0	a:12:{s:4:"name";s:23:"Media WYSIWYG View Mode";s:11:"description";s:86:"Enables files inside of the WYSIWYG editor to be displayed using a separate view mode.";s:7:"package";s:5:"Media";s:4:"core";s:3:"7.x";s:12:"dependencies";a:2:{i:0;s:5:"media";i:1;s:7:"wysiwyg";}s:9:"configure";s:36:"admin/config/media/wysiwyg-view-mode";s:7:"version";s:14:"7.x-2.0-alpha3";s:7:"project";s:5:"media";s:9:"datestamp";s:10:"1382744872";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-sites/all/modules/stage_file_proxy/stage_file_proxy.module	stage_file_proxy	module		0	0	-1	0	a:11:{s:4:"name";s:16:"Stage File Proxy";s:11:"description";s:80:"Proxies files from production server so you don't have to transfer them manually";s:4:"core";s:3:"7.x";s:7:"version";s:7:"7.x-1.4";s:7:"project";s:16:"stage_file_proxy";s:9:"datestamp";s:10:"1373465751";s:12:"dependencies";a:0:{}s:7:"package";s:5:"Other";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
 modules/contact/contact.module	contact	module		0	0	-1	0	a:10:{s:4:"name";s:7:"Contact";s:11:"description";s:61:"Enables the use of both personal and site-wide contact forms.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:5:"files";a:1:{i:0;s:12:"contact.test";}s:9:"configure";s:23:"admin/structure/contact";s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-modules/simpletest/tests/system_dependencies_test.module	system_dependencies_test	module		0	0	-1	0	a:10:{s:4:"name";s:22:"System dependency test";s:11:"description";s:47:"Support module for testing system dependencies.";s:7:"package";s:7:"Testing";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:6:"hidden";b:1;s:12:"dependencies";a:1:{i:0;s:19:"_missing_dependency";}s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-sites/all/modules/migrate/migrate.module	migrate	module		0	0	-1	0	a:11:{s:4:"name";s:7:"Migrate";s:11:"description";s:36:"Import content from external sources";s:7:"package";s:11:"Development";s:4:"core";s:3:"7.x";s:5:"files";a:42:{i:0;s:17:"includes/base.inc";i:1;s:26:"includes/field_mapping.inc";i:2;s:22:"includes/migration.inc";i:3;s:24:"includes/destination.inc";i:4;s:22:"includes/exception.inc";i:5;s:18:"includes/group.inc";i:6;s:20:"includes/handler.inc";i:7;s:16:"includes/map.inc";i:8;s:19:"includes/source.inc";i:9;s:17:"includes/team.inc";i:10;s:16:"migrate.mail.inc";i:11;s:31:"plugins/destinations/entity.inc";i:12;s:29:"plugins/destinations/term.inc";i:13;s:29:"plugins/destinations/user.inc";i:14;s:29:"plugins/destinations/node.inc";i:15;s:32:"plugins/destinations/comment.inc";i:16;s:29:"plugins/destinations/file.inc";i:17;s:29:"plugins/destinations/path.inc";i:18;s:31:"plugins/destinations/fields.inc";i:19;s:29:"plugins/destinations/poll.inc";i:20;s:30:"plugins/destinations/table.inc";i:21;s:35:"plugins/destinations/table_copy.inc";i:22;s:29:"plugins/destinations/menu.inc";i:23;s:35:"plugins/destinations/menu_links.inc";i:24;s:35:"plugins/destinations/statistics.inc";i:25;s:23:"plugins/sources/csv.inc";i:26;s:25:"plugins/sources/files.inc";i:27;s:24:"plugins/sources/json.inc";i:28;s:24:"plugins/sources/list.inc";i:29;s:30:"plugins/sources/multiitems.inc";i:30;s:23:"plugins/sources/sql.inc";i:31;s:26:"plugins/sources/sqlmap.inc";i:32;s:25:"plugins/sources/mssql.inc";i:33;s:26:"plugins/sources/oracle.inc";i:34;s:23:"plugins/sources/xml.inc";i:35;s:25:"tests/import/options.test";i:36;s:39:"tests/plugins/destinations/comment.test";i:37;s:36:"tests/plugins/destinations/node.test";i:38;s:37:"tests/plugins/destinations/table.test";i:39;s:36:"tests/plugins/destinations/term.test";i:40;s:36:"tests/plugins/destinations/user.test";i:41;s:30:"tests/plugins/sources/xml.test";}s:7:"version";s:7:"7.x-2.4";s:7:"project";s:7:"migrate";s:9:"datestamp";s:10:"1338661580";s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/context/context.module	context	module		0	0	-1	0	a:11:{s:4:"name";s:7:"Context";s:12:"dependencies";a:1:{i:0;s:6:"ctools";}s:11:"description";s:66:"Provide modules with a cache that lasts for a single page request.";s:7:"package";s:7:"Context";s:4:"core";s:3:"7.x";s:5:"files";a:3:{i:0;s:18:"tests/context.test";i:1;s:29:"tests/context.conditions.test";i:2;s:28:"tests/context.reactions.test";}s:7:"version";s:7:"7.x-3.1";s:7:"project";s:7:"context";s:9:"datestamp";s:10:"1381976667";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/variable/variable_advanced/variable_advanced.module	variable_advanced	module		0	0	-1	0	a:11:{s:4:"name";s:17:"Variable advanced";s:11:"description";s:105:"Provides access to advanced low level variables. By using this you will be able to break your site badly.";s:12:"dependencies";a:1:{i:0;s:8:"variable";}s:7:"package";s:8:"Variable";s:4:"core";s:3:"7.x";s:7:"version";s:7:"7.x-2.3";s:7:"project";s:8:"variable";s:9:"datestamp";s:10:"1376034993";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+sites/all/modules/service_links/services/german_services.module	german_services	module		0	0	-1	0	a:11:{s:4:"name";s:15:"German Services";s:11:"description";s:173:"Provide the German Services: Alltagz, Colivia, Icio, InfoPirat, Linkarena, MeinVZ, Mister Wong, Netselektor, Oneview, Readster, seekXL, SeoIGG, Weblinkr, Webnews, Xing, Yigg";s:4:"core";s:3:"7.x";s:7:"package";s:24:"Service Links - Services";s:12:"dependencies";a:1:{i:0;s:13:"service_links";}s:7:"version";s:7:"7.x-2.1";s:5:"files";a:1:{i:0;s:22:"german_services.module";}s:7:"project";s:13:"service_links";s:9:"datestamp";s:10:"1317978709";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/themes/zen/zen.info	zen	theme	themes/engines/phptemplate/phptemplate.engine	0	0	-1	0	a:17:{s:4:"name";s:3:"Zen";s:11:"description";s:195:"Zen sub-themes are the ultimate starting themes for Drupal 7. Read the <a href="https://drupal.org/node/873778">online docs</a> or the included README-FIRST.txt on how to create a theme with Zen.";s:10:"screenshot";s:49:"sites/all/themes/zen/zen-internals/screenshot.png";s:4:"core";s:3:"7.x";s:6:"engine";s:11:"phptemplate";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:16:"system.menus.css";s:37:"sites/all/themes/zen/system.menus.css";}}s:7:"regions";a:11:{s:6:"header";s:6:"Header";s:10:"navigation";s:14:"Navigation bar";s:11:"highlighted";s:11:"Highlighted";s:4:"help";s:4:"Help";s:7:"content";s:7:"Content";s:13:"sidebar_first";s:13:"First sidebar";s:14:"sidebar_second";s:14:"Second sidebar";s:6:"footer";s:6:"Footer";s:6:"bottom";s:11:"Page bottom";s:8:"page_top";s:8:"Page top";s:11:"page_bottom";s:11:"Page bottom";}s:8:"settings";a:11:{s:14:"zen_breadcrumb";s:3:"yes";s:24:"zen_breadcrumb_separator";s:5:" \\342\\200\\272 ";s:19:"zen_breadcrumb_home";s:1:"1";s:23:"zen_breadcrumb_trailing";s:1:"0";s:20:"zen_breadcrumb_title";s:1:"0";s:10:"zen_layout";s:23:"zen-responsive-sidebars";s:20:"zen_skip_link_anchor";s:9:"main-menu";s:18:"zen_skip_link_text";s:18:"Jump to navigation";s:22:"zen_html5_respond_meta";a:3:{i:0;s:7:"respond";i:1;s:5:"html5";i:2;s:4:"meta";}s:20:"zen_rebuild_registry";s:1:"0";s:14:"zen_wireframes";s:1:"0";}s:7:"plugins";a:1:{s:6:"panels";a:1:{s:7:"layouts";s:14:"panels-layouts";}}s:7:"version";s:7:"7.x-5.4";s:7:"project";s:3:"zen";s:9:"datestamp";s:10:"1377107504";s:8:"features";a:9:{i:0;s:4:"logo";i:1;s:7:"favicon";i:2;s:4:"name";i:3;s:6:"slogan";i:4;s:17:"node_user_picture";i:5;s:20:"comment_user_picture";i:6;s:25:"comment_user_verification";i:7;s:9:"main_menu";i:8;s:14:"secondary_menu";}s:3:"php";s:5:"5.2.4";s:7:"scripts";a:0:{}s:14:"regions_hidden";a:2:{i:0;s:8:"page_top";i:1;s:11:"page_bottom";}s:28:"overlay_supplemental_regions";a:1:{i:0;s:11:"page_bottom";}}
+sites/all/modules/rules/rules_scheduler/rules_scheduler.module	rules_scheduler	module		0	0	-1	0	a:11:{s:4:"name";s:15:"Rules Scheduler";s:11:"description";s:57:"Schedule the execution of Rules components using actions.";s:12:"dependencies";a:1:{i:0;s:5:"rules";}s:7:"package";s:5:"Rules";s:4:"core";s:3:"7.x";s:5:"files";a:9:{i:0;s:25:"rules_scheduler.admin.inc";i:1;s:22:"rules_scheduler.module";i:2;s:23:"rules_scheduler.install";i:3;s:25:"rules_scheduler.rules.inc";i:4;s:20:"rules_scheduler.test";i:5;s:36:"includes/rules_scheduler.handler.inc";i:6;s:42:"includes/rules_scheduler.views_default.inc";i:7;s:34:"includes/rules_scheduler.views.inc";i:8;s:41:"includes/rules_scheduler_views_filter.inc";}s:7:"version";s:7:"7.x-2.6";s:7:"project";s:5:"rules";s:9:"datestamp";s:10:"1383063052";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/i18n/i18n_field/i18n_field.module	i18n_field	module		0	0	-1	0	a:11:{s:4:"name";s:17:"Field translation";s:11:"description";s:26:"Translate field properties";s:12:"dependencies";a:2:{i:0;s:5:"field";i:1;s:11:"i18n_string";}s:7:"package";s:35:"Multilingual - Internationalization";s:4:"core";s:3:"7.x";s:5:"files";a:2:{i:0;s:14:"i18n_field.inc";i:1;s:15:"i18n_field.test";}s:7:"version";s:8:"7.x-1.10";s:7:"project";s:4:"i18n";s:9:"datestamp";s:10:"1377069696";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 sites/all/modules/entity_translation/entity_translation.module	entity_translation	module		0	0	-1	0	a:12:{s:4:"name";s:18:"Entity Translation";s:11:"description";s:58:"Allows entities to be translated into different languages.";s:7:"package";s:33:"Multilingual - Entity Translation";s:4:"core";s:3:"7.x";s:9:"configure";s:40:"admin/config/regional/entity_translation";s:12:"dependencies";a:1:{i:0;s:14:"locale (>7.14)";}s:5:"files";a:12:{i:0;s:32:"includes/translation.handler.inc";i:1;s:40:"includes/translation.handler.comment.inc";i:2;s:37:"includes/translation.handler.node.inc";i:3;s:46:"includes/translation.handler.taxonomy_term.inc";i:4;s:37:"includes/translation.handler.user.inc";i:5;s:29:"tests/entity_translation.test";i:6;s:49:"views/entity_translation_handler_relationship.inc";i:7;s:57:"views/entity_translation_handler_field_translate_link.inc";i:8;s:48:"views/entity_translation_handler_field_label.inc";i:9;s:55:"views/entity_translation_handler_filter_entity_type.inc";i:10;s:52:"views/entity_translation_handler_filter_language.inc";i:11;s:62:"views/entity_translation_handler_filter_translation_exists.inc";}s:7:"version";s:13:"7.x-1.0-beta3";s:7:"project";s:18:"entity_translation";s:9:"datestamp";s:10:"1374601567";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 sites/all/modules/service_links/services/italian_services.module	italian_services	module		0	0	-1	0	a:11:{s:4:"name";s:16:"Italian Services";s:11:"description";s:96:"Provide the Italian Services: Diggita, Meemi, OkNotizie, Segnalo.com, TechNotizie, Wikio, ZicZac";s:4:"core";s:3:"7.x";s:7:"package";s:24:"Service Links - Services";s:12:"dependencies";a:1:{i:0;s:13:"service_links";}s:7:"version";s:7:"7.x-2.1";s:5:"files";a:1:{i:0;s:23:"italian_services.module";}s:7:"project";s:13:"service_links";s:9:"datestamp";s:10:"1317978709";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-modules/taxonomy/taxonomy.module	taxonomy	module		1	0	7011	0	a:10:{s:4:"name";s:8:"Taxonomy";s:11:"description";s:38:"Enables the categorization of content.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:7:"options";}s:5:"files";a:2:{i:0;s:15:"taxonomy.module";i:1;s:13:"taxonomy.test";}s:9:"configure";s:24:"admin/structure/taxonomy";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/service_links/service_links.module	service_links	module		0	0	-1	0	a:12:{s:4:"name";s:13:"Service links";s:11:"description";s:76:"Module engine for add various service links about sharing networks to nodes.";s:4:"core";s:3:"7.x";s:7:"version";s:7:"7.x-2.1";s:7:"package";s:13:"Service Links";s:5:"files";a:6:{i:0;s:20:"service_links.module";i:1;s:23:"service_links.admin.inc";i:2;s:23:"service_links.theme.inc";i:3;s:21:"service_links.install";i:4;s:23:"service_links.views.inc";i:5;s:45:"service_links_handler_field_service_links.inc";}s:9:"configure";s:35:"admin/config/services/service-links";s:7:"project";s:13:"service_links";s:9:"datestamp";s:10:"1317978709";s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/flag/flag_actions.module	flag_actions	module		0	0	-1	0	a:12:{s:4:"name";s:12:"Flag actions";s:11:"description";s:31:"Execute actions on Flag events.";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:4:"flag";}s:7:"package";s:5:"Flags";s:9:"configure";s:29:"admin/structure/flags/actions";s:5:"files";a:2:{i:0;s:12:"flag.install";i:1;s:19:"flag_actions.module";}s:7:"version";s:7:"7.x-3.2";s:7:"project";s:4:"flag";s:9:"datestamp";s:10:"1379063829";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/feeds/feeds.module	feeds	module		0	0	-1	0	a:11:{s:4:"name";s:5:"Feeds";s:11:"description";s:58:"Aggregates RSS/Atom/RDF feeds, imports CSV files and more.";s:7:"package";s:5:"Feeds";s:4:"core";s:3:"7.x";s:12:"dependencies";a:2:{i:0;s:6:"ctools";i:1;s:13:"job_scheduler";}s:5:"files";a:44:{i:0;s:30:"includes/FeedsConfigurable.inc";i:1;s:26:"includes/FeedsImporter.inc";i:2;s:24:"includes/FeedsSource.inc";i:3;s:23:"libraries/ParserCSV.inc";i:4;s:26:"libraries/http_request.inc";i:5;s:28:"libraries/PuSHSubscriber.inc";i:6;s:26:"plugins/FeedsCSVParser.inc";i:7;s:24:"plugins/FeedsFetcher.inc";i:8;s:28:"plugins/FeedsFileFetcher.inc";i:9;s:28:"plugins/FeedsHTTPFetcher.inc";i:10;s:30:"plugins/FeedsNodeProcessor.inc";i:11;s:27:"plugins/FeedsOPMLParser.inc";i:12;s:23:"plugins/FeedsParser.inc";i:13;s:23:"plugins/FeedsPlugin.inc";i:14;s:26:"plugins/FeedsProcessor.inc";i:15;s:32:"plugins/FeedsSimplePieParser.inc";i:16;s:30:"plugins/FeedsSitemapParser.inc";i:17;s:34:"plugins/FeedsSyndicationParser.inc";i:18;s:30:"plugins/FeedsTermProcessor.inc";i:19;s:30:"plugins/FeedsUserProcessor.inc";i:20;s:16:"tests/feeds.test";i:21;s:26:"tests/feeds_date_time.test";i:22;s:28:"tests/feeds_mapper_date.test";i:23;s:37:"tests/feeds_mapper_date_multiple.test";i:24;s:29:"tests/feeds_mapper_field.test";i:25;s:28:"tests/feeds_mapper_file.test";i:26;s:28:"tests/feeds_mapper_path.test";i:27;s:31:"tests/feeds_mapper_profile.test";i:28;s:23:"tests/feeds_mapper.test";i:29;s:30:"tests/feeds_mapper_config.test";i:30;s:29:"tests/feeds_fetcher_file.test";i:31;s:31:"tests/feeds_processor_node.test";i:32;s:31:"tests/feeds_processor_term.test";i:33;s:31:"tests/feeds_processor_user.test";i:34;s:26:"tests/feeds_scheduler.test";i:35;s:28:"tests/feeds_mapper_link.test";i:36;s:32:"tests/feeds_mapper_taxonomy.test";i:37;s:21:"tests/parser_csv.test";i:38;s:50:"views/feeds_views_handler_argument_importer_id.inc";i:39;s:49:"views/feeds_views_handler_field_importer_name.inc";i:40;s:47:"views/feeds_views_handler_field_log_message.inc";i:41;s:44:"views/feeds_views_handler_field_severity.inc";i:42;s:42:"views/feeds_views_handler_field_source.inc";i:43;s:45:"views/feeds_views_handler_filter_severity.inc";}s:7:"version";s:14:"7.x-2.0-alpha8";s:7:"project";s:5:"feeds";s:9:"datestamp";s:10:"1366671911";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/geofield/modules/geofield_map/geofield_map.module	geofield_map	module		0	0	-1	0	a:11:{s:4:"name";s:12:"Geofield Map";s:11:"description";s:48:"Provides a basic mapping interface for Geofield.";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:8:"geofield";}s:5:"files";a:2:{i:0;s:31:"includes/geofield_map.views.inc";i:1;s:42:"includes/geofield_map_plugin_style_map.inc";}s:7:"version";s:7:"7.x-1.2";s:7:"project";s:8:"geofield";s:9:"datestamp";s:10:"1372735859";s:7:"package";s:5:"Other";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+modules/simpletest/tests/system_dependencies_test.module	system_dependencies_test	module		0	0	-1	0	a:10:{s:4:"name";s:22:"System dependency test";s:11:"description";s:47:"Support module for testing system dependencies.";s:7:"package";s:7:"Testing";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:6:"hidden";b:1;s:12:"dependencies";a:1:{i:0;s:19:"_missing_dependency";}s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+modules/comment/comment.module	comment	module		0	0	-1	0	a:11:{s:4:"name";s:7:"Comment";s:11:"description";s:57:"Allows users to comment on and discuss published content.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:4:"text";}s:5:"files";a:2:{i:0;s:14:"comment.module";i:1;s:12:"comment.test";}s:9:"configure";s:21:"admin/content/comment";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:11:"comment.css";s:27:"modules/comment/comment.css";}}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+modules/contextual/contextual.module	contextual	module		0	0	-1	0	a:9:{s:4:"name";s:16:"Contextual links";s:11:"description";s:75:"Provides contextual links to perform actions related to elements on a page.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:5:"files";a:1:{i:0;s:15:"contextual.test";}s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 sites/all/modules/service_links/plugins/service_links_share.module	service_links_share	module		0	0	-1	0	a:11:{s:4:"name";s:19:"Service Links Share";s:11:"description";s:62:"Provide the integration between Service Links and Share module";s:4:"core";s:3:"7.x";s:7:"package";s:13:"Service Links";s:12:"dependencies";a:3:{i:0;s:13:"service_links";i:1;s:5:"share";i:2;s:12:"share_widget";}s:7:"version";s:7:"7.x-2.1";s:5:"files";a:1:{i:0;s:26:"service_links_share.module";}s:7:"project";s:13:"service_links";s:9:"datestamp";s:10:"1317978709";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 sites/all/modules/devel/devel_generate/devel_generate.module	devel_generate	module		0	0	-1	0	a:13:{s:4:"name";s:14:"Devel generate";s:11:"description";s:48:"Generate dummy users, nodes, and taxonomy terms.";s:7:"package";s:11:"Development";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:5:"devel";}s:4:"tags";a:1:{i:0;s:9:"developer";}s:9:"configure";s:33:"admin/config/development/generate";s:7:"version";s:7:"7.x-1.3";s:7:"project";s:5:"devel";s:9:"datestamp";s:10:"1338940281";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
 sites/all/modules/filecache/filecache.module	filecache	module		0	0	-1	0	a:11:{s:4:"name";s:10:"File Cache";s:11:"description";s:48:"Cache backend that uses file system for storage.";s:4:"core";s:3:"7.x";s:7:"package";s:27:"Performance and scalability";s:7:"version";s:13:"7.x-1.0-beta2";s:7:"project";s:9:"filecache";s:9:"datestamp";s:10:"1332678653";s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-sites/all/modules/feeds/feeds_ui/feeds_ui.module	feeds_ui	module		0	0	-1	0	a:12:{s:4:"name";s:14:"Feeds Admin UI";s:11:"description";s:35:"Administrative UI for Feeds module.";s:7:"package";s:5:"Feeds";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:5:"feeds";}s:9:"configure";s:21:"admin/structure/feeds";s:5:"files";a:1:{i:0;s:13:"feeds_ui.test";}s:7:"version";s:14:"7.x-2.0-alpha8";s:7:"project";s:5:"feeds";s:9:"datestamp";s:10:"1366671911";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/service_links/services/forward_services.module	forward_services	module		0	0	-1	0	a:11:{s:4:"name";s:16:"Forward Services";s:11:"description";s:69:"Add the support for Forward module which send the link through email.";s:4:"core";s:3:"7.x";s:7:"package";s:24:"Service Links - Services";s:12:"dependencies";a:2:{i:0;s:13:"service_links";i:1;s:7:"forward";}s:7:"version";s:7:"7.x-2.1";s:5:"files";a:1:{i:0;s:23:"forward_services.module";}s:7:"project";s:13:"service_links";s:9:"datestamp";s:10:"1317978709";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-modules/simpletest/tests/file_test.module	file_test	module		0	0	-1	0	a:10:{s:4:"name";s:9:"File test";s:11:"description";s:39:"Support module for file handling tests.";s:7:"package";s:7:"Testing";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:5:"files";a:1:{i:0;s:16:"file_test.module";}s:6:"hidden";b:1;s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/views_data_export/views_data_export.module	views_data_export	module		1	0	7300	0	a:11:{s:4:"name";s:17:"Views Data Export";s:11:"description";s:53:"Plugin to export views data into various file formats";s:7:"package";s:5:"Views";s:4:"core";s:3:"7.x";s:5:"files";a:11:{i:0;s:24:"views_data_export.module";i:1;s:51:"plugins/views_data_export_plugin_display_export.inc";i:2;s:49:"plugins/views_data_export_plugin_style_export.inc";i:3;s:53:"plugins/views_data_export_plugin_style_export_csv.inc";i:4;s:53:"plugins/views_data_export_plugin_style_export_xml.inc";i:5;s:15:"tests/base.test";i:6;s:21:"tests/csv_export.test";i:7;s:21:"tests/doc_export.test";i:8;s:21:"tests/txt_export.test";i:9;s:21:"tests/xls_export.test";i:10;s:21:"tests/xml_export.test";}s:12:"dependencies";a:1:{i:0;s:5:"views";}s:7:"version";s:13:"7.x-3.0-beta7";s:7:"project";s:17:"views_data_export";s:9:"datestamp";s:10:"1386882544";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/bot/bot.module	bot	module		0	0	-1	0	a:12:{s:4:"name";s:3:"Bot";s:7:"package";s:3:"Bot";s:11:"description";s:52:"Enables a network and plugin framework for IRC bots.";s:9:"configure";s:16:"admin/config/bot";s:4:"core";s:3:"7.x";s:7:"version";s:40:"d0e10c65616f267543e717addc17422979f83bd2";s:7:"project";s:3:"bot";s:9:"datestamp";s:10:"1370700613";s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-sites/all/modules/uib/tk/tk.module	tk	module		1	0	0	0	a:10:{s:4:"name";s:15:"Tjenestekatalog";s:11:"description";s:8:"Bla, bla";s:4:"core";s:3:"7.x";s:7:"package";s:3:"UiB";s:3:"php";s:5:"5.2.4";s:12:"dependencies";a:17:{i:0;s:15:"entityreference";i:1;s:8:"features";i:2;s:11:"field_group";i:3;s:17:"field_permissions";i:4;s:17:"field_sql_storage";i:5;s:11:"l10n_update";i:6;s:4:"link";i:7;s:4:"list";i:8;s:4:"menu";i:9;s:4:"node";i:10;s:7:"options";i:11;s:9:"strongarm";i:12;s:8:"taxonomy";i:13;s:13:"taxonomy_menu";i:14;s:4:"text";i:15;s:5:"views";i:16;s:17:"views_data_export";}s:8:"features";a:10:{s:6:"ctools";a:3:{i:0;s:25:"field_group:field_group:1";i:1;s:21:"strongarm:strongarm:1";i:2;s:23:"views:views_default:3.0";}s:12:"features_api";a:1:{i:0;s:5:"api:1";}s:5:"field";a:27:{i:0;s:17:"node-article-body";i:1;s:31:"node-service-field_availability";i:2;s:23:"node-service-field_cost";i:3;s:30:"node-service-field_criticality";i:4;s:25:"node-service-field_demand";i:5;s:30:"node-service-field_description";i:6;s:35:"node-service-field_field_howto_orde";i:7;s:27:"node-service-field_operator";i:8;s:31:"node-service-field_ower_contact";i:9;s:26:"node-service-field_quality";i:10;s:41:"node-service-field_service_classification";i:11;s:33:"node-service-field_service_levels";i:12;s:32:"node-service-field_service_owner";i:13;s:35:"node-service-field_service_rotation";i:14;s:32:"node-service-field_service_state";i:15;s:33:"node-service-field_service_status";i:16;s:35:"node-service-field_service_supplier";i:17;s:31:"node-service-field_service_type";i:18;s:26:"node-service-field_summary";i:19;s:34:"node-service-field_support_contact";i:20;s:37:"node-service-field_supporting_systems";i:21;s:28:"node-service-field_usergroup";i:22;s:29:"node-service_owner-field_kode";i:23;s:33:"node-support_contact-field_adress";i:24;s:34:"node-support_contact-field_opening";i:25;s:32:"node-support_contact-field_phone";i:26;s:30:"node-support_contact-field_www";}s:11:"field_group";a:2:{i:0;s:31:"group_main|node|service|default";i:1;s:34:"group_sidebar|node|service|default";}s:10:"menu_links";a:1:{i:0;s:18:"navigation:<front>";}s:4:"node";a:4:{i:0;s:7:"article";i:1;s:7:"service";i:2;s:13:"service_owner";i:3;s:15:"support_contact";}s:8:"taxonomy";a:3:{i:0;s:23:"service_business_levels";i:1;s:15:"service_classes";i:2;s:13:"service_roles";}s:15:"user_permission";a:60:{i:0;s:22:"create article content";i:1;s:24:"create field_criticality";i:2;s:21:"create field_operator";i:3;s:25:"create field_ower_contact";i:4;s:27:"create field_service_levels";i:5;s:29:"create field_service_rotation";i:6;s:26:"create field_service_state";i:7;s:25:"create field_service_type";i:8;s:31:"create field_supporting_systems";i:9;s:22:"create service content";i:10;s:28:"create service_owner content";i:11;s:30:"create support_contact content";i:12;s:26:"delete any article content";i:13;s:26:"delete any service content";i:14;s:32:"delete any service_owner content";i:15;s:34:"delete any support_contact content";i:16;s:26:"delete own article content";i:17;s:26:"delete own service content";i:18;s:32:"delete own service_owner content";i:19;s:34:"delete own support_contact content";i:20;s:24:"edit any article content";i:21;s:24:"edit any service content";i:22;s:30:"edit any service_owner content";i:23;s:32:"edit any support_contact content";i:24;s:22:"edit field_criticality";i:25;s:19:"edit field_operator";i:26;s:23:"edit field_ower_contact";i:27;s:25:"edit field_service_levels";i:28;s:27:"edit field_service_rotation";i:29;s:24:"edit field_service_state";i:30;s:23:"edit field_service_type";i:31;s:29:"edit field_supporting_systems";i:32;s:24:"edit own article content";i:33;s:26:"edit own field_criticality";i:34;s:23:"edit own field_operator";i:35;s:27:"edit own field_ower_contact";i:36;s:29:"edit own field_service_levels";i:37;s:31:"edit own field_service_rotation";i:38;s:28:"edit own field_service_state";i:39;s:27:"edit own field_service_type";i:40;s:33:"edit own field_supporting_systems";i:41;s:24:"edit own service content";i:42;s:30:"edit own service_owner content";i:43;s:32:"edit own support_contact content";i:44;s:22:"view field_criticality";i:45;s:19:"view field_operator";i:46;s:23:"view field_ower_contact";i:47;s:25:"view field_service_levels";i:48;s:27:"view field_service_rotation";i:49;s:24:"view field_service_state";i:50;s:23:"view field_service_type";i:51;s:29:"view field_supporting_systems";i:52;s:26:"view own field_criticality";i:53;s:23:"view own field_operator";i:54;s:27:"view own field_ower_contact";i:55;s:29:"view own field_service_levels";i:56;s:31:"view own field_service_rotation";i:57;s:28:"view own field_service_state";i:58;s:27:"view own field_service_type";i:59;s:33:"view own field_supporting_systems";}s:8:"variable";a:48:{i:0;s:35:"field_bundle_settings_node__service";i:1;s:29:"language_content_type_article";i:2;s:29:"language_content_type_service";i:3;s:35:"language_content_type_service_owner";i:4;s:37:"language_content_type_support_contact";i:5;s:20:"node_options_article";i:6;s:20:"node_options_service";i:7;s:26:"node_options_service_owner";i:8;s:28:"node_options_support_contact";i:9;s:20:"node_preview_article";i:10;s:20:"node_preview_service";i:11;s:26:"node_preview_service_owner";i:12;s:28:"node_preview_support_contact";i:13;s:22:"node_submitted_article";i:14;s:22:"node_submitted_service";i:15;s:28:"node_submitted_service_owner";i:16;s:30:"node_submitted_support_contact";i:17;s:14:"site_frontpage";i:18;s:57:"taxonomy_menu_display_descendants_service_business_levels";i:19;s:47:"taxonomy_menu_display_descendants_service_roles";i:20;s:49:"taxonomy_menu_display_num_service_business_levels";i:21;s:39:"taxonomy_menu_display_num_service_roles";i:22;s:45:"taxonomy_menu_end_all_service_business_levels";i:23;s:35:"taxonomy_menu_end_all_service_roles";i:24;s:46:"taxonomy_menu_expanded_service_business_levels";i:25;s:36:"taxonomy_menu_expanded_service_roles";i:26;s:42:"taxonomy_menu_flat_service_business_levels";i:27;s:32:"taxonomy_menu_flat_service_roles";i:28;s:54:"taxonomy_menu_hide_empty_terms_service_business_levels";i:29;s:44:"taxonomy_menu_hide_empty_terms_service_roles";i:30;s:42:"taxonomy_menu_path_service_business_levels";i:31;s:32:"taxonomy_menu_path_service_roles";i:32;s:45:"taxonomy_menu_rebuild_service_business_levels";i:33;s:35:"taxonomy_menu_rebuild_service_roles";i:34;s:42:"taxonomy_menu_sync_service_business_levels";i:35;s:32:"taxonomy_menu_sync_service_roles";i:36;s:59:"taxonomy_menu_term_item_description_service_business_levels";i:37;s:49:"taxonomy_menu_term_item_description_service_roles";i:38;s:58:"taxonomy_menu_voc_item_description_service_business_levels";i:39;s:48:"taxonomy_menu_voc_item_description_service_roles";i:40;s:46:"taxonomy_menu_voc_item_service_business_levels";i:41;s:36:"taxonomy_menu_voc_item_service_roles";i:42;s:46:"taxonomy_menu_voc_name_service_business_levels";i:43;s:36:"taxonomy_menu_voc_name_service_roles";i:44;s:48:"taxonomy_menu_vocab_menu_service_business_levels";i:45;s:38:"taxonomy_menu_vocab_menu_service_roles";i:46;s:50:"taxonomy_menu_vocab_parent_service_business_levels";i:47;s:40:"taxonomy_menu_vocab_parent_service_roles";}s:10:"views_view";a:3:{i:0;s:12:"all_services";i:1;s:14:"classfications";i:2;s:15:"service_classes";}}s:7:"version";N;s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-modules/comment/comment.module	comment	module		0	0	-1	0	a:11:{s:4:"name";s:7:"Comment";s:11:"description";s:57:"Allows users to comment on and discuss published content.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:4:"text";}s:5:"files";a:2:{i:0;s:14:"comment.module";i:1;s:12:"comment.test";}s:9:"configure";s:21:"admin/content/comment";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:11:"comment.css";s:27:"modules/comment/comment.css";}}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/rules/rules_scheduler/rules_scheduler.module	rules_scheduler	module		0	0	-1	0	a:11:{s:4:"name";s:15:"Rules Scheduler";s:11:"description";s:57:"Schedule the execution of Rules components using actions.";s:12:"dependencies";a:1:{i:0;s:5:"rules";}s:7:"package";s:5:"Rules";s:4:"core";s:3:"7.x";s:5:"files";a:9:{i:0;s:25:"rules_scheduler.admin.inc";i:1;s:22:"rules_scheduler.module";i:2;s:23:"rules_scheduler.install";i:3;s:25:"rules_scheduler.rules.inc";i:4;s:20:"rules_scheduler.test";i:5;s:36:"includes/rules_scheduler.handler.inc";i:6;s:42:"includes/rules_scheduler.views_default.inc";i:7;s:34:"includes/rules_scheduler.views.inc";i:8;s:41:"includes/rules_scheduler_views_filter.inc";}s:7:"version";s:7:"7.x-2.6";s:7:"project";s:5:"rules";s:9:"datestamp";s:10:"1383063052";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-modules/simpletest/tests/ajax_test.module	ajax_test	module		0	0	-1	0	a:10:{s:4:"name";s:9:"AJAX Test";s:11:"description";s:40:"Support module for AJAX framework tests.";s:7:"package";s:7:"Testing";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:6:"hidden";b:1;s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-themes/bartik/bartik.info	bartik	theme	themes/engines/phptemplate/phptemplate.engine	0	0	-1	0	a:15:{s:4:"name";s:6:"Bartik";s:11:"description";s:48:"A flexible, recolorable theme with many regions.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:11:"stylesheets";a:2:{s:3:"all";a:3:{s:14:"css/layout.css";s:28:"themes/bartik/css/layout.css";s:13:"css/style.css";s:27:"themes/bartik/css/style.css";s:14:"css/colors.css";s:28:"themes/bartik/css/colors.css";}s:5:"print";a:1:{s:13:"css/print.css";s:27:"themes/bartik/css/print.css";}}s:7:"regions";a:17:{s:6:"header";s:6:"Header";s:4:"help";s:4:"Help";s:8:"page_top";s:8:"Page top";s:11:"page_bottom";s:11:"Page bottom";s:11:"highlighted";s:11:"Highlighted";s:8:"featured";s:8:"Featured";s:7:"content";s:7:"Content";s:13:"sidebar_first";s:13:"Sidebar first";s:14:"sidebar_second";s:14:"Sidebar second";s:14:"triptych_first";s:14:"Triptych first";s:15:"triptych_middle";s:15:"Triptych middle";s:13:"triptych_last";s:13:"Triptych last";s:18:"footer_firstcolumn";s:19:"Footer first column";s:19:"footer_secondcolumn";s:20:"Footer second column";s:18:"footer_thirdcolumn";s:19:"Footer third column";s:19:"footer_fourthcolumn";s:20:"Footer fourth column";s:6:"footer";s:6:"Footer";}s:8:"settings";a:1:{s:20:"shortcut_module_link";s:1:"0";}s:6:"engine";s:11:"phptemplate";s:8:"features";a:9:{i:0;s:4:"logo";i:1;s:7:"favicon";i:2;s:4:"name";i:3;s:6:"slogan";i:4;s:17:"node_user_picture";i:5;s:20:"comment_user_picture";i:6;s:25:"comment_user_verification";i:7;s:9:"main_menu";i:8;s:14:"secondary_menu";}s:10:"screenshot";s:28:"themes/bartik/screenshot.png";s:3:"php";s:5:"5.2.4";s:7:"scripts";a:0:{}s:14:"regions_hidden";a:2:{i:0;s:8:"page_top";i:1;s:11:"page_bottom";}s:28:"overlay_supplemental_regions";a:1:{i:0;s:11:"page_bottom";}}
 sites/all/modules/token/tests/token_test.module	token_test	module		0	0	-1	0	a:12:{s:4:"name";s:10:"Token Test";s:11:"description";s:39:"Testing module for token functionality.";s:7:"package";s:7:"Testing";s:4:"core";s:3:"7.x";s:5:"files";a:1:{i:0;s:17:"token_test.module";}s:6:"hidden";b:1;s:7:"version";s:7:"7.x-1.5";s:7:"project";s:5:"token";s:9:"datestamp";s:10:"1361665026";s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/media_youtube/media_youtube.module	media_youtube	module		0	0	-1	0	a:11:{s:4:"name";s:14:"Media: YouTube";s:11:"description";s:62:"Provides YouTube support for File Entity and the Media module.";s:7:"package";s:5:"Media";s:4:"core";s:3:"7.x";s:5:"files";a:3:{i:0;s:40:"includes/MediaInternetYouTubeHandler.inc";i:1;s:38:"includes/MediaYouTubeStreamWrapper.inc";i:2;s:32:"includes/MediaYouTubeBrowser.inc";}s:12:"dependencies";a:2:{i:0;s:5:"media";i:1;s:14:"media_internet";}s:7:"version";s:11:"7.x-2.0-rc3";s:7:"project";s:13:"media_youtube";s:9:"datestamp";s:10:"1367383511";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/feeds/feeds_import/feeds_import.module	feeds_import	module		0	0	-1	0	a:12:{s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:5:"feeds";}s:11:"description";s:50:"An example of a node importer and a user importer.";s:8:"features";a:2:{s:6:"ctools";a:1:{i:0;s:30:"feeds:feeds_importer_default:1";}s:14:"feeds_importer";a:2:{i:0;s:4:"node";i:1;s:4:"user";}}s:5:"files";a:1:{i:0;s:17:"feeds_import.test";}s:4:"name";s:12:"Feeds Import";s:7:"package";s:5:"Feeds";s:3:"php";s:5:"5.2.4";s:7:"version";s:14:"7.x-2.0-alpha8";s:7:"project";s:5:"feeds";s:9:"datestamp";s:10:"1366671911";s:9:"bootstrap";i:0;}
-sites/all/modules/media_vimeo/media_vimeo.module	media_vimeo	module		0	0	-1	0	a:11:{s:4:"name";s:12:"Media: Vimeo";s:11:"description";s:43:"Provides Vimeo support to the Media module.";s:7:"package";s:5:"Media";s:4:"core";s:3:"7.x";s:5:"files";a:7:{i:0;s:18:"media_vimeo.module";i:1;s:38:"includes/MediaInternetVimeoHandler.inc";i:2;s:36:"includes/MediaVimeoStreamWrapper.inc";i:3;s:29:"includes/MediaVimeoStyles.inc";i:4;s:35:"includes/media_vimeo.formatters.inc";i:5;s:31:"includes/media_vimeo.styles.inc";i:6;s:34:"includes/media_vimeo.variables.inc";}s:12:"dependencies";a:2:{i:0;s:5:"media";i:1;s:14:"media_internet";}s:7:"version";s:40:"81decc73c27764437876a2c9482a66592aa71ffb";s:7:"project";s:11:"media_vimeo";s:9:"datestamp";s:10:"1370700602";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/context/context_ui/context_ui.module	context_ui	module		0	0	-1	0	a:12:{s:4:"name";s:10:"Context UI";s:11:"description";s:68:"Provides a simple UI for settings up a site structure using Context.";s:12:"dependencies";a:1:{i:0;s:7:"context";}s:7:"package";s:7:"Context";s:4:"core";s:3:"7.x";s:9:"configure";s:23:"admin/structure/context";s:5:"files";a:2:{i:0;s:14:"context.module";i:1;s:21:"tests/context_ui.test";}s:7:"version";s:7:"7.x-3.1";s:7:"project";s:7:"context";s:9:"datestamp";s:10:"1381976667";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-modules/simpletest/tests/ajax_forms_test.module	ajax_forms_test	module		0	0	-1	0	a:10:{s:4:"name";s:26:"AJAX form test mock module";s:11:"description";s:25:"Test for AJAX form calls.";s:4:"core";s:3:"7.x";s:7:"package";s:7:"Testing";s:7:"version";s:4:"7.26";s:6:"hidden";b:1;s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-modules/user/user.module	user	module		1	0	7018	0	a:12:{s:4:"name";s:4:"User";s:11:"description";s:47:"Manages the user registration and login system.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:5:"files";a:2:{i:0;s:11:"user.module";i:1;s:9:"user.test";}s:8:"required";b:1;s:9:"configure";s:19:"admin/config/people";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:8:"user.css";s:21:"modules/user/user.css";}}s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/coder/coder_upgrade/coder_upgrade.module	coder_upgrade	module		0	0	-1	0	a:12:{s:4:"name";s:13:"Coder Upgrade";s:11:"description";s:93:"Modifies source code to assist with the upgrade of a module for changes to a relied upon API.";s:7:"package";s:11:"Development";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:12:"gplib (<2.0)";}s:5:"files";a:1:{i:0;s:18:"coder_upgrade.test";}s:9:"configure";s:47:"admin/config/development/coder/upgrade/settings";s:7:"version";s:7:"7.x-2.1";s:7:"project";s:5:"coder";s:9:"datestamp";s:10:"1387025611";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-modules/contextual/contextual.module	contextual	module		0	0	-1	0	a:9:{s:4:"name";s:16:"Contextual links";s:11:"description";s:75:"Provides contextual links to perform actions related to elements on a page.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:5:"files";a:1:{i:0;s:15:"contextual.test";}s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/ctools/ctools_plugin_example/ctools_plugin_example.module	ctools_plugin_example	module		0	0	-1	0	a:11:{s:4:"name";s:35:"Chaos Tools (CTools) Plugin Example";s:11:"description";s:75:"Shows how an external module can provide ctools plugins (for Panels, etc.).";s:7:"package";s:16:"Chaos tool suite";s:12:"dependencies";a:4:{i:0;s:6:"ctools";i:1;s:6:"panels";i:2;s:12:"page_manager";i:3;s:13:"advanced_help";}s:4:"core";s:3:"7.x";s:7:"version";s:7:"7.x-1.3";s:7:"project";s:6:"ctools";s:9:"datestamp";s:10:"1365013512";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
 sites/all/modules/job_scheduler/modules/job_scheduler_trigger/job_scheduler_trigger.module	job_scheduler_trigger	module		0	0	-1	0	a:11:{s:4:"name";s:21:"Job Scheduler Trigger";s:11:"description";s:62:"Creates scheduler triggers that fire up at certain days, times";s:4:"core";s:3:"7.x";s:3:"php";s:3:"5.2";s:12:"dependencies";a:1:{i:0;s:13:"job_scheduler";}s:7:"version";s:14:"7.x-2.0-alpha3";s:7:"project";s:13:"job_scheduler";s:9:"datestamp";s:10:"1336466457";s:7:"package";s:5:"Other";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
 sites/all/modules/variable/variable_store/variable_store.module	variable_store	module		0	0	-1	0	a:11:{s:4:"name";s:14:"Variable store";s:11:"description";s:60:"Database storage for variable realms. This is an API module.";s:12:"dependencies";a:1:{i:0;s:8:"variable";}s:7:"package";s:8:"Variable";s:4:"core";s:3:"7.x";s:7:"version";s:7:"7.x-2.3";s:5:"files";a:2:{i:0;s:24:"variable_store.class.inc";i:1;s:19:"variable_store.test";}s:7:"project";s:8:"variable";s:9:"datestamp";s:10:"1376034993";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 sites/all/modules/entityreference_prepopulate/tests/entityreference_prepopulate_test.module	entityreference_prepopulate_test	module		0	0	-1	0	a:12:{s:4:"name";s:40:"Entity reference prepopulate test module";s:11:"description";s:61:"Functionality to assist Entity reference prepopulate testing.";s:4:"core";s:3:"7.x";s:12:"dependencies";a:2:{i:0;s:27:"entityreference_prepopulate";i:1;s:10:"og_context";}s:6:"hidden";b:1;s:7:"version";s:7:"7.x-1.4";s:7:"project";s:27:"entityreference_prepopulate";s:9:"datestamp";s:10:"1387912121";s:7:"package";s:5:"Other";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
 modules/simpletest/tests/entity_crud_hook_test.module	entity_crud_hook_test	module		0	0	-1	0	a:10:{s:4:"name";s:22:"Entity CRUD Hooks Test";s:11:"description";s:35:"Support module for CRUD hook tests.";s:4:"core";s:3:"7.x";s:7:"package";s:7:"Testing";s:7:"version";s:4:"7.26";s:6:"hidden";b:1;s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-sites/all/modules/file_entity/file_entity.module	file_entity	module		0	0	-1	0	a:12:{s:4:"name";s:11:"File entity";s:11:"description";s:58:"Extends Drupal file entities to be fieldable and viewable.";s:7:"package";s:5:"Media";s:4:"core";s:3:"7.x";s:12:"dependencies";a:4:{i:0;s:5:"field";i:1;s:4:"file";i:2;s:6:"ctools";i:3;s:14:"system (>=7.9)";}s:5:"files";a:13:{i:0;s:42:"views/views_handler_argument_file_type.inc";i:1;s:43:"views/views_handler_field_file_rendered.inc";i:2;s:39:"views/views_handler_field_file_type.inc";i:3;s:40:"views/views_handler_filter_file_type.inc";i:4;s:43:"views/views_handler_field_file_filename.inc";i:5;s:39:"views/views_handler_field_file_link.inc";i:6;s:44:"views/views_handler_field_file_link_edit.inc";i:7;s:46:"views/views_handler_field_file_link_delete.inc";i:8;s:48:"views/views_handler_field_file_link_download.inc";i:9;s:45:"views/views_handler_field_file_link_usage.inc";i:10;s:35:"views/views_plugin_row_file_rss.inc";i:11;s:36:"views/views_plugin_row_file_view.inc";i:12;s:16:"file_entity.test";}s:9:"configure";s:32:"admin/config/media/file-settings";s:7:"version";s:14:"7.x-2.0-alpha3";s:7:"project";s:11:"file_entity";s:9:"datestamp";s:10:"1382744726";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/bot/bot_aggregator/bot_aggregator.module	bot_aggregator	module		0	0	-1	0	a:12:{s:4:"name";s:14:"Bot Aggregator";s:7:"package";s:3:"Bot";s:12:"dependencies";a:2:{i:0;s:3:"bot";i:1;s:10:"aggregator";}s:11:"description";s:70:"Enables the reporting of aggregated feed items to configured channels.";s:9:"configure";s:27:"admin/config/bot/aggregator";s:4:"core";s:3:"7.x";s:7:"version";s:40:"d0e10c65616f267543e717addc17422979f83bd2";s:7:"project";s:3:"bot";s:9:"datestamp";s:10:"1370700613";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+sites/all/modules/media_youtube/media_youtube.module	media_youtube	module		0	0	-1	0	a:11:{s:4:"name";s:14:"Media: YouTube";s:11:"description";s:62:"Provides YouTube support for File Entity and the Media module.";s:7:"package";s:5:"Media";s:4:"core";s:3:"7.x";s:5:"files";a:3:{i:0;s:40:"includes/MediaInternetYouTubeHandler.inc";i:1;s:38:"includes/MediaYouTubeStreamWrapper.inc";i:2;s:32:"includes/MediaYouTubeBrowser.inc";}s:12:"dependencies";a:2:{i:0;s:5:"media";i:1;s:14:"media_internet";}s:7:"version";s:11:"7.x-2.0-rc3";s:7:"project";s:13:"media_youtube";s:9:"datestamp";s:10:"1367383511";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/feeds_xpathparser/feeds_xpathparser.module	feeds_xpathparser	module		0	0	-1	0	a:11:{s:4:"name";s:18:"Feeds XPath Parser";s:11:"description";s:42:"Parse an XML or HTML document using XPath.";s:7:"package";s:5:"Feeds";s:12:"dependencies";a:1:{i:0;s:5:"feeds";}s:5:"files";a:9:{i:0;s:24:"FeedsXPathParserBase.inc";i:1;s:24:"FeedsXPathParserHTML.inc";i:2;s:23:"FeedsXPathParserXML.inc";i:3;s:31:"FeedsXPathParserQueryParser.inc";i:4;s:28:"FeedsXPathParserDOMXPath.inc";i:5;s:28:"tests/feeds_xpathparser.test";i:6;s:40:"tests/feeds_xpathparser_parser_html.test";i:7;s:39:"tests/feeds_xpathparser_parser_xml.test";i:8;s:41:"tests/feeds_xpathparser_query_parser.test";}s:4:"core";s:3:"7.x";s:7:"version";s:13:"7.x-1.0-beta4";s:7:"project";s:17:"feeds_xpathparser";s:9:"datestamp";s:10:"1368138912";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/bot/bot_tell/bot_tell.module	bot_tell	module		0	0	-1	0	a:11:{s:4:"name";s:8:"Bot Tell";s:7:"package";s:3:"Bot";s:12:"dependencies";a:1:{i:0;s:3:"bot";}s:11:"description";s:46:"Enables queued messages for unavailable users.";s:4:"core";s:3:"7.x";s:7:"version";s:40:"d0e10c65616f267543e717addc17422979f83bd2";s:7:"project";s:3:"bot";s:9:"datestamp";s:10:"1370700613";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+sites/all/modules/uib/uib_devel/uib_devel.module	uib_devel	module		0	0	-1	0	a:9:{s:4:"name";s:23:"UiB Development support";s:11:"description";s:51:"Add stuff that make it easier to inspect the system";s:4:"core";s:3:"7.x";s:7:"package";s:3:"UiB";s:3:"php";s:5:"5.2.4";s:12:"dependencies";a:9:{i:0;s:5:"dblog";i:1;s:5:"devel";i:2;s:4:"diff";i:3;s:8:"field_ui";i:4;s:4:"help";i:5;s:8:"views_ui";i:6;s:13:"advanced_help";i:7;s:13:"module_filter";i:8;s:18:"admin_menu_toolbar";}s:7:"version";N;s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+sites/all/modules/date/date_api/date_api.module	date_api	module		0	0	-1	0	a:12:{s:4:"name";s:8:"Date API";s:11:"description";s:45:"A Date API that can be used by other modules.";s:7:"package";s:9:"Date/Time";s:4:"core";s:3:"7.x";s:3:"php";s:3:"5.2";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:8:"date.css";s:40:"sites/all/modules/date/date_api/date.css";}}s:5:"files";a:2:{i:0;s:15:"date_api.module";i:1;s:16:"date_api_sql.inc";}s:7:"version";s:7:"7.x-2.7";s:7:"project";s:4:"date";s:9:"datestamp";s:10:"1387659206";s:12:"dependencies";a:0:{}s:9:"bootstrap";i:0;}
+sites/all/modules/entityreference_prepopulate/entityreference_prepopulate.module	entityreference_prepopulate	module		0	0	-1	0	a:11:{s:4:"name";s:28:"Entity reference prepopulate";s:11:"description";s:45:"Prepopulate entity reference values from URL.";s:4:"core";s:3:"7.x";s:7:"package";s:6:"Fields";s:12:"dependencies";a:1:{i:0;s:15:"entityreference";}s:5:"files";a:1:{i:0;s:32:"entityreference_prepopulate.test";}s:7:"version";s:7:"7.x-1.4";s:7:"project";s:27:"entityreference_prepopulate";s:9:"datestamp";s:10:"1387912121";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/coder/coder.module	coder	module		0	0	-1	0	a:11:{s:4:"name";s:5:"Coder";s:11:"description";s:66:"Developer Module that assists with code review and version upgrade";s:7:"package";s:11:"Development";s:4:"core";s:3:"7.x";s:5:"files";a:1:{i:0;s:12:"coder.module";}s:7:"version";s:7:"7.x-2.1";s:7:"project";s:5:"coder";s:9:"datestamp";s:10:"1387025611";s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+modules/user/user.module	user	module		1	0	7018	0	a:12:{s:4:"name";s:4:"User";s:11:"description";s:47:"Manages the user registration and login system.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:5:"files";a:2:{i:0;s:11:"user.module";i:1;s:9:"user.test";}s:8:"required";b:1;s:9:"configure";s:19:"admin/config/people";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:8:"user.css";s:21:"modules/user/user.css";}}s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 sites/all/modules/ctools/stylizer/stylizer.module	stylizer	module		0	0	-1	0	a:11:{s:4:"name";s:8:"Stylizer";s:11:"description";s:53:"Create custom styles for applications such as Panels.";s:4:"core";s:3:"7.x";s:7:"package";s:16:"Chaos tool suite";s:12:"dependencies";a:2:{i:0;s:6:"ctools";i:1;s:5:"color";}s:7:"version";s:7:"7.x-1.3";s:7:"project";s:6:"ctools";s:9:"datestamp";s:10:"1365013512";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
 sites/all/modules/override_node_options/override_node_options.module	override_node_options	module		0	0	-1	0	a:11:{s:4:"name";s:21:"Override node options";s:11:"description";s:84:"Allow non-admins to override the default publishing options for nodes they can edit.";s:4:"core";s:3:"7.x";s:5:"files";a:1:{i:0;s:26:"override_node_options.test";}s:7:"version";s:8:"7.x-1.12";s:7:"project";s:21:"override_node_options";s:9:"datestamp";s:10:"1304695316";s:12:"dependencies";a:0:{}s:7:"package";s:5:"Other";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 sites/all/modules/bot/bot_project/bot_project.module	bot_project	module		0	0	-1	0	a:12:{s:4:"name";s:11:"Bot Project";s:7:"package";s:3:"Bot";s:12:"dependencies";a:1:{i:0;s:3:"bot";}s:11:"description";s:51:"Enables various project toolkit compatible actions.";s:9:"configure";s:24:"admin/config/bot/project";s:4:"core";s:3:"7.x";s:7:"version";s:40:"d0e10c65616f267543e717addc17422979f83bd2";s:7:"project";s:3:"bot";s:9:"datestamp";s:10:"1370700613";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-sites/all/modules/bot/bot_tell/bot_tell.module	bot_tell	module		0	0	-1	0	a:11:{s:4:"name";s:8:"Bot Tell";s:7:"package";s:3:"Bot";s:12:"dependencies";a:1:{i:0;s:3:"bot";}s:11:"description";s:46:"Enables queued messages for unavailable users.";s:4:"core";s:3:"7.x";s:7:"version";s:40:"d0e10c65616f267543e717addc17422979f83bd2";s:7:"project";s:3:"bot";s:9:"datestamp";s:10:"1370700613";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-sites/all/modules/uib/uib_devel/uib_devel.module	uib_devel	module		0	0	-1	0	a:9:{s:4:"name";s:23:"UiB Development support";s:11:"description";s:51:"Add stuff that make it easier to inspect the system";s:4:"core";s:3:"7.x";s:7:"package";s:3:"UiB";s:3:"php";s:5:"5.2.4";s:12:"dependencies";a:9:{i:0;s:5:"dblog";i:1;s:5:"devel";i:2;s:4:"diff";i:3;s:8:"field_ui";i:4;s:4:"help";i:5;s:8:"views_ui";i:6;s:13:"advanced_help";i:7;s:13:"module_filter";i:8;s:18:"admin_menu_toolbar";}s:7:"version";N;s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-sites/all/modules/panels/panels_mini/panels_mini.module	panels_mini	module		0	0	-1	0	a:11:{s:4:"name";s:11:"Mini panels";s:11:"description";s:89:"Create mini panels that can be used as blocks by Drupal and panes by other panel modules.";s:7:"package";s:6:"Panels";s:12:"dependencies";a:1:{i:0;s:6:"panels";}s:4:"core";s:3:"7.x";s:5:"files";a:1:{i:0;s:42:"plugins/export_ui/panels_mini_ui.class.php";}s:7:"version";s:7:"7.x-3.3";s:7:"project";s:6:"panels";s:9:"datestamp";s:10:"1345319572";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/ctools/ctools.module	ctools	module		1	0	6008	0	a:11:{s:4:"name";s:11:"Chaos tools";s:11:"description";s:46:"A library of helpful tools by Merlin of Chaos.";s:4:"core";s:3:"7.x";s:7:"package";s:16:"Chaos tool suite";s:5:"files";a:3:{i:0;s:20:"includes/context.inc";i:1;s:22:"includes/math-expr.inc";i:2;s:21:"includes/stylizer.inc";}s:7:"version";s:7:"7.x-1.3";s:7:"project";s:6:"ctools";s:9:"datestamp";s:10:"1365013512";s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/service_links/services/german_services.module	german_services	module		0	0	-1	0	a:11:{s:4:"name";s:15:"German Services";s:11:"description";s:173:"Provide the German Services: Alltagz, Colivia, Icio, InfoPirat, Linkarena, MeinVZ, Mister Wong, Netselektor, Oneview, Readster, seekXL, SeoIGG, Weblinkr, Webnews, Xing, Yigg";s:4:"core";s:3:"7.x";s:7:"package";s:24:"Service Links - Services";s:12:"dependencies";a:1:{i:0;s:13:"service_links";}s:7:"version";s:7:"7.x-2.1";s:5:"files";a:1:{i:0;s:22:"german_services.module";}s:7:"project";s:13:"service_links";s:9:"datestamp";s:10:"1317978709";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 sites/all/modules/context/context_layouts/context_layouts.module	context_layouts	module		0	0	-1	0	a:11:{s:4:"name";s:15:"Context layouts";s:11:"description";s:80:"Allow theme layer to provide multiple region layouts and integrate with context.";s:12:"dependencies";a:1:{i:0;s:7:"context";}s:7:"package";s:7:"Context";s:4:"core";s:3:"7.x";s:5:"files";a:1:{i:0;s:42:"plugins/context_layouts_reaction_block.inc";}s:7:"version";s:7:"7.x-3.1";s:7:"project";s:7:"context";s:9:"datestamp";s:10:"1381976667";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 sites/all/modules/entity_translation/entity_translation_i18n_menu/entity_translation_i18n_menu.module	entity_translation_i18n_menu	module		0	0	-1	0	a:11:{s:4:"name";s:23:"Entity Translation Menu";s:11:"description";s:54:"Allows menu items to be translated on the entity form.";s:7:"package";s:33:"Multilingual - Entity Translation";s:4:"core";s:3:"7.x";s:12:"dependencies";a:3:{i:0;s:18:"entity_translation";i:1;s:4:"i18n";i:2;s:9:"i18n_menu";}s:5:"files";a:1:{i:0;s:33:"entity_translation_i18n_menu.test";}s:7:"version";s:13:"7.x-1.0-beta3";s:7:"project";s:18:"entity_translation";s:9:"datestamp";s:10:"1374601567";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/ctools/ctools_ajax_sample/ctools_ajax_sample.module	ctools_ajax_sample	module		0	0	-1	0	a:11:{s:4:"name";s:33:"Chaos Tools (CTools) AJAX Example";s:11:"description";s:41:"Shows how to use the power of Chaos AJAX.";s:7:"package";s:16:"Chaos tool suite";s:12:"dependencies";a:1:{i:0;s:6:"ctools";}s:4:"core";s:3:"7.x";s:7:"version";s:7:"7.x-1.3";s:7:"project";s:6:"ctools";s:9:"datestamp";s:10:"1365013512";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-sites/all/modules/coder/coder_review/coder_review.module	coder_review	module		0	0	-1	0	a:11:{s:4:"name";s:12:"Coder Review";s:11:"description";s:119:""Developer module" which reviews your code identifying coding style problems and where updates to the API are required.";s:7:"package";s:11:"Development";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:5:"coder";}s:5:"files";a:9:{i:0;s:33:"tests/coder_review_test_case.tinc";i:1;s:26:"tests/coder_review_6x.test";i:2;s:26:"tests/coder_review_7x.test";i:3;s:31:"tests/coder_review_comment.test";i:4;s:28:"tests/coder_review_i18n.test";i:5;s:32:"tests/coder_review_security.test";i:6;s:27:"tests/coder_review_sql.test";i:7;s:29:"tests/coder_review_style.test";i:8;s:31:"tests/coder_review_sniffer.test";}s:7:"version";s:7:"7.x-2.1";s:7:"project";s:5:"coder";s:9:"datestamp";s:10:"1387025611";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 modules/color/color.module	color	module		0	0	-1	0	a:9:{s:4:"name";s:5:"Color";s:11:"description";s:70:"Allows administrators to change the color scheme of compatible themes.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:5:"files";a:1:{i:0;s:10:"color.test";}s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 sites/all/modules/menu_admin_per_menu/menu_admin_per_menu.module	menu_admin_per_menu	module		0	0	-1	0	a:11:{s:4:"name";s:19:"Menu Admin per Menu";s:11:"description";s:101:"Allows to give roles per menu admin permissions without giving them full administrer menu permission.";s:7:"package";s:14:"Administration";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:4:"menu";}s:5:"files";a:1:{i:0;s:26:"menu_admin_per_menu.module";}s:7:"version";s:7:"7.x-1.0";s:7:"project";s:19:"menu_admin_per_menu";s:9:"datestamp";s:10:"1295735798";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/entityreference_prepopulate/entityreference_prepopulate.module	entityreference_prepopulate	module		0	0	-1	0	a:11:{s:4:"name";s:28:"Entity reference prepopulate";s:11:"description";s:45:"Prepopulate entity reference values from URL.";s:4:"core";s:3:"7.x";s:7:"package";s:6:"Fields";s:12:"dependencies";a:1:{i:0;s:15:"entityreference";}s:5:"files";a:1:{i:0;s:32:"entityreference_prepopulate.test";}s:7:"version";s:7:"7.x-1.4";s:7:"project";s:27:"entityreference_prepopulate";s:9:"datestamp";s:10:"1387912121";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/flag/flag_actions.module	flag_actions	module		0	0	-1	0	a:12:{s:4:"name";s:12:"Flag actions";s:11:"description";s:31:"Execute actions on Flag events.";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:4:"flag";}s:7:"package";s:5:"Flags";s:9:"configure";s:29:"admin/structure/flags/actions";s:5:"files";a:2:{i:0;s:12:"flag.install";i:1;s:19:"flag_actions.module";}s:7:"version";s:7:"7.x-3.2";s:7:"project";s:4:"flag";s:9:"datestamp";s:10:"1379063829";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-modules/simpletest/tests/requirements2_test.module	requirements2_test	module		0	0	-1	0	a:10:{s:4:"name";s:19:"Requirements 2 Test";s:11:"description";s:98:"Tests that a module is not installed when the one it depends on fails hook_requirements('install).";s:12:"dependencies";a:2:{i:0;s:18:"requirements1_test";i:1;s:7:"comment";}s:7:"package";s:7:"Testing";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:6:"hidden";b:1;s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-sites/all/modules/service_links/service_links.module	service_links	module		0	0	-1	0	a:12:{s:4:"name";s:13:"Service links";s:11:"description";s:76:"Module engine for add various service links about sharing networks to nodes.";s:4:"core";s:3:"7.x";s:7:"version";s:7:"7.x-2.1";s:7:"package";s:13:"Service Links";s:5:"files";a:6:{i:0;s:20:"service_links.module";i:1;s:23:"service_links.admin.inc";i:2;s:23:"service_links.theme.inc";i:3;s:21:"service_links.install";i:4;s:23:"service_links.views.inc";i:5;s:45:"service_links_handler_field_service_links.inc";}s:9:"configure";s:35:"admin/config/services/service-links";s:7:"project";s:13:"service_links";s:9:"datestamp";s:10:"1317978709";s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/date/date_context/date_context.module	date_context	module		0	0	-1	0	a:11:{s:4:"name";s:12:"Date Context";s:11:"description";s:99:"Adds an option to the Context module to set a context condition based on the value of a date field.";s:7:"package";s:9:"Date/Time";s:4:"core";s:3:"7.x";s:12:"dependencies";a:2:{i:0;s:4:"date";i:1;s:7:"context";}s:5:"files";a:2:{i:0;s:19:"date_context.module";i:1;s:39:"plugins/date_context_date_condition.inc";}s:7:"version";s:7:"7.x-2.7";s:7:"project";s:4:"date";s:9:"datestamp";s:10:"1387659206";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/service_links/services/print_services.module	print_services	module		0	0	-1	0	a:11:{s:4:"name";s:14:"Print Services";s:11:"description";s:79:"Add the support for Print module which render the page as PDF or printable HTML";s:4:"core";s:3:"7.x";s:7:"package";s:24:"Service Links - Services";s:12:"dependencies";a:2:{i:0;s:13:"service_links";i:1;s:5:"print";}s:7:"version";s:7:"7.x-2.1";s:5:"files";a:1:{i:0;s:21:"print_services.module";}s:7:"project";s:13:"service_links";s:9:"datestamp";s:10:"1317978709";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+modules/simpletest/tests/common_test_cron_helper.module	common_test_cron_helper	module		0	0	-1	0	a:10:{s:4:"name";s:23:"Common Test Cron Helper";s:11:"description";s:56:"Helper module for CronRunTestCase::testCronExceptions().";s:7:"package";s:7:"Testing";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:6:"hidden";b:1;s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+modules/aggregator/aggregator.module	aggregator	module		0	0	-1	0	a:11:{s:4:"name";s:10:"Aggregator";s:11:"description";s:57:"Aggregates syndicated content (RSS, RDF, and Atom feeds).";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:5:"files";a:1:{i:0;s:15:"aggregator.test";}s:9:"configure";s:41:"admin/config/services/aggregator/settings";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:14:"aggregator.css";s:33:"modules/aggregator/aggregator.css";}}s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/flag/tests/flagaccesstest/flagaccesstest.module	flagaccesstest	module		0	0	-1	0	a:12:{s:4:"name";s:26:"Flag hook_flag_access test";s:11:"description";s:26:"Tests for hook_flag_access";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:4:"flag";}s:7:"package";s:5:"Flags";s:6:"hidden";b:1;s:7:"version";s:7:"7.x-3.2";s:7:"project";s:4:"flag";s:9:"datestamp";s:10:"1379063829";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+sites/all/modules/uib/tk/tk.module	tk	module		1	0	7000	0	a:10:{s:4:"name";s:15:"Tjenestekatalog";s:11:"description";s:8:"Bla, bla";s:4:"core";s:3:"7.x";s:7:"package";s:3:"UiB";s:3:"php";s:5:"5.2.4";s:12:"dependencies";a:17:{i:0;s:15:"entityreference";i:1;s:8:"features";i:2;s:11:"field_group";i:3;s:17:"field_permissions";i:4;s:17:"field_sql_storage";i:5;s:11:"l10n_update";i:6;s:4:"link";i:7;s:4:"list";i:8;s:4:"menu";i:9;s:4:"node";i:10;s:7:"options";i:11;s:9:"strongarm";i:12;s:8:"taxonomy";i:13;s:13:"taxonomy_menu";i:14;s:4:"text";i:15;s:5:"views";i:16;s:17:"views_data_export";}s:8:"features";a:10:{s:6:"ctools";a:3:{i:0;s:25:"field_group:field_group:1";i:1;s:21:"strongarm:strongarm:1";i:2;s:23:"views:views_default:3.0";}s:12:"features_api";a:1:{i:0;s:5:"api:1";}s:5:"field";a:26:{i:0;s:17:"node-article-body";i:1;s:31:"node-service-field_availability";i:2;s:23:"node-service-field_cost";i:3;s:30:"node-service-field_criticality";i:4;s:25:"node-service-field_demand";i:5;s:30:"node-service-field_description";i:6;s:35:"node-service-field_field_howto_orde";i:7;s:27:"node-service-field_operator";i:8;s:31:"node-service-field_ower_contact";i:9;s:26:"node-service-field_quality";i:10;s:41:"node-service-field_service_classification";i:11;s:33:"node-service-field_service_levels";i:12;s:32:"node-service-field_service_owner";i:13;s:35:"node-service-field_service_rotation";i:14;s:32:"node-service-field_service_state";i:15;s:33:"node-service-field_service_status";i:16;s:35:"node-service-field_service_supplier";i:17;s:31:"node-service-field_service_type";i:18;s:26:"node-service-field_summary";i:19;s:34:"node-service-field_support_contact";i:20;s:37:"node-service-field_supporting_systems";i:21;s:29:"node-service_owner-field_kode";i:22;s:33:"node-support_contact-field_adress";i:23;s:34:"node-support_contact-field_opening";i:24;s:32:"node-support_contact-field_phone";i:25;s:30:"node-support_contact-field_www";}s:11:"field_group";a:2:{i:0;s:31:"group_main|node|service|default";i:1;s:34:"group_sidebar|node|service|default";}s:10:"menu_links";a:1:{i:0;s:18:"navigation:<front>";}s:4:"node";a:4:{i:0;s:7:"article";i:1;s:7:"service";i:2;s:13:"service_owner";i:3;s:15:"support_contact";}s:8:"taxonomy";a:3:{i:0;s:23:"service_business_levels";i:1;s:15:"service_classes";i:2;s:13:"service_roles";}s:15:"user_permission";a:60:{i:0;s:22:"create article content";i:1;s:24:"create field_criticality";i:2;s:21:"create field_operator";i:3;s:25:"create field_ower_contact";i:4;s:27:"create field_service_levels";i:5;s:29:"create field_service_rotation";i:6;s:26:"create field_service_state";i:7;s:25:"create field_service_type";i:8;s:31:"create field_supporting_systems";i:9;s:22:"create service content";i:10;s:28:"create service_owner content";i:11;s:30:"create support_contact content";i:12;s:26:"delete any article content";i:13;s:26:"delete any service content";i:14;s:32:"delete any service_owner content";i:15;s:34:"delete any support_contact content";i:16;s:26:"delete own article content";i:17;s:26:"delete own service content";i:18;s:32:"delete own service_owner content";i:19;s:34:"delete own support_contact content";i:20;s:24:"edit any article content";i:21;s:24:"edit any service content";i:22;s:30:"edit any service_owner content";i:23;s:32:"edit any support_contact content";i:24;s:22:"edit field_criticality";i:25;s:19:"edit field_operator";i:26;s:23:"edit field_ower_contact";i:27;s:25:"edit field_service_levels";i:28;s:27:"edit field_service_rotation";i:29;s:24:"edit field_service_state";i:30;s:23:"edit field_service_type";i:31;s:29:"edit field_supporting_systems";i:32;s:24:"edit own article content";i:33;s:26:"edit own field_criticality";i:34;s:23:"edit own field_operator";i:35;s:27:"edit own field_ower_contact";i:36;s:29:"edit own field_service_levels";i:37;s:31:"edit own field_service_rotation";i:38;s:28:"edit own field_service_state";i:39;s:27:"edit own field_service_type";i:40;s:33:"edit own field_supporting_systems";i:41;s:24:"edit own service content";i:42;s:30:"edit own service_owner content";i:43;s:32:"edit own support_contact content";i:44;s:22:"view field_criticality";i:45;s:19:"view field_operator";i:46;s:23:"view field_ower_contact";i:47;s:25:"view field_service_levels";i:48;s:27:"view field_service_rotation";i:49;s:24:"view field_service_state";i:50;s:23:"view field_service_type";i:51;s:29:"view field_supporting_systems";i:52;s:26:"view own field_criticality";i:53;s:23:"view own field_operator";i:54;s:27:"view own field_ower_contact";i:55;s:29:"view own field_service_levels";i:56;s:31:"view own field_service_rotation";i:57;s:28:"view own field_service_state";i:58;s:27:"view own field_service_type";i:59;s:33:"view own field_supporting_systems";}s:8:"variable";a:48:{i:0;s:35:"field_bundle_settings_node__service";i:1;s:29:"language_content_type_article";i:2;s:29:"language_content_type_service";i:3;s:35:"language_content_type_service_owner";i:4;s:37:"language_content_type_support_contact";i:5;s:20:"node_options_article";i:6;s:20:"node_options_service";i:7;s:26:"node_options_service_owner";i:8;s:28:"node_options_support_contact";i:9;s:20:"node_preview_article";i:10;s:20:"node_preview_service";i:11;s:26:"node_preview_service_owner";i:12;s:28:"node_preview_support_contact";i:13;s:22:"node_submitted_article";i:14;s:22:"node_submitted_service";i:15;s:28:"node_submitted_service_owner";i:16;s:30:"node_submitted_support_contact";i:17;s:14:"site_frontpage";i:18;s:57:"taxonomy_menu_display_descendants_service_business_levels";i:19;s:47:"taxonomy_menu_display_descendants_service_roles";i:20;s:49:"taxonomy_menu_display_num_service_business_levels";i:21;s:39:"taxonomy_menu_display_num_service_roles";i:22;s:45:"taxonomy_menu_end_all_service_business_levels";i:23;s:35:"taxonomy_menu_end_all_service_roles";i:24;s:46:"taxonomy_menu_expanded_service_business_levels";i:25;s:36:"taxonomy_menu_expanded_service_roles";i:26;s:42:"taxonomy_menu_flat_service_business_levels";i:27;s:32:"taxonomy_menu_flat_service_roles";i:28;s:54:"taxonomy_menu_hide_empty_terms_service_business_levels";i:29;s:44:"taxonomy_menu_hide_empty_terms_service_roles";i:30;s:42:"taxonomy_menu_path_service_business_levels";i:31;s:32:"taxonomy_menu_path_service_roles";i:32;s:45:"taxonomy_menu_rebuild_service_business_levels";i:33;s:35:"taxonomy_menu_rebuild_service_roles";i:34;s:42:"taxonomy_menu_sync_service_business_levels";i:35;s:32:"taxonomy_menu_sync_service_roles";i:36;s:59:"taxonomy_menu_term_item_description_service_business_levels";i:37;s:49:"taxonomy_menu_term_item_description_service_roles";i:38;s:58:"taxonomy_menu_voc_item_description_service_business_levels";i:39;s:48:"taxonomy_menu_voc_item_description_service_roles";i:40;s:46:"taxonomy_menu_voc_item_service_business_levels";i:41;s:36:"taxonomy_menu_voc_item_service_roles";i:42;s:46:"taxonomy_menu_voc_name_service_business_levels";i:43;s:36:"taxonomy_menu_voc_name_service_roles";i:44;s:48:"taxonomy_menu_vocab_menu_service_business_levels";i:45;s:38:"taxonomy_menu_vocab_menu_service_roles";i:46;s:50:"taxonomy_menu_vocab_parent_service_business_levels";i:47;s:40:"taxonomy_menu_vocab_parent_service_roles";}s:10:"views_view";a:3:{i:0;s:12:"all_services";i:1;s:14:"classfications";i:2;s:15:"service_classes";}}s:7:"version";N;s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+sites/all/modules/media/modules/media_wysiwyg_view_mode/media_wysiwyg_view_mode.module	media_wysiwyg_view_mode	module		0	0	-1	0	a:12:{s:4:"name";s:23:"Media WYSIWYG View Mode";s:11:"description";s:86:"Enables files inside of the WYSIWYG editor to be displayed using a separate view mode.";s:7:"package";s:5:"Media";s:4:"core";s:3:"7.x";s:12:"dependencies";a:2:{i:0;s:5:"media";i:1;s:7:"wysiwyg";}s:9:"configure";s:36:"admin/config/media/wysiwyg-view-mode";s:7:"version";s:14:"7.x-2.0-alpha3";s:7:"project";s:5:"media";s:9:"datestamp";s:10:"1382744872";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+sites/all/modules/coder/coder_sniffer/Test/bad.module	bad	module		0	0	-1	0	a:11:{s:5:"files";a:2:{i:0;s:25:"includes/non-existing.php";i:1;s:11:"bad.tpl.php";}s:6:"hidden";b:1;s:7:"version";s:7:"7.x-2.1";s:4:"core";s:3:"7.x";s:7:"project";s:5:"coder";s:9:"datestamp";s:10:"1387025611";s:12:"dependencies";a:0:{}s:11:"description";s:0:"";s:7:"package";s:5:"Other";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/ctools/ctools_custom_content/ctools_custom_content.module	ctools_custom_content	module		0	0	-1	0	a:11:{s:4:"name";s:20:"Custom content panes";s:11:"description";s:79:"Create custom, exportable, reusable content panes for applications like Panels.";s:4:"core";s:3:"7.x";s:7:"package";s:16:"Chaos tool suite";s:12:"dependencies";a:1:{i:0;s:6:"ctools";}s:7:"version";s:7:"7.x-1.3";s:7:"project";s:6:"ctools";s:9:"datestamp";s:10:"1365013512";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+modules/update/tests/ccc_update_test.module	ccc_update_test	module		0	0	-1	0	a:10:{s:4:"name";s:15:"CCC Update test";s:11:"description";s:41:"Support module for update module testing.";s:7:"package";s:7:"Testing";s:4:"core";s:3:"7.x";s:6:"hidden";b:1;s:12:"dependencies";a:0:{}s:7:"version";N;s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+sites/all/modules/uib/tk_setup/tk_setup.module	tk_setup	module		0	0	-1	0	a:10:{s:4:"name";s:8:"TK setup";s:11:"description";s:37:"TK general configuration and settings";s:4:"core";s:3:"7.x";s:7:"package";s:3:"UiB";s:3:"php";s:5:"5.2.4";s:12:"dependencies";a:15:{i:0;s:10:"admin_menu";i:1;s:5:"block";i:2;s:8:"features";i:3;s:11:"field_group";i:4;s:17:"field_permissions";i:5;s:6:"filter";i:6;s:5:"image";i:7;s:6:"locale";i:8;s:4:"menu";i:9;s:4:"node";i:10;s:9:"strongarm";i:11;s:6:"system";i:12;s:8:"taxonomy";i:13;s:4:"user";i:14;s:5:"views";}s:8:"features";a:5:{s:6:"ctools";a:1:{i:0;s:21:"strongarm:strongarm:1";}s:12:"features_api";a:1:{i:0;s:5:"api:1";}s:15:"user_permission";a:42:{i:0;s:26:"access administration menu";i:1;s:27:"access administration pages";i:2;s:16:"access all views";i:3;s:14:"access content";i:4;s:23:"access content overview";i:5;s:21:"access private fields";i:6;s:31:"access site in maintenance mode";i:7;s:19:"access site reports";i:8;s:20:"access user profiles";i:9;s:18:"administer actions";i:10;s:17:"administer blocks";i:11;s:24:"administer content types";i:12;s:19:"administer features";i:13;s:28:"administer field permissions";i:14;s:22:"administer fieldgroups";i:15;s:18:"administer filters";i:16;s:23:"administer image styles";i:17;s:20:"administer languages";i:18;s:15:"administer menu";i:19;s:18:"administer modules";i:20;s:16:"administer nodes";i:21;s:22:"administer permissions";i:22;s:29:"administer site configuration";i:23;s:27:"administer software updates";i:24;s:19:"administer taxonomy";i:25;s:17:"administer themes";i:26;s:16:"administer users";i:27;s:16:"administer views";i:28;s:18:"block IP addresses";i:29;s:18:"bypass node access";i:30;s:14:"cancel account";i:31;s:19:"change own username";i:32;s:16:"delete revisions";i:33;s:20:"display drupal links";i:34;s:12:"flush caches";i:35;s:15:"manage features";i:36;s:16:"revert revisions";i:37;s:34:"select account cancellation method";i:38;s:19:"translate interface";i:39;s:28:"view own unpublished content";i:40;s:14:"view revisions";i:41;s:29:"view the administration theme";}s:9:"user_role";a:3:{i:0;s:11:"druapladmin";i:1;s:3:"ita";i:2;s:13:"tjenesteadmin";}s:8:"variable";a:1:{i:0;s:21:"theme_uib_tk_settings";}}s:7:"version";N;s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+sites/all/modules/feeds/feeds_import/feeds_import.module	feeds_import	module		0	0	-1	0	a:12:{s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:5:"feeds";}s:11:"description";s:50:"An example of a node importer and a user importer.";s:8:"features";a:2:{s:6:"ctools";a:1:{i:0;s:30:"feeds:feeds_importer_default:1";}s:14:"feeds_importer";a:2:{i:0;s:4:"node";i:1;s:4:"user";}}s:5:"files";a:1:{i:0;s:17:"feeds_import.test";}s:4:"name";s:12:"Feeds Import";s:7:"package";s:5:"Feeds";s:3:"php";s:5:"5.2.4";s:7:"version";s:14:"7.x-2.0-alpha8";s:7:"project";s:5:"feeds";s:9:"datestamp";s:10:"1366671911";s:9:"bootstrap";i:0;}
+modules/simpletest/tests/file_test.module	file_test	module		0	0	-1	0	a:10:{s:4:"name";s:9:"File test";s:11:"description";s:39:"Support module for file handling tests.";s:7:"package";s:7:"Testing";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:5:"files";a:1:{i:0;s:16:"file_test.module";}s:6:"hidden";b:1;s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/entityreference/tests/modules/entityreference_feeds_test/entityreference_feeds_test.module	entityreference_feeds_test	module		0	0	-1	0	a:12:{s:4:"name";s:41:"Entityreference - Feeds integration tests";s:11:"description";s:65:"Support module for the Entityreference - Feeds integration tests.";s:7:"package";s:7:"Testing";s:4:"core";s:3:"7.x";s:6:"hidden";b:1;s:12:"dependencies";a:3:{i:0;s:5:"feeds";i:1;s:8:"feeds_ui";i:2;s:15:"entityreference";}s:7:"version";s:7:"7.x-1.1";s:7:"project";s:15:"entityreference";s:9:"datestamp";s:10:"1384973110";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
 sites/all/modules/geofield/geofield.module	geofield	module		0	0	-1	0	a:11:{s:4:"name";s:8:"Geofield";s:11:"description";s:66:"Stores geographic and location data (points, lines, and polygons).";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:6:"geophp";}s:7:"package";s:6:"Fields";s:5:"files";a:7:{i:0;s:15:"geofield.module";i:1;s:16:"geofield.install";i:2;s:20:"geofield.widgets.inc";i:3;s:23:"geofield.formatters.inc";i:4;s:23:"geofield.openlayers.inc";i:5;s:18:"geofield.feeds.inc";i:6;s:13:"geofield.test";}s:7:"version";s:7:"7.x-1.2";s:7:"project";s:8:"geofield";s:9:"datestamp";s:10:"1372735859";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 modules/book/book.module	book	module		0	0	-1	0	a:11:{s:4:"name";s:4:"Book";s:11:"description";s:66:"Allows users to create and organize related content in an outline.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:5:"files";a:1:{i:0;s:9:"book.test";}s:9:"configure";s:27:"admin/content/book/settings";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:8:"book.css";s:21:"modules/book/book.css";}}s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/coder/coder.module	coder	module		0	0	-1	0	a:11:{s:4:"name";s:5:"Coder";s:11:"description";s:66:"Developer Module that assists with code review and version upgrade";s:7:"package";s:11:"Development";s:4:"core";s:3:"7.x";s:5:"files";a:1:{i:0;s:12:"coder.module";}s:7:"version";s:7:"7.x-2.1";s:7:"project";s:5:"coder";s:9:"datestamp";s:10:"1387025611";s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/date/date_context/date_context.module	date_context	module		0	0	-1	0	a:11:{s:4:"name";s:12:"Date Context";s:11:"description";s:99:"Adds an option to the Context module to set a context condition based on the value of a date field.";s:7:"package";s:9:"Date/Time";s:4:"core";s:3:"7.x";s:12:"dependencies";a:2:{i:0;s:4:"date";i:1;s:7:"context";}s:5:"files";a:2:{i:0;s:19:"date_context.module";i:1;s:39:"plugins/date_context_date_condition.inc";}s:7:"version";s:7:"7.x-2.7";s:7:"project";s:4:"date";s:9:"datestamp";s:10:"1387659206";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/feeds/feeds.module	feeds	module		0	0	-1	0	a:11:{s:4:"name";s:5:"Feeds";s:11:"description";s:58:"Aggregates RSS/Atom/RDF feeds, imports CSV files and more.";s:7:"package";s:5:"Feeds";s:4:"core";s:3:"7.x";s:12:"dependencies";a:2:{i:0;s:6:"ctools";i:1;s:13:"job_scheduler";}s:5:"files";a:44:{i:0;s:30:"includes/FeedsConfigurable.inc";i:1;s:26:"includes/FeedsImporter.inc";i:2;s:24:"includes/FeedsSource.inc";i:3;s:23:"libraries/ParserCSV.inc";i:4;s:26:"libraries/http_request.inc";i:5;s:28:"libraries/PuSHSubscriber.inc";i:6;s:26:"plugins/FeedsCSVParser.inc";i:7;s:24:"plugins/FeedsFetcher.inc";i:8;s:28:"plugins/FeedsFileFetcher.inc";i:9;s:28:"plugins/FeedsHTTPFetcher.inc";i:10;s:30:"plugins/FeedsNodeProcessor.inc";i:11;s:27:"plugins/FeedsOPMLParser.inc";i:12;s:23:"plugins/FeedsParser.inc";i:13;s:23:"plugins/FeedsPlugin.inc";i:14;s:26:"plugins/FeedsProcessor.inc";i:15;s:32:"plugins/FeedsSimplePieParser.inc";i:16;s:30:"plugins/FeedsSitemapParser.inc";i:17;s:34:"plugins/FeedsSyndicationParser.inc";i:18;s:30:"plugins/FeedsTermProcessor.inc";i:19;s:30:"plugins/FeedsUserProcessor.inc";i:20;s:16:"tests/feeds.test";i:21;s:26:"tests/feeds_date_time.test";i:22;s:28:"tests/feeds_mapper_date.test";i:23;s:37:"tests/feeds_mapper_date_multiple.test";i:24;s:29:"tests/feeds_mapper_field.test";i:25;s:28:"tests/feeds_mapper_file.test";i:26;s:28:"tests/feeds_mapper_path.test";i:27;s:31:"tests/feeds_mapper_profile.test";i:28;s:23:"tests/feeds_mapper.test";i:29;s:30:"tests/feeds_mapper_config.test";i:30;s:29:"tests/feeds_fetcher_file.test";i:31;s:31:"tests/feeds_processor_node.test";i:32;s:31:"tests/feeds_processor_term.test";i:33;s:31:"tests/feeds_processor_user.test";i:34;s:26:"tests/feeds_scheduler.test";i:35;s:28:"tests/feeds_mapper_link.test";i:36;s:32:"tests/feeds_mapper_taxonomy.test";i:37;s:21:"tests/parser_csv.test";i:38;s:50:"views/feeds_views_handler_argument_importer_id.inc";i:39;s:49:"views/feeds_views_handler_field_importer_name.inc";i:40;s:47:"views/feeds_views_handler_field_log_message.inc";i:41;s:44:"views/feeds_views_handler_field_severity.inc";i:42;s:42:"views/feeds_views_handler_field_source.inc";i:43;s:45:"views/feeds_views_handler_filter_severity.inc";}s:7:"version";s:14:"7.x-2.0-alpha8";s:7:"project";s:5:"feeds";s:9:"datestamp";s:10:"1366671911";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+modules/simpletest/tests/ajax_test.module	ajax_test	module		0	0	-1	0	a:10:{s:4:"name";s:9:"AJAX Test";s:11:"description";s:40:"Support module for AJAX framework tests.";s:7:"package";s:7:"Testing";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:6:"hidden";b:1;s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
 sites/all/modules/scheduler/scheduler.module	scheduler	module		0	0	-1	0	a:12:{s:4:"name";s:9:"Scheduler";s:11:"description";s:85:"This module allows nodes to be published and unpublished on specified dates and time.";s:4:"core";s:3:"7.x";s:9:"configure";s:30:"admin/config/content/scheduler";s:5:"files";a:5:{i:0;s:17:"scheduler.install";i:1;s:16:"scheduler.module";i:2;s:19:"scheduler.views.inc";i:3;s:14:"scheduler.test";i:4;s:47:"scheduler_handler_field_scheduler_countdown.inc";}s:7:"version";s:7:"7.x-1.1";s:7:"project";s:9:"scheduler";s:9:"datestamp";s:10:"1366294356";s:12:"dependencies";a:0:{}s:7:"package";s:5:"Other";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 sites/all/modules/ctools/tests/ctools_export_test/ctools_export_test.module	ctools_export_test	module		0	0	-1	0	a:12:{s:4:"name";s:18:"CTools export test";s:11:"description";s:25:"CTools export test module";s:4:"core";s:3:"7.x";s:7:"package";s:16:"Chaos tool suite";s:12:"dependencies";a:1:{i:0;s:6:"ctools";}s:6:"hidden";b:1;s:5:"files";a:1:{i:0;s:18:"ctools_export.test";}s:7:"version";s:7:"7.x-1.3";s:7:"project";s:6:"ctools";s:9:"datestamp";s:10:"1365013512";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 modules/image/tests/image_module_test.module	image_module_test	module		0	0	-1	0	a:10:{s:4:"name";s:10:"Image test";s:11:"description";s:69:"Provides hook implementations for testing Image module functionality.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:5:"files";a:1:{i:0;s:24:"image_module_test.module";}s:6:"hidden";b:1;s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/themes/zen/zen.info	zen	theme	themes/engines/phptemplate/phptemplate.engine	0	0	-1	0	a:17:{s:4:"name";s:3:"Zen";s:11:"description";s:195:"Zen sub-themes are the ultimate starting themes for Drupal 7. Read the <a href="https://drupal.org/node/873778">online docs</a> or the included README-FIRST.txt on how to create a theme with Zen.";s:10:"screenshot";s:49:"sites/all/themes/zen/zen-internals/screenshot.png";s:4:"core";s:3:"7.x";s:6:"engine";s:11:"phptemplate";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:16:"system.menus.css";s:37:"sites/all/themes/zen/system.menus.css";}}s:7:"regions";a:11:{s:6:"header";s:6:"Header";s:10:"navigation";s:14:"Navigation bar";s:11:"highlighted";s:11:"Highlighted";s:4:"help";s:4:"Help";s:7:"content";s:7:"Content";s:13:"sidebar_first";s:13:"First sidebar";s:14:"sidebar_second";s:14:"Second sidebar";s:6:"footer";s:6:"Footer";s:6:"bottom";s:11:"Page bottom";s:8:"page_top";s:8:"Page top";s:11:"page_bottom";s:11:"Page bottom";}s:8:"settings";a:11:{s:14:"zen_breadcrumb";s:3:"yes";s:24:"zen_breadcrumb_separator";s:5:" \\342\\200\\272 ";s:19:"zen_breadcrumb_home";s:1:"1";s:23:"zen_breadcrumb_trailing";s:1:"0";s:20:"zen_breadcrumb_title";s:1:"0";s:10:"zen_layout";s:23:"zen-responsive-sidebars";s:20:"zen_skip_link_anchor";s:9:"main-menu";s:18:"zen_skip_link_text";s:18:"Jump to navigation";s:22:"zen_html5_respond_meta";a:3:{i:0;s:7:"respond";i:1;s:5:"html5";i:2;s:4:"meta";}s:20:"zen_rebuild_registry";s:1:"0";s:14:"zen_wireframes";s:1:"0";}s:7:"plugins";a:1:{s:6:"panels";a:1:{s:7:"layouts";s:14:"panels-layouts";}}s:7:"version";s:7:"7.x-5.4";s:7:"project";s:3:"zen";s:9:"datestamp";s:10:"1377107504";s:8:"features";a:9:{i:0;s:4:"logo";i:1;s:7:"favicon";i:2;s:4:"name";i:3;s:6:"slogan";i:4;s:17:"node_user_picture";i:5;s:20:"comment_user_picture";i:6;s:25:"comment_user_verification";i:7;s:9:"main_menu";i:8;s:14:"secondary_menu";}s:3:"php";s:5:"5.2.4";s:7:"scripts";a:0:{}s:14:"regions_hidden";a:2:{i:0;s:8:"page_top";i:1;s:11:"page_bottom";}s:28:"overlay_supplemental_regions";a:1:{i:0;s:11:"page_bottom";}}
-sites/all/modules/service_links/services/print_services.module	print_services	module		0	0	-1	0	a:11:{s:4:"name";s:14:"Print Services";s:11:"description";s:79:"Add the support for Print module which render the page as PDF or printable HTML";s:4:"core";s:3:"7.x";s:7:"package";s:24:"Service Links - Services";s:12:"dependencies";a:2:{i:0;s:13:"service_links";i:1;s:5:"print";}s:7:"version";s:7:"7.x-2.1";s:5:"files";a:1:{i:0;s:21:"print_services.module";}s:7:"project";s:13:"service_links";s:9:"datestamp";s:10:"1317978709";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/bot/bot_factoid/bot_factoid.module	bot_factoid	module		0	0	-1	0	a:12:{s:4:"name";s:11:"Bot Factoid";s:7:"package";s:3:"Bot";s:12:"dependencies";a:1:{i:0;s:3:"bot";}s:11:"description";s:43:"Enables the setting and retrieval of facts.";s:9:"configure";s:25:"admin/config/bot/factoids";s:4:"core";s:3:"7.x";s:7:"version";s:40:"d0e10c65616f267543e717addc17422979f83bd2";s:7:"project";s:3:"bot";s:9:"datestamp";s:10:"1370700613";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+sites/all/modules/views/views.module	views	module		1	0	7301	10	a:12:{s:4:"name";s:5:"Views";s:11:"description";s:55:"Create customized lists and queries from your database.";s:7:"package";s:5:"Views";s:4:"core";s:3:"7.x";s:3:"php";s:3:"5.2";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:13:"css/views.css";s:37:"sites/all/modules/views/css/views.css";}}s:12:"dependencies";a:1:{i:0;s:6:"ctools";}s:5:"files";a:297:{i:0;s:31:"handlers/views_handler_area.inc";i:1;s:38:"handlers/views_handler_area_result.inc";i:2;s:36:"handlers/views_handler_area_text.inc";i:3;s:43:"handlers/views_handler_area_text_custom.inc";i:4;s:36:"handlers/views_handler_area_view.inc";i:5;s:35:"handlers/views_handler_argument.inc";i:6;s:40:"handlers/views_handler_argument_date.inc";i:7;s:43:"handlers/views_handler_argument_formula.inc";i:8;s:47:"handlers/views_handler_argument_many_to_one.inc";i:9;s:40:"handlers/views_handler_argument_null.inc";i:10;s:43:"handlers/views_handler_argument_numeric.inc";i:11;s:42:"handlers/views_handler_argument_string.inc";i:12;s:52:"handlers/views_handler_argument_group_by_numeric.inc";i:13;s:32:"handlers/views_handler_field.inc";i:14;s:40:"handlers/views_handler_field_counter.inc";i:15;s:40:"handlers/views_handler_field_boolean.inc";i:16;s:49:"handlers/views_handler_field_contextual_links.inc";i:17;s:39:"handlers/views_handler_field_custom.inc";i:18;s:37:"handlers/views_handler_field_date.inc";i:19;s:39:"handlers/views_handler_field_entity.inc";i:20;s:39:"handlers/views_handler_field_markup.inc";i:21;s:37:"handlers/views_handler_field_math.inc";i:22;s:40:"handlers/views_handler_field_numeric.inc";i:23;s:47:"handlers/views_handler_field_prerender_list.inc";i:24;s:46:"handlers/views_handler_field_time_interval.inc";i:25;s:43:"handlers/views_handler_field_serialized.inc";i:26;s:45:"handlers/views_handler_field_machine_name.inc";i:27;s:36:"handlers/views_handler_field_url.inc";i:28;s:33:"handlers/views_handler_filter.inc";i:29;s:50:"handlers/views_handler_filter_boolean_operator.inc";i:30;s:57:"handlers/views_handler_filter_boolean_operator_string.inc";i:31;s:41:"handlers/views_handler_filter_combine.inc";i:32;s:38:"handlers/views_handler_filter_date.inc";i:33;s:42:"handlers/views_handler_filter_equality.inc";i:34;s:47:"handlers/views_handler_filter_entity_bundle.inc";i:35;s:50:"handlers/views_handler_filter_group_by_numeric.inc";i:36;s:45:"handlers/views_handler_filter_in_operator.inc";i:37;s:45:"handlers/views_handler_filter_many_to_one.inc";i:38;s:41:"handlers/views_handler_filter_numeric.inc";i:39;s:40:"handlers/views_handler_filter_string.inc";i:40;s:39:"handlers/views_handler_relationship.inc";i:41;s:53:"handlers/views_handler_relationship_groupwise_max.inc";i:42;s:31:"handlers/views_handler_sort.inc";i:43;s:36:"handlers/views_handler_sort_date.inc";i:44;s:39:"handlers/views_handler_sort_formula.inc";i:45;s:48:"handlers/views_handler_sort_group_by_numeric.inc";i:46;s:46:"handlers/views_handler_sort_menu_hierarchy.inc";i:47;s:38:"handlers/views_handler_sort_random.inc";i:48;s:17:"includes/base.inc";i:49;s:21:"includes/handlers.inc";i:50;s:20:"includes/plugins.inc";i:51;s:17:"includes/view.inc";i:52;s:60:"modules/aggregator/views_handler_argument_aggregator_fid.inc";i:53;s:60:"modules/aggregator/views_handler_argument_aggregator_iid.inc";i:54;s:69:"modules/aggregator/views_handler_argument_aggregator_category_cid.inc";i:55;s:64:"modules/aggregator/views_handler_field_aggregator_title_link.inc";i:56;s:62:"modules/aggregator/views_handler_field_aggregator_category.inc";i:57;s:70:"modules/aggregator/views_handler_field_aggregator_item_description.inc";i:58;s:57:"modules/aggregator/views_handler_field_aggregator_xss.inc";i:59;s:67:"modules/aggregator/views_handler_filter_aggregator_category_cid.inc";i:60;s:54:"modules/aggregator/views_plugin_row_aggregator_rss.inc";i:61;s:56:"modules/book/views_plugin_argument_default_book_root.inc";i:62;s:59:"modules/comment/views_handler_argument_comment_user_uid.inc";i:63;s:47:"modules/comment/views_handler_field_comment.inc";i:64;s:53:"modules/comment/views_handler_field_comment_depth.inc";i:65;s:52:"modules/comment/views_handler_field_comment_link.inc";i:66;s:60:"modules/comment/views_handler_field_comment_link_approve.inc";i:67;s:59:"modules/comment/views_handler_field_comment_link_delete.inc";i:68;s:57:"modules/comment/views_handler_field_comment_link_edit.inc";i:69;s:58:"modules/comment/views_handler_field_comment_link_reply.inc";i:70;s:57:"modules/comment/views_handler_field_comment_node_link.inc";i:71;s:56:"modules/comment/views_handler_field_comment_username.inc";i:72;s:61:"modules/comment/views_handler_field_ncs_last_comment_name.inc";i:73;s:56:"modules/comment/views_handler_field_ncs_last_updated.inc";i:74;s:52:"modules/comment/views_handler_field_node_comment.inc";i:75;s:57:"modules/comment/views_handler_field_node_new_comments.inc";i:76;s:62:"modules/comment/views_handler_field_last_comment_timestamp.inc";i:77;s:57:"modules/comment/views_handler_filter_comment_user_uid.inc";i:78;s:57:"modules/comment/views_handler_filter_ncs_last_updated.inc";i:79;s:53:"modules/comment/views_handler_filter_node_comment.inc";i:80;s:53:"modules/comment/views_handler_sort_comment_thread.inc";i:81;s:60:"modules/comment/views_handler_sort_ncs_last_comment_name.inc";i:82;s:55:"modules/comment/views_handler_sort_ncs_last_updated.inc";i:83;s:48:"modules/comment/views_plugin_row_comment_rss.inc";i:84;s:49:"modules/comment/views_plugin_row_comment_view.inc";i:85;s:52:"modules/contact/views_handler_field_contact_link.inc";i:86;s:43:"modules/field/views_handler_field_field.inc";i:87;s:59:"modules/field/views_handler_relationship_entity_reverse.inc";i:88;s:51:"modules/field/views_handler_argument_field_list.inc";i:89;s:58:"modules/field/views_handler_argument_field_list_string.inc";i:90;s:49:"modules/field/views_handler_filter_field_list.inc";i:91;s:57:"modules/filter/views_handler_field_filter_format_name.inc";i:92;s:52:"modules/locale/views_handler_field_node_language.inc";i:93;s:53:"modules/locale/views_handler_filter_node_language.inc";i:94;s:54:"modules/locale/views_handler_argument_locale_group.inc";i:95;s:57:"modules/locale/views_handler_argument_locale_language.inc";i:96;s:51:"modules/locale/views_handler_field_locale_group.inc";i:97;s:54:"modules/locale/views_handler_field_locale_language.inc";i:98;s:55:"modules/locale/views_handler_field_locale_link_edit.inc";i:99;s:52:"modules/locale/views_handler_filter_locale_group.inc";i:100;s:55:"modules/locale/views_handler_filter_locale_language.inc";i:101;s:54:"modules/locale/views_handler_filter_locale_version.inc";i:102;s:53:"modules/node/views_handler_argument_dates_various.inc";i:103;s:53:"modules/node/views_handler_argument_node_language.inc";i:104;s:48:"modules/node/views_handler_argument_node_nid.inc";i:105;s:49:"modules/node/views_handler_argument_node_type.inc";i:106;s:48:"modules/node/views_handler_argument_node_vid.inc";i:107;s:57:"modules/node/views_handler_argument_node_uid_revision.inc";i:108;s:59:"modules/node/views_handler_field_history_user_timestamp.inc";i:109;s:41:"modules/node/views_handler_field_node.inc";i:110;s:46:"modules/node/views_handler_field_node_link.inc";i:111;s:53:"modules/node/views_handler_field_node_link_delete.inc";i:112;s:51:"modules/node/views_handler_field_node_link_edit.inc";i:113;s:50:"modules/node/views_handler_field_node_revision.inc";i:114;s:55:"modules/node/views_handler_field_node_revision_link.inc";i:115;s:62:"modules/node/views_handler_field_node_revision_link_delete.inc";i:116;s:62:"modules/node/views_handler_field_node_revision_link_revert.inc";i:117;s:46:"modules/node/views_handler_field_node_path.inc";i:118;s:46:"modules/node/views_handler_field_node_type.inc";i:119;s:60:"modules/node/views_handler_filter_history_user_timestamp.inc";i:120;s:49:"modules/node/views_handler_filter_node_access.inc";i:121;s:49:"modules/node/views_handler_filter_node_status.inc";i:122;s:47:"modules/node/views_handler_filter_node_type.inc";i:123;s:55:"modules/node/views_handler_filter_node_uid_revision.inc";i:124;s:51:"modules/node/views_plugin_argument_default_node.inc";i:125;s:52:"modules/node/views_plugin_argument_validate_node.inc";i:126;s:42:"modules/node/views_plugin_row_node_rss.inc";i:127;s:43:"modules/node/views_plugin_row_node_view.inc";i:128;s:52:"modules/profile/views_handler_field_profile_date.inc";i:129;s:52:"modules/profile/views_handler_field_profile_list.inc";i:130;s:58:"modules/profile/views_handler_filter_profile_selection.inc";i:131;s:48:"modules/search/views_handler_argument_search.inc";i:132;s:51:"modules/search/views_handler_field_search_score.inc";i:133;s:46:"modules/search/views_handler_filter_search.inc";i:134;s:50:"modules/search/views_handler_sort_search_score.inc";i:135;s:47:"modules/search/views_plugin_row_search_view.inc";i:136;s:57:"modules/statistics/views_handler_field_accesslog_path.inc";i:137;s:50:"modules/system/views_handler_argument_file_fid.inc";i:138;s:43:"modules/system/views_handler_field_file.inc";i:139;s:53:"modules/system/views_handler_field_file_extension.inc";i:140;s:52:"modules/system/views_handler_field_file_filemime.inc";i:141;s:47:"modules/system/views_handler_field_file_uri.inc";i:142;s:50:"modules/system/views_handler_field_file_status.inc";i:143;s:51:"modules/system/views_handler_filter_file_status.inc";i:144;s:52:"modules/taxonomy/views_handler_argument_taxonomy.inc";i:145;s:57:"modules/taxonomy/views_handler_argument_term_node_tid.inc";i:146;s:63:"modules/taxonomy/views_handler_argument_term_node_tid_depth.inc";i:147;s:72:"modules/taxonomy/views_handler_argument_term_node_tid_depth_modifier.inc";i:148;s:58:"modules/taxonomy/views_handler_argument_vocabulary_vid.inc";i:149;s:67:"modules/taxonomy/views_handler_argument_vocabulary_machine_name.inc";i:150;s:49:"modules/taxonomy/views_handler_field_taxonomy.inc";i:151;s:54:"modules/taxonomy/views_handler_field_term_node_tid.inc";i:152;s:55:"modules/taxonomy/views_handler_field_term_link_edit.inc";i:153;s:55:"modules/taxonomy/views_handler_filter_term_node_tid.inc";i:154;s:61:"modules/taxonomy/views_handler_filter_term_node_tid_depth.inc";i:155;s:56:"modules/taxonomy/views_handler_filter_vocabulary_vid.inc";i:156;s:65:"modules/taxonomy/views_handler_filter_vocabulary_machine_name.inc";i:157;s:62:"modules/taxonomy/views_handler_relationship_node_term_data.inc";i:158;s:65:"modules/taxonomy/views_plugin_argument_validate_taxonomy_term.inc";i:159;s:63:"modules/taxonomy/views_plugin_argument_default_taxonomy_tid.inc";i:160;s:67:"modules/tracker/views_handler_argument_tracker_comment_user_uid.inc";i:161;s:65:"modules/tracker/views_handler_filter_tracker_comment_user_uid.inc";i:162;s:65:"modules/tracker/views_handler_filter_tracker_boolean_operator.inc";i:163;s:51:"modules/system/views_handler_filter_system_type.inc";i:164;s:56:"modules/translation/views_handler_argument_node_tnid.inc";i:165;s:63:"modules/translation/views_handler_field_node_link_translate.inc";i:166;s:65:"modules/translation/views_handler_field_node_translation_link.inc";i:167;s:54:"modules/translation/views_handler_filter_node_tnid.inc";i:168;s:60:"modules/translation/views_handler_filter_node_tnid_child.inc";i:169;s:62:"modules/translation/views_handler_relationship_translation.inc";i:170;s:48:"modules/user/views_handler_argument_user_uid.inc";i:171;s:55:"modules/user/views_handler_argument_users_roles_rid.inc";i:172;s:41:"modules/user/views_handler_field_user.inc";i:173;s:50:"modules/user/views_handler_field_user_language.inc";i:174;s:46:"modules/user/views_handler_field_user_link.inc";i:175;s:53:"modules/user/views_handler_field_user_link_cancel.inc";i:176;s:51:"modules/user/views_handler_field_user_link_edit.inc";i:177;s:46:"modules/user/views_handler_field_user_mail.inc";i:178;s:46:"modules/user/views_handler_field_user_name.inc";i:179;s:53:"modules/user/views_handler_field_user_permissions.inc";i:180;s:49:"modules/user/views_handler_field_user_picture.inc";i:181;s:47:"modules/user/views_handler_field_user_roles.inc";i:182;s:50:"modules/user/views_handler_filter_user_current.inc";i:183;s:47:"modules/user/views_handler_filter_user_name.inc";i:184;s:54:"modules/user/views_handler_filter_user_permissions.inc";i:185;s:48:"modules/user/views_handler_filter_user_roles.inc";i:186;s:59:"modules/user/views_plugin_argument_default_current_user.inc";i:187;s:51:"modules/user/views_plugin_argument_default_user.inc";i:188;s:52:"modules/user/views_plugin_argument_validate_user.inc";i:189;s:43:"modules/user/views_plugin_row_user_view.inc";i:190;s:31:"plugins/views_plugin_access.inc";i:191;s:36:"plugins/views_plugin_access_none.inc";i:192;s:36:"plugins/views_plugin_access_perm.inc";i:193;s:36:"plugins/views_plugin_access_role.inc";i:194;s:41:"plugins/views_plugin_argument_default.inc";i:195;s:45:"plugins/views_plugin_argument_default_php.inc";i:196;s:47:"plugins/views_plugin_argument_default_fixed.inc";i:197;s:45:"plugins/views_plugin_argument_default_raw.inc";i:198;s:42:"plugins/views_plugin_argument_validate.inc";i:199;s:50:"plugins/views_plugin_argument_validate_numeric.inc";i:200;s:46:"plugins/views_plugin_argument_validate_php.inc";i:201;s:30:"plugins/views_plugin_cache.inc";i:202;s:35:"plugins/views_plugin_cache_none.inc";i:203;s:35:"plugins/views_plugin_cache_time.inc";i:204;s:32:"plugins/views_plugin_display.inc";i:205;s:43:"plugins/views_plugin_display_attachment.inc";i:206;s:38:"plugins/views_plugin_display_block.inc";i:207;s:40:"plugins/views_plugin_display_default.inc";i:208;s:38:"plugins/views_plugin_display_embed.inc";i:209;s:41:"plugins/views_plugin_display_extender.inc";i:210;s:37:"plugins/views_plugin_display_feed.inc";i:211;s:37:"plugins/views_plugin_display_page.inc";i:212;s:43:"plugins/views_plugin_exposed_form_basic.inc";i:213;s:37:"plugins/views_plugin_exposed_form.inc";i:214;s:52:"plugins/views_plugin_exposed_form_input_required.inc";i:215;s:42:"plugins/views_plugin_localization_core.inc";i:216;s:37:"plugins/views_plugin_localization.inc";i:217;s:42:"plugins/views_plugin_localization_none.inc";i:218;s:30:"plugins/views_plugin_pager.inc";i:219;s:35:"plugins/views_plugin_pager_full.inc";i:220;s:35:"plugins/views_plugin_pager_mini.inc";i:221;s:35:"plugins/views_plugin_pager_none.inc";i:222;s:35:"plugins/views_plugin_pager_some.inc";i:223;s:30:"plugins/views_plugin_query.inc";i:224;s:38:"plugins/views_plugin_query_default.inc";i:225;s:28:"plugins/views_plugin_row.inc";i:226;s:35:"plugins/views_plugin_row_fields.inc";i:227;s:39:"plugins/views_plugin_row_rss_fields.inc";i:228;s:30:"plugins/views_plugin_style.inc";i:229;s:38:"plugins/views_plugin_style_default.inc";i:230;s:35:"plugins/views_plugin_style_grid.inc";i:231;s:35:"plugins/views_plugin_style_list.inc";i:232;s:40:"plugins/views_plugin_style_jump_menu.inc";i:233;s:38:"plugins/views_plugin_style_mapping.inc";i:234;s:34:"plugins/views_plugin_style_rss.inc";i:235;s:38:"plugins/views_plugin_style_summary.inc";i:236;s:48:"plugins/views_plugin_style_summary_jump_menu.inc";i:237;s:50:"plugins/views_plugin_style_summary_unformatted.inc";i:238;s:36:"plugins/views_plugin_style_table.inc";i:239;s:43:"tests/handlers/views_handler_area_text.test";i:240;s:47:"tests/handlers/views_handler_argument_null.test";i:241;s:49:"tests/handlers/views_handler_argument_string.test";i:242;s:39:"tests/handlers/views_handler_field.test";i:243;s:47:"tests/handlers/views_handler_field_boolean.test";i:244;s:46:"tests/handlers/views_handler_field_custom.test";i:245;s:47:"tests/handlers/views_handler_field_counter.test";i:246;s:44:"tests/handlers/views_handler_field_date.test";i:247;s:49:"tests/handlers/views_handler_field_file_size.test";i:248;s:44:"tests/handlers/views_handler_field_math.test";i:249;s:43:"tests/handlers/views_handler_field_url.test";i:250;s:43:"tests/handlers/views_handler_field_xss.test";i:251;s:48:"tests/handlers/views_handler_filter_combine.test";i:252;s:45:"tests/handlers/views_handler_filter_date.test";i:253;s:49:"tests/handlers/views_handler_filter_equality.test";i:254;s:52:"tests/handlers/views_handler_filter_in_operator.test";i:255;s:48:"tests/handlers/views_handler_filter_numeric.test";i:256;s:47:"tests/handlers/views_handler_filter_string.test";i:257;s:45:"tests/handlers/views_handler_sort_random.test";i:258;s:43:"tests/handlers/views_handler_sort_date.test";i:259;s:38:"tests/handlers/views_handler_sort.test";i:260;s:60:"tests/test_plugins/views_test_plugin_access_test_dynamic.inc";i:261;s:59:"tests/test_plugins/views_test_plugin_access_test_static.inc";i:262;s:59:"tests/test_plugins/views_test_plugin_style_test_mapping.inc";i:263;s:39:"tests/plugins/views_plugin_display.test";i:264;s:46:"tests/styles/views_plugin_style_jump_menu.test";i:265;s:36:"tests/styles/views_plugin_style.test";i:266;s:41:"tests/styles/views_plugin_style_base.test";i:267;s:44:"tests/styles/views_plugin_style_mapping.test";i:268;s:48:"tests/styles/views_plugin_style_unformatted.test";i:269;s:23:"tests/views_access.test";i:270;s:24:"tests/views_analyze.test";i:271;s:22:"tests/views_basic.test";i:272;s:33:"tests/views_argument_default.test";i:273;s:35:"tests/views_argument_validator.test";i:274;s:29:"tests/views_exposed_form.test";i:275;s:31:"tests/field/views_fieldapi.test";i:276;s:25:"tests/views_glossary.test";i:277;s:24:"tests/views_groupby.test";i:278;s:25:"tests/views_handlers.test";i:279;s:23:"tests/views_module.test";i:280;s:22:"tests/views_pager.test";i:281;s:40:"tests/views_plugin_localization_test.inc";i:282;s:29:"tests/views_translatable.test";i:283;s:22:"tests/views_query.test";i:284;s:24:"tests/views_upgrade.test";i:285;s:34:"tests/views_test.views_default.inc";i:286;s:58:"tests/comment/views_handler_argument_comment_user_uid.test";i:287;s:56:"tests/comment/views_handler_filter_comment_user_uid.test";i:288;s:45:"tests/node/views_node_revision_relations.test";i:289;s:61:"tests/taxonomy/views_handler_relationship_node_term_data.test";i:290;s:45:"tests/user/views_handler_field_user_name.test";i:291;s:43:"tests/user/views_user_argument_default.test";i:292;s:44:"tests/user/views_user_argument_validate.test";i:293;s:26:"tests/user/views_user.test";i:294;s:22:"tests/views_cache.test";i:295;s:21:"tests/views_view.test";i:296;s:19:"tests/views_ui.test";}s:7:"version";s:7:"7.x-3.7";s:7:"project";s:5:"views";s:9:"datestamp";s:10:"1365499236";s:9:"bootstrap";i:0;}
+sites/all/modules/field_group/tests/field_group_test.module	field_group_test	module		0	0	-1	0	a:11:{s:4:"name";s:15:"Fieldgroup Test";s:11:"description";s:26:"Test module for fieldgroup";s:4:"core";s:3:"7.x";s:7:"package";s:10:"Fieldgroup";s:7:"version";s:7:"7.x-1.3";s:7:"project";s:11:"field_group";s:9:"datestamp";s:10:"1380124361";s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+sites/all/modules/ldap/ldap_views/ldap_views.module	ldap_views	module		0	0	-1	0	a:11:{s:4:"name";s:10:"LDAP Views";s:11:"description";s:38:"Implements LDAP integration with Views";s:7:"package";s:37:"Lightweight Directory Access Protocol";s:12:"dependencies";a:2:{i:0;s:10:"ldap_query";i:1;s:5:"views";}s:4:"core";s:3:"7.x";s:5:"files";a:11:{i:0;s:17:"ldap_views.module";i:1;s:18:"ldap_views.install";i:2;s:40:"plugins/ldap_views_plugin_query_ldap.inc";i:3;s:40:"handlers/ldap_views_handler_argument.inc";i:4;s:50:"handlers/ldap_views_handler_argument_attribute.inc";i:5;s:37:"handlers/ldap_views_handler_field.inc";i:6;s:47:"handlers/ldap_views_handler_field_attribute.inc";i:7;s:38:"handlers/ldap_views_handler_filter.inc";i:8;s:48:"handlers/ldap_views_handler_filter_attribute.inc";i:9;s:36:"handlers/ldap_views_handler_sort.inc";i:10;s:46:"handlers/ldap_views_handler_sort_attribute.inc";}s:7:"version";s:14:"7.x-1.0-beta12";s:7:"project";s:4:"ldap";s:9:"datestamp";s:10:"1345503423";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/i18n/i18n_sync/i18n_sync.module	i18n_sync	module		0	0	-1	0	a:11:{s:4:"name";s:24:"Synchronize translations";s:11:"description";s:74:"Synchronizes taxonomy and fields accross translations of the same content.";s:12:"dependencies";a:2:{i:0;s:4:"i18n";i:1;s:11:"translation";}s:7:"package";s:35:"Multilingual - Internationalization";s:4:"core";s:3:"7.x";s:5:"files";a:5:{i:0;s:16:"i18n_sync.module";i:1;s:17:"i18n_sync.install";i:2;s:20:"i18n_sync.module.inc";i:3;s:18:"i18n_sync.node.inc";i:4;s:14:"i18n_sync.test";}s:7:"version";s:8:"7.x-1.10";s:7:"project";s:4:"i18n";s:9:"datestamp";s:10:"1377069696";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/taxonomy_menu/taxonomy_menu.module	taxonomy_menu	module		1	0	7000	0	a:11:{s:4:"core";s:3:"7.x";s:12:"dependencies";a:2:{i:0;s:8:"taxonomy";i:1;s:4:"menu";}s:11:"description";s:39:"Adds links to taxonomy terms to a menu.";s:4:"name";s:13:"Taxonomy menu";s:7:"package";s:13:"Taxonomy menu";s:5:"files";a:5:{i:0;s:23:"taxonomy_menu.batch.inc";i:1;s:26:"taxonomy_menu.database.inc";i:2;s:20:"taxonomy_menu.module";i:3;s:18:"taxonomy_menu.test";i:4;s:21:"taxonomy_menu.install";}s:7:"version";s:7:"7.x-1.4";s:7:"project";s:13:"taxonomy_menu";s:9:"datestamp";s:10:"1346896425";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/flag/flag_bookmark/flag_bookmark.module	flag_bookmark	module		0	0	-1	0	a:11:{s:4:"name";s:13:"Flag Bookmark";s:11:"description";s:55:"Provides an example bookmark flag and supporting views.";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:4:"flag";}s:7:"package";s:5:"Flags";s:7:"version";s:7:"7.x-3.2";s:7:"project";s:4:"flag";s:9:"datestamp";s:10:"1379063829";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+sites/all/modules/migrate/migrate.module	migrate	module		0	0	-1	0	a:11:{s:4:"name";s:7:"Migrate";s:11:"description";s:36:"Import content from external sources";s:7:"package";s:11:"Development";s:4:"core";s:3:"7.x";s:5:"files";a:42:{i:0;s:17:"includes/base.inc";i:1;s:26:"includes/field_mapping.inc";i:2;s:22:"includes/migration.inc";i:3;s:24:"includes/destination.inc";i:4;s:22:"includes/exception.inc";i:5;s:18:"includes/group.inc";i:6;s:20:"includes/handler.inc";i:7;s:16:"includes/map.inc";i:8;s:19:"includes/source.inc";i:9;s:17:"includes/team.inc";i:10;s:16:"migrate.mail.inc";i:11;s:31:"plugins/destinations/entity.inc";i:12;s:29:"plugins/destinations/term.inc";i:13;s:29:"plugins/destinations/user.inc";i:14;s:29:"plugins/destinations/node.inc";i:15;s:32:"plugins/destinations/comment.inc";i:16;s:29:"plugins/destinations/file.inc";i:17;s:29:"plugins/destinations/path.inc";i:18;s:31:"plugins/destinations/fields.inc";i:19;s:29:"plugins/destinations/poll.inc";i:20;s:30:"plugins/destinations/table.inc";i:21;s:35:"plugins/destinations/table_copy.inc";i:22;s:29:"plugins/destinations/menu.inc";i:23;s:35:"plugins/destinations/menu_links.inc";i:24;s:35:"plugins/destinations/statistics.inc";i:25;s:23:"plugins/sources/csv.inc";i:26;s:25:"plugins/sources/files.inc";i:27;s:24:"plugins/sources/json.inc";i:28;s:24:"plugins/sources/list.inc";i:29;s:30:"plugins/sources/multiitems.inc";i:30;s:23:"plugins/sources/sql.inc";i:31;s:26:"plugins/sources/sqlmap.inc";i:32;s:25:"plugins/sources/mssql.inc";i:33;s:26:"plugins/sources/oracle.inc";i:34;s:23:"plugins/sources/xml.inc";i:35;s:25:"tests/import/options.test";i:36;s:39:"tests/plugins/destinations/comment.test";i:37;s:36:"tests/plugins/destinations/node.test";i:38;s:37:"tests/plugins/destinations/table.test";i:39;s:36:"tests/plugins/destinations/term.test";i:40;s:36:"tests/plugins/destinations/user.test";i:41;s:30:"tests/plugins/sources/xml.test";}s:7:"version";s:7:"7.x-2.4";s:7:"project";s:7:"migrate";s:9:"datestamp";s:10:"1338661580";s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/feeds/feeds_ui/feeds_ui.module	feeds_ui	module		0	0	-1	0	a:12:{s:4:"name";s:14:"Feeds Admin UI";s:11:"description";s:35:"Administrative UI for Feeds module.";s:7:"package";s:5:"Feeds";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:5:"feeds";}s:9:"configure";s:21:"admin/structure/feeds";s:5:"files";a:1:{i:0;s:13:"feeds_ui.test";}s:7:"version";s:14:"7.x-2.0-alpha8";s:7:"project";s:5:"feeds";s:9:"datestamp";s:10:"1366671911";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/service_links/services/forward_services.module	forward_services	module		0	0	-1	0	a:11:{s:4:"name";s:16:"Forward Services";s:11:"description";s:69:"Add the support for Forward module which send the link through email.";s:4:"core";s:3:"7.x";s:7:"package";s:24:"Service Links - Services";s:12:"dependencies";a:2:{i:0;s:13:"service_links";i:1;s:7:"forward";}s:7:"version";s:7:"7.x-2.1";s:5:"files";a:1:{i:0;s:23:"forward_services.module";}s:7:"project";s:13:"service_links";s:9:"datestamp";s:10:"1317978709";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/views_data_export/views_data_export.module	views_data_export	module		1	0	7300	0	a:11:{s:4:"name";s:17:"Views Data Export";s:11:"description";s:53:"Plugin to export views data into various file formats";s:7:"package";s:5:"Views";s:4:"core";s:3:"7.x";s:5:"files";a:11:{i:0;s:24:"views_data_export.module";i:1;s:51:"plugins/views_data_export_plugin_display_export.inc";i:2;s:49:"plugins/views_data_export_plugin_style_export.inc";i:3;s:53:"plugins/views_data_export_plugin_style_export_csv.inc";i:4;s:53:"plugins/views_data_export_plugin_style_export_xml.inc";i:5;s:15:"tests/base.test";i:6;s:21:"tests/csv_export.test";i:7;s:21:"tests/doc_export.test";i:8;s:21:"tests/txt_export.test";i:9;s:21:"tests/xls_export.test";i:10;s:21:"tests/xml_export.test";}s:12:"dependencies";a:1:{i:0;s:5:"views";}s:7:"version";s:13:"7.x-3.0-beta7";s:7:"project";s:17:"views_data_export";s:9:"datestamp";s:10:"1386882544";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/bot/bot.module	bot	module		0	0	-1	0	a:12:{s:4:"name";s:3:"Bot";s:7:"package";s:3:"Bot";s:11:"description";s:52:"Enables a network and plugin framework for IRC bots.";s:9:"configure";s:16:"admin/config/bot";s:4:"core";s:3:"7.x";s:7:"version";s:40:"d0e10c65616f267543e717addc17422979f83bd2";s:7:"project";s:3:"bot";s:9:"datestamp";s:10:"1370700613";s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+sites/all/modules/media_vimeo/media_vimeo.module	media_vimeo	module		0	0	-1	0	a:11:{s:4:"name";s:12:"Media: Vimeo";s:11:"description";s:43:"Provides Vimeo support to the Media module.";s:7:"package";s:5:"Media";s:4:"core";s:3:"7.x";s:5:"files";a:7:{i:0;s:18:"media_vimeo.module";i:1;s:38:"includes/MediaInternetVimeoHandler.inc";i:2;s:36:"includes/MediaVimeoStreamWrapper.inc";i:3;s:29:"includes/MediaVimeoStyles.inc";i:4;s:35:"includes/media_vimeo.formatters.inc";i:5;s:31:"includes/media_vimeo.styles.inc";i:6;s:34:"includes/media_vimeo.variables.inc";}s:12:"dependencies";a:2:{i:0;s:5:"media";i:1;s:14:"media_internet";}s:7:"version";s:40:"81decc73c27764437876a2c9482a66592aa71ffb";s:7:"project";s:11:"media_vimeo";s:9:"datestamp";s:10:"1370700602";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/context/context_ui/context_ui.module	context_ui	module		0	0	-1	0	a:12:{s:4:"name";s:10:"Context UI";s:11:"description";s:68:"Provides a simple UI for settings up a site structure using Context.";s:12:"dependencies";a:1:{i:0;s:7:"context";}s:7:"package";s:7:"Context";s:4:"core";s:3:"7.x";s:9:"configure";s:23:"admin/structure/context";s:5:"files";a:2:{i:0;s:14:"context.module";i:1;s:21:"tests/context_ui.test";}s:7:"version";s:7:"7.x-3.1";s:7:"project";s:7:"context";s:9:"datestamp";s:10:"1381976667";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/coder/coder_upgrade/coder_upgrade.module	coder_upgrade	module		0	0	-1	0	a:12:{s:4:"name";s:13:"Coder Upgrade";s:11:"description";s:93:"Modifies source code to assist with the upgrade of a module for changes to a relied upon API.";s:7:"package";s:11:"Development";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:12:"gplib (<2.0)";}s:5:"files";a:1:{i:0;s:18:"coder_upgrade.test";}s:9:"configure";s:47:"admin/config/development/coder/upgrade/settings";s:7:"version";s:7:"7.x-2.1";s:7:"project";s:5:"coder";s:9:"datestamp";s:10:"1387025611";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/i18n/i18n_contact/i18n_contact.module	i18n_contact	module		0	0	-1	0	a:11:{s:4:"name";s:19:"Contact translation";s:11:"description";s:63:"Makes contact categories and replies available for translation.";s:12:"dependencies";a:2:{i:0;s:7:"contact";i:1;s:11:"i18n_string";}s:7:"package";s:35:"Multilingual - Internationalization";s:4:"core";s:3:"7.x";s:7:"version";s:8:"7.x-1.10";s:7:"project";s:4:"i18n";s:9:"datestamp";s:10:"1377069696";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
 sites/all/modules/advanced_help/help_example/help_example.module	help_example	module		0	0	-1	0	a:11:{s:4:"name";s:21:"Advanced help example";s:11:"description";s:62:"A example help module to demonstrate the advanced help module.";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:13:"advanced_help";}s:7:"version";s:7:"7.x-1.1";s:7:"project";s:13:"advanced_help";s:9:"datestamp";s:10:"1386871727";s:7:"package";s:5:"Other";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
 sites/all/modules/file_entity/tests/file_entity_test.module	file_entity_test	module		0	0	-1	0	a:12:{s:4:"name";s:16:"File Entity Test";s:11:"description";s:37:"Support module for File Entity tests.";s:7:"package";s:7:"Testing";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:11:"file_entity";}s:6:"hidden";b:1;s:7:"version";s:14:"7.x-2.0-alpha3";s:7:"project";s:11:"file_entity";s:9:"datestamp";s:10:"1382744726";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-sites/all/modules/ldap/ldap_query/ldap_query.module	ldap_query	module		0	0	-1	0	a:12:{s:4:"name";s:10:"LDAP Query";s:11:"description";s:109:"LDAP Query Builder and Storage for queries used by other ldap modules such as ldap feeds, ldap provision, etc";s:7:"package";s:37:"Lightweight Directory Access Protocol";s:12:"dependencies";a:1:{i:0;s:12:"ldap_servers";}s:4:"core";s:3:"7.x";s:5:"files";a:9:{i:0;s:19:"LdapQuery.class.php";i:1;s:24:"LdapQueryAdmin.class.php";i:2;s:20:"ldap_query.admin.inc";i:3;s:14:"ldap_query.inc";i:4;s:18:"ldap_query.install";i:5;s:17:"ldap_query.module";i:6;s:23:"ldap_query.settings.inc";i:7;s:22:"ldap_servers.theme.inc";i:8;s:21:"tests/ldap_query.test";}s:9:"configure";s:30:"admin/config/people/ldap/query";s:7:"version";s:14:"7.x-1.0-beta12";s:7:"project";s:4:"ldap";s:9:"datestamp";s:10:"1345503423";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-sites/all/modules/ldap/ldap_feeds/ldap_feeds.module	ldap_feeds	module		0	0	-1	0	a:12:{s:4:"name";s:10:"LDAP Feeds";s:11:"description";s:210:"VERY MUCH IN ALPHA STATE. Included feeds fetcher for a generic ldap query and ldap entry parser to turn fetcher data into feeds compatible parser result. Used to automate content creation based on ldap queries.";s:7:"package";s:37:"Lightweight Directory Access Protocol";s:12:"dependencies";a:3:{i:0;s:5:"feeds";i:1;s:12:"ldap_servers";i:2;s:10:"ldap_query";}s:9:"configure";s:21:"admin/structure/feeds";s:4:"core";s:3:"7.x";s:3:"php";s:3:"5.2";s:7:"version";s:14:"7.x-1.0-beta12";s:7:"project";s:4:"ldap";s:9:"datestamp";s:10:"1345503423";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-sites/all/modules/i18n/i18n_contact/i18n_contact.module	i18n_contact	module		0	0	-1	0	a:11:{s:4:"name";s:19:"Contact translation";s:11:"description";s:63:"Makes contact categories and replies available for translation.";s:12:"dependencies";a:2:{i:0;s:7:"contact";i:1;s:11:"i18n_string";}s:7:"package";s:35:"Multilingual - Internationalization";s:4:"core";s:3:"7.x";s:7:"version";s:8:"7.x-1.10";s:7:"project";s:4:"i18n";s:9:"datestamp";s:10:"1377069696";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+sites/all/modules/bot/bot_aggregator/bot_aggregator.module	bot_aggregator	module		0	0	-1	0	a:12:{s:4:"name";s:14:"Bot Aggregator";s:7:"package";s:3:"Bot";s:12:"dependencies";a:2:{i:0;s:3:"bot";i:1;s:10:"aggregator";}s:11:"description";s:70:"Enables the reporting of aggregated feed items to configured channels.";s:9:"configure";s:27:"admin/config/bot/aggregator";s:4:"core";s:3:"7.x";s:7:"version";s:40:"d0e10c65616f267543e717addc17422979f83bd2";s:7:"project";s:3:"bot";s:9:"datestamp";s:10:"1370700613";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+sites/all/modules/file_entity/file_entity.module	file_entity	module		0	0	-1	0	a:12:{s:4:"name";s:11:"File entity";s:11:"description";s:58:"Extends Drupal file entities to be fieldable and viewable.";s:7:"package";s:5:"Media";s:4:"core";s:3:"7.x";s:12:"dependencies";a:4:{i:0;s:5:"field";i:1;s:4:"file";i:2;s:6:"ctools";i:3;s:14:"system (>=7.9)";}s:5:"files";a:13:{i:0;s:42:"views/views_handler_argument_file_type.inc";i:1;s:43:"views/views_handler_field_file_rendered.inc";i:2;s:39:"views/views_handler_field_file_type.inc";i:3;s:40:"views/views_handler_filter_file_type.inc";i:4;s:43:"views/views_handler_field_file_filename.inc";i:5;s:39:"views/views_handler_field_file_link.inc";i:6;s:44:"views/views_handler_field_file_link_edit.inc";i:7;s:46:"views/views_handler_field_file_link_delete.inc";i:8;s:48:"views/views_handler_field_file_link_download.inc";i:9;s:45:"views/views_handler_field_file_link_usage.inc";i:10;s:35:"views/views_plugin_row_file_rss.inc";i:11;s:36:"views/views_plugin_row_file_view.inc";i:12;s:16:"file_entity.test";}s:9:"configure";s:32:"admin/config/media/file-settings";s:7:"version";s:14:"7.x-2.0-alpha3";s:7:"project";s:11:"file_entity";s:9:"datestamp";s:10:"1382744726";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/ctools/ctools_ajax_sample/ctools_ajax_sample.module	ctools_ajax_sample	module		0	0	-1	0	a:11:{s:4:"name";s:33:"Chaos Tools (CTools) AJAX Example";s:11:"description";s:41:"Shows how to use the power of Chaos AJAX.";s:7:"package";s:16:"Chaos tool suite";s:12:"dependencies";a:1:{i:0;s:6:"ctools";}s:4:"core";s:3:"7.x";s:7:"version";s:7:"7.x-1.3";s:7:"project";s:6:"ctools";s:9:"datestamp";s:10:"1365013512";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+sites/all/modules/bot/bot_factoid/bot_factoid.module	bot_factoid	module		0	0	-1	0	a:12:{s:4:"name";s:11:"Bot Factoid";s:7:"package";s:3:"Bot";s:12:"dependencies";a:1:{i:0;s:3:"bot";}s:11:"description";s:43:"Enables the setting and retrieval of facts.";s:9:"configure";s:25:"admin/config/bot/factoids";s:4:"core";s:3:"7.x";s:7:"version";s:40:"d0e10c65616f267543e717addc17422979f83bd2";s:7:"project";s:3:"bot";s:9:"datestamp";s:10:"1370700613";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
 sites/all/modules/service_links/services/general_services.module	general_services	module		0	0	-1	0	a:11:{s:4:"name";s:16:"General Services";s:11:"description";s:280:"Provide the Services: Blinklist, Box, del.icio.us, Digg, Diigo, Facebook, Furl, Google Bookmark, Google Buzz, Icerocket, Identi.ca, Linkedin, Mister Wong, Mixx, MySpace, Newsvine, Newskicks, Phing this, Reddit, StumbleUpon, Technorati, Technorati favorite, Twitter, Yahoo Bookmark";s:4:"core";s:3:"7.x";s:7:"package";s:24:"Service Links - Services";s:12:"dependencies";a:1:{i:0;s:13:"service_links";}s:7:"version";s:7:"7.x-2.1";s:5:"files";a:1:{i:0;s:23:"general_services.module";}s:7:"project";s:13:"service_links";s:9:"datestamp";s:10:"1317978709";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 modules/overlay/overlay.module	overlay	module		0	0	-1	0	a:9:{s:4:"name";s:7:"Overlay";s:11:"description";s:59:"Displays the Drupal administration interface in an overlay.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-modules/block/tests/block_test.module	block_test	module		0	0	-1	0	a:10:{s:4:"name";s:10:"Block test";s:11:"description";s:21:"Provides test blocks.";s:7:"package";s:7:"Testing";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:6:"hidden";b:1;s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-sites/all/modules/link/link.module	link	module		1	0	7001	0	a:13:{s:4:"name";s:4:"Link";s:11:"description";s:32:"Defines simple link field types.";s:4:"core";s:3:"7.x";s:7:"package";s:6:"Fields";s:5:"files";a:10:{i:0;s:11:"link.module";i:1;s:16:"link.migrate.inc";i:2;s:15:"tests/link.test";i:3;s:25:"tests/link.attribute.test";i:4;s:20:"tests/link.crud.test";i:5;s:28:"tests/link.crud_browser.test";i:6;s:21:"tests/link.token.test";i:7;s:24:"tests/link.validate.test";i:8;s:44:"views/link_views_handler_argument_target.inc";i:9;s:44:"views/link_views_handler_filter_protocol.inc";}s:7:"version";s:7:"7.x-1.2";s:7:"project";s:4:"link";s:9:"datestamp";s:10:"1385335705";s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;s:8:"required";b:1;s:11:"explanation";s:69:"Felttype(r) i bruk - se <a href="/admin/reports/fields">Feltliste</a>";}
-sites/all/modules/views_slideshow/views_slideshow.module	views_slideshow	module		0	0	-1	0	a:11:{s:4:"name";s:15:"Views Slideshow";s:11:"description";s:155:"Provides a View style that displays rows as a jQuery slideshow.  This is an API and requires Views Slideshow Cycle or another module that supports the API.";s:12:"dependencies";a:1:{i:0;s:13:"views (>=3.0)";}s:7:"package";s:5:"Views";s:4:"core";s:3:"7.x";s:5:"files";a:4:{i:0;s:22:"views_slideshow.module";i:1;s:31:"theme/views_slideshow.theme.inc";i:2;s:25:"views_slideshow.views.inc";i:3;s:42:"views_slideshow_plugin_style_slideshow.inc";}s:7:"version";s:7:"7.x-3.1";s:7:"project";s:15:"views_slideshow";s:9:"datestamp";s:10:"1382584826";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-themes/stark/stark.info	stark	theme	themes/engines/phptemplate/phptemplate.engine	0	0	-1	0	a:14:{s:4:"name";s:5:"Stark";s:11:"description";s:208:"This theme demonstrates Drupal's default HTML markup and CSS styles. To learn how to build your own theme and override Drupal's default code, see the <a href="http://drupal.org/theme-guide">Theming Guide</a>.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:10:"layout.css";s:23:"themes/stark/layout.css";}}s:6:"engine";s:11:"phptemplate";s:7:"regions";a:9:{s:13:"sidebar_first";s:12:"Left sidebar";s:14:"sidebar_second";s:13:"Right sidebar";s:7:"content";s:7:"Content";s:6:"header";s:6:"Header";s:6:"footer";s:6:"Footer";s:11:"highlighted";s:11:"Highlighted";s:4:"help";s:4:"Help";s:8:"page_top";s:8:"Page top";s:11:"page_bottom";s:11:"Page bottom";}s:8:"features";a:9:{i:0;s:4:"logo";i:1;s:7:"favicon";i:2;s:4:"name";i:3;s:6:"slogan";i:4;s:17:"node_user_picture";i:5;s:20:"comment_user_picture";i:6;s:25:"comment_user_verification";i:7;s:9:"main_menu";i:8;s:14:"secondary_menu";}s:10:"screenshot";s:27:"themes/stark/screenshot.png";s:3:"php";s:5:"5.2.4";s:7:"scripts";a:0:{}s:14:"regions_hidden";a:2:{i:0;s:8:"page_top";i:1;s:11:"page_bottom";}s:28:"overlay_supplemental_regions";a:1:{i:0;s:11:"page_bottom";}}
-sites/all/modules/devel/devel_node_access.module	devel_node_access	module		0	0	-1	0	a:13:{s:4:"name";s:17:"Devel node access";s:11:"description";s:68:"Developer blocks and page illustrating relevant node_access records.";s:7:"package";s:11:"Development";s:12:"dependencies";a:1:{i:0;s:4:"menu";}s:4:"core";s:3:"7.x";s:9:"configure";s:30:"admin/config/development/devel";s:4:"tags";a:1:{i:0;s:9:"developer";}s:7:"version";s:7:"7.x-1.3";s:7:"project";s:5:"devel";s:9:"datestamp";s:10:"1338940281";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
-sites/all/modules/i18n/i18n_menu/i18n_menu.module	i18n_menu	module		0	0	-1	0	a:11:{s:4:"name";s:16:"Menu translation";s:11:"description";s:40:"Supports translatable custom menu items.";s:12:"dependencies";a:4:{i:0;s:4:"i18n";i:1;s:4:"menu";i:2;s:11:"i18n_string";i:3;s:16:"i18n_translation";}s:7:"package";s:35:"Multilingual - Internationalization";s:4:"core";s:3:"7.x";s:5:"files";a:2:{i:0;s:13:"i18n_menu.inc";i:1;s:14:"i18n_menu.test";}s:7:"version";s:8:"7.x-1.10";s:7:"project";s:4:"i18n";s:9:"datestamp";s:10:"1377069696";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/coder/coder_review/coder_review.module	coder_review	module		0	0	-1	0	a:11:{s:4:"name";s:12:"Coder Review";s:11:"description";s:119:""Developer module" which reviews your code identifying coding style problems and where updates to the API are required.";s:7:"package";s:11:"Development";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:5:"coder";}s:5:"files";a:9:{i:0;s:33:"tests/coder_review_test_case.tinc";i:1;s:26:"tests/coder_review_6x.test";i:2;s:26:"tests/coder_review_7x.test";i:3;s:31:"tests/coder_review_comment.test";i:4;s:28:"tests/coder_review_i18n.test";i:5;s:32:"tests/coder_review_security.test";i:6;s:27:"tests/coder_review_sql.test";i:7;s:29:"tests/coder_review_style.test";i:8;s:31:"tests/coder_review_sniffer.test";}s:7:"version";s:7:"7.x-2.1";s:7:"project";s:5:"coder";s:9:"datestamp";s:10:"1387025611";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/ldap/ldap_query/ldap_query.module	ldap_query	module		0	0	-1	0	a:12:{s:4:"name";s:10:"LDAP Query";s:11:"description";s:109:"LDAP Query Builder and Storage for queries used by other ldap modules such as ldap feeds, ldap provision, etc";s:7:"package";s:37:"Lightweight Directory Access Protocol";s:12:"dependencies";a:1:{i:0;s:12:"ldap_servers";}s:4:"core";s:3:"7.x";s:5:"files";a:9:{i:0;s:19:"LdapQuery.class.php";i:1;s:24:"LdapQueryAdmin.class.php";i:2;s:20:"ldap_query.admin.inc";i:3;s:14:"ldap_query.inc";i:4;s:18:"ldap_query.install";i:5;s:17:"ldap_query.module";i:6;s:23:"ldap_query.settings.inc";i:7;s:22:"ldap_servers.theme.inc";i:8;s:21:"tests/ldap_query.test";}s:9:"configure";s:30:"admin/config/people/ldap/query";s:7:"version";s:14:"7.x-1.0-beta12";s:7:"project";s:4:"ldap";s:9:"datestamp";s:10:"1345503423";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/ldap/ldap_feeds/ldap_feeds.module	ldap_feeds	module		0	0	-1	0	a:12:{s:4:"name";s:10:"LDAP Feeds";s:11:"description";s:210:"VERY MUCH IN ALPHA STATE. Included feeds fetcher for a generic ldap query and ldap entry parser to turn fetcher data into feeds compatible parser result. Used to automate content creation based on ldap queries.";s:7:"package";s:37:"Lightweight Directory Access Protocol";s:12:"dependencies";a:3:{i:0;s:5:"feeds";i:1;s:12:"ldap_servers";i:2;s:10:"ldap_query";}s:9:"configure";s:21:"admin/structure/feeds";s:4:"core";s:3:"7.x";s:3:"php";s:3:"5.2";s:7:"version";s:14:"7.x-1.0-beta12";s:7:"project";s:4:"ldap";s:9:"datestamp";s:10:"1345503423";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
 sites/all/themes/uib/uib_tk/uib_tk.info	uib_tk	theme	themes/engines/phptemplate/phptemplate.engine	1	0	-1	0	a:14:{s:10:"screenshot";s:42:"sites/all/themes/uib/uib_tk/screenshot.png";s:4:"name";s:6:"UiB TK";s:11:"description";s:95:"Theme for an application exposing the services of the IT-department at the University of Bergen";s:4:"core";s:3:"7.x";s:10:"base theme";s:3:"zen";s:11:"stylesheets";a:1:{s:3:"all";a:4:{s:16:"system.menus.css";s:44:"sites/all/themes/uib/uib_tk/system.menus.css";s:19:"system.messages.css";s:47:"sites/all/themes/uib/uib_tk/system.messages.css";s:16:"system.theme.css";s:44:"sites/all/themes/uib/uib_tk/system.theme.css";s:14:"css/styles.css";s:42:"sites/all/themes/uib/uib_tk/css/styles.css";}}s:7:"regions";a:11:{s:6:"header";s:6:"Header";s:10:"navigation";s:14:"Navigation bar";s:11:"highlighted";s:11:"Highlighted";s:4:"help";s:4:"Help";s:7:"content";s:7:"Content";s:13:"sidebar_first";s:13:"First sidebar";s:14:"sidebar_second";s:14:"Second sidebar";s:6:"footer";s:6:"Footer";s:6:"bottom";s:11:"Page bottom";s:8:"page_top";s:8:"Page top";s:11:"page_bottom";s:11:"Page bottom";}s:8:"features";a:8:{i:0;s:4:"logo";i:1;s:4:"name";i:2;s:6:"slogan";i:3;s:17:"node_user_picture";i:4;s:20:"comment_user_picture";i:5;s:7:"favicon";i:6;s:9:"main_menu";i:7;s:14:"secondary_menu";}s:8:"settings";a:10:{s:14:"zen_breadcrumb";s:3:"yes";s:24:"zen_breadcrumb_separator";s:5:" \\342\\200\\272 ";s:19:"zen_breadcrumb_home";s:1:"1";s:23:"zen_breadcrumb_trailing";s:1:"0";s:20:"zen_breadcrumb_title";s:1:"0";s:20:"zen_skip_link_anchor";s:9:"main-menu";s:18:"zen_skip_link_text";s:18:"Jump to navigation";s:22:"zen_html5_respond_meta";a:3:{i:0;s:7:"respond";i:1;s:5:"html5";i:2;s:4:"meta";}s:20:"zen_rebuild_registry";s:1:"1";s:14:"zen_wireframes";s:1:"0";}s:6:"engine";s:11:"phptemplate";s:3:"php";s:5:"5.2.4";s:7:"scripts";a:0:{}s:14:"regions_hidden";a:2:{i:0;s:8:"page_top";i:1;s:11:"page_bottom";}s:28:"overlay_supplemental_regions";a:1:{i:0;s:11:"page_bottom";}}
+sites/all/modules/link/link.module	link	module		1	0	7001	0	a:13:{s:4:"name";s:4:"Link";s:11:"description";s:32:"Defines simple link field types.";s:4:"core";s:3:"7.x";s:7:"package";s:6:"Fields";s:5:"files";a:10:{i:0;s:11:"link.module";i:1;s:16:"link.migrate.inc";i:2;s:15:"tests/link.test";i:3;s:25:"tests/link.attribute.test";i:4;s:20:"tests/link.crud.test";i:5;s:28:"tests/link.crud_browser.test";i:6;s:21:"tests/link.token.test";i:7;s:24:"tests/link.validate.test";i:8;s:44:"views/link_views_handler_argument_target.inc";i:9;s:44:"views/link_views_handler_filter_protocol.inc";}s:7:"version";s:7:"7.x-1.2";s:7:"project";s:4:"link";s:9:"datestamp";s:10:"1385335705";s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;s:8:"required";b:1;s:11:"explanation";s:69:"Felttype(r) i bruk - se <a href="/admin/reports/fields">Feltliste</a>";}
+modules/block/tests/block_test.module	block_test	module		0	0	-1	0	a:10:{s:4:"name";s:10:"Block test";s:11:"description";s:21:"Provides test blocks.";s:7:"package";s:7:"Testing";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:6:"hidden";b:1;s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+sites/all/modules/devel/devel_node_access.module	devel_node_access	module		0	0	-1	0	a:13:{s:4:"name";s:17:"Devel node access";s:11:"description";s:68:"Developer blocks and page illustrating relevant node_access records.";s:7:"package";s:11:"Development";s:12:"dependencies";a:1:{i:0;s:4:"menu";}s:4:"core";s:3:"7.x";s:9:"configure";s:30:"admin/config/development/devel";s:4:"tags";a:1:{i:0;s:9:"developer";}s:7:"version";s:7:"7.x-1.3";s:7:"project";s:5:"devel";s:9:"datestamp";s:10:"1338940281";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+sites/all/modules/views_slideshow/views_slideshow.module	views_slideshow	module		0	0	-1	0	a:11:{s:4:"name";s:15:"Views Slideshow";s:11:"description";s:155:"Provides a View style that displays rows as a jQuery slideshow.  This is an API and requires Views Slideshow Cycle or another module that supports the API.";s:12:"dependencies";a:1:{i:0;s:13:"views (>=3.0)";}s:7:"package";s:5:"Views";s:4:"core";s:3:"7.x";s:5:"files";a:4:{i:0;s:22:"views_slideshow.module";i:1;s:31:"theme/views_slideshow.theme.inc";i:2;s:25:"views_slideshow.views.inc";i:3;s:42:"views_slideshow_plugin_style_slideshow.inc";}s:7:"version";s:7:"7.x-3.1";s:7:"project";s:15:"views_slideshow";s:9:"datestamp";s:10:"1382584826";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+sites/all/modules/i18n/i18n_menu/i18n_menu.module	i18n_menu	module		0	0	-1	0	a:11:{s:4:"name";s:16:"Menu translation";s:11:"description";s:40:"Supports translatable custom menu items.";s:12:"dependencies";a:4:{i:0;s:4:"i18n";i:1;s:4:"menu";i:2;s:11:"i18n_string";i:3;s:16:"i18n_translation";}s:7:"package";s:35:"Multilingual - Internationalization";s:4:"core";s:3:"7.x";s:5:"files";a:2:{i:0;s:13:"i18n_menu.inc";i:1;s:14:"i18n_menu.test";}s:7:"version";s:8:"7.x-1.10";s:7:"project";s:4:"i18n";s:9:"datestamp";s:10:"1377069696";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
+themes/stark/stark.info	stark	theme	themes/engines/phptemplate/phptemplate.engine	0	0	-1	0	a:14:{s:4:"name";s:5:"Stark";s:11:"description";s:208:"This theme demonstrates Drupal's default HTML markup and CSS styles. To learn how to build your own theme and override Drupal's default code, see the <a href="http://drupal.org/theme-guide">Theming Guide</a>.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:11:"stylesheets";a:1:{s:3:"all";a:1:{s:10:"layout.css";s:23:"themes/stark/layout.css";}}s:6:"engine";s:11:"phptemplate";s:7:"regions";a:9:{s:13:"sidebar_first";s:12:"Left sidebar";s:14:"sidebar_second";s:13:"Right sidebar";s:7:"content";s:7:"Content";s:6:"header";s:6:"Header";s:6:"footer";s:6:"Footer";s:11:"highlighted";s:11:"Highlighted";s:4:"help";s:4:"Help";s:8:"page_top";s:8:"Page top";s:11:"page_bottom";s:11:"Page bottom";}s:8:"features";a:9:{i:0;s:4:"logo";i:1;s:7:"favicon";i:2;s:4:"name";i:3;s:6:"slogan";i:4;s:17:"node_user_picture";i:5;s:20:"comment_user_picture";i:6;s:25:"comment_user_verification";i:7;s:9:"main_menu";i:8;s:14:"secondary_menu";}s:10:"screenshot";s:27:"themes/stark/screenshot.png";s:3:"php";s:5:"5.2.4";s:7:"scripts";a:0:{}s:14:"regions_hidden";a:2:{i:0;s:8:"page_top";i:1;s:11:"page_bottom";}s:28:"overlay_supplemental_regions";a:1:{i:0;s:11:"page_bottom";}}
 modules/locale/locale.module	locale	module		1	0	7005	0	a:10:{s:4:"name";s:6:"Locale";s:11:"description";s:119:"Adds language handling functionality and enables the translation of the user interface to languages other than English.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:5:"files";a:1:{i:0;s:11:"locale.test";}s:9:"configure";s:30:"admin/config/regional/language";s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 modules/simpletest/tests/common_test.module	common_test	module		0	0	-1	0	a:11:{s:4:"name";s:11:"Common Test";s:11:"description";s:32:"Support module for Common tests.";s:7:"package";s:7:"Testing";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:11:"stylesheets";a:2:{s:3:"all";a:1:{s:15:"common_test.css";s:40:"modules/simpletest/tests/common_test.css";}s:5:"print";a:1:{s:21:"common_test.print.css";s:46:"modules/simpletest/tests/common_test.print.css";}}s:6:"hidden";b:1;s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
 sites/all/modules/date/date_repeat/date_repeat.module	date_repeat	module		0	0	-1	0	a:11:{s:4:"name";s:15:"Date Repeat API";s:11:"description";s:73:"A Date Repeat API to calculate repeating dates and times from iCal rules.";s:12:"dependencies";a:1:{i:0;s:8:"date_api";}s:7:"package";s:9:"Date/Time";s:4:"core";s:3:"7.x";s:3:"php";s:3:"5.2";s:5:"files";a:2:{i:0;s:22:"tests/date_repeat.test";i:1;s:27:"tests/date_repeat_form.test";}s:7:"version";s:7:"7.x-2.7";s:7:"project";s:4:"date";s:9:"datestamp";s:10:"1387659206";s:9:"bootstrap";i:0;}
@@ -28820,8 +28554,8 @@ sites/all/modules/login_destination/login_destination.module	login_destination	m
 sites/all/modules/ldap/ldap_authorization/ldap_authorization_og/ldap_authorization_og.module	ldap_authorization_og	module		0	0	-1	0	a:12:{s:4:"name";s:40:"LDAP Authorization - OG (Organic Groups)";s:11:"description";s:48:"Implements LDAP authorization for Organic Groups";s:7:"package";s:37:"Lightweight Directory Access Protocol";s:12:"dependencies";a:2:{i:0;s:18:"ldap_authorization";i:1;s:2:"og";}s:4:"core";s:3:"7.x";s:9:"configure";s:41:"admin/config/people/ldap_authorization_og";s:5:"files";a:3:{i:0;s:37:"LdapAuthorizationConsumerOG.class.php";i:1;s:28:"ldap_authorization_og.module";i:2;s:25:"ldap_authorization_og.inc";}s:7:"version";s:14:"7.x-1.0-beta12";s:7:"project";s:4:"ldap";s:9:"datestamp";s:10:"1345503423";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 sites/all/modules/i18n/i18n_select/i18n_select.module	i18n_select	module		0	0	-1	0	a:12:{s:4:"name";s:19:"Multilingual select";s:11:"description";s:45:"API module for multilingual content selection";s:12:"dependencies";a:1:{i:0;s:4:"i18n";}s:7:"package";s:35:"Multilingual - Internationalization";s:4:"core";s:3:"7.x";s:9:"configure";s:33:"admin/config/regional/i18n/select";s:5:"files";a:1:{i:0;s:16:"i18n_select.test";}s:7:"version";s:8:"7.x-1.10";s:7:"project";s:4:"i18n";s:9:"datestamp";s:10:"1377069696";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 modules/blog/blog.module	blog	module		0	0	-1	0	a:9:{s:4:"name";s:4:"Blog";s:11:"description";s:25:"Enables multi-user blogs.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:5:"files";a:1:{i:0;s:9:"blog.test";}s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-themes/seven/seven.info	seven	theme	themes/engines/phptemplate/phptemplate.engine	0	0	-1	0	a:15:{s:4:"name";s:5:"Seven";s:11:"description";s:65:"A simple one-column, tableless, fluid width administration theme.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:11:"stylesheets";a:1:{s:6:"screen";a:2:{s:9:"reset.css";s:22:"themes/seven/reset.css";s:9:"style.css";s:22:"themes/seven/style.css";}}s:8:"settings";a:1:{s:20:"shortcut_module_link";s:1:"1";}s:7:"regions";a:5:{s:7:"content";s:7:"Content";s:4:"help";s:4:"Help";s:8:"page_top";s:8:"Page top";s:11:"page_bottom";s:11:"Page bottom";s:13:"sidebar_first";s:13:"First sidebar";}s:14:"regions_hidden";a:3:{i:0;s:13:"sidebar_first";i:1;s:8:"page_top";i:2;s:11:"page_bottom";}s:6:"engine";s:11:"phptemplate";s:8:"features";a:9:{i:0;s:4:"logo";i:1;s:7:"favicon";i:2;s:4:"name";i:3;s:6:"slogan";i:4;s:17:"node_user_picture";i:5;s:20:"comment_user_picture";i:6;s:25:"comment_user_verification";i:7;s:9:"main_menu";i:8;s:14:"secondary_menu";}s:10:"screenshot";s:27:"themes/seven/screenshot.png";s:3:"php";s:5:"5.2.4";s:7:"scripts";a:0:{}s:28:"overlay_supplemental_regions";a:1:{i:0;s:11:"page_bottom";}}
 sites/all/modules/entityreference/examples/entityreference_behavior_example/entityreference_behavior_example.module	entityreference_behavior_example	module		0	0	-1	0	a:11:{s:4:"name";s:33:"Entity Reference Behavior Example";s:11:"description";s:71:"Provides some example code for implementing Entity Reference behaviors.";s:4:"core";s:3:"7.x";s:7:"package";s:6:"Fields";s:12:"dependencies";a:1:{i:0;s:15:"entityreference";}s:7:"version";s:7:"7.x-1.1";s:7:"project";s:15:"entityreference";s:9:"datestamp";s:10:"1384973110";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+themes/seven/seven.info	seven	theme	themes/engines/phptemplate/phptemplate.engine	0	0	-1	0	a:15:{s:4:"name";s:5:"Seven";s:11:"description";s:65:"A simple one-column, tableless, fluid width administration theme.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:11:"stylesheets";a:1:{s:6:"screen";a:2:{s:9:"reset.css";s:22:"themes/seven/reset.css";s:9:"style.css";s:22:"themes/seven/style.css";}}s:8:"settings";a:1:{s:20:"shortcut_module_link";s:1:"1";}s:7:"regions";a:5:{s:7:"content";s:7:"Content";s:4:"help";s:4:"Help";s:8:"page_top";s:8:"Page top";s:11:"page_bottom";s:11:"Page bottom";s:13:"sidebar_first";s:13:"First sidebar";}s:14:"regions_hidden";a:3:{i:0;s:13:"sidebar_first";i:1;s:8:"page_top";i:2;s:11:"page_bottom";}s:6:"engine";s:11:"phptemplate";s:8:"features";a:9:{i:0;s:4:"logo";i:1;s:7:"favicon";i:2;s:4:"name";i:3;s:6:"slogan";i:4;s:17:"node_user_picture";i:5;s:20:"comment_user_picture";i:6;s:25:"comment_user_verification";i:7;s:9:"main_menu";i:8;s:14:"secondary_menu";}s:10:"screenshot";s:27:"themes/seven/screenshot.png";s:3:"php";s:5:"5.2.4";s:7:"scripts";a:0:{}s:28:"overlay_supplemental_regions";a:1:{i:0;s:11:"page_bottom";}}
 modules/node/tests/node_test_exception.module	node_test_exception	module		0	0	-1	0	a:10:{s:4:"name";s:27:"Node module exception tests";s:11:"description";s:50:"Support module for node related exception testing.";s:7:"package";s:7:"Testing";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:6:"hidden";b:1;s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
 modules/simpletest/tests/update_test_3.module	update_test_3	module		0	0	-1	0	a:10:{s:4:"name";s:11:"Update test";s:11:"description";s:34:"Support module for update testing.";s:7:"package";s:7:"Testing";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:6:"hidden";b:1;s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
 modules/simpletest/tests/url_alter_test.module	url_alter_test	module		0	0	-1	0	a:10:{s:4:"name";s:15:"Url_alter tests";s:11:"description";s:45:"A support modules for url_alter hook testing.";s:4:"core";s:3:"7.x";s:7:"package";s:7:"Testing";s:7:"version";s:4:"7.26";s:6:"hidden";b:1;s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
@@ -28850,9 +28584,9 @@ sites/all/modules/bot/bot_karma/bot_karma.module	bot_karma	module		0	0	-1	0	a:12
 sites/all/modules/migrate/migrate_ui/migrate_ui.module	migrate_ui	module		0	0	-1	0	a:11:{s:4:"name";s:10:"Migrate UI";s:11:"description";s:35:"UI for managing migration processes";s:7:"package";s:11:"Development";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:7:"migrate";}s:5:"files";a:1:{i:0;s:17:"migrate_ui.module";}s:7:"version";s:7:"7.x-2.4";s:7:"project";s:7:"migrate";s:9:"datestamp";s:10:"1338661580";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 sites/all/modules/service_links/plugins/service_links_sprites.module	service_links_sprites	module		0	0	-1	0	a:12:{s:4:"name";s:21:"Service Links Sprites";s:11:"description";s:52:"Add the ability to handle sprites with Service Links";s:4:"core";s:3:"7.x";s:7:"package";s:13:"Service Links";s:12:"dependencies";a:1:{i:0;s:13:"service_links";}s:7:"version";s:7:"7.x-2.1";s:5:"files";a:1:{i:0;s:28:"service_links_sprites.module";}s:9:"configure";s:35:"admin/config/services/service-links";s:7:"project";s:13:"service_links";s:9:"datestamp";s:10:"1317978709";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 sites/all/modules/service_links/services/swedish_services.module	swedish_services	module		0	0	-1	0	a:11:{s:4:"name";s:16:"Swedish Services";s:11:"description";s:43:"Provide the Swedish Services: Bloggy, Pusha";s:4:"core";s:3:"7.x";s:7:"package";s:24:"Service Links - Services";s:12:"dependencies";a:1:{i:0;s:13:"service_links";}s:7:"version";s:7:"7.x-2.1";s:5:"files";a:1:{i:0;s:23:"swedish_services.module";}s:7:"project";s:13:"service_links";s:9:"datestamp";s:10:"1317978709";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
-themes/garland/garland.info	garland	theme	themes/engines/phptemplate/phptemplate.engine	1	0	-1	0	a:15:{s:4:"name";s:7:"Garland";s:11:"description";s:111:"A multi-column theme which can be configured to modify colors and switch between fixed and fluid width layouts.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:11:"stylesheets";a:2:{s:3:"all";a:1:{s:9:"style.css";s:24:"themes/garland/style.css";}s:5:"print";a:1:{s:9:"print.css";s:24:"themes/garland/print.css";}}s:8:"settings";a:1:{s:13:"garland_width";s:5:"fluid";}s:6:"engine";s:11:"phptemplate";s:7:"regions";a:9:{s:13:"sidebar_first";s:12:"Left sidebar";s:14:"sidebar_second";s:13:"Right sidebar";s:7:"content";s:7:"Content";s:6:"header";s:6:"Header";s:6:"footer";s:6:"Footer";s:11:"highlighted";s:11:"Highlighted";s:4:"help";s:4:"Help";s:8:"page_top";s:8:"Page top";s:11:"page_bottom";s:11:"Page bottom";}s:8:"features";a:9:{i:0;s:4:"logo";i:1;s:7:"favicon";i:2;s:4:"name";i:3;s:6:"slogan";i:4;s:17:"node_user_picture";i:5;s:20:"comment_user_picture";i:6;s:25:"comment_user_verification";i:7;s:9:"main_menu";i:8;s:14:"secondary_menu";}s:10:"screenshot";s:29:"themes/garland/screenshot.png";s:3:"php";s:5:"5.2.4";s:7:"scripts";a:0:{}s:14:"regions_hidden";a:2:{i:0;s:8:"page_top";i:1;s:11:"page_bottom";}s:28:"overlay_supplemental_regions";a:1:{i:0;s:11:"page_bottom";}}
 sites/all/modules/ctools/page_manager/page_manager.module	page_manager	module		0	0	-1	0	a:11:{s:4:"name";s:12:"Page manager";s:11:"description";s:54:"Provides a UI and API to manage pages within the site.";s:4:"core";s:3:"7.x";s:12:"dependencies";a:1:{i:0;s:6:"ctools";}s:7:"package";s:16:"Chaos tool suite";s:7:"version";s:7:"7.x-1.3";s:7:"project";s:6:"ctools";s:9:"datestamp";s:10:"1365013512";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
 sites/all/modules/bot/bot_log/bot_log.module	bot_log	module		0	0	-1	0	a:12:{s:4:"name";s:7:"Bot Log";s:7:"package";s:3:"Bot";s:12:"dependencies";a:1:{i:0;s:3:"bot";}s:11:"description";s:36:"Enables the logging of IRC channels.";s:9:"configure";s:20:"admin/config/bot/log";s:4:"core";s:3:"7.x";s:7:"version";s:40:"d0e10c65616f267543e717addc17422979f83bd2";s:7:"project";s:3:"bot";s:9:"datestamp";s:10:"1370700613";s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
+themes/garland/garland.info	garland	theme	themes/engines/phptemplate/phptemplate.engine	1	0	-1	0	a:15:{s:4:"name";s:7:"Garland";s:11:"description";s:111:"A multi-column theme which can be configured to modify colors and switch between fixed and fluid width layouts.";s:7:"package";s:4:"Core";s:7:"version";s:4:"7.26";s:4:"core";s:3:"7.x";s:11:"stylesheets";a:2:{s:3:"all";a:1:{s:9:"style.css";s:24:"themes/garland/style.css";}s:5:"print";a:1:{s:9:"print.css";s:24:"themes/garland/print.css";}}s:8:"settings";a:1:{s:13:"garland_width";s:5:"fluid";}s:6:"engine";s:11:"phptemplate";s:7:"regions";a:9:{s:13:"sidebar_first";s:12:"Left sidebar";s:14:"sidebar_second";s:13:"Right sidebar";s:7:"content";s:7:"Content";s:6:"header";s:6:"Header";s:6:"footer";s:6:"Footer";s:11:"highlighted";s:11:"Highlighted";s:4:"help";s:4:"Help";s:8:"page_top";s:8:"Page top";s:11:"page_bottom";s:11:"Page bottom";}s:8:"features";a:9:{i:0;s:4:"logo";i:1;s:7:"favicon";i:2;s:4:"name";i:3;s:6:"slogan";i:4;s:17:"node_user_picture";i:5;s:20:"comment_user_picture";i:6;s:25:"comment_user_verification";i:7;s:9:"main_menu";i:8;s:14:"secondary_menu";}s:10:"screenshot";s:29:"themes/garland/screenshot.png";s:3:"php";s:5:"5.2.4";s:7:"scripts";a:0:{}s:14:"regions_hidden";a:2:{i:0;s:8:"page_top";i:1;s:11:"page_bottom";}s:28:"overlay_supplemental_regions";a:1:{i:0;s:11:"page_bottom";}}
 sites/all/modules/variable/variable_example/variable_example.module	variable_example	module		0	0	-1	0	a:11:{s:4:"name";s:16:"Variable example";s:11:"description";s:83:"An example module showing how to use the Variable API and providing some variables.";s:12:"dependencies";a:2:{i:0;s:8:"variable";i:1;s:14:"variable_store";}s:7:"package";s:15:"Example modules";s:4:"core";s:3:"7.x";s:5:"files";a:1:{i:0;s:29:"variable_example.variable.inc";}s:7:"version";s:7:"7.x-2.3";s:7:"project";s:8:"variable";s:9:"datestamp";s:10:"1376034993";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 sites/all/modules/ctools/views_content/views_content.module	views_content	module		0	0	-1	0	a:11:{s:4:"name";s:19:"Views content panes";s:11:"description";s:104:"Allows Views content to be used in Panels, Dashboard and other modules which use the CTools Content API.";s:7:"package";s:16:"Chaos tool suite";s:12:"dependencies";a:2:{i:0;s:6:"ctools";i:1;s:5:"views";}s:4:"core";s:3:"7.x";s:5:"files";a:3:{i:0;s:61:"plugins/views/views_content_plugin_display_ctools_context.inc";i:1;s:57:"plugins/views/views_content_plugin_display_panel_pane.inc";i:2;s:59:"plugins/views/views_content_plugin_style_ctools_context.inc";}s:7:"version";s:7:"7.x-1.3";s:7:"project";s:6:"ctools";s:9:"datestamp";s:10:"1365013512";s:3:"php";s:5:"5.2.4";s:9:"bootstrap";i:0;}
 sites/all/modules/views_bulk_operations/actions_permissions.module	actions_permissions	module		0	0	-1	0	a:11:{s:4:"name";s:25:"Actions permissions (VBO)";s:11:"description";s:84:"Provides permission-based access control for actions. Used by Views Bulk Operations.";s:7:"package";s:14:"Administration";s:4:"core";s:3:"7.x";s:7:"version";s:7:"7.x-3.2";s:7:"project";s:21:"views_bulk_operations";s:9:"datestamp";s:10:"1387798183";s:12:"dependencies";a:0:{}s:3:"php";s:5:"5.2.4";s:5:"files";a:0:{}s:9:"bootstrap";i:0;}
@@ -29220,11 +28954,12 @@ SELECT pg_catalog.setval('url_alias_pid_seq', 1, false);
 --
 
 COPY users (uid, name, pass, mail, theme, signature, signature_format, created, access, login, status, timezone, language, picture, init, data) FROM stdin;
-0						\N	0	0	0	0	\N		0		\N
-15	Gisle Aas	$S$Dbk5Yq6UdYonTfB9DHkTL8af1lxBA55dXOT.iYyLwlnXQhFX.d.2	Gisle.Aas@adm.uib.no			plain_text	1381148802	1390313536	1390209969	1	\N	nb	0	Gisle.Aas@adm.uib.no	a:1:{s:19:"ldap_authentication";a:1:{s:4:"init";a:3:{s:3:"sid";s:8:"ldap-uib";s:2:"dn";s:33:"uid=gaa041,ou=people,dc=uib,dc=no";s:4:"mail";s:20:"Gisle.Aas@adm.uib.no";}}}
 10	Wenche Solfrid Vårdal	$S$Dv5EDbdYsL0.14.du8okCz5wWsTmwTTsy..8q2ydUyYRCa2Bq3sm	Vaardal@adm.uib.no			plain_text	1379920598	1380200576	1380197574	1	\N	nb	0	Vaardal@adm.uib.no	a:1:{s:19:"ldap_authentication";a:1:{s:4:"init";a:3:{s:3:"sid";s:8:"ldap-uib";s:2:"dn";s:32:"uid=edpwv,ou=people,dc=uib,dc=no";s:4:"mail";s:18:"Vaardal@adm.uib.no";}}}
 7	Irene Ludvigsen Husa	$S$DDnBi77YYaDcaiBLwbODOsrHyr9O.gw9wn1BPHUXU6v92hKHh2.K	Irene.Husa@adm.uib.no			plain_text	1379406123	1385645857	1385643869	1	\N	nb	0	Irene.Husa@adm.uib.no	a:1:{s:19:"ldap_authentication";a:1:{s:4:"init";a:3:{s:3:"sid";s:8:"ldap-uib";s:2:"dn";s:33:"uid=ihu041,ou=people,dc=uib,dc=no";s:4:"mail";s:21:"Irene.Husa@adm.uib.no";}}}
+0						\N	0	0	0	0	\N		0		\N
+12	Magne Bergland	$S$Db7.8lDIdyZ.BFFEKTJqMEAYv6gedCtfTB00TcKYRHWXZmKf6U47	Magne.Bergland@adm.uib.no			plain_text	1381132800	1390399176	1389782565	1	\N	nb	0	Magne.Bergland@adm.uib.no	a:1:{s:19:"ldap_authentication";a:1:{s:4:"init";a:3:{s:3:"sid";s:8:"ldap-uib";s:2:"dn";s:32:"uid=edmmb,ou=people,dc=uib,dc=no";s:4:"mail";s:25:"Magne.Bergland@adm.uib.no";}}}
 1	admin	$S$D7vQ1olJXktJy8ZCI5HX8JaHYXLWqpUMUG05YwFKNifG7MyVInqW	raymond@uib.no			\N	1376393815	1387470740	1387457230	1	Europe/Berlin		0	raymond@uib.no	b:0;
+15	Gisle Aas	$S$Dbk5Yq6UdYonTfB9DHkTL8af1lxBA55dXOT.iYyLwlnXQhFX.d.2	Gisle.Aas@adm.uib.no			plain_text	1381148802	1390489307	1390489307	1	\N	nb	0	Gisle.Aas@adm.uib.no	a:1:{s:19:"ldap_authentication";a:1:{s:4:"init";a:3:{s:3:"sid";s:8:"ldap-uib";s:2:"dn";s:33:"uid=gaa041,ou=people,dc=uib,dc=no";s:4:"mail";s:20:"Gisle.Aas@adm.uib.no";}}}
 22	Rannveig Ulvahaug	$S$DHk5xPiTUTfgRjsQ8ineX/lGPvGZF0W..Yeub8NLBEKjKxro8nxb	Rannveig.Ulvahaug@adm.uib.no			\N	1383827449	1383827449	1383827449	1	\N		0	Rannveig.Ulvahaug@adm.uib.no	a:1:{s:19:"ldap_authentication";a:1:{s:4:"init";a:3:{s:3:"sid";s:8:"ldap-uib";s:2:"dn";s:33:"uid=rul067,ou=people,dc=uib,dc=no";s:4:"mail";s:28:"Rannveig.Ulvahaug@adm.uib.no";}}}
 6	Jon Steine	$S$D1ZIlSXB.Tz0uz51csoIa/W9QWPNVE2nDce7cvGKtt/nD8th7Uf/	Jon.Steine@adm.uib.no			plain_text	1376893427	1376893427	1376893427	1	\N	nb	0	Jon.Steine@adm.uib.no	a:1:{s:19:"ldap_authentication";a:1:{s:4:"init";a:3:{s:3:"sid";s:8:"ldap-uib";s:2:"dn";s:32:"uid=nfijs,ou=people,dc=uib,dc=no";s:4:"mail";s:21:"Jon.Steine@adm.uib.no";}}}
 4	Jan Kristian Walde Johnsen	$S$D5fvS8KXcFCiRYdd7kRxVu9uJ/Bp5CKA9nHPchzDaBoQ1cx2CjF9	Jan.Johnsen@adm.uib.no			plain_text	1376479156	1376546472	1376479156	1	\N	nb	0	Jan.Johnsen@adm.uib.no	a:1:{s:19:"ldap_authentication";a:1:{s:4:"init";a:3:{s:3:"sid";s:8:"ldap-uib";s:2:"dn";s:32:"uid=sinjg,ou=people,dc=uib,dc=no";s:4:"mail";s:22:"Jan.Johnsen@adm.uib.no";}}}
@@ -29240,11 +28975,10 @@ COPY users (uid, name, pass, mail, theme, signature, signature_format, created, 
 20	Ivo Beijersbergen	$S$DXzZuaqZ/EtFXPMwUFcw4/yxv0W1xvxlpZTF7oYxrSjJuDTZKzSV	Ivo.Beijersbergen@adm.uib.no			\N	1382094857	1382094857	1382094857	1	\N		0	Ivo.Beijersbergen@adm.uib.no	a:1:{s:19:"ldap_authentication";a:1:{s:4:"init";a:3:{s:3:"sid";s:8:"ldap-uib";s:2:"dn";s:33:"uid=ibe085,ou=people,dc=uib,dc=no";s:4:"mail";s:28:"Ivo.Beijersbergen@adm.uib.no";}}}
 8	Helge Opedal	$S$DYIpUo.OeAQOePArHXq94GGCwT5wUx/8QJBJ5S5Pg8tS79UnGtqF	Helge.Opedal@adm.uib.no			plain_text	1379425484	1382442346	1381836409	1	\N	nb	0	Helge.Opedal@adm.uib.no	a:1:{s:19:"ldap_authentication";a:1:{s:4:"init";a:3:{s:3:"sid";s:8:"ldap-uib";s:2:"dn";s:32:"uid=mihho,ou=people,dc=uib,dc=no";s:4:"mail";s:23:"Helge.Opedal@adm.uib.no";}}}
 21	Terje Hidle	$S$DzrMimdmZuau2eBfbvFhIimwJFH84DBLWrPNQHHZUJj3.5RVZeSd	Terje.Hidle@adm.uib.no			\N	1382095665	1382427673	1382427740	1	\N		0	Terje.Hidle@adm.uib.no	a:1:{s:19:"ldap_authentication";a:1:{s:4:"init";a:3:{s:3:"sid";s:8:"ldap-uib";s:2:"dn";s:33:"uid=thi002,ou=people,dc=uib,dc=no";s:4:"mail";s:22:"Terje.Hidle@adm.uib.no";}}}
-12	Magne Bergland	$S$Db7.8lDIdyZ.BFFEKTJqMEAYv6gedCtfTB00TcKYRHWXZmKf6U47	Magne.Bergland@adm.uib.no			plain_text	1381132800	1390231092	1389782565	1	\N	nb	0	Magne.Bergland@adm.uib.no	a:1:{s:19:"ldap_authentication";a:1:{s:4:"init";a:3:{s:3:"sid";s:8:"ldap-uib";s:2:"dn";s:32:"uid=edmmb,ou=people,dc=uib,dc=no";s:4:"mail";s:25:"Magne.Bergland@adm.uib.no";}}}
+5	Anne Lise Bergheim	$S$DZlsTRyv0qIobtPc7gg/nTjoEEDPVwBSS.TferR2OcmVQXXrfSZg	Anne.Lise.Bergheim@adm.uib.no			plain_text	1376637389	1390547939	1390547560	1	\N	nb	0	Anne.Lise.Bergheim@adm.uib.no	a:1:{s:19:"ldap_authentication";a:1:{s:4:"init";a:3:{s:3:"sid";s:8:"ldap-uib";s:2:"dn";s:33:"uid=abe065,ou=people,dc=uib,dc=no";s:4:"mail";s:29:"Anne.Lise.Bergheim@adm.uib.no";}}}
 35	Jostein Mork	$S$D8jWXyGOpE/HFKMXRsdHkKDxowB9LNBNKM97oKnXt78bCqAjtrKL	Jostein.Mork@adm.uib.no			\N	1385111880	1385376311	1385111880	1	\N		0	Jostein.Mork@adm.uib.no	a:1:{s:19:"ldap_authentication";a:1:{s:4:"init";a:3:{s:3:"sid";s:8:"ldap-uib";s:2:"dn";s:32:"uid=edpjm,ou=people,dc=uib,dc=no";s:4:"mail";s:23:"Jostein.Mork@adm.uib.no";}}}
 29	Ole Arntzen	$S$DJe0Dn6H97trV32orOBKebM7/9pfHr6KQiHPy1EoURB/2Plq.mOU	Ole.Arntzen@adm.uib.no			\N	1384252243	1385643482	1385643482	1	\N		0	Ole.Arntzen@adm.uib.no	a:1:{s:19:"ldap_authentication";a:1:{s:4:"init";a:3:{s:3:"sid";s:8:"ldap-uib";s:2:"dn";s:32:"uid=nmioa,ou=people,dc=uib,dc=no";s:4:"mail";s:22:"Ole.Arntzen@adm.uib.no";}}}
 2	Raymond Kristiansen	$S$Di8R9UUhZHJmgQjDdGz/Y6ZcfEPYOhQxpNljKFOtXmubE2Vwuqwf	Raymond.Kristiansen@it.uib.no			plain_text	1376397374	1387464635	1387464433	1		nb	0	Raymond.Kristiansen@it.uib.no	a:1:{s:19:"ldap_authentication";a:1:{s:4:"init";a:3:{s:3:"sid";s:8:"ldap-uib";s:2:"dn";s:34:"uid=st02221,ou=people,dc=uib,dc=no";s:4:"mail";s:29:"Raymond.Kristiansen@it.uib.no";}}}
-5	Anne Lise Bergheim	$S$DZlsTRyv0qIobtPc7gg/nTjoEEDPVwBSS.TferR2OcmVQXXrfSZg	Anne.Lise.Bergheim@adm.uib.no			plain_text	1376637389	1387549727	1387464160	1	\N	nb	0	Anne.Lise.Bergheim@adm.uib.no	a:1:{s:19:"ldap_authentication";a:1:{s:4:"init";a:3:{s:3:"sid";s:8:"ldap-uib";s:2:"dn";s:33:"uid=abe065,ou=people,dc=uib,dc=no";s:4:"mail";s:29:"Anne.Lise.Bergheim@adm.uib.no";}}}
 33	Robert Hetlelid	$S$DC5x/1HIxB.u.gFVebHWn0/tbYzl068QgwJajDz4zF1pmixBBGns	Robert.Hetlelid@adm.uib.no			\N	1384329834	1384329834	1384329834	1	\N		0	Robert.Hetlelid@adm.uib.no	a:1:{s:19:"ldap_authentication";a:1:{s:4:"init";a:3:{s:3:"sid";s:8:"ldap-uib";s:2:"dn";s:32:"uid=edprs,ou=people,dc=uib,dc=no";s:4:"mail";s:26:"Robert.Hetlelid@adm.uib.no";}}}
 32	Trond Gravvold	$S$D2nHVm9qOG36AQ0ebj.Uhzx/H668kMdOz3cTUl3W2rNyfaokSpfV	Trond.Gravvold@adm.uib.no			\N	1384261257	1384261257	1384261257	1	\N		0	Trond.Gravvold@adm.uib.no	a:1:{s:19:"ldap_authentication";a:1:{s:4:"init";a:3:{s:3:"sid";s:8:"ldap-uib";s:2:"dn";s:34:"uid=st06047,ou=people,dc=uib,dc=no";s:4:"mail";s:25:"Trond.Gravvold@adm.uib.no";}}}
 31	Ingar Smedstad	$S$DEsg3mUzjPjr3j196XWxHHR6DXcqL77x0CdXZb6kUwTLH0OSdLRL	Ingar.Smedstad@adm.uib.no			\N	1384254019	1384254019	1384254019	1	\N		0	Ingar.Smedstad@adm.uib.no	a:1:{s:19:"ldap_authentication";a:1:{s:4:"init";a:3:{s:3:"sid";s:8:"ldap-uib";s:2:"dn";s:33:"uid=ism089,ou=people,dc=uib,dc=no";s:4:"mail";s:25:"Ingar.Smedstad@adm.uib.no";}}}
@@ -29313,14 +29047,15 @@ COPY users_roles (uid, rid) FROM stdin;
 
 COPY variable (name, value) FROM stdin;
 cron_key	s:43:"ppYIk0K_mbqisV51AcT-58IIE0Cay4bXCCJmPnjbrbI";
-cron_last	i:1390313240;
 path_alias_whitelist	a:0:{}
-css_js_query_string	s:6:"mzradg";
+site_name	s:21:"Tjenestekatalog pilot";
 drupal_private_key	s:43:"sBZ4KOb8wsWYrIBMHalxOkp2YWg0ly-zFxCns3ltFGQ";
 filter_fallback_format	s:10:"plain_text";
-features_ignored_orphans	a:0:{}
+cron_last	i:1390547453;
+css_js_query_string	s:6:"mzwa0v";
 language_content_type_support_contact	s:1:"0";
 user_email_verification	i:1;
+features_semaphore	a:0:{}
 clean_url	s:1:"1";
 install_time	i:1376393907;
 install_profile	s:7:"minimal";
@@ -29329,7 +29064,7 @@ file_temporary_path	s:4:"/tmp";
 additional_settings__active_tab_article	s:9:"edit-diff";
 menu_default_active_menus	a:4:{i:0;s:9:"main-menu";i:1;s:10:"management";i:2;s:10:"navigation";i:3;s:9:"user-menu";}
 node_preview_article	s:1:"2";
-features_semaphore	a:0:{}
+site_slogan	s:0:"";
 node_options_article	a:1:{i:0;s:6:"status";}
 ldap_servers_encrypt_key	s:10:"KLmj1hZIwF";
 language_content_type_article	s:1:"0";
@@ -29373,15 +29108,13 @@ user_mail_status_canceled_notify	i:0;
 date_default_timezone	s:13:"Europe/Berlin";
 diff_view_mode_preview_node_article	s:4:"full";
 theme_default	s:6:"uib_tk";
-site_name	s:25:"Tjenestekatalog pilot v.2";
-site_slogan	s:0:"";
 site_mail	s:14:"raymond@uib.no";
 default_nodes_main	s:2:"10";
 site_frontpage	s:15:"service-classes";
 site_403	s:0:"";
+features_ignored_orphans	a:0:{}
 diff_show_preview_changes_node_support_contact	i:1;
 diff_enable_revisions_page_node_support_contact	i:1;
-menu_masks	a:32:{i:0;i:245;i:1;i:126;i:2;i:125;i:3;i:124;i:4;i:123;i:5;i:122;i:6;i:121;i:7;i:117;i:8;i:63;i:9;i:62;i:10;i:61;i:11;i:60;i:12;i:59;i:13;i:58;i:14;i:56;i:15;i:44;i:16;i:31;i:17;i:30;i:18;i:29;i:19;i:24;i:20;i:23;i:21;i:21;i:22;i:15;i:23;i:14;i:24;i:13;i:25;i:11;i:26;i:7;i:27;i:6;i:28;i:5;i:29;i:3;i:30;i:2;i:31;i:1;}
 additional_settings__active_tab_support_contact	s:15:"edit-submission";
 node_preview_support_contact	s:1:"1";
 node_options_support_contact	a:1:{i:0;s:6:"status";}
@@ -29389,14 +29122,13 @@ node_submitted_support_contact	i:0;
 diff_view_mode_preview_node_support_contact	s:4:"full";
 node_preview_service	s:1:"1";
 theme_uib_tk_settings	a:24:{s:11:"toggle_logo";i:1;s:11:"toggle_name";i:1;s:13:"toggle_slogan";i:1;s:24:"toggle_node_user_picture";i:1;s:27:"toggle_comment_user_picture";i:1;s:14:"toggle_favicon";i:0;s:16:"toggle_main_menu";i:1;s:21:"toggle_secondary_menu";i:0;s:12:"default_logo";i:0;s:9:"logo_path";s:46:"sites/all/themes/uib/uib_tk/images/uiblogo.svg";s:11:"logo_upload";s:0:"";s:15:"default_favicon";i:1;s:12:"favicon_path";s:0:"";s:14:"favicon_upload";s:0:"";s:14:"zen_breadcrumb";s:2:"no";s:24:"zen_breadcrumb_separator";s:5:" \\342\\200\\272 ";s:19:"zen_breadcrumb_home";i:1;s:23:"zen_breadcrumb_trailing";i:1;s:20:"zen_breadcrumb_title";i:0;s:20:"zen_skip_link_anchor";s:9:"main-menu";s:18:"zen_skip_link_text";s:18:"Jump to navigation";s:22:"zen_html5_respond_meta";a:3:{s:7:"respond";s:7:"respond";s:5:"html5";s:5:"html5";s:4:"meta";s:4:"meta";}s:20:"zen_rebuild_registry";i:0;s:14:"zen_wireframes";i:0;}
-menu_expanded	a:2:{i:0;s:9:"main-menu";i:1;s:10:"navigation";}
 theme_settings	a:15:{s:11:"toggle_logo";i:1;s:11:"toggle_name";i:1;s:13:"toggle_slogan";i:1;s:24:"toggle_node_user_picture";i:1;s:27:"toggle_comment_user_picture";i:1;s:32:"toggle_comment_user_verification";i:1;s:14:"toggle_favicon";i:1;s:16:"toggle_main_menu";i:1;s:21:"toggle_secondary_menu";i:0;s:12:"default_logo";i:1;s:9:"logo_path";s:0:"";s:11:"logo_upload";s:0:"";s:15:"default_favicon";i:1;s:12:"favicon_path";s:0:"";s:14:"favicon_upload";s:0:"";}
 field_bundle_settings_node__service	a:2:{s:10:"view_modes";a:4:{s:6:"teaser";a:1:{s:15:"custom_settings";b:1;}s:4:"full";a:1:{s:15:"custom_settings";b:0;}s:3:"rss";a:1:{s:15:"custom_settings";b:0;}s:13:"diff_standard";a:1:{s:15:"custom_settings";b:0;}}s:12:"extra_fields";a:2:{s:4:"form";a:1:{s:5:"title";a:1:{s:6:"weight";s:1:"0";}}s:7:"display";a:0:{}}}
 additional_settings__active_tab_service_owner	s:15:"edit-submission";
 ldap_authentication_conf	a:18:{s:4:"sids";a:1:{s:8:"ldap-uib";s:8:"ldap-uib";}s:18:"authenticationMode";i:1;s:20:"loginConflictResolve";i:2;s:12:"acctCreation";i:4;s:18:"loginUIUsernameTxt";N;s:18:"loginUIPasswordTxt";N;s:19:"ldapUserHelpLinkUrl";s:20:"https://sebra.uib.no";s:20:"ldapUserHelpLinkText";s:5:"Sebra";s:11:"emailOption";i:3;s:11:"emailUpdate";i:1;s:19:"allowOnlyIfTextInDn";a:0:{}s:17:"excludeIfTextInDn";a:0:{}s:12:"allowTestPhp";s:0:"";s:25:"excludeIfNoAuthorizations";N;s:28:"ssoRemoteUserStripDomainName";N;s:13:"seamlessLogin";N;s:18:"ldapImplementation";N;s:12:"cookieExpire";N;}
 language_types	a:3:{s:8:"language";b:1;s:16:"language_content";b:0;s:12:"language_url";b:0;}
 language_negotiation_language	a:0:{}
-site_404	s:0:"";
+menu_expanded	a:2:{i:0;s:9:"main-menu";i:1;s:10:"navigation";}
 language_negotiation_language_content	a:1:{s:16:"locale-interface";a:2:{s:9:"callbacks";a:1:{s:8:"language";s:30:"locale_language_from_interface";}s:4:"file";s:19:"includes/locale.inc";}}
 additional_settings__active_tab_service	s:15:"edit-submission";
 node_options_service	a:1:{i:0;s:6:"status";}
@@ -29418,15 +29150,17 @@ diff_view_mode_preview_node_service_owner	s:4:"full";
 node_admin_theme	i:0;
 user_mail_status_canceled_subject	s:57:"Account details for [user:name] at [site:name] (canceled)";
 language_negotiation_language_url	a:2:{s:10:"locale-url";a:2:{s:9:"callbacks";a:3:{s:8:"language";s:24:"locale_language_from_url";s:8:"switcher";s:28:"locale_language_switcher_url";s:11:"url_rewrite";s:31:"locale_language_url_rewrite_url";}s:4:"file";s:19:"includes/locale.inc";}s:19:"locale-url-fallback";a:2:{s:9:"callbacks";a:1:{s:8:"language";s:28:"locale_language_url_fallback";}s:4:"file";s:19:"includes/locale.inc";}}
+site_404	s:0:"";
 user_default_timezone	s:1:"0";
 language_default	O:8:"stdClass":11:{s:8:"language";s:2:"nb";s:4:"name";s:17:"Norwegian Bokm\\303\\245l";s:6:"native";s:7:"Bokm\\303\\245l";s:9:"direction";s:1:"0";s:7:"enabled";s:1:"1";s:7:"plurals";s:1:"2";s:7:"formula";s:7:"($n!=1)";s:6:"domain";s:0:"";s:6:"prefix";s:2:"nb";s:6:"weight";s:1:"0";s:10:"javascript";s:43:"hWOuXpnX9p-KEUOkQAq6Q3IrAgVQ2ZUhDFzJc0kwcPU";}
 user_mail_status_canceled_body	s:86:"[user:name],\\015\\012\\015\\012Your account on [site:name] has been canceled.\\015\\012\\015\\012--  [site:name] team";
-ctools_last_cron	i:1390294823;
+ctools_last_cron	i:1390486006;
+menu_masks	a:32:{i:0;i:245;i:1;i:126;i:2;i:125;i:3;i:124;i:4;i:123;i:5;i:122;i:6;i:121;i:7;i:117;i:8;i:63;i:9;i:62;i:10;i:61;i:11;i:60;i:12;i:59;i:13;i:58;i:14;i:56;i:15;i:44;i:16;i:31;i:17;i:30;i:18;i:29;i:19;i:24;i:20;i:23;i:21;i:21;i:22;i:15;i:23;i:14;i:24;i:13;i:25;i:11;i:26;i:7;i:27;i:6;i:28;i:5;i:29;i:3;i:30;i:2;i:31;i:1;}
 date_first_day	s:1:"1";
 configurable_timezones	i:0;
 user_mail_register_admin_created_body	s:476:"[user:name],\\015\\012\\015\\012A site administrator at [site:name] has created an account for you. You may now log in by clicking this link or copying and pasting it to your browser:\\015\\012\\015\\012[user:one-time-login-url]\\015\\012\\015\\012This link can only be used once to log in and will lead you to a page where you can set your password.\\015\\012\\015\\012After setting your password, you will be able to log in at [site:login-url] in the future using:\\015\\012\\015\\012username: [user:name]\\015\\012password: Your password\\015\\012\\015\\012--  [site:name] team";
 field_bundle_settings_user__user	a:2:{s:10:"view_modes";a:2:{s:4:"full";a:1:{s:15:"custom_settings";b:0;}s:13:"diff_standard";a:1:{s:15:"custom_settings";b:0;}}s:12:"extra_fields";a:2:{s:4:"form";a:0:{}s:7:"display";a:1:{s:7:"summary";a:2:{s:7:"default";a:2:{s:6:"weight";s:1:"5";s:7:"visible";b:0;}s:4:"full";a:2:{s:6:"weight";s:1:"5";s:7:"visible";b:0;}}}}}
-features_codecache	a:1:{s:2:"tk";a:9:{s:12:"dependencies";s:32:"07af1bb1632b104950bcb87bce2628e8";s:5:"field";s:32:"22cc48e8ed7defe34e4341410484b610";s:4:"node";s:32:"73f39ceb8a69ae0d62b39f94a832d8ba";s:11:"field_group";s:32:"2f7ee37277d0eaf068a82a37090c53c5";s:10:"views_view";s:32:"9d84b2f4c5e894515f12c35fdf7d30d3";s:8:"taxonomy";s:32:"ff364ba910baad398b6bd3b6f9710681";s:15:"user_permission";s:32:"d7b6af457751e87928619554f1c33395";s:8:"variable";s:32:"4fe63e70d3de89c8707957f7ca22ec31";s:10:"menu_links";s:32:"6944cd86a5e2d88a70a62be79b0529ee";}}
+features_codecache	a:1:{s:2:"tk";a:9:{s:12:"dependencies";s:32:"07af1bb1632b104950bcb87bce2628e8";s:5:"field";s:32:"9473abc91791a45cfaafe43e6e01ec9b";s:4:"node";s:32:"73f39ceb8a69ae0d62b39f94a832d8ba";s:11:"field_group";s:32:"30cb228b8be5c1c068a21792f4fcefd0";s:10:"views_view";s:32:"cc7cdb858ffb836b9c10d111413f2e18";s:8:"taxonomy";s:32:"ff364ba910baad398b6bd3b6f9710681";s:15:"user_permission";s:32:"d7b6af457751e87928619554f1c33395";s:8:"variable";s:32:"4fe63e70d3de89c8707957f7ca22ec31";s:10:"menu_links";s:32:"6944cd86a5e2d88a70a62be79b0529ee";}}
 entityreference:base-tables	a:5:{s:4:"node";a:2:{i:0;s:4:"node";i:1;s:3:"nid";}s:4:"file";a:2:{i:0;s:12:"file_managed";i:1;s:3:"fid";}s:13:"taxonomy_term";a:2:{i:0;s:18:"taxonomy_term_data";i:1;s:3:"tid";}s:19:"taxonomy_vocabulary";a:2:{i:0;s:19:"taxonomy_vocabulary";i:1;s:3:"vid";}s:4:"user";a:2:{i:0;s:5:"users";i:1;s:3:"uid";}}
 taxonomy_menu_vocab_menu_service_roles	s:10:"navigation";
 taxonomy_menu_vocab_parent_service_roles	s:3:"259";
@@ -30317,6 +30051,38 @@ COPY watchdog (wid, uid, type, message, variables, severity, link, location, ref
 794	0	page not found	favicon.ico	N;	4		https://tk.devapp.uib.no/favicon.ico		129.177.10.226	1390302540
 795	0	page not found	favicon.ico	N;	4		https://tk.devapp.uib.no/favicon.ico		129.177.10.226	1390302540
 796	0	cron	Cron run completed.	a:0:{}	5		https://tk.devapp.uib.no/		2001:700:200:9:d1ce:1984:9bcf:3ee2	1390313241
+797	15	user	Session closed for %name.	a:1:{s:5:"%name";s:9:"Gisle Aas";}	5		https://tk.devapp.uib.no/user/logout	https://tk.devapp.uib.no/user	2001:700:200:9:d1ce:1984:9bcf:3ee2	1390318412
+798	15	user	Session opened for %name.	a:1:{s:5:"%name";s:9:"Gisle Aas";}	5		https://tk.devapp.uib.no/user/login	https://tk.devapp.uib.no/user/login	2001:700:200:9:d1ce:1984:9bcf:3ee2	1390318422
+799	15	user	Session opened for %name.	a:1:{s:5:"%name";s:9:"Gisle Aas";}	5		https://tk.devapp.uib.no/user/login	https://tk.devapp.uib.no/user/login	2001:700:200:9:d1ce:1984:9bcf:3ee2	1390318422
+800	15	user	Session closed for %name.	a:1:{s:5:"%name";s:9:"Gisle Aas";}	5		https://tk.devapp.uib.no/user/logout	https://tk.devapp.uib.no/	2001:700:200:9:d1ce:1984:9bcf:3ee2	1390318559
+801	0	cron	Cron run completed.	a:0:{}	5		https://tk.devapp.uib.no/node/5	https://tk.devapp.uib.no/	2001:700:200:9:542f:1198:5395:cbf1	1390375954
+802	0	features	@actioning @module_name / @component.	a:3:{s:7:"@action";s:7:"Rebuild";s:10:"@component";s:5:"field";s:12:"@module_name";s:2:"tk";}	5		http://default/index.php		127.0.0.1	1390382975
+803	0	features	@action completed for @module_name / @component.	a:3:{s:7:"@action";s:7:"Rebuild";s:10:"@component";s:5:"field";s:12:"@module_name";s:2:"tk";}	5		http://default/index.php		127.0.0.1	1390382975
+804	0	features	@actioning @module_name / @component.	a:3:{s:7:"@action";s:6:"Revert";s:10:"@component";s:11:"field_group";s:12:"@module_name";s:2:"tk";}	5		http://default/index.php		127.0.0.1	1390383081
+805	0	features	@action completed for @module_name / @component.	a:3:{s:7:"@action";s:6:"Revert";s:10:"@component";s:11:"field_group";s:12:"@module_name";s:2:"tk";}	5		http://default/index.php		127.0.0.1	1390383081
+806	0	cron	Cron run completed.	a:0:{}	5		https://tk.devapp.uib.no/		129.177.11.237	1390397631
+807	0	page not found	favicon.ico	N;	4		https://tk.devapp.uib.no/favicon.ico		129.177.11.237	1390397631
+808	0	page not found	favicon.ico	N;	4		https://tk.devapp.uib.no/favicon.ico		129.177.11.237	1390397649
+809	15	user	Session opened for %name.	a:1:{s:5:"%name";s:9:"Gisle Aas";}	5		https://tk.devapp.uib.no/user/login	https://tk.devapp.uib.no/user/login	129.177.11.237	1390397667
+810	15	user	Session opened for %name.	a:1:{s:5:"%name";s:9:"Gisle Aas";}	5		https://tk.devapp.uib.no/user/login	https://tk.devapp.uib.no/user/login	129.177.11.237	1390397667
+811	15	user	Session closed for %name.	a:1:{s:5:"%name";s:9:"Gisle Aas";}	5		https://tk.devapp.uib.no/user/logout	https://tk.devapp.uib.no/node/4	129.177.11.237	1390397692
+812	12	page not found	favicon.ico	N;	4		https://tk.devapp.uib.no/favicon.ico		129.177.9.119	1390399177
+813	12	user	Session closed for %name.	a:1:{s:5:"%name";s:14:"Magne Bergland";}	5		https://tk.devapp.uib.no/user/logout	https://tk.devapp.uib.no/	129.177.9.119	1390399187
+814	0	cron	Cron run completed.	a:0:{}	5		https://tk.devapp.uib.no/		129.177.9.119	1390486007
+815	0	page not found	favicon.ico	N;	4		https://tk.devapp.uib.no/favicon.ico		129.177.9.119	1390486008
+816	0	features	@actioning @module_name / @component.	a:3:{s:7:"@action";s:7:"Rebuild";s:10:"@component";s:5:"field";s:12:"@module_name";s:2:"tk";}	5		http://default/index.php		127.0.0.1	1390488941
+817	0	features	@action completed for @module_name / @component.	a:3:{s:7:"@action";s:7:"Rebuild";s:10:"@component";s:5:"field";s:12:"@module_name";s:2:"tk";}	5		http://default/index.php		127.0.0.1	1390488941
+818	0	page not found	favicon.ico	N;	4		https://tk.devapp.uib.no/favicon.ico		2001:700:200:9:c988:2d8:d5cf:a5d7	1390488951
+819	15	user	Session opened for %name.	a:1:{s:5:"%name";s:9:"Gisle Aas";}	5		https://tk.devapp.uib.no/user/login	https://tk.devapp.uib.no/user/login	2001:700:200:9:c988:2d8:d5cf:a5d7	1390489307
+820	15	user	Session opened for %name.	a:1:{s:5:"%name";s:9:"Gisle Aas";}	5		https://tk.devapp.uib.no/user/login	https://tk.devapp.uib.no/user/login	2001:700:200:9:c988:2d8:d5cf:a5d7	1390489307
+821	15	user	Session closed for %name.	a:1:{s:5:"%name";s:9:"Gisle Aas";}	5		https://tk.devapp.uib.no/user/logout	https://tk.devapp.uib.no/taxonomy/term/7	2001:700:200:9:c988:2d8:d5cf:a5d7	1390489383
+822	0	cron	Cron run completed.	a:0:{}	5		https://tk.devapp.uib.no/	https://tk.devapp.uib.no/taxonomy/term/6	129.177.9.105	1390547458
+823	5	user	Session opened for %name.	a:1:{s:5:"%name";s:18:"Anne Lise Bergheim";}	5		https://tk.devapp.uib.no/user/login	https://tk.devapp.uib.no/user/login	129.177.9.105	1390547494
+824	5	user	Session opened for %name.	a:1:{s:5:"%name";s:18:"Anne Lise Bergheim";}	5		https://tk.devapp.uib.no/user/login	https://tk.devapp.uib.no/user/login	129.177.9.105	1390547494
+825	5	user	Session closed for %name.	a:1:{s:5:"%name";s:18:"Anne Lise Bergheim";}	5		https://tk.devapp.uib.no/user/logout	https://tk.devapp.uib.no/node/15	129.177.9.105	1390547534
+826	5	user	Session opened for %name.	a:1:{s:5:"%name";s:18:"Anne Lise Bergheim";}	5		https://tk.devapp.uib.no/user/login	https://tk.devapp.uib.no/user/login	129.177.9.105	1390547560
+827	5	user	Session opened for %name.	a:1:{s:5:"%name";s:18:"Anne Lise Bergheim";}	5		https://tk.devapp.uib.no/user/login	https://tk.devapp.uib.no/user/login	129.177.9.105	1390547560
+828	5	user	Session closed for %name.	a:1:{s:5:"%name";s:18:"Anne Lise Bergheim";}	5		https://tk.devapp.uib.no/user/logout	https://tk.devapp.uib.no/node/5	129.177.9.105	1390547964
 \.
 
 
@@ -30324,7 +30090,7 @@ COPY watchdog (wid, uid, type, message, variables, severity, link, location, ref
 -- Name: watchdog_wid_seq; Type: SEQUENCE SET; Schema: public; Owner: tk_admin
 --
 
-SELECT pg_catalog.setval('watchdog_wid_seq', 796, true);
+SELECT pg_catalog.setval('watchdog_wid_seq', 828, true);
 
 
 --
@@ -30784,14 +30550,6 @@ ALTER TABLE ONLY field_data_field_supporting_systems
 
 
 --
--- Name: field_data_field_usergroup_pkey; Type: CONSTRAINT; Schema: public; Owner: tk_admin; Tablespace: 
---
-
-ALTER TABLE ONLY field_data_field_usergroup
-    ADD CONSTRAINT field_data_field_usergroup_pkey PRIMARY KEY (entity_type, entity_id, deleted, delta, language);
-
-
---
 -- Name: field_data_field_www_pkey; Type: CONSTRAINT; Schema: public; Owner: tk_admin; Tablespace: 
 --
 
@@ -31013,14 +30771,6 @@ ALTER TABLE ONLY field_revision_field_support_contact
 
 ALTER TABLE ONLY field_revision_field_supporting_systems
     ADD CONSTRAINT field_revision_field_supporting_systems_pkey PRIMARY KEY (entity_type, entity_id, revision_id, deleted, delta, language);
-
-
---
--- Name: field_revision_field_usergroup_pkey; Type: CONSTRAINT; Schema: public; Owner: tk_admin; Tablespace: 
---
-
-ALTER TABLE ONLY field_revision_field_usergroup
-    ADD CONSTRAINT field_revision_field_usergroup_pkey PRIMARY KEY (entity_type, entity_id, revision_id, deleted, delta, language);
 
 
 --
@@ -32851,55 +32601,6 @@ CREATE INDEX field_data_field_supporting_systems_revision_id_idx ON field_data_f
 
 
 --
--- Name: field_data_field_usergroup_bundle_idx; Type: INDEX; Schema: public; Owner: tk_admin; Tablespace: 
---
-
-CREATE INDEX field_data_field_usergroup_bundle_idx ON field_data_field_usergroup USING btree (bundle);
-
-
---
--- Name: field_data_field_usergroup_deleted_idx; Type: INDEX; Schema: public; Owner: tk_admin; Tablespace: 
---
-
-CREATE INDEX field_data_field_usergroup_deleted_idx ON field_data_field_usergroup USING btree (deleted);
-
-
---
--- Name: field_data_field_usergroup_entity_id_idx; Type: INDEX; Schema: public; Owner: tk_admin; Tablespace: 
---
-
-CREATE INDEX field_data_field_usergroup_entity_id_idx ON field_data_field_usergroup USING btree (entity_id);
-
-
---
--- Name: field_data_field_usergroup_entity_type_idx; Type: INDEX; Schema: public; Owner: tk_admin; Tablespace: 
---
-
-CREATE INDEX field_data_field_usergroup_entity_type_idx ON field_data_field_usergroup USING btree (entity_type);
-
-
---
--- Name: field_data_field_usergroup_field_usergroup_value_idx; Type: INDEX; Schema: public; Owner: tk_admin; Tablespace: 
---
-
-CREATE INDEX field_data_field_usergroup_field_usergroup_value_idx ON field_data_field_usergroup USING btree (field_usergroup_value);
-
-
---
--- Name: field_data_field_usergroup_language_idx; Type: INDEX; Schema: public; Owner: tk_admin; Tablespace: 
---
-
-CREATE INDEX field_data_field_usergroup_language_idx ON field_data_field_usergroup USING btree (language);
-
-
---
--- Name: field_data_field_usergroup_revision_id_idx; Type: INDEX; Schema: public; Owner: tk_admin; Tablespace: 
---
-
-CREATE INDEX field_data_field_usergroup_revision_id_idx ON field_data_field_usergroup USING btree (revision_id);
-
-
---
 -- Name: field_data_field_www_bundle_idx; Type: INDEX; Schema: public; Owner: tk_admin; Tablespace: 
 --
 
@@ -34174,55 +33875,6 @@ CREATE INDEX field_revision_field_supporting_systems_revision_id_idx ON field_re
 
 
 --
--- Name: field_revision_field_usergroup_bundle_idx; Type: INDEX; Schema: public; Owner: tk_admin; Tablespace: 
---
-
-CREATE INDEX field_revision_field_usergroup_bundle_idx ON field_revision_field_usergroup USING btree (bundle);
-
-
---
--- Name: field_revision_field_usergroup_deleted_idx; Type: INDEX; Schema: public; Owner: tk_admin; Tablespace: 
---
-
-CREATE INDEX field_revision_field_usergroup_deleted_idx ON field_revision_field_usergroup USING btree (deleted);
-
-
---
--- Name: field_revision_field_usergroup_entity_id_idx; Type: INDEX; Schema: public; Owner: tk_admin; Tablespace: 
---
-
-CREATE INDEX field_revision_field_usergroup_entity_id_idx ON field_revision_field_usergroup USING btree (entity_id);
-
-
---
--- Name: field_revision_field_usergroup_entity_type_idx; Type: INDEX; Schema: public; Owner: tk_admin; Tablespace: 
---
-
-CREATE INDEX field_revision_field_usergroup_entity_type_idx ON field_revision_field_usergroup USING btree (entity_type);
-
-
---
--- Name: field_revision_field_usergroup_field_usergroup_value_idx; Type: INDEX; Schema: public; Owner: tk_admin; Tablespace: 
---
-
-CREATE INDEX field_revision_field_usergroup_field_usergroup_value_idx ON field_revision_field_usergroup USING btree (field_usergroup_value);
-
-
---
--- Name: field_revision_field_usergroup_language_idx; Type: INDEX; Schema: public; Owner: tk_admin; Tablespace: 
---
-
-CREATE INDEX field_revision_field_usergroup_language_idx ON field_revision_field_usergroup USING btree (language);
-
-
---
--- Name: field_revision_field_usergroup_revision_id_idx; Type: INDEX; Schema: public; Owner: tk_admin; Tablespace: 
---
-
-CREATE INDEX field_revision_field_usergroup_revision_id_idx ON field_revision_field_usergroup USING btree (revision_id);
-
-
---
 -- Name: field_revision_field_www_bundle_idx; Type: INDEX; Schema: public; Owner: tk_admin; Tablespace: 
 --
 
@@ -35463,16 +35115,6 @@ GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE field_data_field_supporting_systems T
 
 
 --
--- Name: field_data_field_usergroup; Type: ACL; Schema: public; Owner: tk_admin
---
-
-REVOKE ALL ON TABLE field_data_field_usergroup FROM PUBLIC;
-REVOKE ALL ON TABLE field_data_field_usergroup FROM tk_admin;
-GRANT ALL ON TABLE field_data_field_usergroup TO tk_admin;
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE field_data_field_usergroup TO tk_user;
-
-
---
 -- Name: field_data_field_www; Type: ACL; Schema: public; Owner: tk_admin
 --
 
@@ -35750,16 +35392,6 @@ REVOKE ALL ON TABLE field_revision_field_supporting_systems FROM PUBLIC;
 REVOKE ALL ON TABLE field_revision_field_supporting_systems FROM tk_admin;
 GRANT ALL ON TABLE field_revision_field_supporting_systems TO tk_admin;
 GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE field_revision_field_supporting_systems TO tk_user;
-
-
---
--- Name: field_revision_field_usergroup; Type: ACL; Schema: public; Owner: tk_admin
---
-
-REVOKE ALL ON TABLE field_revision_field_usergroup FROM PUBLIC;
-REVOKE ALL ON TABLE field_revision_field_usergroup FROM tk_admin;
-GRANT ALL ON TABLE field_revision_field_usergroup TO tk_admin;
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE field_revision_field_usergroup TO tk_user;
 
 
 --
