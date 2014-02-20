@@ -125,6 +125,7 @@ features[variable][] = language_content_type_article
 features[variable][] = language_content_type_service
 features[variable][] = language_content_type_service_owner
 features[variable][] = language_content_type_support_contact
+features[variable][] = node_admin_theme
 features[variable][] = node_options_article
 features[variable][] = node_options_service
 features[variable][] = node_options_service_owner

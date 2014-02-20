@@ -778,7 +778,7 @@ table {
   }
 }
 /**
- * Use 5 grid columns for larger screens.
+ * Use 10 grid columns for larger screens.
  */
 @media all and (min-width: 960px) {
   /**
@@ -821,14 +821,16 @@ table {
     margin-right: 0%;
     margin-left: -40%;
   }
-  /* line 193, ../sass/layouts/_responsive.scss */
+  /* line 195, ../sass/layouts/_responsive.scss */
   .sidebar-first .field-name-field-usergroup,
   .sidebar-first #node_service_full_group_main,
   .sidebar-first .page__title,
+  .sidebar-first .term-listing-heading,
+  .sidebar-first .view-all-services,
   .sidebar-first .tabs-primary {
     clear: left;
   }
-  /* line 200, ../sass/layouts/_responsive.scss */
+  /* line 202, ../sass/layouts/_responsive.scss */
   .sidebar-first #node_service_full_group_main,
   .sidebar-first .field-name-field-usergroup,
   .sidebar-first .main__page-title-prefix,
@@ -846,19 +848,19 @@ table {
   /**
    * The layout when there is only one sidebar, the right one.
    */
-  /* line 209, ../sass/layouts/_responsive.scss */
+  /* line 211, ../sass/layouts/_responsive.scss */
   .sidebar-second {
     /* Span 4 columns, starting in 1st column from left. */
     /* Span 1 column, starting in 5th column from left. */
   }
-  /* line 211, ../sass/layouts/_responsive.scss */
+  /* line 213, ../sass/layouts/_responsive.scss */
   .sidebar-second #content {
     float: left;
     width: 80%;
     margin-left: 0%;
     margin-right: -80%;
   }
-  /* line 216, ../sass/layouts/_responsive.scss */
+  /* line 218, ../sass/layouts/_responsive.scss */
   .sidebar-second .region-sidebar-second {
     float: left;
     width: 20%;
@@ -869,13 +871,13 @@ table {
   /**
    * The layout when there are two sidebars.
    */
-  /* line 224, ../sass/layouts/_responsive.scss */
+  /* line 226, ../sass/layouts/_responsive.scss */
   .two-sidebars {
     /* Span 3 columns, starting in 2nd column from left. */
     /* Span 1 column, starting in 1st column from left. */
     /* Span 1 column, starting in 5th column from left. */
   }
-  /* line 226, ../sass/layouts/_responsive.scss */
+  /* line 228, ../sass/layouts/_responsive.scss */
   .two-sidebars #content {
     float: left;
     width: 60%;
@@ -884,14 +886,14 @@ table {
     padding-left: 0;
     padding-right: 0;
   }
-  /* line 231, ../sass/layouts/_responsive.scss */
+  /* line 233, ../sass/layouts/_responsive.scss */
   .two-sidebars #node_service_full_group_main {
     float: left;
     width: 60%;
     margin-left: 0%;
     margin-right: -60%;
   }
-  /* line 236, ../sass/layouts/_responsive.scss */
+  /* line 238, ../sass/layouts/_responsive.scss */
   .two-sidebars #node_service_full_group_sidebar,
   .two-sidebars .field-name-field-service-classification {
     float: right;
@@ -899,11 +901,11 @@ table {
     margin-right: 0%;
     margin-left: -40%;
   }
-  /* line 239, ../sass/layouts/_responsive.scss */
+  /* line 241, ../sass/layouts/_responsive.scss */
   .two-sidebars .field-name-field-service-classification {
     clear: right;
   }
-  /* line 244, ../sass/layouts/_responsive.scss */
+  /* line 246, ../sass/layouts/_responsive.scss */
   .two-sidebars #node_service_full_group_sidebar,
   .two-sidebars .field-name-field-service-classification,
   .two-sidebars #node_service_full_group_main {
@@ -915,14 +917,14 @@ table {
     box-sizing: border-box;
     word-wrap: break-word;
   }
-  /* line 248, ../sass/layouts/_responsive.scss */
+  /* line 250, ../sass/layouts/_responsive.scss */
   .two-sidebars .region-sidebar-first {
     float: left;
     width: 20%;
     margin-left: 0%;
     margin-right: -20%;
   }
-  /* line 253, ../sass/layouts/_responsive.scss */
+  /* line 255, ../sass/layouts/_responsive.scss */
   .two-sidebars .region-sidebar-second {
     float: left;
     width: 20%;

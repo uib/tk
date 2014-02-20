@@ -158,7 +158,7 @@ $zen-auto-include-item-base: false;
 }
 
 /**
- * Use 5 grid columns for larger screens.
+ * Use 10 grid columns for larger screens.
  */
 @media all and (min-width: 960px) {
 
@@ -190,6 +190,8 @@ $zen-auto-include-item-base: false;
     .field-name-field-usergroup,
     #node_service_full_group_main,
     .page__title,
+    .term-listing-heading,
+    .view-all-services,
     .tabs-primary {
       @include zen-clear(left);
     }
