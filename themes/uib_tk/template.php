@@ -140,12 +140,22 @@ function tk_preprocess_field(&$variables) {
     'field_field_howto_orde',
     'field_service_supplier',
     'field_service_state',
+    'field_support_contact',
+    'field_cost',
+    'field_service_owner',
   );
   if (in_array($field_name, $fields_help_text)) {
     $variables['theme_hook_suggestions'][] = 'field__help_text';
     $instance = field_info_instance('node', $field_name, 'service');
     if ($instance['description'] != '') {
-      $variables['element']['#help'] = $instance['description'];
+      $variables['element']['#help'] = theme(
+        'ctools_collapsible',
+        array(
+          'handle' => 'i',
+          'content' => $instance['description'],
+          'collapsed' => TRUE
+        )
+      );
     }
   }
 }

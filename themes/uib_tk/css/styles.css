@@ -1980,40 +1980,44 @@ nav a:hover {
 .node-service.view-mode-full .group-sidebar .field-item p {
   margin: 0;
 }
+/* line 154, ../sass/components/_uib-tk.scss */
+.node-service.view-mode-full .field-group-format-wrapper > div {
+  position: relative;
+}
 
-/* line 160, ../sass/components/_uib-tk.scss */
+/* line 163, ../sass/components/_uib-tk.scss */
 .region-sidebar-first .block-menu {
   background-color: #eeeeee;
 }
-/* line 163, ../sass/components/_uib-tk.scss */
+/* line 166, ../sass/components/_uib-tk.scss */
 .region-sidebar-first .block-menu:first-child h2 {
   display: none;
 }
-/* line 168, ../sass/components/_uib-tk.scss */
+/* line 171, ../sass/components/_uib-tk.scss */
 .region-sidebar-first .menu {
   margin-top: 0;
   margin-bottom: 1em;
   padding: 0;
 }
-/* line 172, ../sass/components/_uib-tk.scss */
+/* line 175, ../sass/components/_uib-tk.scss */
 .is-expanded .region-sidebar-first .menu {
   padding-left: 2em;
 }
-/* line 175, ../sass/components/_uib-tk.scss */
+/* line 178, ../sass/components/_uib-tk.scss */
 .region-sidebar-first .menu .menu__item.is-expanded {
   list-style-image: none;
   list-style-type: none;
 }
 
-/* line 186, ../sass/components/_uib-tk.scss */
+/* line 189, ../sass/components/_uib-tk.scss */
 .region-sidebar-second #block-tk-traffic-light {
   border: solid 3px #77af00;
 }
-/* line 188, ../sass/components/_uib-tk.scss */
+/* line 191, ../sass/components/_uib-tk.scss */
 .region-sidebar-second #block-tk-traffic-light div {
   padding: 0.5em;
 }
-/* line 191, ../sass/components/_uib-tk.scss */
+/* line 194, ../sass/components/_uib-tk.scss */
 .region-sidebar-second #block-tk-traffic-light h2 {
   font-size: 1em;
   line-height: 1.5em;
@@ -2021,24 +2025,66 @@ nav a:hover {
   padding: 0em 0.5em;
   text-transform: uppercase;
 }
-/* line 198, ../sass/components/_uib-tk.scss */
+/* line 201, ../sass/components/_uib-tk.scss */
 .region-sidebar-second #block-tk-traffic-light.bad {
   border-color: #aa0000;
 }
-/* line 200, ../sass/components/_uib-tk.scss */
+/* line 203, ../sass/components/_uib-tk.scss */
 .region-sidebar-second #block-tk-traffic-light.bad h2 {
   background-color: #ffaaaa;
 }
-/* line 204, ../sass/components/_uib-tk.scss */
+/* line 207, ../sass/components/_uib-tk.scss */
 .region-sidebar-second #block-tk-traffic-light h3 {
   font-size: 0.83em;
   line-height: 1.80723em;
   margin: 0.5em;
   text-transform: capitalize;
 }
-/* line 209, ../sass/components/_uib-tk.scss */
+/* line 212, ../sass/components/_uib-tk.scss */
 .region-sidebar-second #block-tk-traffic-light ul {
   margin: 0.5em;
+}
+
+/* line 4, ../sass/components/_help.scss */
+.help {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+}
+/* line 8, ../sass/components/_help.scss */
+.help .ctools-collapsible-handle {
+  background: #34332b;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  color: #cbccd4;
+  display: block;
+  line-height: 1em;
+  padding: 2px 6px;
+  text-decoration: none;
+}
+/* line 17, ../sass/components/_help.scss */
+.help span {
+  display: none;
+}
+/* line 20, ../sass/components/_help.scss */
+.help .ctools-collapsible-content {
+  background-color: #ffffe5;
+  border: solid 1px #f5f500;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  font-weight: normal;
+  padding: 1em;
+  position: absolute;
+  bottom: 2em;
+  right: 0;
+  width: 20em;
+  z-index: 20;
 }
 
 /**

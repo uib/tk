@@ -1,0 +1,32 @@
+/////////////
+// Styles for the help function in tk
+/////////////
+.help {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+	.ctools-collapsible-handle {
+    background: $profile-color-black-light;
+    @include border-radius(10px);
+    color: invert($profile-color-black-light);
+    display: block;
+    line-height: 1em;
+    padding: 2px 6px;
+    text-decoration: none;
+  }
+  span {
+    display: none;
+  }
+  .ctools-collapsible-content {
+    background-color: lighten(yellow, 45%);
+    border: solid 1px darken(yellow, 2%);
+    @include border-radius(10px);
+    font-weight: normal;
+    padding: 1em;
+		position: absolute;
+		bottom: 2em;
+		right: 0;
+    width: 20em;
+    z-index: 20;
+  }
+}
