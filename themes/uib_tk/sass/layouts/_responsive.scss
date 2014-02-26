@@ -192,7 +192,8 @@ $zen-auto-include-item-base: false;
     .page__title,
     .term-listing-heading,
     .view-all-services,
-    .tabs-primary {
+    .tabs-primary,
+    #user-login {
       @include zen-clear(left);
     }
     #node_service_full_group_main,
