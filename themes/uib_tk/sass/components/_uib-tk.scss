@@ -54,6 +54,9 @@ nav {
         }
       }
     }
+    a {
+	color: inherit;
+    }
     &:nth-child(10n+1) {
       h3 a {
         color: $profile-color-green;
@@ -181,6 +184,14 @@ nav {
       margin: 0 1em;
       list-style-image: none;
       list-style-type: none;
+      a {
+	color: inherit;
+	text-decoration: none;
+	&:hover {
+	  text-decoration: underline;
+	  color: #009de0;
+	}
+      }
     }
   }
 }

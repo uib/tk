@@ -1880,69 +1880,73 @@ nav a:hover {
 .view-id-service_classes .item-list h3 a:hover {
   text-decoration: underline;
 }
-/* line 58, ../sass/components/_uib-tk.scss */
+/* line 57, ../sass/components/_uib-tk.scss */
+.view-id-service_classes .item-list a {
+  color: inherit;
+}
+/* line 61, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list:nth-child(10n+1) h3 a {
   color: #77af00;
 }
-/* line 60, ../sass/components/_uib-tk.scss */
+/* line 63, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list:nth-child(10n+1) h3 a:hover {
   color: #547c00;
 }
-/* line 66, ../sass/components/_uib-tk.scss */
+/* line 69, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list:nth-child(10n+2) h3 a {
   color: #aa0000;
 }
-/* line 68, ../sass/components/_uib-tk.scss */
+/* line 71, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list:nth-child(10n+2) h3 a:hover {
   color: #770000;
 }
-/* line 74, ../sass/components/_uib-tk.scss */
+/* line 77, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list:nth-child(10n+3) h3 a {
   color: #d95900;
 }
-/* line 76, ../sass/components/_uib-tk.scss */
+/* line 79, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list:nth-child(10n+3) h3 a:hover {
   color: #a64400;
 }
-/* line 82, ../sass/components/_uib-tk.scss */
+/* line 85, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list:nth-child(10n+4) h3 a {
   color: #009de0;
 }
-/* line 84, ../sass/components/_uib-tk.scss */
+/* line 87, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list:nth-child(10n+4) h3 a:hover {
   color: #0079ad;
 }
-/* line 90, ../sass/components/_uib-tk.scss */
+/* line 93, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list:nth-child(10n+5) h3 a {
   color: black;
 }
-/* line 92, ../sass/components/_uib-tk.scss */
+/* line 95, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list:nth-child(10n+5) h3 a:hover {
   color: black;
 }
-/* line 98, ../sass/components/_uib-tk.scss */
+/* line 101, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list:nth-child(10n+6) h3 a {
   color: #34332b;
 }
-/* line 100, ../sass/components/_uib-tk.scss */
+/* line 103, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list:nth-child(10n+6) h3 a:hover {
   color: #181814;
 }
-/* line 105, ../sass/components/_uib-tk.scss */
+/* line 108, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list ul {
   margin: 0;
 }
-/* line 108, ../sass/components/_uib-tk.scss */
+/* line 111, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list li {
   margin-right: 0.5em;
   display: inline-block;
 }
-/* line 111, ../sass/components/_uib-tk.scss */
+/* line 114, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list li div {
   display: inline;
 }
 
-/* line 117, ../sass/components/_uib-tk.scss */
+/* line 120, ../sass/components/_uib-tk.scss */
 .main__page-title-prefix {
   font-size: 0.83em;
   line-height: 1.80723em;
@@ -1951,25 +1955,25 @@ nav a:hover {
   text-transform: uppercase;
 }
 
-/* line 123, ../sass/components/_uib-tk.scss */
+/* line 126, ../sass/components/_uib-tk.scss */
 .field-name-field-summary {
   font-weight: bold;
 }
 
-/* line 132, ../sass/components/_uib-tk.scss */
+/* line 135, ../sass/components/_uib-tk.scss */
 .node-service.view-mode-full .group-sidebar .field-label-above {
   background-color: #eeeeee;
   margin-bottom: 1em;
 }
-/* line 136, ../sass/components/_uib-tk.scss */
+/* line 139, ../sass/components/_uib-tk.scss */
 .node-service.view-mode-full .group-sidebar .field-label {
   background-color: #d4d4d4;
 }
-/* line 140, ../sass/components/_uib-tk.scss */
+/* line 143, ../sass/components/_uib-tk.scss */
 .node-service.view-mode-full .group-sidebar .field-label-inline .field-label {
   background-color: transparent;
 }
-/* line 147, ../sass/components/_uib-tk.scss */
+/* line 150, ../sass/components/_uib-tk.scss */
 .node-service.view-mode-full .group-sidebar h2,
 .node-service.view-mode-full .group-sidebar .field-item,
 .node-service.view-mode-full .group-sidebar .field-label,
@@ -1978,50 +1982,60 @@ nav a:hover {
   line-height: 1.80723em;
   padding: 0 0.5em;
 }
-/* line 151, ../sass/components/_uib-tk.scss */
+/* line 154, ../sass/components/_uib-tk.scss */
 .node-service.view-mode-full .group-sidebar .field-item p {
   margin: 0;
 }
-/* line 155, ../sass/components/_uib-tk.scss */
+/* line 158, ../sass/components/_uib-tk.scss */
 .node-service.view-mode-full .field-group-format-wrapper > div {
   position: relative;
 }
 
-/* line 164, ../sass/components/_uib-tk.scss */
+/* line 167, ../sass/components/_uib-tk.scss */
 .region-sidebar-first .block-menu {
   padding: 0.2em;
   background-color: #eeeeee;
 }
-/* line 168, ../sass/components/_uib-tk.scss */
+/* line 171, ../sass/components/_uib-tk.scss */
 .region-sidebar-first .block-menu:first-child h2 {
   display: none;
 }
-/* line 173, ../sass/components/_uib-tk.scss */
+/* line 176, ../sass/components/_uib-tk.scss */
 .region-sidebar-first .menu {
   margin-top: 0;
   margin-bottom: 1em;
   padding: 0;
 }
-/* line 177, ../sass/components/_uib-tk.scss */
+/* line 180, ../sass/components/_uib-tk.scss */
 .is-expanded .region-sidebar-first .menu {
   padding-left: 2em;
 }
-/* line 180, ../sass/components/_uib-tk.scss */
+/* line 183, ../sass/components/_uib-tk.scss */
 .region-sidebar-first .menu .menu__item {
   margin: 0 1em;
   list-style-image: none;
   list-style-type: none;
 }
+/* line 187, ../sass/components/_uib-tk.scss */
+.region-sidebar-first .menu .menu__item a {
+  color: inherit;
+  text-decoration: none;
+}
+/* line 190, ../sass/components/_uib-tk.scss */
+.region-sidebar-first .menu .menu__item a:hover {
+  text-decoration: underline;
+  color: #009de0;
+}
 
-/* line 192, ../sass/components/_uib-tk.scss */
+/* line 203, ../sass/components/_uib-tk.scss */
 .region-sidebar-second #block-tk-traffic-light {
   border: solid 3px #77af00;
 }
-/* line 194, ../sass/components/_uib-tk.scss */
+/* line 205, ../sass/components/_uib-tk.scss */
 .region-sidebar-second #block-tk-traffic-light div {
   padding: 0.5em;
 }
-/* line 197, ../sass/components/_uib-tk.scss */
+/* line 208, ../sass/components/_uib-tk.scss */
 .region-sidebar-second #block-tk-traffic-light h2 {
   font-size: 1em;
   line-height: 1.5em;
@@ -2029,22 +2043,22 @@ nav a:hover {
   padding: 0em 0.5em;
   text-transform: uppercase;
 }
-/* line 204, ../sass/components/_uib-tk.scss */
+/* line 215, ../sass/components/_uib-tk.scss */
 .region-sidebar-second #block-tk-traffic-light.bad {
   border-color: #aa0000;
 }
-/* line 206, ../sass/components/_uib-tk.scss */
+/* line 217, ../sass/components/_uib-tk.scss */
 .region-sidebar-second #block-tk-traffic-light.bad h2 {
   background-color: #ffaaaa;
 }
-/* line 210, ../sass/components/_uib-tk.scss */
+/* line 221, ../sass/components/_uib-tk.scss */
 .region-sidebar-second #block-tk-traffic-light h3 {
   font-size: 0.83em;
   line-height: 1.80723em;
   margin: 0.5em;
   text-transform: capitalize;
 }
-/* line 215, ../sass/components/_uib-tk.scss */
+/* line 226, ../sass/components/_uib-tk.scss */
 .region-sidebar-second #block-tk-traffic-light ul {
   margin: 0.5em;
 }
