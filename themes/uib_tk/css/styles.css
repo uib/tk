@@ -1934,14 +1934,15 @@ nav a:hover {
 }
 /* line 108, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list li {
+  margin-right: 0.5em;
   display: inline-block;
 }
-/* line 110, ../sass/components/_uib-tk.scss */
+/* line 111, ../sass/components/_uib-tk.scss */
 .view-id-service_classes .item-list li div {
   display: inline;
 }
 
-/* line 116, ../sass/components/_uib-tk.scss */
+/* line 117, ../sass/components/_uib-tk.scss */
 .main__page-title-prefix {
   font-size: 0.83em;
   line-height: 1.80723em;
@@ -1950,25 +1951,25 @@ nav a:hover {
   text-transform: uppercase;
 }
 
-/* line 122, ../sass/components/_uib-tk.scss */
+/* line 123, ../sass/components/_uib-tk.scss */
 .field-name-field-summary {
   font-weight: bold;
 }
 
-/* line 131, ../sass/components/_uib-tk.scss */
+/* line 132, ../sass/components/_uib-tk.scss */
 .node-service.view-mode-full .group-sidebar .field-label-above {
   background-color: #eeeeee;
   margin-bottom: 1em;
 }
-/* line 135, ../sass/components/_uib-tk.scss */
+/* line 136, ../sass/components/_uib-tk.scss */
 .node-service.view-mode-full .group-sidebar .field-label {
   background-color: #d4d4d4;
 }
-/* line 139, ../sass/components/_uib-tk.scss */
+/* line 140, ../sass/components/_uib-tk.scss */
 .node-service.view-mode-full .group-sidebar .field-label-inline .field-label {
   background-color: transparent;
 }
-/* line 146, ../sass/components/_uib-tk.scss */
+/* line 147, ../sass/components/_uib-tk.scss */
 .node-service.view-mode-full .group-sidebar h2,
 .node-service.view-mode-full .group-sidebar .field-item,
 .node-service.view-mode-full .group-sidebar .field-label,
@@ -1977,50 +1978,50 @@ nav a:hover {
   line-height: 1.80723em;
   padding: 0 0.5em;
 }
-/* line 150, ../sass/components/_uib-tk.scss */
+/* line 151, ../sass/components/_uib-tk.scss */
 .node-service.view-mode-full .group-sidebar .field-item p {
   margin: 0;
 }
-/* line 154, ../sass/components/_uib-tk.scss */
+/* line 155, ../sass/components/_uib-tk.scss */
 .node-service.view-mode-full .field-group-format-wrapper > div {
   position: relative;
 }
 
-/* line 163, ../sass/components/_uib-tk.scss */
+/* line 164, ../sass/components/_uib-tk.scss */
 .region-sidebar-first .block-menu {
   padding: 0.2em;
   background-color: #eeeeee;
 }
-/* line 167, ../sass/components/_uib-tk.scss */
+/* line 168, ../sass/components/_uib-tk.scss */
 .region-sidebar-first .block-menu:first-child h2 {
   display: none;
 }
-/* line 172, ../sass/components/_uib-tk.scss */
+/* line 173, ../sass/components/_uib-tk.scss */
 .region-sidebar-first .menu {
   margin-top: 0;
   margin-bottom: 1em;
   padding: 0;
 }
-/* line 176, ../sass/components/_uib-tk.scss */
+/* line 177, ../sass/components/_uib-tk.scss */
 .is-expanded .region-sidebar-first .menu {
   padding-left: 2em;
 }
-/* line 179, ../sass/components/_uib-tk.scss */
+/* line 180, ../sass/components/_uib-tk.scss */
 .region-sidebar-first .menu .menu__item {
   margin: 0 1em;
   list-style-image: none;
   list-style-type: none;
 }
 
-/* line 191, ../sass/components/_uib-tk.scss */
+/* line 192, ../sass/components/_uib-tk.scss */
 .region-sidebar-second #block-tk-traffic-light {
   border: solid 3px #77af00;
 }
-/* line 193, ../sass/components/_uib-tk.scss */
+/* line 194, ../sass/components/_uib-tk.scss */
 .region-sidebar-second #block-tk-traffic-light div {
   padding: 0.5em;
 }
-/* line 196, ../sass/components/_uib-tk.scss */
+/* line 197, ../sass/components/_uib-tk.scss */
 .region-sidebar-second #block-tk-traffic-light h2 {
   font-size: 1em;
   line-height: 1.5em;
@@ -2028,22 +2029,22 @@ nav a:hover {
   padding: 0em 0.5em;
   text-transform: uppercase;
 }
-/* line 203, ../sass/components/_uib-tk.scss */
+/* line 204, ../sass/components/_uib-tk.scss */
 .region-sidebar-second #block-tk-traffic-light.bad {
   border-color: #aa0000;
 }
-/* line 205, ../sass/components/_uib-tk.scss */
+/* line 206, ../sass/components/_uib-tk.scss */
 .region-sidebar-second #block-tk-traffic-light.bad h2 {
   background-color: #ffaaaa;
 }
-/* line 209, ../sass/components/_uib-tk.scss */
+/* line 210, ../sass/components/_uib-tk.scss */
 .region-sidebar-second #block-tk-traffic-light h3 {
   font-size: 0.83em;
   line-height: 1.80723em;
   margin: 0.5em;
   text-transform: capitalize;
 }
-/* line 214, ../sass/components/_uib-tk.scss */
+/* line 215, ../sass/components/_uib-tk.scss */
 .region-sidebar-second #block-tk-traffic-light ul {
   margin: 0.5em;
 }
