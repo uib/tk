@@ -41,8 +41,9 @@ nav {
 .view-id-service_classes {
   margin-bottom: 1em;
   .item-list {
-    @include border-radius(0.5em);
-    border: solid 3px #666;
+    @include border-radius(0.4em);
+    @include single-box-shadow(#DDD, 0.2em, 0.2em);
+    border: solid 3px #AAA;
     margin: 0 0 1em;
     padding: 0.5em;
     h3 {
