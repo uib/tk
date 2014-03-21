@@ -1,0 +1,3 @@
+#!/bin/sh
+cd drupal || exit 1
+exec drush -l http://tk.app.uib.no "$@"
