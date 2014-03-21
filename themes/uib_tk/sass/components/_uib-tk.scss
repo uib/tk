@@ -161,6 +161,7 @@ nav {
 ////////////
 .region-sidebar-first {
   .block-menu {
+    padding: 0.2em;
     background-color: $bg-color-grey;
     &:first-child {
       h2 {
@@ -175,7 +176,8 @@ nav {
     .is-expanded & {
       padding-left: 2em;
     }
-    .menu__item.is-expanded {
+    .menu__item {
+      margin: 0 1em;
       list-style-image: none;
       list-style-type: none;
     }
