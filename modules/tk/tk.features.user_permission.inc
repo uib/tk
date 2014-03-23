@@ -10,13 +10,6 @@
 function tk_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: create article content.
-  $permissions['create article content'] = array(
-    'name' => 'create article content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
   // Exported permission: create field_criticality.
   $permissions['create field_criticality'] = array(
     'name' => 'create field_criticality',
@@ -116,13 +109,6 @@ function tk_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete any article content.
-  $permissions['delete any article content'] = array(
-    'name' => 'delete any article content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
   // Exported permission: delete any service content.
   $permissions['delete any service content'] = array(
     'name' => 'delete any service content',
@@ -150,13 +136,6 @@ function tk_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete own article content.
-  $permissions['delete own article content'] = array(
-    'name' => 'delete own article content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
   // Exported permission: delete own service content.
   $permissions['delete own service content'] = array(
     'name' => 'delete own service content',
@@ -181,13 +160,6 @@ function tk_user_default_permissions() {
     'roles' => array(
       0 => 'tjenesteadmin',
     ),
-    'module' => 'node',
-  );
-
-  // Exported permission: edit any article content.
-  $permissions['edit any article content'] = array(
-    'name' => 'edit any article content',
-    'roles' => array(),
     'module' => 'node',
   );
 
@@ -288,13 +260,6 @@ function tk_user_default_permissions() {
       0 => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit own article content.
-  $permissions['edit own article content'] = array(
-    'name' => 'edit own article content',
-    'roles' => array(),
-    'module' => 'node',
   );
 
   // Exported permission: edit own field_criticality.

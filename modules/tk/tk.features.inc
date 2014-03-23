@@ -30,14 +30,6 @@ function tk_views_api() {
  */
 function tk_node_info() {
   $items = array(
-    'article' => array(
-      'name' => t('Artikkel'),
-      'base' => 'node_content',
-      'description' => t('Generelle informasjonssider for tjenestekatalogen.'),
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
     'service' => array(
       'name' => t('Tjeneste'),
       'base' => 'node_content',
