@@ -21,7 +21,7 @@ drush site-install minimal --account-pass=admin --site-name='Tjenestekatalogen' 
 chmod 444 $SETTINGS
 chmod 777 $DB
 
-drush en tk tk_setup -y
+drush en tk -y
 drush scr ../scripts/post-install.php
 
 #drush en uib_devel -y
