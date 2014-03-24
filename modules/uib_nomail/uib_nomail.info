@@ -1,0 +1,4 @@
+name = "UiB No email"
+description = "Stops our sandbox from spamming"
+package = UiB
+core = 7.x
