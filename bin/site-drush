@@ -1,3 +1,9 @@
 #!/bin/sh
+
+url=$(cat site.url 2>/dev/null)
+if test "$url" = ""; then
+    url=http://tk.app.uib.no
+fi
+
 cd drupal || exit 1
-exec drush -l http://tk.app.uib.no "$@"
+exec drush -l $url "$@"
