@@ -19,6 +19,16 @@ function uib_setup_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'access user profiles'.
+  $permissions['access user profiles'] = array(
+    'name' => 'access user profiles',
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+      'druapladmin' => 'druapladmin',
+    ),
+    'module' => 'user',
+  );
+
   // Exported permission: 'administer field permissions'.
   $permissions['administer field permissions'] = array(
     'name' => 'administer field permissions',
