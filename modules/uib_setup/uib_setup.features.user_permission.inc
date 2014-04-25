@@ -38,6 +38,16 @@ function uib_setup_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'administer nodes'.
+  $permissions['administer nodes'] = array(
+    'name' => 'administer nodes',
+    'roles' => array(
+      'druapladmin' => 'druapladmin',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'administer taxonomy'.
   $permissions['administer taxonomy'] = array(
     'name' => 'administer taxonomy',

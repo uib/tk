@@ -20,6 +20,7 @@ features[ldap_servers][] = ldap-uib
 features[user_permission][] = access private fields
 features[user_permission][] = access user profiles
 features[user_permission][] = administer field permissions
+features[user_permission][] = administer nodes
 features[user_permission][] = administer taxonomy
 features[user_permission][] = create field_criticality
 features[user_permission][] = create field_operator
