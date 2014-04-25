@@ -22,7 +22,7 @@ function tk_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 10,
+        'weight' => 14,
       ),
       'teaser' => array(
         'label' => 'inline',
@@ -59,7 +59,7 @@ function tk_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 9,
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -144,7 +144,7 @@ function tk_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 7,
+        'weight' => 11,
       ),
       'full' => array(
         'label' => 'above',
@@ -191,7 +191,7 @@ function tk_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 11,
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -231,7 +231,7 @@ function tk_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 8,
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -364,7 +364,7 @@ Leveringstid:',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 8,
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -445,7 +445,7 @@ Leveringstid:',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 9,
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -485,7 +485,7 @@ Leveringstid:',
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 13,
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -567,7 +567,7 @@ Leveringstid:',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 12,
+        'weight' => 16,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -648,7 +648,7 @@ Leveringstid:',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 11,
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -717,7 +717,7 @@ Leveringstid:',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 4,
+      'weight' => 3,
     ),
   );
 
@@ -777,7 +777,7 @@ Leveringstid:',
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 5,
+        'weight' => 9,
       ),
       'full' => array(
         'label' => 'above',
@@ -816,14 +816,14 @@ Leveringstid:',
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Objekter i CMDB som tjenestene er avhengig. Kommaseparert liste.',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 10,
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -834,7 +834,7 @@ Leveringstid:',
     ),
     'entity_type' => 'node',
     'field_name' => 'field_supporting_systems',
-    'label' => 'Systemer som støtter tjenesten',
+    'label' => 'Hva er tjenesten avhengig av (CMDB)',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -848,6 +848,43 @@ Leveringstid:',
       ),
       'type' => 'text_textarea',
       'weight' => 20,
+    ),
+  );
+
+  // Exported field_instance: 'node-service-field_user_group'
+  $field_instances['node-service-field_user_group'] = array(
+    'bundle' => 'service',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 10,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_user_group',
+    'label' => 'Hvem kan benytte tjenesten',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 4,
     ),
   );
 
@@ -1082,7 +1119,9 @@ Leveringstid:',
   t('Her har du mulighet for å vekte hvor viktig en tjeneste er.');
   t('Her kan du melde inn feil');
   t('Hva er nødvendig for å bruke tjenesten');
+  t('Hva er tjenesten avhengig av (CMDB)');
   t('Hva koster tjenesten');
+  t('Hvem kan benytte tjenesten');
   t('Hvor får jeg hjelp');
   t('Hvor henvender bruker seg for å få service på denne tjenesten.');
   t('Hvordan bestille');
@@ -1095,8 +1134,8 @@ Leveringstid:',
   t('Livssyklus ');
   t('Normal tilgjengelighet ');
   t('Når er tjenesten tilgjengelig, når kan bruker forvente at tjenesten kan brukes.');
+  t('Objekter i CMDB som tjenestene er avhengig. Kommaseparert liste.');
   t('Systemeier');
-  t('Systemer som støtter tjenesten');
   t('Telefon');
   t('Tjenestetype');
   t('Utvidet beskrivelse (hva er inkludert)');

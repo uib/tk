@@ -520,6 +520,7 @@ function uib_setup_user_default_permissions() {
   $permissions['view field_supporting_systems'] = array(
     'name' => 'view field_supporting_systems',
     'roles' => array(
+      'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -592,6 +593,7 @@ function uib_setup_user_default_permissions() {
   $permissions['view own field_supporting_systems'] = array(
     'name' => 'view own field_supporting_systems',
     'roles' => array(
+      'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
