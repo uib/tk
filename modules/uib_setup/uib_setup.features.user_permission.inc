@@ -85,6 +85,16 @@ function uib_setup_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'create field_quality'.
+  $permissions['create field_quality'] = array(
+    'name' => 'create field_quality',
+    'roles' => array(
+      'druapladmin' => 'druapladmin',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'create field_service_levels'.
   $permissions['create field_service_levels'] = array(
     'name' => 'create field_service_levels',
@@ -292,6 +302,16 @@ function uib_setup_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'edit field_quality'.
+  $permissions['edit field_quality'] = array(
+    'name' => 'edit field_quality',
+    'roles' => array(
+      'druapladmin' => 'druapladmin',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'edit field_service_levels'.
   $permissions['edit field_service_levels'] = array(
     'name' => 'edit field_service_levels',
@@ -359,6 +379,16 @@ function uib_setup_user_default_permissions() {
   $permissions['edit own field_ower_contact'] = array(
     'name' => 'edit own field_ower_contact',
     'roles' => array(
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit own field_quality'.
+  $permissions['edit own field_quality'] = array(
+    'name' => 'edit own field_quality',
+    'roles' => array(
+      'druapladmin' => 'druapladmin',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -490,6 +520,17 @@ function uib_setup_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'view field_quality'.
+  $permissions['view field_quality'] = array(
+    'name' => 'view field_quality',
+    'roles' => array(
+      'druapladmin' => 'druapladmin',
+      'ita' => 'ita',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'view field_service_levels'.
   $permissions['view field_service_levels'] = array(
     'name' => 'view field_service_levels',
@@ -558,6 +599,17 @@ function uib_setup_user_default_permissions() {
   $permissions['view own field_ower_contact'] = array(
     'name' => 'view own field_ower_contact',
     'roles' => array(
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view own field_quality'.
+  $permissions['view own field_quality'] = array(
+    'name' => 'view own field_quality',
+    'roles' => array(
+      'druapladmin' => 'druapladmin',
+      'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
