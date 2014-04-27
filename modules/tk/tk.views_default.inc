@@ -322,6 +322,12 @@ function tk_views_default_views() {
   $handler->display->display_options['filters']['machine_name']['value'] = array(
     'service_classes' => 'service_classes',
   );
+  /* Filter criterion: Innhold: Vis på forsida */
+  $handler->display->display_options['filters']['promote']['id'] = 'promote';
+  $handler->display->display_options['filters']['promote']['table'] = 'node';
+  $handler->display->display_options['filters']['promote']['field'] = 'promote';
+  $handler->display->display_options['filters']['promote']['relationship'] = 'reverse_field_service_classification_node';
+  $handler->display->display_options['filters']['promote']['value'] = '1';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
