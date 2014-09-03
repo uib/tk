@@ -285,7 +285,7 @@ function tk_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_operator',
     'label' => 'Driftsansvarlige',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -497,18 +497,14 @@ Leveringstid:',
     'entity_type' => 'node',
     'field_name' => 'field_service_owner',
     'label' => 'Systemeier',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
+      'settings' => array(),
       'type' => 'options_select',
       'weight' => 12,
     ),
@@ -558,7 +554,11 @@ Leveringstid:',
   // Exported field_instance: 'node-service-field_service_state'
   $field_instances['node-service-field_service_state'] = array(
     'bundle' => 'service',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 'prod',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -798,7 +798,7 @@ Leveringstid:',
     'entity_type' => 'node',
     'field_name' => 'field_support_contact',
     'label' => 'Hvor får jeg hjelp',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
