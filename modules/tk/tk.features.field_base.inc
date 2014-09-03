@@ -188,6 +188,37 @@ function tk_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_edit_state'
+  $field_bases['field_edit_state'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_edit_state',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'draft' => 'Kladd',
+        'dirty' => 'Klar til språkvask',
+        'proposed' => 'Klar for godkjenning seksjonsleder',
+        'accepted' => 'Klar til publisering',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_field_howto_orde'
   $field_bases['field_field_howto_orde'] = array(
     'active' => 1,

@@ -219,6 +219,43 @@ function tk_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-service-field_edit_state'
+  $field_instances['node-service-field_edit_state'] = array(
+    'bundle' => 'service',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 12,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_edit_state',
+    'label' => 'Registreringsstatus',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 22,
+    ),
+  );
+
   // Exported field_instance: 'node-service-field_field_howto_orde'
   $field_instances['node-service-field_field_howto_orde'] = array(
     'bundle' => 'service',
@@ -271,7 +308,7 @@ function tk_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 12,
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -295,7 +332,7 @@ function tk_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 22,
+      'weight' => 23,
     ),
   );
 
@@ -1176,6 +1213,7 @@ Leveringstid:',
   t('Normal tilgjengelighet ');
   t('Når er tjenesten tilgjengelig, når kan bruker forvente at tjenesten kan brukes.');
   t('Objekter i CMDB som tjenestene er avhengig. Kommaseparert liste.');
+  t('Registreringsstatus');
   t('Systemeier');
   t('Telefon');
   t('Tjenestetype');
