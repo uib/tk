@@ -67,6 +67,25 @@ function uib_setup_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'create field_edit_state'.
+  $permissions['create field_edit_state'] = array(
+    'name' => 'create field_edit_state',
+    'roles' => array(
+      'druapladmin' => 'druapladmin',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'create field_internal_notes'.
+  $permissions['create field_internal_notes'] = array(
+    'name' => 'create field_internal_notes',
+    'roles' => array(
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'create field_operator'.
   $permissions['create field_operator'] = array(
     'name' => 'create field_operator',
@@ -284,6 +303,25 @@ function uib_setup_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'edit field_edit_state'.
+  $permissions['edit field_edit_state'] = array(
+    'name' => 'edit field_edit_state',
+    'roles' => array(
+      'druapladmin' => 'druapladmin',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit field_internal_notes'.
+  $permissions['edit field_internal_notes'] = array(
+    'name' => 'edit field_internal_notes',
+    'roles' => array(
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'edit field_operator'.
   $permissions['edit field_operator'] = array(
     'name' => 'edit field_operator',
@@ -360,6 +398,25 @@ function uib_setup_user_default_permissions() {
   // Exported permission: 'edit own field_criticality'.
   $permissions['edit own field_criticality'] = array(
     'name' => 'edit own field_criticality',
+    'roles' => array(
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit own field_edit_state'.
+  $permissions['edit own field_edit_state'] = array(
+    'name' => 'edit own field_edit_state',
+    'roles' => array(
+      'druapladmin' => 'druapladmin',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit own field_internal_notes'.
+  $permissions['edit own field_internal_notes'] = array(
+    'name' => 'edit own field_internal_notes',
     'roles' => array(
       'tjenesteadmin' => 'tjenesteadmin',
     ),
@@ -502,6 +559,26 @@ function uib_setup_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'view field_edit_state'.
+  $permissions['view field_edit_state'] = array(
+    'name' => 'view field_edit_state',
+    'roles' => array(
+      'druapladmin' => 'druapladmin',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view field_internal_notes'.
+  $permissions['view field_internal_notes'] = array(
+    'name' => 'view field_internal_notes',
+    'roles' => array(
+      'ita' => 'ita',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'view field_operator'.
   $permissions['view field_operator'] = array(
     'name' => 'view field_operator',
@@ -581,6 +658,26 @@ function uib_setup_user_default_permissions() {
   $permissions['view own field_criticality'] = array(
     'name' => 'view own field_criticality',
     'roles' => array(
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view own field_edit_state'.
+  $permissions['view own field_edit_state'] = array(
+    'name' => 'view own field_edit_state',
+    'roles' => array(
+      'druapladmin' => 'druapladmin',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view own field_internal_notes'.
+  $permissions['view own field_internal_notes'] = array(
+    'name' => 'view own field_internal_notes',
+    'roles' => array(
+      'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
