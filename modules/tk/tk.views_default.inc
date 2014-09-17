@@ -88,7 +88,8 @@ function tk_views_default_views() {
 
   /* Display: Data export */
   $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
-  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
   $handler->display->display_options['style_options']['provide_file'] = 0;
   $handler->display->display_options['style_options']['parent_sort'] = 0;
@@ -123,10 +124,6 @@ function tk_views_default_views() {
   $handler->display->display_options['fields']['field_criticality']['id'] = 'field_criticality';
   $handler->display->display_options['fields']['field_criticality']['table'] = 'field_data_field_criticality';
   $handler->display->display_options['fields']['field_criticality']['field'] = 'field_criticality';
-  /* Felt: Broken/missing handler */
-  $handler->display->display_options['fields']['field_usergroup']['id'] = 'field_usergroup';
-  $handler->display->display_options['fields']['field_usergroup']['table'] = 'field_data_field_usergroup';
-  $handler->display->display_options['fields']['field_usergroup']['field'] = 'field_usergroup';
   /* Felt: Innhold: Hva er nødvendig for å bruke tjenesten */
   $handler->display->display_options['fields']['field_demand']['id'] = 'field_demand';
   $handler->display->display_options['fields']['field_demand']['table'] = 'field_data_field_demand';
@@ -176,7 +173,6 @@ function tk_views_default_views() {
     t('NID'),
     t('Tjeneste'),
     t('Kritikalitet'),
-    t('Broken handler field_data_field_usergroup.field_usergroup'),
     t('Hva er nødvendig for å bruke tjenesten'),
     t('Normal tilgjengelighet '),
     t('Utvidet beskrivelse (hva er inkludert)'),
