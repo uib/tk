@@ -66,8 +66,8 @@ function tk_views_default_views() {
     'service' => 'service',
   );
 
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
+  /* Display: All teasers */
+  $handler = $view->new_display('page', 'All teasers', 'page');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Tjenesteoversikt';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
@@ -149,6 +149,20 @@ function tk_views_default_views() {
   $handler->display->display_options['fields']['nid_2']['relationship'] = 'field_service_owner_target_id';
   $handler->display->display_options['fields']['nid_2']['label'] = 'Systemeier';
   $handler->display->display_options['path'] = 'data/tk.csv';
+
+  /* Display: Everything in one page */
+  $handler = $view->new_display('page', 'Everything in one page', 'page_1');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'node';
+  $handler->display->display_options['row_options']['view_mode'] = 'full';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['path'] = 'all-services-full';
   $translatables['all_services'] = array(
     t('Master'),
     t('All Services'),
@@ -165,7 +179,7 @@ function tk_views_default_views() {
     t('‹ forrige'),
     t('neste ›'),
     t('siste »'),
-    t('Page'),
+    t('All teasers'),
     t('Tjenesteoversikt'),
     t('Data export'),
     t('Innhold entity referenced from field_support_contact'),
@@ -178,6 +192,7 @@ function tk_views_default_views() {
     t('Utvidet beskrivelse (hva er inkludert)'),
     t('Support'),
     t('Systemeier'),
+    t('Everything in one page'),
   );
   $export['all_services'] = $view;
 
