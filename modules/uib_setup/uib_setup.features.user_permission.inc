@@ -58,6 +58,16 @@ function uib_setup_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: 'bypass node access'.
+  $permissions['bypass node access'] = array(
+    'name' => 'bypass node access',
+    'roles' => array(
+      'druapladmin' => 'druapladmin',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'create field_criticality'.
   $permissions['create field_criticality'] = array(
     'name' => 'create field_criticality',

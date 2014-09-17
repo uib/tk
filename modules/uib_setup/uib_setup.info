@@ -22,6 +22,7 @@ features[user_permission][] = access user profiles
 features[user_permission][] = administer field permissions
 features[user_permission][] = administer nodes
 features[user_permission][] = administer taxonomy
+features[user_permission][] = bypass node access
 features[user_permission][] = create field_criticality
 features[user_permission][] = create field_edit_state
 features[user_permission][] = create field_internal_notes
