@@ -47,6 +47,52 @@ function tk_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-service-field_cmdb_id'
+  $field_instances['node-service-field_cmdb_id'] = array(
+    'bundle' => 'service',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Hvis tjenesten også er definert i CMDB (https://bs.uib.no/?module=cmdb&action=view) så kan den knyttes til tjenestekatalogen.',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => 1,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 11,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_cmdb_id',
+    'label' => 'CMDB id',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => 0,
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 22,
+    ),
+  );
+
   // Exported field_instance: 'node-service-field_cost'
   $field_instances['node-service-field_cost'] = array(
     'bundle' => 'service',
@@ -191,7 +237,7 @@ function tk_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 12,
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -285,7 +331,7 @@ function tk_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 13,
+        'weight' => 14,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -306,7 +352,7 @@ function tk_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 24,
+      'weight' => 25,
     ),
   );
 
@@ -416,7 +462,7 @@ function tk_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 14,
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -440,7 +486,7 @@ function tk_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 25,
+      'weight' => 26,
     ),
   );
 
@@ -614,7 +660,7 @@ Leveringstid:',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 23,
+      'weight' => 24,
     ),
   );
 
@@ -1010,7 +1056,7 @@ Leveringstid:',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 11,
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1034,7 +1080,7 @@ Leveringstid:',
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 22,
+      'weight' => 23,
     ),
   );
 
@@ -1300,6 +1346,7 @@ Leveringstid:',
   t('Beskriv eventuelle krav for å kunne bruke tjenesten (hardware, software, målgrupper, etc)');
   t('Beskrivelse');
   t('Brukes kun når IT-avdelingen er driftsleverandør. Angi de nivåene IT-avdelingen er ansvarlig for. ');
+  t('CMDB id');
   t('Dokumentasjon');
   t('Driftsansvarlige');
   t('Driftsleverandør');
@@ -1313,6 +1360,7 @@ Leveringstid:',
   t('Hva er tjenesten avhengig av (CMDB)');
   t('Hva koster tjenesten');
   t('Hvem kan benytte tjenesten');
+  t('Hvis tjenesten også er definert i CMDB (https://bs.uib.no/?module=cmdb&action=view) så kan den knyttes til tjenestekatalogen.');
   t('Hvor får jeg hjelp');
   t('Hvor henvender bruker seg for å få service på denne tjenesten.');
   t('Hvordan bestille');

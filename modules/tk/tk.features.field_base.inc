@@ -67,6 +67,25 @@ function tk_field_default_field_bases() {
     'type' => 'list_text',
   );
 
+  // Exported field_base: 'field_cmdb_id'
+  $field_bases['field_cmdb_id'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_cmdb_id',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'number_integer',
+  );
+
   // Exported field_base: 'field_cost'
   $field_bases['field_cost'] = array(
     'active' => 1,
