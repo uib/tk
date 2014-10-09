@@ -549,11 +549,11 @@ function tk_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        'teknisk' => 'Teknisk drift',
-        'app' => 'Applikasjonsdrift',
-        'forvaltning' => 'Applikasjonsforvaltning',
-        'funksjonell' => 'Funksjonell støtte',
+        'funksjonell' => 'Hjelp til bruk av tjenesten',
         'support' => 'Brukerstøtte',
+        'forvaltning' => 'Applikasjonsforvaltning',
+        'app' => 'Applikasjonsdrift',
+        'teknisk' => 'Teknisk drift',
       ),
       'allowed_values_function' => '',
     ),
