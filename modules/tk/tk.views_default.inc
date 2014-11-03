@@ -86,19 +86,19 @@ function tk_views_default_views() {
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
 
-  /* Display: Data export */
-  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
+  /* Display: Data export CSV */
+  $handler = $view->new_display('views_data_export', 'Data export CSV', 'views_data_export_1');
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
   $handler->display->display_options['style_options']['provide_file'] = 0;
   $handler->display->display_options['style_options']['parent_sort'] = 0;
-  $handler->display->display_options['style_options']['separator'] = ';';
   $handler->display->display_options['style_options']['quote'] = 1;
-  $handler->display->display_options['style_options']['trim'] = 1;
+  $handler->display->display_options['style_options']['trim'] = 0;
   $handler->display->display_options['style_options']['replace_newlines'] = 1;
-  $handler->display->display_options['style_options']['newline_replacement'] = '|';
+  $handler->display->display_options['style_options']['newline_replacement'] = '<br>';
   $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['style_options']['keep_html'] = 0;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_support_contact_target_id']['id'] = 'field_support_contact_target_id';
@@ -182,7 +182,7 @@ function tk_views_default_views() {
     t('All teasers'),
     t('Tjenesteoversikt'),
     t('more'),
-    t('Data export'),
+    t('Data export CSV'),
     t('Content entity referenced from field_support_contact'),
     t('Content entity referenced from field_service_owner'),
     t('Nid'),
