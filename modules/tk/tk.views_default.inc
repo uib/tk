@@ -359,5 +359,188 @@ function tk_views_default_views() {
   );
   $export['service_classes'] = $view;
 
+  $view = new view();
+  $view->name = 'tk_data';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Data exports';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Tjenester';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '12';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['style_plugin'] = 'grid';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = 'Tjenestenavn';
+  /* Field: Content: CMDB id */
+  $handler->display->display_options['fields']['field_cmdb_id']['id'] = 'field_cmdb_id';
+  $handler->display->display_options['fields']['field_cmdb_id']['table'] = 'field_data_field_cmdb_id';
+  $handler->display->display_options['fields']['field_cmdb_id']['field'] = 'field_cmdb_id';
+  $handler->display->display_options['fields']['field_cmdb_id']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Driftsansvarlige */
+  $handler->display->display_options['fields']['field_operator']['id'] = 'field_operator';
+  $handler->display->display_options['fields']['field_operator']['table'] = 'field_data_field_operator';
+  $handler->display->display_options['fields']['field_operator']['field'] = 'field_operator';
+  $handler->display->display_options['fields']['field_operator']['settings'] = array(
+    'link' => 0,
+  );
+  $handler->display->display_options['fields']['field_operator']['delta_offset'] = '0';
+  /* Field: Content: Driftsleverandør */
+  $handler->display->display_options['fields']['field_service_supplier']['id'] = 'field_service_supplier';
+  $handler->display->display_options['fields']['field_service_supplier']['table'] = 'field_data_field_service_supplier';
+  $handler->display->display_options['fields']['field_service_supplier']['field'] = 'field_service_supplier';
+  /* Field: Content: Her finner du mer informasjon */
+  $handler->display->display_options['fields']['field_documentation_link']['id'] = 'field_documentation_link';
+  $handler->display->display_options['fields']['field_documentation_link']['table'] = 'field_data_field_documentation_link';
+  $handler->display->display_options['fields']['field_documentation_link']['field'] = 'field_documentation_link';
+  $handler->display->display_options['fields']['field_documentation_link']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_documentation_link']['type'] = 'link_absolute';
+  /* Field: Content: Her finner du tjenesten */
+  $handler->display->display_options['fields']['field_home_link']['id'] = 'field_home_link';
+  $handler->display->display_options['fields']['field_home_link']['table'] = 'field_data_field_home_link';
+  $handler->display->display_options['fields']['field_home_link']['field'] = 'field_home_link';
+  $handler->display->display_options['fields']['field_home_link']['click_sort_column'] = 'url';
+  /* Field: Content: Hva koster tjenesten */
+  $handler->display->display_options['fields']['field_cost']['id'] = 'field_cost';
+  $handler->display->display_options['fields']['field_cost']['table'] = 'field_data_field_cost';
+  $handler->display->display_options['fields']['field_cost']['field'] = 'field_cost';
+  /* Field: Content: Tjenestetype */
+  $handler->display->display_options['fields']['field_service_type']['id'] = 'field_service_type';
+  $handler->display->display_options['fields']['field_service_type']['table'] = 'field_data_field_service_type';
+  $handler->display->display_options['fields']['field_service_type']['field'] = 'field_service_type';
+  /* Field: Content: CMDB id */
+  $handler->display->display_options['fields']['field_cmdb_id_1']['id'] = 'field_cmdb_id_1';
+  $handler->display->display_options['fields']['field_cmdb_id_1']['table'] = 'field_data_field_cmdb_id';
+  $handler->display->display_options['fields']['field_cmdb_id_1']['field'] = 'field_cmdb_id';
+  $handler->display->display_options['fields']['field_cmdb_id_1']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Hvem kan benytte tjenesten */
+  $handler->display->display_options['fields']['field_user_group']['id'] = 'field_user_group';
+  $handler->display->display_options['fields']['field_user_group']['table'] = 'field_data_field_user_group';
+  $handler->display->display_options['fields']['field_user_group']['field'] = 'field_user_group';
+  $handler->display->display_options['fields']['field_user_group']['delta_offset'] = '0';
+  /* Field: Content: Klassifisering */
+  $handler->display->display_options['fields']['field_service_classification']['id'] = 'field_service_classification';
+  $handler->display->display_options['fields']['field_service_classification']['table'] = 'field_data_field_service_classification';
+  $handler->display->display_options['fields']['field_service_classification']['field'] = 'field_service_classification';
+  $handler->display->display_options['fields']['field_service_classification']['settings'] = array(
+    'link' => 0,
+  );
+  $handler->display->display_options['fields']['field_service_classification']['delta_offset'] = '0';
+  /* Field: Content: Kritikalitet */
+  $handler->display->display_options['fields']['field_criticality']['id'] = 'field_criticality';
+  $handler->display->display_options['fields']['field_criticality']['table'] = 'field_data_field_criticality';
+  $handler->display->display_options['fields']['field_criticality']['field'] = 'field_criticality';
+  /* Field: Content: Livssyklus  */
+  $handler->display->display_options['fields']['field_service_state']['id'] = 'field_service_state';
+  $handler->display->display_options['fields']['field_service_state']['table'] = 'field_data_field_service_state';
+  $handler->display->display_options['fields']['field_service_state']['field'] = 'field_service_state';
+  /* Field: Content: Normal tilgjengelighet  */
+  $handler->display->display_options['fields']['field_availability']['id'] = 'field_availability';
+  $handler->display->display_options['fields']['field_availability']['table'] = 'field_data_field_availability';
+  $handler->display->display_options['fields']['field_availability']['field'] = 'field_availability';
+  /* Field: Content: Registreringsstatus */
+  $handler->display->display_options['fields']['field_edit_state']['id'] = 'field_edit_state';
+  $handler->display->display_options['fields']['field_edit_state']['table'] = 'field_data_field_edit_state';
+  $handler->display->display_options['fields']['field_edit_state']['field'] = 'field_edit_state';
+  /* Field: Content: Vaktordning */
+  $handler->display->display_options['fields']['field_service_rotation']['id'] = 'field_service_rotation';
+  $handler->display->display_options['fields']['field_service_rotation']['table'] = 'field_data_field_service_rotation';
+  $handler->display->display_options['fields']['field_service_rotation']['field'] = 'field_service_rotation';
+  /* Field: Content: Ytelser */
+  $handler->display->display_options['fields']['field_service_levels']['id'] = 'field_service_levels';
+  $handler->display->display_options['fields']['field_service_levels']['table'] = 'field_data_field_service_levels';
+  $handler->display->display_options['fields']['field_service_levels']['field'] = 'field_service_levels';
+  $handler->display->display_options['fields']['field_service_levels']['delta_offset'] = '0';
+  /* Field: Content: Published */
+  $handler->display->display_options['fields']['status']['id'] = 'status';
+  $handler->display->display_options['fields']['status']['table'] = 'node';
+  $handler->display->display_options['fields']['status']['field'] = 'status';
+  $handler->display->display_options['fields']['status']['not'] = 0;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'service' => 'service',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->display->display_options['path'] = 'data';
+
+  /* Display: Data export XLS */
+  $handler = $view->new_display('views_data_export', 'Data export XLS', 'views_data_export_1');
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
+  $handler->display->display_options['style_options']['provide_file'] = 0;
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['path'] = 'data/tk.xls';
+  $translatables['tk_data'] = array(
+    t('Master'),
+    t('Tjenester'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('Tjenestenavn'),
+    t('CMDB id'),
+    t('Driftsansvarlige'),
+    t('Driftsleverandør'),
+    t('Her finner du mer informasjon'),
+    t('Her finner du tjenesten'),
+    t('Hva koster tjenesten'),
+    t('Tjenestetype'),
+    t('Hvem kan benytte tjenesten'),
+    t('Klassifisering'),
+    t('Kritikalitet'),
+    t('Livssyklus '),
+    t('Normal tilgjengelighet '),
+    t('Registreringsstatus'),
+    t('Vaktordning'),
+    t('Ytelser'),
+    t('Published'),
+    t('Page'),
+    t('Data export XLS'),
+  );
+  $export['tk_data'] = $view;
+
   return $export;
 }
