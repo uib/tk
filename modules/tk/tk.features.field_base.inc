@@ -972,7 +972,6 @@ function tk_field_default_field_bases() {
         'employee' => 'Ansatte',
         'student' => 'Studenter',
         'visitor' => 'Besøkende',
-        'all' => 'Alle brukere',
         'restricted' => 'Begrenset gruppe ansatte',
       ),
       'allowed_values_function' => '',
