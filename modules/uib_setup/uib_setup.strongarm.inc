@@ -41,9 +41,25 @@ function uib_setup_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'ldap_servers_encryption';
-  $strongarm->value = 10;
-  $export['ldap_servers_encryption'] = $strongarm;
+  $strongarm->name = 'ldap_profile_conf';
+  $strongarm->value = array(
+    'ldap_fields' => array(
+      0 => 'uid',
+      1 => 'mail',
+    ),
+    'mapping' => array(
+      'username' => 'uid',
+      'mail' => 'mail',
+      'field_full_name' => 'cn',
+    ),
+    'derivedMapping' => array(
+      'field_full_name' => array(
+        'derive' => FALSE,
+        'derive_value' => '',
+      ),
+    ),
+  );
+  $export['ldap_profile_conf'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -51,6 +67,13 @@ function uib_setup_strongarm() {
   $strongarm->name = 'ldap_servers_encrypt_key';
   $strongarm->value = 'KLmj1hZIwF';
   $export['ldap_servers_encrypt_key'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ldap_servers_encryption';
+  $strongarm->value = 10;
+  $export['ldap_servers_encryption'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
