@@ -62,3 +62,14 @@ function tk_block_view($delta = '') {
   }
   return $block;
 }
+
+function tk_entity_view_alter(&$build, $type) {
+  if ($type != 'node')
+    return;
+  if ($build['#bundle'] != 'service')
+    return;
+  if (isset($build['field_cmdb_id'])) {
+    $cmdb_id = $build['field_cmdb_id']['#items'][0]['value'];
+    $build['field_cmdb_id'][0]['#markup'] = "<a href='https://bs.uib.no/?module=cmdb&action=viewt&tjeneste=$cmdb_id'>$cmdb_id</a>";
+  }
+}
