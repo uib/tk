@@ -370,26 +370,155 @@ function tk_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '12';
+  $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['quantity'] = '9';
-  $handler->display->display_options['style_plugin'] = 'grid';
-  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'field_cmdb_id' => 'field_cmdb_id',
+    'field_operator' => 'field_operator',
+    'field_service_supplier' => 'field_service_supplier',
+    'field_documentation_link' => 'field_documentation_link',
+    'field_home_link' => 'field_home_link',
+    'field_cost' => 'field_cost',
+    'field_service_type' => 'field_service_type',
+    'field_cmdb_id_1' => 'field_cmdb_id_1',
+    'field_user_group' => 'field_user_group',
+    'field_service_classification' => 'field_service_classification',
+    'field_criticality' => 'field_criticality',
+    'field_service_state' => 'field_service_state',
+    'field_availability' => 'field_availability',
+    'field_edit_state' => 'field_edit_state',
+    'field_service_rotation' => 'field_service_rotation',
+    'field_service_levels' => 'field_service_levels',
+    'status' => 'status',
+  );
+  $handler->display->display_options['style_options']['default'] = 'title';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_cmdb_id' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_operator' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_service_supplier' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_documentation_link' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_home_link' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_cost' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_service_type' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_cmdb_id_1' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_user_group' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_service_classification' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_criticality' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_service_state' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_availability' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_edit_state' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_service_rotation' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_service_levels' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'status' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'Tjenestenavn';
-  /* Field: Content: CMDB id */
-  $handler->display->display_options['fields']['field_cmdb_id']['id'] = 'field_cmdb_id';
-  $handler->display->display_options['fields']['field_cmdb_id']['table'] = 'field_data_field_cmdb_id';
-  $handler->display->display_options['fields']['field_cmdb_id']['field'] = 'field_cmdb_id';
-  $handler->display->display_options['fields']['field_cmdb_id']['settings'] = array(
-    'thousand_separator' => ' ',
-    'prefix_suffix' => 1,
-  );
   /* Field: Content: Driftsansvarlige */
   $handler->display->display_options['fields']['field_operator']['id'] = 'field_operator';
   $handler->display->display_options['fields']['field_operator']['table'] = 'field_data_field_operator';
@@ -406,6 +535,7 @@ function tk_views_default_views() {
   $handler->display->display_options['fields']['field_documentation_link']['id'] = 'field_documentation_link';
   $handler->display->display_options['fields']['field_documentation_link']['table'] = 'field_data_field_documentation_link';
   $handler->display->display_options['fields']['field_documentation_link']['field'] = 'field_documentation_link';
+  $handler->display->display_options['fields']['field_documentation_link']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_documentation_link']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_documentation_link']['type'] = 'link_absolute';
   /* Field: Content: Her finner du tjenesten */
@@ -506,21 +636,14 @@ function tk_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
     t('Tjenestenavn'),
-    t('CMDB id'),
     t('Driftsansvarlige'),
     t('Driftsleverandør'),
     t('Her finner du mer informasjon'),
     t('Her finner du tjenesten'),
     t('Hva koster tjenesten'),
     t('Tjenestetype'),
+    t('CMDB id'),
     t('Hvem kan benytte tjenesten'),
     t('Klassifisering'),
     t('Kritikalitet'),
