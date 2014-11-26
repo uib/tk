@@ -73,6 +73,10 @@ function tk_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'service' => 'service',
   );
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
   $handler->display->display_options['path'] = 'all-services';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'A-Å';
