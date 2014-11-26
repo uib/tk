@@ -24,18 +24,40 @@ foreach (array_keys($ita) as $uname) {
 
 # Look them up
 foreach ($ita as $uname => $info) {
-  $u = user_load_by_mail($info['mail']);
+  $u = user_load_by_name($uname);
   if ($u) {
-    print "Found $uname\n";
+    print "Found $uname by uname\n";
+  }
+  else {
+    $email = $info['mail'];
+    $u = user_load_by_mail($email);
+    if ($u) {
+      print "Found $uname by email $email\n";
+    }
+    else {
+      $email = str_replace('@uib.', '@adm.uib.', $email);
+      $u = user_load_by_mail($email);
+      if ($u) {
+	print "Found $uname by email $email\n";
+      }
+    }
+  }
+  if ($u) {
+      user_save($u, array(
+	'name' => $uname,
+	'mail' => $info['mail'],
+	'field_full_name' => array('und' => array(array('value' => $info['name']))),
+      ));
   }
   else {
     $u = user_save(NULL, array(
-      'name' => $info['name'],
+      'name' => $uname,
       'mail' => $info['mail'],
       'status' => 1,
       'roles' => array(
         '4' => 'ita',
       ),
+      'field_full_name' => array('und' => array(array('value' => $info['name']))),
     ));
     print "Created $uname as user/$u->uid\n";
   }
