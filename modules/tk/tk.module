@@ -72,4 +72,12 @@ function tk_entity_view_alter(&$build, $type) {
     $cmdb_id = $build['field_cmdb_id']['#items'][0]['value'];
     $build['field_cmdb_id'][0]['#markup'] = "<a href='https://bs.uib.no/?module=cmdb&action=viewt&tjeneste=$cmdb_id'>$cmdb_id</a>";
   }
+  if (isset($build['field_operator'])) {
+    $i = 0;
+    while (isset($build['field_operator'][$i])) {
+      $u = $build['field_operator']['#items'][$i]['entity'];
+      $build['field_operator'][$i]['#markup'] = l($u->field_full_name['und'][0]['value'], 'http://www.uib.no/user/uib/' . $u->name);
+      $i++;
+    }
+  }
 }
