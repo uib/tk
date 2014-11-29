@@ -22,3 +22,9 @@ Alternatively manually configure postgres access and restore from the latest
 production dump by running:
 
     ./scripts/pg-restore.sh
+
+We use the SASS preprocessor to generate the CSS files.  To convert them
+install the ruby bundler and run:
+
+    bundle install
+    bundle exec compile themes/uib_tk
