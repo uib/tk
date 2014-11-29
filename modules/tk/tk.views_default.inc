@@ -462,6 +462,89 @@ function tk_views_default_views() {
   $export['service_review'] = $view;
 
   $view = new view();
+  $view->name = 'service_users';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'service-users';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Driftansvarlige';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_full_name',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_operator_target_id']['id'] = 'field_operator_target_id';
+  $handler->display->display_options['relationships']['field_operator_target_id']['table'] = 'field_data_field_operator';
+  $handler->display->display_options['relationships']['field_operator_target_id']['field'] = 'field_operator_target_id';
+  $handler->display->display_options['relationships']['field_operator_target_id']['label'] = 'Driftsansvarlig';
+  $handler->display->display_options['relationships']['field_operator_target_id']['required'] = TRUE;
+  /* Field: User: Full name */
+  $handler->display->display_options['fields']['field_full_name']['id'] = 'field_full_name';
+  $handler->display->display_options['fields']['field_full_name']['table'] = 'field_data_field_full_name';
+  $handler->display->display_options['fields']['field_full_name']['field'] = 'field_full_name';
+  $handler->display->display_options['fields']['field_full_name']['relationship'] = 'field_operator_target_id';
+  $handler->display->display_options['fields']['field_full_name']['label'] = '';
+  $handler->display->display_options['fields']['field_full_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_full_name']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Sort criterion: User: Full name (field_full_name) */
+  $handler->display->display_options['sorts']['field_full_name_value']['id'] = 'field_full_name_value';
+  $handler->display->display_options['sorts']['field_full_name_value']['table'] = 'field_data_field_full_name';
+  $handler->display->display_options['sorts']['field_full_name_value']['field'] = 'field_full_name_value';
+  $handler->display->display_options['sorts']['field_full_name_value']['relationship'] = 'field_operator_target_id';
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'service' => 'service',
+  );
+
+  /* Display: Driftsavsvarlige */
+  $handler = $view->new_display('page', 'Driftsavsvarlige', 'page');
+  $handler->display->display_options['path'] = 'service-users';
+  $translatables['service_users'] = array(
+    t('Master'),
+    t('Driftansvarlige'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Driftsansvarlig'),
+    t('Driftsavsvarlige'),
+  );
+  $export['service_users'] = $view;
+
+  $view = new view();
   $view->name = 'tk_data';
   $view->description = '';
   $view->tag = 'default';
