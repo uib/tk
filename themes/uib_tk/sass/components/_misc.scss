@@ -556,15 +556,16 @@ span.field-label {
 .unpublished {
   /* Remove background highlighting from <mark> in normalize. */
   background-color: transparent;
-  color: #d8d8d8;
-  font-size: 160%;
+  color: #bbb;
+  font-size: 140%;
   font-family: Impact, "Arial Narrow", Helvetica, sans-serif;
   font-weight: bold;
   text-transform: uppercase;
   /* A very nice CSS3 property. */
   word-wrap: break-word;
-  float: right;
-  padding: 5px;
+  display: block;
+  text-align: right;
+  padding: 10px;
 }
 @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
   .lt-ie8 .node-unpublished>*,
