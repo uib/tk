@@ -353,6 +353,115 @@ function tk_views_default_views() {
   $export['service_classes'] = $view;
 
   $view = new view();
+  $view->name = 'service_review';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Service Review';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Tjenestegjennomgang';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_edit_state',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Her finner du tjenesten */
+  $handler->display->display_options['fields']['field_home_link']['id'] = 'field_home_link';
+  $handler->display->display_options['fields']['field_home_link']['table'] = 'field_data_field_home_link';
+  $handler->display->display_options['fields']['field_home_link']['field'] = 'field_home_link';
+  $handler->display->display_options['fields']['field_home_link']['label'] = '';
+  $handler->display->display_options['fields']['field_home_link']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_home_link']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_home_link']['alter']['text'] = '→ ([field_home_link])';
+  $handler->display->display_options['fields']['field_home_link']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_home_link']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_home_link']['type'] = 'link_domain';
+  $handler->display->display_options['fields']['field_home_link']['settings'] = array(
+    'strip_www' => 1,
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '<a href="/node/[nid]">[title]</a>
+[field_home_link]';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Registreringsstatus */
+  $handler->display->display_options['fields']['field_edit_state']['id'] = 'field_edit_state';
+  $handler->display->display_options['fields']['field_edit_state']['table'] = 'field_data_field_edit_state';
+  $handler->display->display_options['fields']['field_edit_state']['field'] = 'field_edit_state';
+  $handler->display->display_options['fields']['field_edit_state']['label'] = '';
+  $handler->display->display_options['fields']['field_edit_state']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_edit_state']['element_label_colon'] = FALSE;
+  /* Field: Content: Interne merknader */
+  $handler->display->display_options['fields']['field_internal_notes']['id'] = 'field_internal_notes';
+  $handler->display->display_options['fields']['field_internal_notes']['table'] = 'field_data_field_internal_notes';
+  $handler->display->display_options['fields']['field_internal_notes']['field'] = 'field_internal_notes';
+  $handler->display->display_options['fields']['field_internal_notes']['label'] = '';
+  $handler->display->display_options['fields']['field_internal_notes']['element_label_colon'] = FALSE;
+  /* Sort criterion: Content: Registreringsstatus (field_edit_state) */
+  $handler->display->display_options['sorts']['field_edit_state_value']['id'] = 'field_edit_state_value';
+  $handler->display->display_options['sorts']['field_edit_state_value']['table'] = 'field_data_field_edit_state';
+  $handler->display->display_options['sorts']['field_edit_state_value']['field'] = 'field_edit_state_value';
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'service' => 'service',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'service-review';
+  $translatables['service_review'] = array(
+    t('Master'),
+    t('Tjenestegjennomgang'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('→ ([field_home_link])'),
+    t('<a href="/node/[nid]">[title]</a>
+[field_home_link]'),
+    t('Page'),
+  );
+  $export['service_review'] = $view;
+
+  $view = new view();
   $view->name = 'tk_data';
   $view->description = '';
   $view->tag = 'default';
