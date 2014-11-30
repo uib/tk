@@ -143,5 +143,6 @@ features[views_view][] = classfications
 features[views_view][] = service_classes
 features[views_view][] = service_review
 features[views_view][] = service_users
+features[views_view][] = taxonomy_term_service
 features[views_view][] = tk_data
-mtime = 1417262785
+mtime = 1417334029
