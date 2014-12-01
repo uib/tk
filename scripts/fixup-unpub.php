@@ -1,6 +1,8 @@
 <?php
 
-$result = (new EntityFieldQuery())
+$q = new EntityFieldQuery();
+
+$result = $q
   ->entityCondition('entity_type', 'node')
   ->entityCondition('bundle', 'service')
   ->execute();
