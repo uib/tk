@@ -317,7 +317,6 @@ function uib_setup_user_default_permissions() {
   $permissions['edit field_cmdb_id'] = array(
     'name' => 'edit field_cmdb_id',
     'roles' => array(
-      'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
