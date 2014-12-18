@@ -598,9 +598,8 @@ Leveringstid:',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 9,
       ),
       'teaser' => array(
