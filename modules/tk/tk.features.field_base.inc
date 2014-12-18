@@ -674,6 +674,7 @@ function tk_field_default_field_bases() {
     'settings' => array(
       'handler' => 'base',
       'handler_settings' => array(
+        'autocomplete_items_limit' => 10,
         'behaviors' => array(
           'views-select-list' => array(
             'status' => 0,
@@ -901,6 +902,7 @@ function tk_field_default_field_bases() {
     'settings' => array(
       'handler' => 'base',
       'handler_settings' => array(
+        'autocomplete_items_limit' => 10,
         'behaviors' => array(
           'views-select-list' => array(
             'status' => 0,

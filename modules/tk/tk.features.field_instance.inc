@@ -15,7 +15,7 @@ function tk_field_default_field_instances() {
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Når er tjenesten tilgjengelig, når kan bruker forvente at tjenesten kan brukes.',
+    'description' => 'Når er tjenesten tilgjengelig, når kan bruker forvente at tjenesten kan brukes. (offentlig)',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -52,7 +52,7 @@ function tk_field_default_field_instances() {
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Hvis tjenesten også er definert i CMDB (https://bs.uib.no/?module=cmdb&action=view) så kan den knyttes til tjenestekatalogen.',
+    'description' => 'Hvis tjenesten også er definert i <a href="https://bs.uib.no/?module=cmdb&action=view">CMDB</a> så kan den knyttes til tjenestekatalogen.',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -98,7 +98,7 @@ function tk_field_default_field_instances() {
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => '(offentlig)',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -183,7 +183,7 @@ function tk_field_default_field_instances() {
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Beskriv eventuelle krav for å kunne bruke tjenesten (hardware, software, målgrupper, etc)',
+    'description' => 'Beskriv eventuelle krav for å kunne bruke tjenesten (hardware, software, målgrupper, etc) (offentlig)',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -230,7 +230,7 @@ function tk_field_default_field_instances() {
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Beskriv de viktigste egenskapene og funksjonene ved tjenesten og annen nyttig informasjon til sluttbrukere.',
+    'description' => 'Beskriv de viktigste egenskapene og funksjonene ved tjenesten og annen nyttig informasjon til sluttbrukere. (offentlig)',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -270,7 +270,7 @@ function tk_field_default_field_instances() {
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => '(offentlig)',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -364,7 +364,7 @@ function tk_field_default_field_instances() {
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => '(offentlig)',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -404,7 +404,7 @@ function tk_field_default_field_instances() {
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => '(offentlig)',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -633,7 +633,7 @@ Leveringstid:',
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => '(offentlig)',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -711,7 +711,7 @@ Leveringstid:',
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => '(offentlig)',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -838,7 +838,7 @@ Leveringstid:',
       ),
     ),
     'deleted' => 0,
-    'description' => '',
+    'description' => '(offentlig)',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -878,7 +878,7 @@ Leveringstid:',
       ),
     ),
     'deleted' => 0,
-    'description' => '',
+    'description' => '(offentlig)',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -963,7 +963,7 @@ Leveringstid:',
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => '(offentlig)',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1004,7 +1004,7 @@ Leveringstid:',
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Hvor henvender bruker seg for å få service på denne tjenesten.',
+    'description' => 'Hvor henvender bruker seg for å få service på denne tjenesten. (offentlig)',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1347,10 +1347,11 @@ Leveringstid:',
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('(offentlig)');
   t('Addresse');
   t('Angir hvem som har tjeneste ansvar for denne tjenesten.');
-  t('Beskriv de viktigste egenskapene og funksjonene ved tjenesten og annen nyttig informasjon til sluttbrukere.');
-  t('Beskriv eventuelle krav for å kunne bruke tjenesten (hardware, software, målgrupper, etc)');
+  t('Beskriv de viktigste egenskapene og funksjonene ved tjenesten og annen nyttig informasjon til sluttbrukere. (offentlig)');
+  t('Beskriv eventuelle krav for å kunne bruke tjenesten (hardware, software, målgrupper, etc) (offentlig)');
   t('Beskrivelse');
   t('Brukes kun når IT-avdelingen er driftsleverandør. Angi de nivåene IT-avdelingen er ansvarlig for. ');
   t('CMDB id');
@@ -1365,9 +1366,9 @@ Leveringstid:',
   t('Hva er tjenesten avhengig av (CMDB)');
   t('Hva koster tjenesten');
   t('Hvem kan benytte tjenesten');
-  t('Hvis tjenesten også er definert i CMDB (https://bs.uib.no/?module=cmdb&action=view) så kan den knyttes til tjenestekatalogen.');
+  t('Hvis tjenesten også er definert i <a href="https://bs.uib.no/?module=cmdb&action=view">CMDB</a> så kan den knyttes til tjenestekatalogen.');
   t('Hvor får jeg hjelp');
-  t('Hvor henvender bruker seg for å få service på denne tjenesten.');
+  t('Hvor henvender bruker seg for å få service på denne tjenesten. (offentlig)');
   t('Hvordan bestille');
   t('Identifikator');
   t('Interne merknader');
@@ -1378,7 +1379,7 @@ Leveringstid:',
   t('Kvalitetsmål');
   t('Livssyklus ');
   t('Normal tilgjengelighet ');
-  t('Når er tjenesten tilgjengelig, når kan bruker forvente at tjenesten kan brukes.');
+  t('Når er tjenesten tilgjengelig, når kan bruker forvente at tjenesten kan brukes. (offentlig)');
   t('Objekter i CMDB som tjenestene er avhengig. Kommaseparert liste.');
   t('Registreringsstatus');
   t('Systemeier');

@@ -34,7 +34,7 @@ function tk_node_info() {
       'description' => t('Registrering av nye tjenester'),
       'has_title' => '1',
       'title_label' => t('Navn'),
-      'help' => '',
+      'help' => t('Felt som er merket med (offentlig) vil være tilgjengelig for alle.  Andre felt vil være begrenset til bare å være synlig for ansatte på ITA eller i visse tilfeller de som har rollen Tjenesteansvarlig.'),
     ),
     'service_owner' => array(
       'name' => t('Systemeier'),
