@@ -68,6 +68,15 @@ function uib_setup_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'create field_cmdb_id'.
+  $permissions['create field_cmdb_id'] = array(
+    'name' => 'create field_cmdb_id',
+    'roles' => array(
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'create field_criticality'.
   $permissions['create field_criticality'] = array(
     'name' => 'create field_criticality',
@@ -304,6 +313,16 @@ function uib_setup_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit field_cmdb_id'.
+  $permissions['edit field_cmdb_id'] = array(
+    'name' => 'edit field_cmdb_id',
+    'roles' => array(
+      'ita' => 'ita',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'edit field_criticality'.
   $permissions['edit field_criticality'] = array(
     'name' => 'edit field_criticality',
@@ -399,6 +418,15 @@ function uib_setup_user_default_permissions() {
   // Exported permission: 'edit field_supporting_systems'.
   $permissions['edit field_supporting_systems'] = array(
     'name' => 'edit field_supporting_systems',
+    'roles' => array(
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit own field_cmdb_id'.
+  $permissions['edit own field_cmdb_id'] = array(
+    'name' => 'edit own field_cmdb_id',
     'roles' => array(
       'tjenesteadmin' => 'tjenesteadmin',
     ),
@@ -560,6 +588,16 @@ function uib_setup_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: 'view field_cmdb_id'.
+  $permissions['view field_cmdb_id'] = array(
+    'name' => 'view field_cmdb_id',
+    'roles' => array(
+      'ita' => 'ita',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'view field_criticality'.
   $permissions['view field_criticality'] = array(
     'name' => 'view field_criticality',
@@ -659,6 +697,15 @@ function uib_setup_user_default_permissions() {
     'name' => 'view field_supporting_systems',
     'roles' => array(
       'ita' => 'ita',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view own field_cmdb_id'.
+  $permissions['view own field_cmdb_id'] = array(
+    'name' => 'view own field_cmdb_id',
+    'roles' => array(
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
