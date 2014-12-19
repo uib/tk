@@ -72,22 +72,20 @@ foreach ($users as $user) {
 }
 
 function nodes_related_to($uid) {
-  $nids = db_query('select nid from {node} where uid = :uid',
-    array(
-      ':uid' => $uid,
-  ))->fetchCol();
-  $nids += db_query('select entity_id from {field_data_field_operator} where field_operator_target_id = :uid',
-    array(
-      ':uid' => $uid,
-  ))->fetchCol();
-  $nids += db_query('select entity_id from {field_data_field_operator} where field_operator_target_id = :uid',
-    array(
-      ':uid' => $uid,
-  ))->fetchCol();
-  $nids += db_query('select entity_id from {field_data_field_ower_contact} where field_ower_contact_target_id = :uid',
-    array(
-      ':uid' => $uid,
-  ))->fetchCol();
+  $nids = array_merge(
+    db_query('select nid, title from {node} where uid = :uid',
+      array(
+	':uid' => $uid,
+    ))->fetchCol(),
+    db_query('select entity_id from {field_data_field_operator} where field_operator_target_id = :uid',
+      array(
+	':uid' => $uid,
+    ))->fetchCol(),
+    db_query('select entity_id from {field_data_field_ower_contact} where field_ower_contact_target_id = :uid',
+      array(
+	':uid' => $uid,
+    ))->fetchCol()
+  );
   return $nids;
 }
 
