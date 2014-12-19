@@ -26,28 +26,21 @@ foreach (array_keys($ita) as $uname) {
 foreach ($ita as $uname => $info) {
   $u = user_load_by_name($uname);
   if ($u) {
-    print "Found $uname by uname\n";
-  }
-  else {
-    $email = $info['mail'];
-    $u = user_load_by_mail($email);
-    if ($u) {
-      print "Found $uname by email $email\n";
-    }
-    else {
-      $email = str_replace('@uib.', '@adm.uib.', $email);
-      $u = user_load_by_mail($email);
-      if ($u) {
-	print "Found $uname by email $email\n";
+      $edit = array();
+      if ($u->status != 1)
+	$edit['status'] = 1;
+      if ($u->field_full_name['und'][0]['value'] != $info['name'])
+        $edit['field_full_name'] = array('und' => array(array('value' => $info['name'])));
+      if (!isset($u->roles[4])) {
+	$roles = $u->roles;
+	$roles[4] = 'ita';
+	$edit['roles'] = $roles;
       }
-    }
-  }
-  if ($u) {
-      user_save($u, array(
-	'name' => $uname,
-	'mail' => $info['mail'],
-	'field_full_name' => array('und' => array(array('value' => $info['name']))),
-      ));
+
+      if ($edit) {
+	print "Updating $uname: " . implode(' ', array_keys($edit)) . "\n";
+	user_save($u, $edit);
+      }
   }
   else {
     $u = user_save(NULL, array(
