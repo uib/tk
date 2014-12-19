@@ -10,6 +10,12 @@
 function uib_setup_user_default_roles() {
   $roles = array();
 
+  // Exported role: appforvalter.
+  $roles['appforvalter'] = array(
+    'name' => 'appforvalter',
+    'weight' => 5,
+  );
+
   // Exported role: druapladmin.
   $roles['druapladmin'] = array(
     'name' => 'druapladmin',

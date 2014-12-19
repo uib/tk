@@ -23,6 +23,7 @@ function uib_setup_user_default_permissions() {
   $permissions['access user profiles'] = array(
     'name' => 'access user profiles',
     'roles' => array(
+      'appforvalter' => 'appforvalter',
       'authenticated user' => 'authenticated user',
       'druapladmin' => 'druapladmin',
     ),
