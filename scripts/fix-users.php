@@ -30,14 +30,41 @@ foreach ($users as $user) {
   $nids = nodes_related_to($user->uid);
   if (!$nids) {
     print "0 $user->uid $user->name\n";
-    user_save($user, array(
-      'status' => 0,
-    ));
+    block_user($user);
     continue;
   }
   $c = count($nids);
   if ($alt_user) {
     print "! $user->uid $user->name --> $alt_user->uid $alt_user->name ($c)\n";
+    $nodes = node_load_multiple($nids);
+    foreach ($nodes as $node) {
+      print "  $node->nid $node->title\n";
+      $edit = array();
+      if ($node->uid == $user->uid) {
+	$node->uid = $alt_user->uid;
+	$edit[] = 'uid';
+      }
+      if ($node->field_operator) {
+	foreach ($node->field_operator['und'] as $idx => $v) {
+	  if ($v['target_id'] == $user->uid) {
+	    $node->field_operator['und'][$idx]['target_id'] = $alt_user->uid;
+	    $edit[] = 'operator';
+	  }
+	}
+      }
+      if ($node->field_ower_contact) {
+	foreach ($node->field_ower_contact['und'] as $idx => $v) {
+	  if ($v['target_id'] == $user->uid) {
+	    $node->field_ower_contact['und'][$idx]['target_id'] = $alt_user->uid;
+	    $edit[] = 'ower_contact';
+	  }
+	}
+      }
+      if ($edit) {
+	print "    EDIT: " . implode(' ', $edit) . "\n";
+	node_save($node);
+      }
+    }
   }
   else {
     print "? $user->uid $user->name ($c)\n";
@@ -62,4 +89,10 @@ function nodes_related_to($uid) {
       ':uid' => $uid,
   ))->fetchCol();
   return $nids;
+}
+
+function block_user($user) {
+  user_save($user, array(
+    'status' => 0,
+  ));
 }
