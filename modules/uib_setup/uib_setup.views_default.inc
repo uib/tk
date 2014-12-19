@@ -12,10 +12,10 @@ function uib_setup_views_default_views() {
 
   $view = new view();
   $view->name = 'users';
-  $view->description = '';
+  $view->description = 'Look up the users on the system in a handy way';
   $view->tag = 'default';
   $view->base_table = 'users';
-  $view->human_name = 'users';
+  $view->human_name = 'Users';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
