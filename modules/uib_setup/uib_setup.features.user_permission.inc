@@ -59,6 +59,16 @@ function uib_setup_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: 'administer users'.
+  $permissions['administer users'] = array(
+    'name' => 'administer users',
+    'roles' => array(
+      'appforvalter' => 'appforvalter',
+      'druapladmin' => 'druapladmin',
+    ),
+    'module' => 'user',
+  );
+
   // Exported permission: 'bypass node access'.
   $permissions['bypass node access'] = array(
     'name' => 'bypass node access',
