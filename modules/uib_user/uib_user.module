@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function uib_user_menu() {
+  $items["admin/people/sebra-import"] = array(
+    'title' => 'Import from Sebra',
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('uib_user__import_form'),
+    'access arguments' => array('administer users'),
+  );
+  return $items;
+}
+
+function uib_user__import_form() {
+  $form['username'] = array(
+    '#title' => t('User name'),
+    '#type' => 'textfield',
+    '#description' => t('Please enter the UiB account user name for the person to import'),
+    '#required' => TRUE,
+    '#element_validate' => array('uib_user__username_validate'),
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Import'),
+  );
+  return $form;
+}
+
+function uib_user__username_validate($element, &$form_state) {
+  $v = $form_state['values']['username'];
+  if (!preg_match('/^[a-z][a-z0-9]*$/', $v))
+    form_error($element, t('Usernames must be a lowercase letter followed by one or more letter or digits'));
+}
+
+function uib_user__import_form_submit($form, &$form_state) {
+  $uname = $form_state['values']['username'];
+
+  $account = user_load_by_name($uname);
+  if ($account) {
+    $name = $account->field_full_name['und'][0]['value'];
+    drupal_set_message("$uname - $name ($account->uid) already present", 'warning');
+    return;
+  }
+
+  $person = @simplexml_load_file("http://sebra.uib.no/sws/person?id=$uname");
+  if (!$person) {
+    drupal_set_message("The user '$uname' was not found in Sebra", 'error');
+    return;
+  }
+
+  $new = array('name' => $uname,
+      'mail' => (string)$person->epost,
+      'status' => 1,
+      'field_full_name' => array('und' => array(array('value' => (string)$person->name . ' ' . (string)$person->surname))),
+  );
+  $account = user_save($account, $new);
+  $name = $account->field_full_name['und'][0]['value'];
+  drupal_set_message("Created user $name ($account->uid)");
+}
