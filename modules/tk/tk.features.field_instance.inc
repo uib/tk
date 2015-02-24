@@ -33,7 +33,7 @@ function tk_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_availability',
-    'label' => 'Normalt tilgjengelig ',
+    'label' => 'Normalt tilgjengelig',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -815,7 +815,7 @@ Leveringstid:',
     ),
     'entity_type' => 'node',
     'field_name' => 'field_service_state',
-    'label' => 'Livssyklus ',
+    'label' => 'Livssyklus',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1521,9 +1521,9 @@ Leveringstid:',
   t('Kontaktperson systemeier');
   t('Kritikalitet');
   t('Kvalitetsmål');
-  t('Livssyklus ');
+  t('Livssyklus');
   t('Mer informasjon');
-  t('Normalt tilgjengelig ');
+  t('Normalt tilgjengelig');
   t('Når kan bruker forvente at tjenesten kan brukes -- offentlig');
   t('Objekter i CMDB som tjenestene er avhengig. Kommaseparert liste.');
   t('Registreringsstatus');

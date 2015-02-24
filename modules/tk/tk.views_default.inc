@@ -133,7 +133,7 @@ function tk_views_default_views() {
   $handler->display->display_options['fields']['field_demand']['id'] = 'field_demand';
   $handler->display->display_options['fields']['field_demand']['table'] = 'field_data_field_demand';
   $handler->display->display_options['fields']['field_demand']['field'] = 'field_demand';
-  /* Field: Content: Normalt tilgjengelig  */
+  /* Field: Content: Normalt tilgjengelig */
   $handler->display->display_options['fields']['field_availability']['id'] = 'field_availability';
   $handler->display->display_options['fields']['field_availability']['table'] = 'field_data_field_availability';
   $handler->display->display_options['fields']['field_availability']['field'] = 'field_availability';
@@ -207,7 +207,7 @@ function tk_views_default_views() {
     t('Tjeneste'),
     t('Kritikalitet'),
     t('Hva er nødvendig for å bruke tjenesten'),
-    t('Normalt tilgjengelig '),
+    t('Normalt tilgjengelig'),
     t('Utvidet beskrivelse (hva er inkludert)'),
     t('Support'),
     t('Systemeier'),
@@ -1036,11 +1036,11 @@ function tk_views_default_views() {
   $handler->display->display_options['fields']['field_criticality']['id'] = 'field_criticality';
   $handler->display->display_options['fields']['field_criticality']['table'] = 'field_data_field_criticality';
   $handler->display->display_options['fields']['field_criticality']['field'] = 'field_criticality';
-  /* Field: Content: Livssyklus  */
+  /* Field: Content: Livssyklus */
   $handler->display->display_options['fields']['field_service_state']['id'] = 'field_service_state';
   $handler->display->display_options['fields']['field_service_state']['table'] = 'field_data_field_service_state';
   $handler->display->display_options['fields']['field_service_state']['field'] = 'field_service_state';
-  /* Field: Content: Normalt tilgjengelig  */
+  /* Field: Content: Normalt tilgjengelig */
   $handler->display->display_options['fields']['field_availability']['id'] = 'field_availability';
   $handler->display->display_options['fields']['field_availability']['table'] = 'field_data_field_availability';
   $handler->display->display_options['fields']['field_availability']['field'] = 'field_availability';
@@ -1107,8 +1107,8 @@ function tk_views_default_views() {
     t('Tilgjengelig for'),
     t('Klassifisering'),
     t('Kritikalitet'),
-    t('Livssyklus '),
-    t('Normalt tilgjengelig '),
+    t('Livssyklus'),
+    t('Normalt tilgjengelig'),
     t('Registreringsstatus'),
     t('Vaktordning'),
     t('Ytelser'),
