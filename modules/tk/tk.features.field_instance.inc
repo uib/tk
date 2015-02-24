@@ -33,7 +33,7 @@ function tk_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_availability',
-    'label' => 'Normal tilgjengelighet ',
+    'label' => 'Normalt tilgjengelig ',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -288,7 +288,7 @@ function tk_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_documentation_link',
-    'label' => 'Her finner du mer informasjon',
+    'label' => 'Mer informasjon',
     'required' => 0,
     'settings' => array(
       'absolute_url' => 1,
@@ -1004,7 +1004,7 @@ Leveringstid:',
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Hvor henvender bruker seg for å få service på denne tjenesten -- offentlig',
+    'description' => '-- offentlig',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1035,7 +1035,7 @@ Leveringstid:',
     ),
     'entity_type' => 'node',
     'field_name' => 'field_support_contact',
-    'label' => 'Hvor får jeg hjelp',
+    'label' => 'Brukerstøtte',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1112,7 +1112,7 @@ Leveringstid:',
     ),
     'entity_type' => 'node',
     'field_name' => 'field_user_group',
-    'label' => 'Hvem kan benytte tjenesten',
+    'label' => 'Tilgjengelig for',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1355,22 +1355,19 @@ Leveringstid:',
   t('Beskriv de viktigste egenskapene og funksjonene ved tjenesten og annen nyttig informasjon til sluttbrukere. (offentlig)');
   t('Beskriv eventuelle krav for å kunne bruke tjenesten (hardware, software, målgrupper, etc) -- offentlig');
   t('Beskrivelse');
+  t('Brukerstøtte');
   t('Brukes kun når IT-avdelingen er driftsleverandør. Angi de nivåene IT-avdelingen er ansvarlig for. ');
   t('CMDB id');
   t('Driftsansvarlige');
   t('Driftsleverandør');
   t('Driftsstatus');
-  t('Her finner du mer informasjon');
   t('Her finner du tjenesten');
   t('Her har du mulighet for å vekte hvor viktig en tjeneste er.');
   t('Her kan du melde inn feil');
   t('Hva er nødvendig for å bruke tjenesten');
   t('Hva er tjenesten avhengig av (CMDB)');
   t('Hva koster tjenesten');
-  t('Hvem kan benytte tjenesten');
   t('Hvis tjenesten også er definert i <a href="https://bs.uib.no/?module=cmdb&action=view">CMDB</a> så kan den knyttes til tjenestekatalogen.');
-  t('Hvor får jeg hjelp');
-  t('Hvor henvender bruker seg for å få service på denne tjenesten -- offentlig');
   t('Hvordan bestille');
   t('Identifikator');
   t('Interne merknader');
@@ -1380,12 +1377,14 @@ Leveringstid:',
   t('Kritikalitet');
   t('Kvalitetsmål');
   t('Livssyklus ');
-  t('Normal tilgjengelighet ');
+  t('Mer informasjon');
+  t('Normalt tilgjengelig ');
   t('Når kan bruker forvente at tjenesten kan brukes -- offentlig');
   t('Objekter i CMDB som tjenestene er avhengig. Kommaseparert liste.');
   t('Registreringsstatus');
   t('Systemeier');
   t('Telefon');
+  t('Tilgjengelig for');
   t('Tjenestetype');
   t('Utvidet beskrivelse (hva er inkludert)');
   t('Vaktordning');

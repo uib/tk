@@ -57,7 +57,7 @@ function tk_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        247 => '24/7/365',
+        247 => 'Hele døgnet',
         'arbeidstid' => '08:00-15:45 man-fre',
         'vakt' => '07:00-22:00 man-fre (10:00-18:00 lør-søn)',
       ),

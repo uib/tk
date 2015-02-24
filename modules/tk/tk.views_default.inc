@@ -133,7 +133,7 @@ function tk_views_default_views() {
   $handler->display->display_options['fields']['field_demand']['id'] = 'field_demand';
   $handler->display->display_options['fields']['field_demand']['table'] = 'field_data_field_demand';
   $handler->display->display_options['fields']['field_demand']['field'] = 'field_demand';
-  /* Field: Content: Normal tilgjengelighet  */
+  /* Field: Content: Normalt tilgjengelig  */
   $handler->display->display_options['fields']['field_availability']['id'] = 'field_availability';
   $handler->display->display_options['fields']['field_availability']['table'] = 'field_data_field_availability';
   $handler->display->display_options['fields']['field_availability']['field'] = 'field_availability';
@@ -207,7 +207,7 @@ function tk_views_default_views() {
     t('Tjeneste'),
     t('Kritikalitet'),
     t('Hva er nødvendig for å bruke tjenesten'),
-    t('Normal tilgjengelighet '),
+    t('Normalt tilgjengelig '),
     t('Utvidet beskrivelse (hva er inkludert)'),
     t('Support'),
     t('Systemeier'),
@@ -991,7 +991,7 @@ function tk_views_default_views() {
   $handler->display->display_options['fields']['field_service_supplier']['id'] = 'field_service_supplier';
   $handler->display->display_options['fields']['field_service_supplier']['table'] = 'field_data_field_service_supplier';
   $handler->display->display_options['fields']['field_service_supplier']['field'] = 'field_service_supplier';
-  /* Field: Content: Her finner du mer informasjon */
+  /* Field: Content: Mer informasjon */
   $handler->display->display_options['fields']['field_documentation_link']['id'] = 'field_documentation_link';
   $handler->display->display_options['fields']['field_documentation_link']['table'] = 'field_data_field_documentation_link';
   $handler->display->display_options['fields']['field_documentation_link']['field'] = 'field_documentation_link';
@@ -1019,7 +1019,7 @@ function tk_views_default_views() {
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Field: Content: Hvem kan benytte tjenesten */
+  /* Field: Content: Tilgjengelig for */
   $handler->display->display_options['fields']['field_user_group']['id'] = 'field_user_group';
   $handler->display->display_options['fields']['field_user_group']['table'] = 'field_data_field_user_group';
   $handler->display->display_options['fields']['field_user_group']['field'] = 'field_user_group';
@@ -1040,7 +1040,7 @@ function tk_views_default_views() {
   $handler->display->display_options['fields']['field_service_state']['id'] = 'field_service_state';
   $handler->display->display_options['fields']['field_service_state']['table'] = 'field_data_field_service_state';
   $handler->display->display_options['fields']['field_service_state']['field'] = 'field_service_state';
-  /* Field: Content: Normal tilgjengelighet  */
+  /* Field: Content: Normalt tilgjengelig  */
   $handler->display->display_options['fields']['field_availability']['id'] = 'field_availability';
   $handler->display->display_options['fields']['field_availability']['table'] = 'field_data_field_availability';
   $handler->display->display_options['fields']['field_availability']['field'] = 'field_availability';
@@ -1099,16 +1099,16 @@ function tk_views_default_views() {
     t('Tjenestenavn'),
     t('Driftsansvarlige'),
     t('Driftsleverandør'),
-    t('Her finner du mer informasjon'),
+    t('Mer informasjon'),
     t('Her finner du tjenesten'),
     t('Hva koster tjenesten'),
     t('Tjenestetype'),
     t('CMDB id'),
-    t('Hvem kan benytte tjenesten'),
+    t('Tilgjengelig for'),
     t('Klassifisering'),
     t('Kritikalitet'),
     t('Livssyklus '),
-    t('Normal tilgjengelighet '),
+    t('Normalt tilgjengelig '),
     t('Registreringsstatus'),
     t('Vaktordning'),
     t('Ytelser'),
