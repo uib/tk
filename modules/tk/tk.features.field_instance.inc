@@ -1345,6 +1345,150 @@ Leveringstid:',
     ),
   );
 
+  // Exported field_instance: 'taxonomy_term-service_business_levels-field_icon_name'
+  $field_instances['taxonomy_term-service_business_levels-field_icon_name'] = array(
+    'bundle' => 'service_business_levels',
+    'default_value' => array(
+      0 => array(
+        'value' => 'default_icon',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_icon_name',
+    'label' => 'Icon name',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-service_classes-field_icon_name'
+  $field_instances['taxonomy_term-service_classes-field_icon_name'] = array(
+    'bundle' => 'service_classes',
+    'default_value' => array(
+      0 => array(
+        'value' => 'default_icon',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_icon_name',
+    'label' => 'Icon name',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-service_roles-field_side_text'
+  $field_instances['taxonomy_term-service_roles-field_side_text'] = array(
+    'bundle' => 'service_roles',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_side_text',
+    'label' => 'Side text',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-service_roles-field_top_text'
+  $field_instances['taxonomy_term-service_roles-field_top_text'] = array(
+    'bundle' => 'service_roles',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_top_text',
+    'label' => 'Top text',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 1,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('   -- offentlig');
@@ -1369,6 +1513,7 @@ Leveringstid:',
   t('Hva koster tjenesten');
   t('Hvis tjenesten også er definert i <a href="https://bs.uib.no/?module=cmdb&action=view">CMDB</a> så kan den knyttes til tjenestekatalogen.');
   t('Hvordan bestille');
+  t('Icon name');
   t('Identifikator');
   t('Interne merknader');
   t('Klassifiserer om tjenesten er en tjeneste vi tilbyr til brukere eller om det er en «underliggende»/teknisk tjeneste.');
@@ -1382,10 +1527,12 @@ Leveringstid:',
   t('Når kan bruker forvente at tjenesten kan brukes -- offentlig');
   t('Objekter i CMDB som tjenestene er avhengig. Kommaseparert liste.');
   t('Registreringsstatus');
+  t('Side text');
   t('Systemeier');
   t('Telefon');
   t('Tilgjengelig for');
   t('Tjenestetype');
+  t('Top text');
   t('Utvidet beskrivelse (hva er inkludert)');
   t('Vaktordning');
   t('Ytelser');
