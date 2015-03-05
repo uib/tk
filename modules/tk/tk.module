@@ -106,6 +106,15 @@ function tk__services_list() {
         ),
       );
 
+      //classification
+      if ($node->field_service_classification) {
+        foreach ($node->field_service_classification['und'] as $v) {
+          $tid = $v['target_id'];
+          $term = taxonomy_term_load($tid);
+          $service['class'][] = $tid . " " . $term->name;
+        }
+      }
+
       // other links
       if ($node->field_home_link['und'][0]) {
         $service['link']['home'] = $node->field_home_link['und'][0]['url'];
