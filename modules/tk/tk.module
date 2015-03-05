@@ -108,6 +108,9 @@ function tk__services_list() {
       if ($node->promote) {
         $flag[] = 'promote';
       }
+      if ($node->status == 0) {
+        $flag[] = 'unpublished';
+      }
       if (!empty($flag)) {
         $service['flag'] = $flag;
       }
