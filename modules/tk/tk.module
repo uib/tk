@@ -78,7 +78,8 @@ function tk_block_view($delta = '') {
  * Page callback for data/services/v1
  */
 function tk__services_list() {
-  $data = array();
+  $services = array();
+  $users = array();
 
   $query = new EntityFieldQuery;
   $result = $query
@@ -100,6 +101,26 @@ function tk__services_list() {
         ),
       );
 
+      // include the user roles
+      $author = user_load($node->uid);
+      $service['role']['author'][] = $author->name;
+      $users[$author->name] = $account->field_full_name['und'][0]['value'];
+      foreach (array('ower_contact', 'operator') as $role) {
+        $field = "field_$role";
+        $field = $node->$field;
+        $fixed_role = $role == 'ower_contact' ? 'owner' : $role;
+        foreach ($field['und'] as $u) {
+          $account = user_load($u['target_id']);
+          if ($account) {
+            $service['role'][$fixed_role][] = $account->name;
+            $users[$account->name] = $account->field_full_name['und'][0]['value'];
+          }
+          else {
+            $service['role'][$fixed_role][] = "unknown_" . $u['target_id'];
+          }
+        }
+      }
+
       if (isset($node->field_internal_notes['und'][0])) {
         $service['text']['notes'] = $node->field_internal_notes['und'][0]['value'];
       }
@@ -115,11 +136,17 @@ function tk__services_list() {
         $service['flag'] = $flag;
       }
 
-      $data[(string)$node->nid] = $service;
+      //unset($service['text']);  // more compact output
+      unset($users['admin']);
+
+      $services[(string)$node->nid] = $service;
     }
   }
 
-  return drupal_json_output($data);
+  return drupal_json_output(array(
+    'service' => $services,
+    'user' => $users,
+  ));
 }
 
 /**
