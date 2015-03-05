@@ -162,6 +162,8 @@ function tk__services_list() {
     }
   }
 
+  ksort($users);
+
   return drupal_json_output(array(
     'service' => $services,
     'user' => $users,
