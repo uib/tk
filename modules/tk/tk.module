@@ -93,14 +93,16 @@ function tk__services_list() {
       $service = array(
         'title' => $node->title,
         //'nid' => $node->nid,
-        'created' => $node->created, // XXX iso time
-        'changed' => $node->changed,
+        'link' => array(
+          'tk' => url('node/' . $node->nid, array('absolute' => TRUE)),
+        ),
         'text' => array(
           'summary' => $node->field_summary['und'][0]['value'],
           'description' => $node->field_description['und'][0]['value'],
         ),
-        'link' => array(
-          'tk' => url('node/' . $node->nid, array('absolute' => TRUE)),
+        'meta' => array(
+          'created' => format_date($node->created, 'custom', 'Y-m-d H:i:s'),
+          'changed' => format_date($node->changed, 'custom', 'Y-m-d H:i:s'),
         ),
       );
 
