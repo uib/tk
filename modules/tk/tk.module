@@ -96,10 +96,6 @@ function tk__services_list() {
         'link' => array(
           'tk' => url('node/' . $node->nid, array('absolute' => TRUE)),
         ),
-        'text' => array(
-          'summary' => $node->field_summary['und'][0]['value'],
-          'description' => $node->field_description['und'][0]['value'],
-        ),
         'meta' => array(
           'created' => format_date($node->created, 'custom', 'Y-m-d H:i:s'),
           'changed' => format_date($node->changed, 'custom', 'Y-m-d H:i:s'),
@@ -154,8 +150,23 @@ function tk__services_list() {
         }
       }
 
-      if (isset($node->field_internal_notes['und'][0])) {
-        $service['text']['notes'] = $node->field_internal_notes['und'][0]['value'];
+      // text fields
+      foreach (array(
+        'field_summary',
+        'field_description',
+        'field_demand',
+        //'field_quality',
+        'field_field_howto_orde',
+        'field_supporting_systems',
+        'field_internal_notes',
+      )
+      as $field) {
+        $fv = $node->$field;
+        if (isset($fv['und'][0])) {
+          $text = $fv['und'][0]['value'];
+          $text = str_replace("\r\n", "\n", $text);
+          $service['text'][substr($field, 6)] = $text;
+        }
       }
 
       $flag = array();
