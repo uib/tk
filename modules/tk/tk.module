@@ -131,21 +131,26 @@ function tk__services_list() {
 
       // include the user roles
       $author = user_load($node->uid);
-      $service['role']['author'][] = $author->name;
+      $service['role']['author'] = $author->name;
       $users[$author->name] = $account->field_full_name['und'][0]['value'];
       foreach (array('ower_contact', 'operator') as $role) {
         $field = "field_$role";
         $field = $node->$field;
-        $fixed_role = $role == 'ower_contact' ? 'owner' : $role;
+        $role_users = array();
         foreach ($field['und'] as $u) {
           $account = user_load($u['target_id']);
           if ($account) {
-            $service['role'][$fixed_role][] = $account->name;
+            $role_users[$account->name] = TRUE;
             $users[$account->name] = $account->field_full_name['und'][0]['value'];
           }
           else {
-            $service['role'][$fixed_role][] = "unknown_" . $u['target_id'];
+            $role_users["unknown_" . $u['target_id']] = TRUE;
           }
+        }
+        if ($role_users) {
+          $fixed_role = $role == 'ower_contact' ? 'owner' : $role;
+          ksort($role_users);
+          $service['role'][$fixed_role] = implode(' ', array_keys($role_users));
         }
       }
 
@@ -161,7 +166,7 @@ function tk__services_list() {
         $flag[] = 'unpublished';
       }
       if (!empty($flag)) {
-        $service['flag'] = $flag;
+        $service['flag'] = implode(' ', $flag);
       }
 
       //unset($service['text']);  // more compact output
