@@ -117,13 +117,13 @@ function tk__services_list() {
 
       // other links
       if ($node->field_home_link['und'][0]) {
-        $service['link']['home'] = $node->field_home_link['und'][0]['url'];
+        $service['link']['home'] = tk__url($node->field_home_link['und'][0]['url']);
         if ($node->field_home_link['und'][0]['title']) {
           $service['link']['_title_home'] = $node->field_home_link['und'][0]['title'];
         }
       }
       if ($node->field_documentation_link['und'][0]) {
-        $service['link']['doc'] = $node->field_documentation_link['und'][0]['url'];
+        $service['link']['doc'] = tk__url($node->field_documentation_link['und'][0]['url']);
         if ($node->field_documentation_link['und'][0]['title']) {
           $service['link']['_title_doc'] = $node->field_documentation_link['und'][0]['title'];
         }
@@ -182,6 +182,13 @@ function tk__services_list() {
     'service' => $services,
     'user' => $users,
   ));
+}
+
+function tk__url($url) {
+  if (!strstr($url, ':')) {
+    $url = "http://$url";
+  }
+  return $url;
 }
 
 /**
