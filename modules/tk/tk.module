@@ -99,7 +99,24 @@ function tk__services_list() {
           'summary' => $node->field_summary['und'][0]['value'],
           'description' => $node->field_description['und'][0]['value'],
         ),
+        'link' => array(
+          'tk' => url('node/' . $node->nid, array('absolute' => TRUE)),
+        ),
       );
+
+      // other links
+      if ($node->field_home_link['und'][0]) {
+        $service['link']['home'] = $node->field_home_link['und'][0]['url'];
+        if ($node->field_home_link['und'][0]['title']) {
+          $service['link']['_title_home'] = $node->field_home_link['und'][0]['title'];
+        }
+      }
+      if ($node->field_documentation_link['und'][0]) {
+        $service['link']['doc'] = $node->field_documentation_link['und'][0]['url'];
+        if ($node->field_documentation_link['und'][0]['title']) {
+          $service['link']['_title_doc'] = $node->field_documentation_link['und'][0]['title'];
+        }
+      }
 
       // include the user roles
       $author = user_load($node->uid);
