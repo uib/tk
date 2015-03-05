@@ -7,6 +7,17 @@
 include_once 'tk.features.inc';
 
 /**
+ * Implements hook_menu().
+ */
+function tk_menu() {
+  $items['data/services/v1'] = array(
+    'page callback' => 'tk__services_list',
+    'access callback' => TRUE,
+  );
+  return $items;
+}
+
+/**
  * Implements hook_block_info().
  */
 function tk_block_info() {
@@ -61,6 +72,51 @@ function tk_block_view($delta = '') {
       break;
   }
   return $block;
+}
+
+/**
+ * Page callback for data/services/v1
+ */
+function tk__services_list() {
+  $data = array();
+
+  $query = new EntityFieldQuery;
+  $result = $query
+    ->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', 'service')
+    //->propertyCondition('status', '1')
+    ->execute();
+  if (!empty($result['node'])) {
+    $nodes = node_load_multiple(array_keys($result['node']));
+    foreach ($nodes as $node) {
+      $service = array(
+        'title' => $node->title,
+        //'nid' => $node->nid,
+        'created' => $node->created, // XXX iso time
+        'changed' => $node->changed,
+        'text' => array(
+          'summary' => $node->field_summary['und'][0]['value'],
+          'description' => $node->field_description['und'][0]['value'],
+        ),
+      );
+
+      if (isset($node->field_internal_notes['und'][0])) {
+        $service['text']['notes'] = $node->field_internal_notes['und'][0]['value'];
+      }
+
+      $flag = array();
+      if ($node->promote) {
+        $flag[] = 'promote';
+      }
+      if (!empty($flag)) {
+        $service['flag'] = $flag;
+      }
+
+      $data[(string)$node->nid] = $service;
+    }
+  }
+
+  return drupal_json_output($data);
 }
 
 /**
