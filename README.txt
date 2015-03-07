@@ -27,4 +27,4 @@ We use the SASS preprocessor to generate the CSS files.  To convert them
 install the ruby bundler and run:
 
     bundle install
-    bundle exec compile themes/uib_tk
+    bundle exec compass compile themes/uib_tk
