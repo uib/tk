@@ -189,6 +189,8 @@ function tk__services_list() {
 
   ksort($users);
 
+  drupal_add_http_header('Access-Control-Allow-Origin', '*');
+
   return drupal_json_output(array(
     'service' => $services,
     'user' => $users,
