@@ -198,7 +198,7 @@ function tk__service_node_as_obj($node, &$users) {
   // include the user roles
   $author = user_load($node->uid);
   $service['role']['author'] = $author->name;
-  $users[$author->name] = $account->field_full_name['und'][0]['value'];
+  $users[$author->name] = $author->field_full_name['und'][0]['value'];
   foreach (array('ower_contact', 'operator') as $role) {
     $field = "field_$role";
     $field = $node->$field;
