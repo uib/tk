@@ -15,8 +15,17 @@ function tk_menu() {
     'access callback' => TRUE,
   );
   $items['api/v1/tk.json'] = array(
-    'page callback' => 'tk__dump_json',
+    'page callback' => 'tk__api_dump_json',
     'access callback' => TRUE,
+  );
+  $items['api/v1/service'] = array(
+    'page callback' => 'tk__api_services',
+    'access callback' => TRUE,
+  );
+  $items['api/v1/service/%'] = array(
+    'page callback' => 'tk__api_service',
+    'access callback' => TRUE,
+    'page arguments' => array(3),
   );
   return $items;
 }
@@ -111,6 +120,61 @@ function tk__api_page() {
   </dl>
 </article>
 EOT;
+}
+
+
+
+function tk__service_nids() {
+  $query = new EntityFieldQuery;
+  $result = $query
+    ->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', 'service')
+    //->propertyCondition('status', '1')
+    ->execute();
+  return empty($result['node']) ? array() : array_keys($result['node']);
+}
+
+/**
+ * Page callback
+ */
+function tk__api_services() {
+  $services = array();
+  foreach (tk__service_nids() as $nid) {
+    $services[] = array(
+      'id' => $nid,
+      'page' => url('node/' . $nid, array('absolute' => TRUE)),
+      'info' => url('api/v1/service/' . $nid, array('absolute' => TRUE)),
+    );
+  }
+
+  drupal_add_http_header('Access-Control-Allow-Origin', '*');
+
+  return drupal_json_output(array(
+    'version' => '0.9',
+    'services' => $services,
+  ));
+}
+
+function tk__service_node_as_obj($node) {
+  $obj = array(
+    'id' => $node->nid,
+    'title' => $node->title,
+  );
+  return $obj;
+}
+
+
+/**
+ * Page callback
+ */
+function tk__api_service($nid) {
+  $node = node_load($nid);
+  $obj = tk__service_node_as_obj($node);
+
+  drupal_add_http_header('Access-Control-Allow-Origin', '*');
+
+  $obj['version'] = '0.9';
+  return drupal_json_output($obj);
 }
 
 /**
