@@ -111,6 +111,10 @@ function tk__api_page() {
   <dl>
     <dt> <a href="/api/v1/tk.json">$base_url/api/v1/tk.json</a>
     <dd>This returns a complete dump all the services and related information such as users and categories.
+    <dt> <a href="/api/v1/service">$base_url/api/v1/service</a>
+    <dd>Returns a list of all the services
+    <dt> $base_url/api/v1/service/&lt;nid>
+    <dd>Returns all info about the given service.
   </dl>
 
   <p>Deprecated endpoints:</p>
@@ -155,12 +159,98 @@ function tk__api_services() {
   ));
 }
 
-function tk__service_node_as_obj($node) {
-  $obj = array(
-    'id' => $node->nid,
+function tk__service_node_as_obj($node, &$users) {
+  $service = array(
     'title' => $node->title,
+    'id' => $node->nid,
+    'link' => array(
+      'tk' => url('node/' . $node->nid, array('absolute' => TRUE)),
+    ),
+    'meta' => array(
+      'created' => format_date($node->created, 'custom', 'Y-m-d H:i:s'),
+      'changed' => format_date($node->changed, 'custom', 'Y-m-d H:i:s'),
+    ),
   );
-  return $obj;
+
+  //classification
+  if ($node->field_service_classification) {
+    foreach ($node->field_service_classification['und'] as $v) {
+      $tid = $v['target_id'];
+      $term = taxonomy_term_load($tid);
+      $service['class'][] = $tid . " " . $term->name;
+    }
+  }
+
+  // other links
+  if ($node->field_home_link['und'][0]) {
+    $service['link']['home'] = tk__url($node->field_home_link['und'][0]['url']);
+    if ($node->field_home_link['und'][0]['title']) {
+      $service['link']['_title_home'] = $node->field_home_link['und'][0]['title'];
+    }
+  }
+  if ($node->field_documentation_link['und'][0]) {
+    $service['link']['doc'] = tk__url($node->field_documentation_link['und'][0]['url']);
+    if ($node->field_documentation_link['und'][0]['title']) {
+      $service['link']['_title_doc'] = $node->field_documentation_link['und'][0]['title'];
+    }
+  }
+
+  // include the user roles
+  $author = user_load($node->uid);
+  $service['role']['author'] = $author->name;
+  $users[$author->name] = $account->field_full_name['und'][0]['value'];
+  foreach (array('ower_contact', 'operator') as $role) {
+    $field = "field_$role";
+    $field = $node->$field;
+    $role_users = array();
+    foreach ($field['und'] as $u) {
+      $account = user_load($u['target_id']);
+      if ($account) {
+        $role_users[$account->name] = TRUE;
+        $users[$account->name] = $account->field_full_name['und'][0]['value'];
+      }
+      else {
+        $role_users["unknown_" . $u['target_id']] = TRUE;
+      }
+    }
+    if ($role_users) {
+      $fixed_role = $role == 'ower_contact' ? 'owner' : $role;
+      ksort($role_users);
+      $service['role'][$fixed_role] = implode(' ', array_keys($role_users));
+    }
+  }
+
+  // text fields
+  foreach (array(
+    'fieltk__service_nids()d_summary',
+    'field_description',
+    'field_demand',
+    //'field_quality',
+    'field_field_howto_orde',
+    'field_supporting_systems',
+    'field_internal_notes',
+  )
+  as $field) {
+    $fv = $node->$field;
+    if (isset($fv['und'][0])) {
+      $text = $fv['und'][0]['value'];
+      $text = str_replace("\r\n", "\n", $text);
+      $service['text'][substr($field, 6)] = $text;
+    }
+  }
+
+  $flag = array();
+  if ($node->promote) {
+    $flag[] = 'promote';
+  }
+  if ($node->status == 0) {
+    $flag[] = 'unpublished';
+  }
+  if (!empty($flag)) {
+    $service['flag'] = implode(' ', $flag);
+  }
+
+  return $service;
 }
 
 
@@ -169,135 +259,43 @@ function tk__service_node_as_obj($node) {
  */
 function tk__api_service($nid) {
   $node = node_load($nid);
-  $obj = tk__service_node_as_obj($node);
+  $users = array();
+  $obj = tk__service_node_as_obj($node, $users);
 
   drupal_add_http_header('Access-Control-Allow-Origin', '*');
 
-  $obj['version'] = '0.9';
+  ksort($users);
+  $obj['user'] = $users;
+  $obj['_version'] = '0.9';
   return drupal_json_output($obj);
 }
 
 /**
  * Page callback
  */
-function tk__dump_json() {
+function tk__api_dump_json() {
   $services = array();
   $users = array();
 
-  $query = new EntityFieldQuery;
-  $result = $query
-    ->entityCondition('entity_type', 'node')
-    ->propertyCondition('type', 'service')
-    //->propertyCondition('status', '1')
-    ->execute();
-  if (!empty($result['node'])) {
-    $nodes = node_load_multiple(array_keys($result['node']));
+  $nids = tk__service_nids();
+
+  if ($nids) {
+    $nodes = node_load_multiple($nids);
     foreach ($nodes as $node) {
-      $service = array(
-        'title' => $node->title,
-        //'nid' => $node->nid,
-        'link' => array(
-          'tk' => url('node/' . $node->nid, array('absolute' => TRUE)),
-        ),
-        'meta' => array(
-          'created' => format_date($node->created, 'custom', 'Y-m-d H:i:s'),
-          'changed' => format_date($node->changed, 'custom', 'Y-m-d H:i:s'),
-        ),
-      );
-
-      //classification
-      if ($node->field_service_classification) {
-        foreach ($node->field_service_classification['und'] as $v) {
-          $tid = $v['target_id'];
-          $term = taxonomy_term_load($tid);
-          $service['class'][] = $tid . " " . $term->name;
-        }
-      }
-
-      // other links
-      if ($node->field_home_link['und'][0]) {
-        $service['link']['home'] = tk__url($node->field_home_link['und'][0]['url']);
-        if ($node->field_home_link['und'][0]['title']) {
-          $service['link']['_title_home'] = $node->field_home_link['und'][0]['title'];
-        }
-      }
-      if ($node->field_documentation_link['und'][0]) {
-        $service['link']['doc'] = tk__url($node->field_documentation_link['und'][0]['url']);
-        if ($node->field_documentation_link['und'][0]['title']) {
-          $service['link']['_title_doc'] = $node->field_documentation_link['und'][0]['title'];
-        }
-      }
-
-      // include the user roles
-      $author = user_load($node->uid);
-      $service['role']['author'] = $author->name;
-      $users[$author->name] = $account->field_full_name['und'][0]['value'];
-      foreach (array('ower_contact', 'operator') as $role) {
-        $field = "field_$role";
-        $field = $node->$field;
-        $role_users = array();
-        foreach ($field['und'] as $u) {
-          $account = user_load($u['target_id']);
-          if ($account) {
-            $role_users[$account->name] = TRUE;
-            $users[$account->name] = $account->field_full_name['und'][0]['value'];
-          }
-          else {
-            $role_users["unknown_" . $u['target_id']] = TRUE;
-          }
-        }
-        if ($role_users) {
-          $fixed_role = $role == 'ower_contact' ? 'owner' : $role;
-          ksort($role_users);
-          $service['role'][$fixed_role] = implode(' ', array_keys($role_users));
-        }
-      }
-
-      // text fields
-      foreach (array(
-        'field_summary',
-        'field_description',
-        'field_demand',
-        //'field_quality',
-        'field_field_howto_orde',
-        'field_supporting_systems',
-        'field_internal_notes',
-      )
-      as $field) {
-        $fv = $node->$field;
-        if (isset($fv['und'][0])) {
-          $text = $fv['und'][0]['value'];
-          $text = str_replace("\r\n", "\n", $text);
-          $service['text'][substr($field, 6)] = $text;
-        }
-      }
-
-      $flag = array();
-      if ($node->promote) {
-        $flag[] = 'promote';
-      }
-      if ($node->status == 0) {
-        $flag[] = 'unpublished';
-      }
-      if (!empty($flag)) {
-        $service['flag'] = implode(' ', $flag);
-      }
-
-      //unset($service['text']);  // more compact output
-      unset($users['admin']);
-
+      $service = tk__service_node_as_obj($node, $users);
       $services[(string)$node->nid] = $service;
     }
   }
 
+  unset($users['admin']);
   ksort($users);
 
   drupal_add_http_header('Access-Control-Allow-Origin', '*');
 
   return drupal_json_output(array(
-    'version' => '0.9',
     'service' => $services,
     'user' => $users,
+    '_version' => '0.9',
   ));
 }
 
