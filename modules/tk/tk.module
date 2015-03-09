@@ -10,8 +10,12 @@ include_once 'tk.features.inc';
  * Implements hook_menu().
  */
 function tk_menu() {
-  $items['data/services/v1'] = array(
-    'page callback' => 'tk__services_list',
+  $items['api'] = array(
+    'page callback' => 'tk__api_page',
+    'access callback' => TRUE,
+  );
+  $items['api/v1/tk.json'] = array(
+    'page callback' => 'tk__dump_json',
     'access callback' => TRUE,
   );
   return $items;
@@ -75,9 +79,44 @@ function tk_block_view($delta = '') {
 }
 
 /**
- * Page callback for data/services/v1
+ * Page callback
  */
-function tk__services_list() {
+function tk__api_page() {
+  global $base_url;
+  return <<<EOT
+<style>
+  article {
+    margin: 2ex;
+  }
+  dl {
+    margin: 0;
+    padding-left: 2ex;
+  }
+</style>
+<article>
+  <h2>Tk API</h2>
+  <p>Tk is our database of all IT services provided at the University of Bergen.  The data is exposed in
+  machine readable formats for all to read.  APIs for updating our data is not yet available.
+
+  <p>The official endpoints are:</p>
+  <dl>
+    <dt> <a href="/api/v1/tk.json">$base_url/api/v1/tk.json</a>
+    <dd>This returns a complete dump all the services and related information such as users and categories.
+  </dl>
+
+  <p>Deprecated endpoints:</p>
+  <dl>
+    <dt> <a href="/data/tk.csv">$base_url/data/tk.csv</a>
+    <dt> <a href="/data/tk.xls">$base_url/data/tk.xls</a>
+  </dl>
+</article>
+EOT;
+}
+
+/**
+ * Page callback
+ */
+function tk__dump_json() {
   $services = array();
   $users = array();
 
@@ -192,6 +231,7 @@ function tk__services_list() {
   drupal_add_http_header('Access-Control-Allow-Origin', '*');
 
   return drupal_json_output(array(
+    'version' => '0.9',
     'service' => $services,
     'user' => $users,
   ));
