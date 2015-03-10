@@ -14,12 +14,12 @@ function tk_menu() {
     'page callback' => 'tk__api_page',
     'access callback' => TRUE,
   );
-  $items['api/v1/tk.json'] = array(
-    'page callback' => 'tk__api_dump_json',
-    'access callback' => TRUE,
-  );
   $items['api/v1/service'] = array(
     'page callback' => 'tk__api_services',
+    'access callback' => TRUE,
+  );
+  $items['api/v1/service/all'] = array(
+    'page callback' => 'tk__api_services_all',
     'access callback' => TRUE,
   );
   $items['api/v1/service/%'] = array(
@@ -109,12 +109,12 @@ function tk__api_page() {
 
   <p>The official endpoints are:</p>
   <dl>
-    <dt> <a href="/api/v1/tk.json">$base_url/api/v1/tk.json</a>
-    <dd>This returns a complete dump all the services and related information such as users and categories.
     <dt> <a href="/api/v1/service">$base_url/api/v1/service</a>
     <dd>Returns a list of all the services
-    <dt> $base_url/api/v1/service/&lt;nid>
+    <dt> <a href="/api/v1/service/10">$base_url/api/v1/service/&lt;nid></a>
     <dd>Returns all info about the given service.
+    <dt> <a href="/api/v1/service/all">$base_url/api/v1/service/all</a>
+    <dd>This returns a complete dump all the services and related information such as users and categories.
   </dl>
 
   <p>Deprecated endpoints:</p>
@@ -273,7 +273,7 @@ function tk__api_service($nid) {
 /**
  * Page callback
  */
-function tk__api_dump_json() {
+function tk__api_services_all() {
   $services = array();
   $users = array();
 
