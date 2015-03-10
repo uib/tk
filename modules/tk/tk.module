@@ -146,8 +146,8 @@ function tk__api_services() {
   foreach (tk__service_nids() as $nid) {
     $services[] = array(
       'id' => $nid,
-      'page' => url('node/' . $nid, array('absolute' => TRUE)),
-      'info' => url('api/v1/service/' . $nid, array('absolute' => TRUE)),
+      'href_tk' => url('node/' . $nid, array('absolute' => TRUE)),
+      'href_api' => url('api/v1/service/' . $nid, array('absolute' => TRUE)),
     );
   }
 
@@ -164,7 +164,7 @@ function tk__service_node_as_obj($node, &$users) {
     'title' => $node->title,
     'id' => $node->nid,
     'link' => array(
-      'tk' => url('node/' . $node->nid, array('absolute' => TRUE)),
+      'href_tk' => url('node/' . $node->nid, array('absolute' => TRUE)),
     ),
     'meta' => array(
       'created' => format_date($node->created, 'custom', 'Y-m-d H:i:s'),
@@ -273,8 +273,8 @@ function tk__service_node_as_obj($node, &$users) {
       $tnode = node_load($tnid);
       $service['related'][substr($field, 6)] = array(
         'id' => $tnode->nid,
-        'href' => url('node/' . $tnode->nid, array('absolute' => TRUE)),
         'title' => $tnode->title,
+        'href_tk' => url('node/' . $tnode->nid, array('absolute' => TRUE)),
       );
     }
   }
