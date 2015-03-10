@@ -142,10 +142,17 @@ function tk__service_nids() {
  * Page callback
  */
 function tk__api_services() {
+  $title = array();
+  $result = db_query('SELECT nid, title FROM {node}');
+  foreach ($result as $row) {
+    $title[$row->nid] = $row->title;
+  }
+
   $services = array();
   foreach (tk__service_nids() as $nid) {
     $services[] = array(
       'id' => $nid,
+      'title' => $title[$nid],
       'href_tk' => url('node/' . $nid, array('absolute' => TRUE)),
       'href_api' => url('api/v1/service/' . $nid, array('absolute' => TRUE)),
     );
