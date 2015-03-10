@@ -1354,7 +1354,7 @@ Leveringstid:',
       ),
     ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Ikonnavnene man kan velge mellom er dokumentert <a href="http://fontawesome.io/icons/">Font Awesome siden</a>.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1376,7 +1376,7 @@ Leveringstid:',
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'size' => 60,
+        'size' => 20,
       ),
       'type' => 'text_textfield',
       'weight' => 2,
@@ -1392,7 +1392,7 @@ Leveringstid:',
       ),
     ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Ikonnavnene man kan velge mellom er dokumentert <a href="http://fontawesome.io/icons/">Font Awesome siden</a>.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1414,7 +1414,7 @@ Leveringstid:',
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'size' => 60,
+        'size' => 20,
       ),
       'type' => 'text_textfield',
       'weight' => 1,
@@ -1515,6 +1515,7 @@ Leveringstid:',
   t('Hvordan bestille');
   t('Icon name');
   t('Identifikator');
+  t('Ikonnavnene man kan velge mellom er dokumentert <a href="http://fontawesome.io/icons/">Font Awesome siden</a>.');
   t('Interne merknader');
   t('Klassifiserer om tjenesten er en tjeneste vi tilbyr til brukere eller om det er en «underliggende»/teknisk tjeneste.');
   t('Klassifisering');
