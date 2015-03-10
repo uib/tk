@@ -222,7 +222,7 @@ function tk__service_node_as_obj($node, &$users) {
 
   // text fields
   foreach (array(
-    'fieltk__service_nids()d_summary',
+    'field_summary',
     'field_description',
     'field_demand',
     //'field_quality',
@@ -236,6 +236,28 @@ function tk__service_node_as_obj($node, &$users) {
       $text = $fv['und'][0]['value'];
       $text = str_replace("\r\n", "\n", $text);
       $service['text'][substr($field, 6)] = $text;
+    }
+  }
+
+  // code fields
+  foreach (array(
+    'field_availability',
+    'field_edit_state',
+    'field_service_type',
+    'field_cost',
+    'field_service_levels',
+    'field_user_group',
+    'field_service_rotation',
+    'field_service_state',
+    'field_service_status',
+    'field_service_supplier',
+    'field_cmdb_id',
+    'field_criticality',
+  )
+  as $field) {
+    $fv = $node->$field;
+    if (isset($fv['und'][0])) {
+      $service['info'][substr($field, 6)] = $fv['und'][0]['value'];
     }
   }
 
