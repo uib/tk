@@ -261,6 +261,24 @@ function tk__service_node_as_obj($node, &$users) {
     }
   }
 
+  // node reference fields
+  foreach (array(
+    'field_service_owner',
+    'field_support_contact',
+  )
+  as $field) {
+    $fv = $node->$field;
+    if (isset($fv['und'][0])) {
+      $tnid = $fv['und'][0]['target_id'];
+      $tnode = node_load($tnid);
+      $service['related'][substr($field, 6)] = array(
+        'id' => $tnode->nid,
+        'href' => url('node/' . $tnode->nid, array('absolute' => TRUE)),
+        'title' => $tnode->title,
+      );
+    }
+  }
+
   $flag = array();
   if ($node->promote) {
     $flag[] = 'promote';
