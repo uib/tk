@@ -177,7 +177,8 @@ function tk__service_node_as_obj($node, &$users) {
     foreach ($node->field_service_classification['und'] as $v) {
       $tid = $v['target_id'];
       $term = taxonomy_term_load($tid);
-      $service['class'][] = $tid . " " . $term->name;
+      $icon = isset($term->field_icon_name['und'][0]) ? $term->field_icon_name['und'][0]['value'] : 'none';
+      $service['class'][] = "$tid $icon $term->name";
     }
   }
 
