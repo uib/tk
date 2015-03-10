@@ -159,7 +159,7 @@ function tk__api_services() {
   ));
 }
 
-function tk__service_node_as_obj($node, &$users) {
+function tk__service_node_as_obj($node, &$users, &$classes) {
   $service = array(
     'title' => $node->title,
     'id' => $node->nid,
@@ -173,13 +173,28 @@ function tk__service_node_as_obj($node, &$users) {
   );
 
   //classification
+  $TYPE_WEIGHT = array(
+    'service_roles' => 10,
+    'service_business_levels' => 20,
+    'service_classes' => 0,
+  );
   if ($node->field_service_classification) {
+    $classification = array();
     foreach ($node->field_service_classification['und'] as $v) {
       $tid = $v['target_id'];
-      $term = taxonomy_term_load($tid);
-      $icon = isset($term->field_icon_name['und'][0]) ? $term->field_icon_name['und'][0]['value'] : 'none';
-      $service['class'][] = "$tid $icon $term->name";
+      $classification[] = $tid;
+      if (!isset($classes[$tid])) {
+        $term = taxonomy_term_load($tid);
+        $classes[$tid] = array(
+          'id' => $tid,
+          'title' => $term->name,
+          'icon' => isset($term->field_icon_name['und'][0]) ? $term->field_icon_name['und'][0]['value'] : NULL,
+          'type' => $term->vocabulary_machine_name,
+          'weight' => (int)$term->weight + $TYPE_WEIGHT[$term->vocabulary_machine_name],
+        );
+      }
     }
+    $service['classification'] = implode(' ', $classification);
   }
 
   // other links
@@ -198,7 +213,7 @@ function tk__service_node_as_obj($node, &$users) {
 
   // include the user roles
   $author = user_load($node->uid);
-  $service['role']['author'] = $author->name;
+  $service['meta']['author'] = $author->name;
   $users[$author->name] = $author->field_full_name['und'][0]['value'];
   foreach (array('ower_contact', 'operator') as $role) {
     $field = "field_$role";
@@ -301,12 +316,14 @@ function tk__service_node_as_obj($node, &$users) {
 function tk__api_service($nid) {
   $node = node_load($nid);
   $users = array();
-  $obj = tk__service_node_as_obj($node, $users);
+  $classes = array();
+  $obj = tk__service_node_as_obj($node, $users, $classes);
 
   drupal_add_http_header('Access-Control-Allow-Origin', '*');
 
   ksort($users);
   $obj['user'] = $users;
+  $obj['class'] = $classes;
   $obj['_version'] = '0.9';
   return drupal_json_output($obj);
 }
@@ -317,13 +334,14 @@ function tk__api_service($nid) {
 function tk__api_services_all() {
   $services = array();
   $users = array();
+  $classes = array();
 
   $nids = tk__service_nids();
 
   if ($nids) {
     $nodes = node_load_multiple($nids);
     foreach ($nodes as $node) {
-      $service = tk__service_node_as_obj($node, $users);
+      $service = tk__service_node_as_obj($node, $users, $classes);
       $services[(string)$node->nid] = $service;
     }
   }
@@ -336,6 +354,7 @@ function tk__api_services_all() {
   return drupal_json_output(array(
     'service' => $services,
     'user' => $users,
+    'class' => $classes,
     '_version' => '0.9',
   ));
 }
