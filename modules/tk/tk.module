@@ -134,6 +134,7 @@ function tk__service_nids() {
     ->entityCondition('entity_type', 'node')
     ->propertyCondition('type', 'service')
     //->propertyCondition('status', '1')
+    ->propertyOrderBy('title')
     ->execute();
   return empty($result['node']) ? array() : array_keys($result['node']);
 }
