@@ -325,7 +325,11 @@ function tk_field_default_field_instances() {
   // Exported field_instance: 'node-service-field_edit_state'
   $field_instances['node-service-field_edit_state'] = array(
     'bundle' => 'service',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 'draft',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
