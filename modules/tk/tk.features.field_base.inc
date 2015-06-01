@@ -233,7 +233,7 @@ function tk_field_default_field_bases() {
         'draft' => 'Kladd',
         'dirty' => 'Klar til språkvask',
         'proposed' => 'Klar for godkjenning seksjonsleder',
-        'accepted' => 'Klar til publisering',
+        'accepted' => 'Godkjent',
       ),
       'allowed_values_function' => '',
     ),
