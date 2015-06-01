@@ -1345,7 +1345,8 @@ Leveringstid:',
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-service_business_levels-field_icon_name'
+  // Exported field_instance:
+  // 'taxonomy_term-service_business_levels-field_icon_name'
   $field_instances['taxonomy_term-service_business_levels-field_icon_name'] = array(
     'bundle' => 'service_business_levels',
     'default_value' => array(
