@@ -8,13 +8,21 @@
 
 .form-item > label {
   margin-bottom: 0.2ex;
-  font-size:140%;
+  font-size:120%;
+  color: #833;
 }
 
 .form-item .form-item > label {
   font-size:100%;
+  color: inherit;
 }
 
 .filter-wrapper {
   display: none;
+}
+
+.form-item div.description, .text-format-wrapper .description {
+  color: #888;
+  font-style: italic;
+  margin-left: 4ex;
 }
