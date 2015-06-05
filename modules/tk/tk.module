@@ -295,11 +295,16 @@ function tk__service_node_as_obj($node, &$users, &$classes) {
     if (isset($fv['und'][0])) {
       $tnid = $fv['und'][0]['target_id'];
       $tnode = node_load($tnid);
-      $service['related'][substr($field, 6)] = array(
+      $val = array(
         'id' => $tnode->nid,
         'title' => $tnode->title,
         'href_tk' => url('node/' . $tnode->nid, array('absolute' => TRUE)),
       );
+      $code = $tnode->field_kode['und'][0]['value'];
+      if ($code) {
+        $val['code'] = $code;
+      }
+      $service['related'][substr($field, 6)] = $val;
     }
   }
 
