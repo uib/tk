@@ -1,0 +1,20 @@
+.form-item {
+  margin: 0;
+}
+
+.form-item .form-item {
+  padding: 0;
+}
+
+.form-item > label {
+  margin-bottom: 0.2ex;
+  font-size:140%;
+}
+
+.form-item .form-item > label {
+  font-size:100%;
+}
+
+.filter-wrapper {
+  display: none;
+}
