@@ -167,7 +167,7 @@ function tk__api_services() {
   ));
 }
 
-function tk__service_node_as_obj($node, &$users, &$classes) {
+function tk__service_node_as_obj($node, &$users, &$classes, &$support) {
   $service = array(
     'title' => $node->title,
     'id' => $node->nid,
@@ -298,13 +298,36 @@ function tk__service_node_as_obj($node, &$users, &$classes) {
       $val = array(
         'id' => $tnode->nid,
         'title' => $tnode->title,
-        'href_tk' => url('node/' . $tnode->nid, array('absolute' => TRUE)),
       );
       $code = $tnode->field_kode['und'][0]['value'];
       if ($code) {
         $val['code'] = $code;
       }
       $service['related'][substr($field, 6)] = $val;
+      if ($field == 'field_support_contact' && !$support[$tnid]) {
+        $val['link'] = array('href_tk' => url('node/' . $tnode->nid, array('absolute' => TRUE)));
+        foreach (array('field_opening:hours', 'field_phone', 'field_www', 'field_adress:visiting_address') as $tfield) {
+          list($tfield, $api_field) = explode(':', $tfield);
+          if (!$api_field) {
+            $api_field = substr($tfield, 6);
+          }
+          $tfv = $tnode->$tfield;
+          #$val[$tfield] = $tfv;
+          if (isset($tfv['und'][0])) {
+            if ($tfield == 'field_www') {
+              $val['link']['tracker'] = $tfv['und'][0]['url'];
+              $val['link']['tracker_title'] = $tfv['und'][0]['title'];
+            }
+            else {
+              # text field
+              $text = $tfv['und'][0]['value'];
+              $text = str_replace("\r\n", "\n", $text);
+              $val[$api_field] = $text;
+            }
+          }
+        }
+        $support[$tnid] = $val;
+      }
     }
   }
 
@@ -330,12 +353,14 @@ function tk__api_service($nid) {
   $node = node_load($nid);
   $users = array();
   $classes = array();
-  $obj = tk__service_node_as_obj($node, $users, $classes);
+  $support = array();
+  $obj = tk__service_node_as_obj($node, $users, $classes, $support);
 
   drupal_add_http_header('Access-Control-Allow-Origin', '*');
 
   ksort($users);
   $obj['user'] = $users;
+  $obj['support'] = $support;
   $obj['class'] = $classes;
   $obj['_version'] = '0.9';
   return drupal_json_output($obj);
@@ -348,13 +373,14 @@ function tk__api_services_all() {
   $services = array();
   $users = array();
   $classes = array();
+  $support = array();
 
   $nids = tk__service_nids();
 
   if ($nids) {
     $nodes = node_load_multiple($nids);
     foreach ($nodes as $node) {
-      $service = tk__service_node_as_obj($node, $users, $classes);
+      $service = tk__service_node_as_obj($node, $users, $classes, $support);
       $services[(string)$node->nid] = $service;
     }
   }
@@ -366,6 +392,7 @@ function tk__api_services_all() {
 
   return drupal_json_output(array(
     'service' => $services,
+    'support' => $support,
     'user' => $users,
     'class' => $classes,
     '_version' => '0.9',
