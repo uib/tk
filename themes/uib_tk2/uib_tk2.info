@@ -1,0 +1,4 @@
+name = UiB's Tk theme (take 2)
+description = Gisle tries to create a new theme from scratch
+core = 7.x
+stylesheets[all][] = style.css
