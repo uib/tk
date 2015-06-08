@@ -170,3 +170,28 @@ a {
 a:visited {
     color: #026f9c;
 }
+
+#block-tk-traffic-light {
+    background: yellow;
+    margin: 2ex;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    box-shadow: 3px 3px 5px #eee;
+    font-size: 16px;
+}
+
+#block-tk-traffic-light > h2 {
+    background: #aaa;
+    color: white;
+    padding: 0.1ex 0.5ex;
+    font-size: inherit;
+}
+
+#block-tk-traffic-light > .content {
+    padding: 0.1ex 0.5ex;
+    background: #f8f8f8;
+}
+
+#block-tk-traffic-light > .content h3 {
+    font-size: inherit;
+}
