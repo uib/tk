@@ -136,6 +136,34 @@ nav h2 {
     display: flex;
 }
 
+.group-main {
+    -webkit-flex-basis: 60%;
+    flex-basis: 60%;
+    -webkit-flex-grow: 1;
+    flex-grow: 3;
+}
+
+.group-sidebar {
+    -webkit-flex-basis: 40%;
+    flex-basis: 40%;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+}
+
+.field-group-format-wrapper > .field.field-label-hidden {
+    padding: 0;
+    border: none;
+    margin-bottom: 2ex;
+}
+
+.field-name-field-summary {
+    font-style: italic;
+}
+
+.field-group-format-wrapper > .field.field-label-hidden.field-name-field-description {
+    margin-bottom: 6ex;
+}
+
 .field-group-format-wrapper > .field {
     border: 1px solid #aaa;
     margin: 1ex;
