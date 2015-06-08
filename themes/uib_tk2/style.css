@@ -13,7 +13,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 header {
-    height: 13ex;
+    height: 11ex;
     position: relative;
 }
 
@@ -29,13 +29,13 @@ header a {
 }
 
 #logo > img {
-    width: 10ex;
-    height: 10ex;
+    width: 8ex;
+    height: 8ex;
 }
 
 #name-and-slogan {
     padding-top: 3ex;
-    padding-left: 15ex;
+    padding-left: 14ex;
 }
 
 #name-and-slogan span {
