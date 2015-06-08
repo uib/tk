@@ -38,6 +38,7 @@ header a {
 #name-and-slogan span {
     font-size: 24pt;
     font-weight: normal;
+    color: black;
 }
 
 #secondary-menu {
@@ -139,4 +140,11 @@ nav h2 {
 
 .field .field-label {
     font-weight: normal;
+}
+
+a {
+    color: #026f9c;
+}
+a:visited {
+    color: #026f9c;
 }
