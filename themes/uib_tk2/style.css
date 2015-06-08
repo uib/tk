@@ -40,13 +40,20 @@ header a {
     font-weight: normal;
 }
 
+#secondary-menu {
+    /* The same entries are provided in the toolbar */
+    display: none;
+}
+
 footer {
-    border-top: 1px solid #555;
+    margin-top: 3ex;
+    border-top: 1px solid #DDD;
 }
 
 nav {
     padding: 0.5ex 2ex;
     background: #DDD;
+    margin-bottom: 2ex;
 }
 
 nav h2 {
@@ -69,16 +76,16 @@ nav h2 {
     -webkit-order: -1;
     order: -1;
     x-background: #8d8;
+    x-border-right: 1px solid #555;
     min-width: 20ex;
     margin-right: 2ex;
-    border-right: 1px solid #555;
 }
 
 #sidebar-second {
     x-background: #dd8;
+    x-border-left: 1px solid #555;
     min-width: 20ex;
     margin-left: 2ex;
-    border-left: 1px solid #555;
 }
 
 #block-system-navigation {
@@ -106,6 +113,7 @@ nav h2 {
     border: 1px solid #ddd;
     border-radius: 2px;
     box-shadow: 3px 3px 5px #eee;
+    background: #f8f8f8;
 }
 
 .node-service > .content {
@@ -122,11 +130,11 @@ nav h2 {
 }
 
 .field-group-format-wrapper > .field > .field-label {
-    font-size: 80%;
+    font-size: 8pt;
     position: absolute;
     top: 0.2ex;
     left: 0.2ex;
-    color: #aaa;
+    color: #B55;
 }
 
 .field .field-label {
