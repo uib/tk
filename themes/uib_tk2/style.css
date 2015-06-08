@@ -3,6 +3,7 @@
 body {
     font-family: "Noto Sans", Helvetica, sans-serif;-
     font-size: 16px;
+    line-height: 150%;
     margin: 0;
     background: white;
 }
@@ -120,6 +121,16 @@ nav h2 {
     background: #f8f8f8;
 }
 
+.view-service-classes > .view-content > .item-list > h3 {
+    margin-bottom: 1ex;
+}
+
+.view-service-classes > .view-content > .item-list li {
+    margin-bottom: 1ex;
+    list-style-type: square;
+    color: #aaa;
+}
+
 .node-service > .content {
     display: -webkit-flex;
     display: flex;
@@ -136,8 +147,8 @@ nav h2 {
 .field-group-format-wrapper > .field > .field-label {
     font-size: 8pt;
     position: absolute;
-    top: 0.2ex;
-    left: 0.2ex;
+    top: -0.5ex;
+    left: 0.7ex;
     color: #B55;
 }
 
