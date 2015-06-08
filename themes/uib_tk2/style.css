@@ -1,0 +1,128 @@
+body {
+   font-family: sans-serif;
+   margin: 0;
+   background: white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    margin: 0;
+}
+
+header {
+    height: 13ex;
+}
+
+header a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#logo {
+    position: absolute;
+    top: 1.5ex;
+    left: 2ex;
+}
+
+#logo > img {
+    width: 10ex;
+    height: 10ex;
+}
+
+#name-and-slogan {
+    padding-top: 3ex;
+    padding-left: 15ex;
+}
+
+footer {
+    border-top: 1px solid #555;
+}
+
+nav {
+    padding: 0.5ex 2ex;
+    background: #DDD;
+}
+
+nav h2 {
+    display: none;
+}
+
+.breadcrumb {
+    display: none;
+}
+
+#main {
+    display: -webkit-flex;
+    display: flex;
+}
+
+#content {
+}
+
+#sidebar-first {
+    -webkit-order: -1;
+    order: -1;
+    x-background: #8d8;
+    min-width: 20ex;
+    margin-right: 2ex;
+    border-right: 1px solid #555;
+}
+
+#sidebar-second {
+    x-background: #dd8;
+    min-width: 20ex;
+    margin-left: 2ex;
+    border-left: 1px solid #555;
+}
+
+#block-system-navigation {
+    max-width: 20ex;
+
+}
+
+#block-system-navigation h2 {
+    display: none;
+}
+
+.view-service-classes > .view-content {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.view-service-classes > .view-content > .item-list {
+    width: 30ex;
+    margin: 1ex;
+    padding: 1ex;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    box-shadow: 3px 3px 5px #eee;
+}
+
+.node-service > .content {
+    display: -webkit-flex;
+    display: flex;
+}
+
+.field-group-format-wrapper > .field {
+    border: 1px solid #aaa;
+    margin: 1ex;
+    padding: 1ex;
+    padding-top: 2ex;
+    position: relative;
+}
+
+.field-group-format-wrapper > .field > .field-label {
+    font-size: 80%;
+    position: absolute;
+    top: 0.2ex;
+    left: 0.2ex;
+    color: #aaa;
+}
+
+.field .field-label {
+    font-weight: normal;
+}
