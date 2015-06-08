@@ -11,6 +11,7 @@ h1, h2, h3, h4, h5, h6 {
 
 header {
     height: 13ex;
+    position: relative;
 }
 
 header a {
@@ -32,6 +33,11 @@ header a {
 #name-and-slogan {
     padding-top: 3ex;
     padding-left: 15ex;
+}
+
+#name-and-slogan span {
+    font-size: 24pt;
+    font-weight: normal;
 }
 
 footer {
