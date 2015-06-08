@@ -145,6 +145,14 @@ nav h2 {
     font-weight: normal;
 }
 
+.field-item > p:first-child {
+    margin-top: 0;
+}
+
+.field-item > p:last-child {
+    margin-bottom: 0;
+}
+
 a {
     color: #026f9c;
 }
