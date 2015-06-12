@@ -721,11 +721,9 @@ Leveringstid:',
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
-          'links' => 1,
-          'use_content_language' => TRUE,
-          'view_mode' => 'teaser',
+          'link' => FALSE,
         ),
-        'type' => 'entityreference_entity_view',
+        'type' => 'entityreference_label',
         'weight' => 30,
       ),
       'teaser' => array(
