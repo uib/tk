@@ -199,7 +199,7 @@ nav a:visited {
     flex-grow: 1;
 }
 
-.field-group-format-wrapper > .field.field-label-hidden {
+.field-group-div > .field.field-label-hidden {
     padding: 0;
     border: none;
     margin-bottom: 2ex;
@@ -209,11 +209,11 @@ nav a:visited {
     font-style: italic;
 }
 
-.field-group-format-wrapper > .field.field-label-hidden.field-name-field-description {
+.field-group-div > .field.field-label-hidden.field-name-field-description {
     margin-bottom: 6ex;
 }
 
-.field-group-format-wrapper > .field {
+.field-group-div > .field {
     border: 1px solid #aaa;
     margin: 1ex;
     padding: 1ex;
@@ -221,12 +221,23 @@ nav a:visited {
     position: relative;
 }
 
-.field-group-format-wrapper > .field > .field-label {
+.field-group-div > .field > .field-label {
     font-size: 8pt;
     position: absolute;
     top: -0.5ex;
     left: 0.7ex;
     color: #B55;
+}
+
+.group-secondary {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.group-secondary > .field {
+    width: 42%;
 }
 
 .field .field-label {
