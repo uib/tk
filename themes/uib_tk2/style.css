@@ -271,6 +271,10 @@ nav a:visited {
     margin-bottom: 0;
 }
 
+.field-item h2 {
+    font-size: 100%;
+}
+
 a {
     color: #026f9c;
 }
