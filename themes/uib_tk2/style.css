@@ -1,4 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic);
+@import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css);
 
 body {
     font-family: "Noto Sans", Helvetica, sans-serif;-
@@ -158,9 +159,20 @@ nav a:visited {
 
 .view-service-classes > .view-content > .item-list > h3 {
     padding: 0.1ex 0.5ex;
+    padding-left: 4ex;
     margin-bottom: 1ex;
     background: #777;
-    color: white;
+    color: #eee;
+    position: relative;
+    min-height: 5ex;
+}
+
+.view-service-classes > .view-content > .item-list > h3 i.fa {
+    position: absolute;
+    left: 0.3ex;
+    top: 0.3ex;
+    font-size: 160%;
+    color: #aaa;
 }
 
 .view-service-classes > .view-content > .item-list > h3 a, .view-service-classes > .view-content > .item-list > h3 a:visited {

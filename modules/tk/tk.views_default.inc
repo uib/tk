@@ -366,12 +366,21 @@ function tk_views_default_views() {
   $handler->display->display_options['relationships']['reverse_field_service_classification_node']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['relationships']['reverse_field_service_classification_node']['field'] = 'reverse_field_service_classification_node';
   $handler->display->display_options['relationships']['reverse_field_service_classification_node']['label'] = 'Services';
+  /* Field: Taxonomy term: Icon name */
+  $handler->display->display_options['fields']['field_icon_name']['id'] = 'field_icon_name';
+  $handler->display->display_options['fields']['field_icon_name']['table'] = 'field_data_field_icon_name';
+  $handler->display->display_options['fields']['field_icon_name']['field'] = 'field_icon_name';
+  $handler->display->display_options['fields']['field_icon_name']['label'] = '';
+  $handler->display->display_options['fields']['field_icon_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_icon_name']['element_label_colon'] = FALSE;
   /* Field: Taxonomy term: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['text'] = '<i class="fa fa-[field_icon_name]"></i> [name]';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
@@ -421,6 +430,7 @@ function tk_views_default_views() {
     t('Stigende'),
     t('Synkende'),
     t('Services'),
+    t('<i class="fa fa-[field_icon_name]"></i> [name]'),
     t('Page'),
     t('more'),
   );
@@ -669,6 +679,14 @@ function tk_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Taxonomy term: Icon name */
+  $handler->display->display_options['fields']['field_icon_name']['id'] = 'field_icon_name';
+  $handler->display->display_options['fields']['field_icon_name']['table'] = 'field_data_field_icon_name';
+  $handler->display->display_options['fields']['field_icon_name']['field'] = 'field_icon_name';
+  $handler->display->display_options['fields']['field_icon_name']['relationship'] = 'field_service_classification_target_id';
+  $handler->display->display_options['fields']['field_icon_name']['label'] = '';
+  $handler->display->display_options['fields']['field_icon_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_icon_name']['element_label_colon'] = FALSE;
   /* Field: Taxonomy term: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
@@ -676,6 +694,8 @@ function tk_views_default_views() {
   $handler->display->display_options['fields']['name']['relationship'] = 'field_service_classification_target_id';
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['text'] = '<i class="fa fa-[field_icon_name]"></i> [name]';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
   /* Sort criterion: Taxonomy term: Name */
   $handler->display->display_options['sorts']['name']['id'] = 'name';
@@ -727,6 +747,7 @@ function tk_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('Taxonomy term entity referenced from field_service_classification'),
+    t('<i class="fa fa-[field_icon_name]"></i> [name]'),
     t('Page'),
   );
   $export['services_by_category'] = $view;
