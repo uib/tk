@@ -214,6 +214,7 @@ nav a:visited {
 .field-group-div > .field.field-label-hidden {
     padding: 0;
     border: none;
+    margin: 0;
     margin-bottom: 2ex;
 }
 
@@ -227,10 +228,12 @@ nav a:visited {
 
 .field-group-div > .field {
     border: 1px solid #aaa;
-    margin: 1ex;
+    margin-top: -1px;
+    margin-left: -1px;
     padding: 1ex;
     padding-top: 2ex;
     position: relative;
+    overflow: hidden;
 }
 
 .field-group-div > .field > .field-label {
@@ -241,6 +244,10 @@ nav a:visited {
     color: #B55;
 }
 
+.group-sidebar {
+    margin: 0 3ex;
+}
+
 .group-secondary {
     display: -webkit-flex;
     display: flex;
@@ -249,7 +256,7 @@ nav a:visited {
 }
 
 .group-secondary > .field {
-    width: 42%;
+    width: 45%;
 }
 
 .field .field-label {
