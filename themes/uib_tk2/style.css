@@ -151,10 +151,9 @@ nav a:visited {
 .view-service-classes > .view-content > .item-list {
     width: 30ex;
     margin: 1ex;
-    border: 1px solid #777;
+    border: 2px solid #ccc;
     border-radius: 2px;
-    box-shadow: 3px 3px 5px #eee;
-    background: #f8f8f8;
+    box-shadow: 2px 2px 3px #eee;
 }
 
 .view-service-classes > .view-content > .item-list > h3 {
@@ -180,10 +179,8 @@ nav a:visited {
     text-decoration: none;
 }
 
-.view-service-classes > .view-content > .item-list li {
-    margin-bottom: 1ex;
-    list-style-type: square;
-    color: #aaa;
+.view-service-classes > .view-content > .item-list ul {
+    margin: 1.5ex 2ex 1.5ex 1.5ex;
 }
 
 .view-service-classes > .view-content > .item-list li {
