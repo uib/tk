@@ -361,6 +361,13 @@ function tk_views_default_views() {
   );
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Header: Global: Unfiltered text */
+  $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['content'] = 'Denne katalogen gir oversikt over hvilke IT-tjenester som tilbys ved Universitetet i Bergen.
+De viktigste tjenestene finner du på denne siden, men ved å utforske kategoriene
+finner du flere tjenester; alternativt gå direkte til den <a href="/services/all">alfabetiske opplistingen</a>.<br><br>';
   /* Relationship: Entity Reference: Referencing entity */
   $handler->display->display_options['relationships']['reverse_field_service_classification_node']['id'] = 'reverse_field_service_classification_node';
   $handler->display->display_options['relationships']['reverse_field_service_classification_node']['table'] = 'taxonomy_term_data';
@@ -396,6 +403,11 @@ function tk_views_default_views() {
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  $handler->display->display_options['sorts']['title']['relationship'] = 'reverse_field_service_classification_node';
   /* Filter criterion: Taxonomy vocabulary: Machine name */
   $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
   $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
@@ -429,6 +441,9 @@ function tk_views_default_views() {
     t('Sortér på'),
     t('Stigende'),
     t('Synkende'),
+    t('Denne katalogen gir oversikt over hvilke IT-tjenester som tilbys ved Universitetet i Bergen.
+De viktigste tjenestene finner du på denne siden, men ved å utforske kategoriene
+finner du flere tjenester; alternativt gå direkte til den <a href="/services/all">alfabetiske opplistingen</a>.<br><br>'),
     t('Services'),
     t('<i class="fa fa-[field_icon_name]"></i> [name]'),
     t('Page'),
