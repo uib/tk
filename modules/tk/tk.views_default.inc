@@ -36,18 +36,43 @@ function tk_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Synkende';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'title_1',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: First letter of service title */
+  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['fields']['title_1']['table'] = 'node';
+  $handler->display->display_options['fields']['title_1']['field'] = 'title';
+  $handler->display->display_options['fields']['title_1']['ui_name'] = 'First letter of service title';
+  $handler->display->display_options['fields']['title_1']['label'] = '';
+  $handler->display->display_options['fields']['title_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title_1']['alter']['max_length'] = '1';
+  $handler->display->display_options['fields']['title_1']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title_1']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title_1']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_1']['empty'] = '?';
+  $handler->display->display_options['fields']['title_1']['link_to_node'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'Tjenestenavn';
+  $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: Content: Beskrivelse */
   $handler->display->display_options['fields']['field_summary']['id'] = 'field_summary';
   $handler->display->display_options['fields']['field_summary']['table'] = 'field_data_field_summary';
   $handler->display->display_options['fields']['field_summary']['field'] = 'field_summary';
+  $handler->display->display_options['fields']['field_summary']['label'] = '';
+  $handler->display->display_options['fields']['field_summary']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -77,10 +102,27 @@ function tk_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'service' => 'service',
   );
-  /* Filter criterion: Content: Published or admin */
-  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
-  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
-  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  /* Filter criterion: Content: Tjenestetype (field_service_type) */
+  $handler->display->display_options['filters']['field_service_type_value']['id'] = 'field_service_type_value';
+  $handler->display->display_options['filters']['field_service_type_value']['table'] = 'field_data_field_service_type';
+  $handler->display->display_options['filters']['field_service_type_value']['field'] = 'field_service_type_value';
+  $handler->display->display_options['filters']['field_service_type_value']['value'] = array(
+    'cfs' => 'cfs',
+  );
+  /* Filter criterion: Content: Registreringsstatus (field_edit_state) */
+  $handler->display->display_options['filters']['field_edit_state_value']['id'] = 'field_edit_state_value';
+  $handler->display->display_options['filters']['field_edit_state_value']['table'] = 'field_data_field_edit_state';
+  $handler->display->display_options['filters']['field_edit_state_value']['field'] = 'field_edit_state_value';
+  $handler->display->display_options['filters']['field_edit_state_value']['value'] = array(
+    'accepted' => 'accepted',
+  );
+  /* Filter criterion: Content: Livssyklus (field_service_state) */
+  $handler->display->display_options['filters']['field_service_state_value']['id'] = 'field_service_state_value';
+  $handler->display->display_options['filters']['field_service_state_value']['table'] = 'field_data_field_service_state';
+  $handler->display->display_options['filters']['field_service_state_value']['field'] = 'field_service_state_value';
+  $handler->display->display_options['filters']['field_service_state_value']['value'] = array(
+    'prod' => 'prod',
+  );
   $handler->display->display_options['path'] = 'services/all';
   $handler->display->display_options['menu']['type'] = 'default tab';
   $handler->display->display_options['menu']['title'] = 'A-Å';
@@ -195,8 +237,7 @@ function tk_views_default_views() {
     t('Sortér på'),
     t('Stigende'),
     t('Synkende'),
-    t('Tjenestenavn'),
-    t('Beskrivelse'),
+    t('?'),
     t('All teasers'),
     t('Tjenesteoversikt'),
     t('more'),
@@ -359,6 +400,14 @@ function tk_views_default_views() {
   $handler->display->display_options['filters']['promote']['field'] = 'promote';
   $handler->display->display_options['filters']['promote']['relationship'] = 'reverse_field_service_classification_node';
   $handler->display->display_options['filters']['promote']['value'] = '1';
+  /* Filter criterion: Content: Registreringsstatus (field_edit_state) */
+  $handler->display->display_options['filters']['field_edit_state_value']['id'] = 'field_edit_state_value';
+  $handler->display->display_options['filters']['field_edit_state_value']['table'] = 'field_data_field_edit_state';
+  $handler->display->display_options['filters']['field_edit_state_value']['field'] = 'field_edit_state_value';
+  $handler->display->display_options['filters']['field_edit_state_value']['relationship'] = 'reverse_field_service_classification_node';
+  $handler->display->display_options['filters']['field_edit_state_value']['value'] = array(
+    'accepted' => 'accepted',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -760,28 +809,31 @@ function tk_views_default_views() {
   $handler->display->display_options['arguments']['term_node_tid_depth_modifier']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['term_node_tid_depth_modifier']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['term_node_tid_depth_modifier']['specify_validation'] = TRUE;
-  /* Filter criterion: Content: Published or admin */
-  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
-  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
-  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
-  $handler->display->display_options['filters']['status_extra']['group'] = 0;
-  $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Tjenestetype (field_service_type) */
+  $handler->display->display_options['filters']['field_service_type_value']['id'] = 'field_service_type_value';
+  $handler->display->display_options['filters']['field_service_type_value']['table'] = 'field_data_field_service_type';
+  $handler->display->display_options['filters']['field_service_type_value']['field'] = 'field_service_type_value';
+  $handler->display->display_options['filters']['field_service_type_value']['value'] = array(
+    'cfs' => 'cfs',
+  );
+  /* Filter criterion: Content: Livssyklus (field_service_state) */
+  $handler->display->display_options['filters']['field_service_state_value']['id'] = 'field_service_state_value';
+  $handler->display->display_options['filters']['field_service_state_value']['table'] = 'field_data_field_service_state';
+  $handler->display->display_options['filters']['field_service_state_value']['field'] = 'field_service_state_value';
+  $handler->display->display_options['filters']['field_service_state_value']['value'] = array(
+    'prod' => 'prod',
+  );
+  /* Filter criterion: Content: Registreringsstatus (field_edit_state) */
+  $handler->display->display_options['filters']['field_edit_state_value']['id'] = 'field_edit_state_value';
+  $handler->display->display_options['filters']['field_edit_state_value']['table'] = 'field_data_field_edit_state';
+  $handler->display->display_options['filters']['field_edit_state_value']['field'] = 'field_edit_state_value';
+  $handler->display->display_options['filters']['field_edit_state_value']['value'] = array(
+    'accepted' => 'accepted',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'taxonomy/term/%';
-
-  /* Display: Feed */
-  $handler = $view->new_display('feed', 'Feed', 'feed');
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = 15;
-  $handler->display->display_options['style_plugin'] = 'rss';
-  $handler->display->display_options['row_plugin'] = 'node_rss';
-  $handler->display->display_options['path'] = 'taxonomy/term/%/%/feed';
-  $handler->display->display_options['displays'] = array(
-    'page' => 'page',
-    'default' => 0,
-  );
   $translatables['taxonomy_term_service'] = array(
     t('Master'),
     t('more'),
@@ -795,14 +847,6 @@ function tk_views_default_views() {
     t('All'),
     t('%1'),
     t('Page'),
-    t('Feed'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
   );
   $export['taxonomy_term_service'] = $view;
 
