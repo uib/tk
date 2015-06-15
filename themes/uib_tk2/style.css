@@ -175,14 +175,6 @@ nav a:visited {
     color: #aaa;
 }
 
-.view-service-classes > .view-content > .item-list > h3 span {
-     background: red;
-     margin-top: auto;
-     margin-bottom: auto;
-     display: block;
-     height: 100%;
-}
-
 .view-service-classes > .view-content > .item-list > h3 a, .view-service-classes > .view-content > .item-list > h3 a:visited {
     color: inherit;
     text-decoration: none;
