@@ -124,9 +124,8 @@ function tk_views_default_views() {
     'prod' => 'prod',
   );
   $handler->display->display_options['path'] = 'services/all';
-  $handler->display->display_options['menu']['type'] = 'default tab';
   $handler->display->display_options['menu']['title'] = 'A-Å';
-  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['weight'] = '50';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
   $handler->display->display_options['tab_options']['type'] = 'normal';
@@ -196,38 +195,6 @@ function tk_views_default_views() {
   $handler->display->display_options['fields']['nid_2']['relationship'] = 'field_service_owner_target_id';
   $handler->display->display_options['fields']['nid_2']['label'] = 'Systemeier';
   $handler->display->display_options['path'] = 'data/tk.csv';
-
-  /* Display: Everything in one page */
-  $handler = $view->new_display('page', 'Everything in one page', 'page_1');
-  $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'node';
-  $handler->display->display_options['row_options']['view_mode'] = 'full';
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'service' => 'service',
-  );
-  /* Filter criterion: Content: Published or admin */
-  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
-  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
-  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
-  $handler->display->display_options['path'] = 'services/all-at-once';
-  $handler->display->display_options['menu']['type'] = 'tab';
-  $handler->display->display_options['menu']['title'] = 'Alle samlet';
-  $handler->display->display_options['menu']['weight'] = '0';
-  $handler->display->display_options['menu']['context'] = 0;
-  $handler->display->display_options['menu']['context_only_inline'] = 0;
   $translatables['all_services'] = array(
     t('Master'),
     t('All Services'),
@@ -252,7 +219,6 @@ function tk_views_default_views() {
     t('Utvidet beskrivelse (hva er inkludert)'),
     t('Support'),
     t('Systemeier'),
-    t('Everything in one page'),
   );
   $export['all_services'] = $view;
 
@@ -545,7 +511,6 @@ finner du flere tjenester; alternativt gå direkte til den <a href="/services/al
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'services/review';
-  $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Gjennomgang';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['context'] = 0;
@@ -667,7 +632,7 @@ finner du flere tjenester; alternativt gå direkte til den <a href="/services/al
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'services_by_category';
+  $handler->display->display_options['title'] = 'Alle tjenestene gruppert etter kategori';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -747,14 +712,13 @@ finner du flere tjenester; alternativt gå direkte til den <a href="/services/al
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'services/by-category';
-  $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'By category';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
   $translatables['services_by_category'] = array(
     t('Master'),
-    t('services_by_category'),
+    t('Alle tjenestene gruppert etter kategori'),
     t('more'),
     t('Apply'),
     t('Reset'),
