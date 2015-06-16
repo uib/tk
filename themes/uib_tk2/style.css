@@ -178,24 +178,28 @@ nav a:visited {
     border: 2px solid #ccc;
     border-radius: 2px;
     box-shadow: 2px 2px 3px #eee;
+    position: relative;
 }
 
 .view-service-classes > .view-content > .item-list > h3 {
     padding: 0.1ex 0.5ex;
-    padding-left: 4ex;
+    padding-left: 5ex;
     margin-bottom: 1ex;
     background: #777;
     color: #eee;
-    position: relative;
     min-height: 5ex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
 }
 
 .view-service-classes > .view-content > .item-list > h3 i.fa {
-    position: absolute;
-    left: 0.3ex;
-    top: 0.3ex;
-    font-size: 160%;
+    font-size: 180%;
     color: #aaa;
+    position: absolute;
+    top: 7px;
+    left: 10px;
 }
 
 .view-service-classes > .view-content > .item-list > h3 a, .view-service-classes > .view-content > .item-list > h3 a:visited {
