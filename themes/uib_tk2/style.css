@@ -260,7 +260,7 @@ nav a:visited {
 .view-services-by-category ul {
     -moz-column-count: 3;
     -webkit-column-count: 3;
-    -column-count: 3;
+    column-count: 3;
 }
 
 .view-services-by-category ul li {
