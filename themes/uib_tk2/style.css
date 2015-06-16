@@ -218,13 +218,13 @@ nav a:visited {
     color: #aaa;
 }
 
-.view-all-services .item-list {
+.view-letter-index .item-list {
     margin-top: 2ex;
     margin-bottom: 5ex;
     min-height: 7ex;
 }
 
-.view-all-services h3 {
+.view-letter-index h3 {
     font-size: 300%;
     position: absolute;
     color: #ddd;
@@ -232,12 +232,12 @@ nav a:visited {
     font-family: serif;
 }
 
-.view-all-services ul {
+.view-letter-index ul {
     max-width: 60ex;
     margin-left: 7ex;
 }
 
-.view-all-services ul li {
+.view-letter-index ul li {
     margin: 0;
     margin-bottom: 2ex;
     list-style-type: none;

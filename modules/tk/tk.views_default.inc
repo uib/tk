@@ -23,6 +23,7 @@ function tk_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'All Services';
+  $handler->display->display_options['css_class'] = 'view-letter-index';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'mer';
   $handler->display->display_options['access']['type'] = 'perm';
@@ -743,6 +744,7 @@ finner du flere tjenester; alternativt gå direkte til den <a href="/services/al
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['css_class'] = 'view-letter-index';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -752,37 +754,39 @@ finner du flere tjenester; alternativt gå direkte til den <a href="/services/al
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Content: Nid */
-  $handler->display->display_options['fields']['nid']['id'] = 'nid';
-  $handler->display->display_options['fields']['nid']['table'] = 'node';
-  $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['label'] = '';
-  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Content: Her finner du tjenesten */
-  $handler->display->display_options['fields']['field_home_link']['id'] = 'field_home_link';
-  $handler->display->display_options['fields']['field_home_link']['table'] = 'field_data_field_home_link';
-  $handler->display->display_options['fields']['field_home_link']['field'] = 'field_home_link';
-  $handler->display->display_options['fields']['field_home_link']['label'] = '';
-  $handler->display->display_options['fields']['field_home_link']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_home_link']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_home_link']['alter']['text'] = '→ ([field_home_link])';
-  $handler->display->display_options['fields']['field_home_link']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_home_link']['click_sort_column'] = 'url';
-  $handler->display->display_options['fields']['field_home_link']['type'] = 'link_domain';
-  $handler->display->display_options['fields']['field_home_link']['settings'] = array(
-    'strip_www' => 1,
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'title_1',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
   );
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: First letter of title */
+  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['fields']['title_1']['table'] = 'node';
+  $handler->display->display_options['fields']['title_1']['field'] = 'title';
+  $handler->display->display_options['fields']['title_1']['ui_name'] = 'First letter of title';
+  $handler->display->display_options['fields']['title_1']['label'] = '';
+  $handler->display->display_options['fields']['title_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title_1']['alter']['max_length'] = '1';
+  $handler->display->display_options['fields']['title_1']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title_1']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title_1']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_1']['link_to_node'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['text'] = '<a href="/node/[nid]">[title]</a> [field_home_link]';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Beskrivelse */
+  $handler->display->display_options['fields']['field_summary']['id'] = 'field_summary';
+  $handler->display->display_options['fields']['field_summary']['table'] = 'field_data_field_summary';
+  $handler->display->display_options['fields']['field_summary']['field'] = 'field_summary';
+  $handler->display->display_options['fields']['field_summary']['label'] = '';
+  $handler->display->display_options['fields']['field_summary']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -842,8 +846,6 @@ finner du flere tjenester; alternativt gå direkte til den <a href="/services/al
     t('Sort by'),
     t('Asc'),
     t('Desc'),
-    t('→ ([field_home_link])'),
-    t('<a href="/node/[nid]">[title]</a> [field_home_link]'),
     t('All'),
     t('%1'),
     t('Page'),
