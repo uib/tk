@@ -85,10 +85,6 @@ function tk_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'service' => 'service',
   );
-  /* Filter criterion: Content: Published or admin */
-  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
-  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
-  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
 
   /* Display: All teasers */
   $handler = $view->new_display('page', 'All teasers', 'page');
@@ -196,6 +192,13 @@ function tk_views_default_views() {
   $handler->display->display_options['fields']['nid_2']['relationship'] = 'field_service_owner_target_id';
   $handler->display->display_options['fields']['nid_2']['label'] = 'Systemeier';
   $handler->display->display_options['path'] = 'data/tk.csv';
+
+  /* Display: All services (really!) */
+  $handler = $view->new_display('page', 'All services (really!)', 'page_1');
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'edit any service content';
+  $handler->display->display_options['path'] = 'services/all-really';
   $translatables['all_services'] = array(
     t('Master'),
     t('All Services'),
@@ -220,6 +223,7 @@ function tk_views_default_views() {
     t('Utvidet beskrivelse (hva er inkludert)'),
     t('Support'),
     t('Systemeier'),
+    t('All services (really!)'),
   );
   $export['all_services'] = $view;
 
