@@ -839,9 +839,38 @@ finner du flere tjenester; alternativt gå direkte til den <a href="/services/al
     'cfs' => 'cfs',
   );
 
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
+  /* Display: Not public service page */
+  $handler = $view->new_display('page', 'Not public service page', 'page');
   $handler->display->display_options['path'] = 'services/supporting';
+
+  /* Display: Not production page */
+  $handler = $view->new_display('page', 'Not production page', 'page_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Ikke i produksjon';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Unfiltered text */
+  $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['content'] = 'Denne siden lister opp alle registrerte tjenester ikke er i produksjon. De kan enten være under utvikling eller utfaset. Denne siden er <i>ikke</i> offentlig.';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'service' => 'service',
+  );
+  /* Filter criterion: Content: Livssyklus (field_service_state) */
+  $handler->display->display_options['filters']['field_service_state_value']['id'] = 'field_service_state_value';
+  $handler->display->display_options['filters']['field_service_state_value']['table'] = 'field_data_field_service_state';
+  $handler->display->display_options['filters']['field_service_state_value']['field'] = 'field_service_state_value';
+  $handler->display->display_options['filters']['field_service_state_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_service_state_value']['value'] = array(
+    'prod' => 'prod',
+  );
+  $handler->display->display_options['path'] = 'services/not-prod';
   $translatables['supporting_services'] = array(
     t('Master'),
     t('Understøttende tjenester'),
@@ -852,7 +881,10 @@ finner du flere tjenester; alternativt gå direkte til den <a href="/services/al
     t('Asc'),
     t('Desc'),
     t('Denne siden lister opp alle registrerte tjenester som vi tilbyr for å understøtte de tilbydte tjenestene.  Det kan være tjenester som er interne for IT-avdelingen, eller tjenester som bare brukes av innholds&shy;redaktørene for en tilbydt tjenestene.  Denne siden er <i>ikke</i> offentlig.'),
-    t('Page'),
+    t('Not public service page'),
+    t('Not production page'),
+    t('Ikke i produksjon'),
+    t('Denne siden lister opp alle registrerte tjenester ikke er i produksjon. De kan enten være under utvikling eller utfaset. Denne siden er <i>ikke</i> offentlig.'),
   );
   $export['supporting_services'] = $view;
 
