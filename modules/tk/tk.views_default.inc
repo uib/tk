@@ -759,6 +759,104 @@ finner du flere tjenester; alternativt gå direkte til den <a href="/services/al
   $export['services_by_category'] = $view;
 
   $view = new view();
+  $view->name = 'supporting_services';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Supporting Services';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Understøttende tjenester';
+  $handler->display->display_options['css_class'] = 'view-letter-index';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'edit any service content';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'title_1',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Header: Global: Unfiltered text */
+  $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['content'] = 'Denne siden lister opp alle registrerte tjenester som vi tilbyr for å understøtte de tilbydte tjenestene.  Det kan være tjenester som er interne for IT-avdelingen, eller tjenester som bare brukes av innholds&shy;redaktørene for en tilbydt tjenestene.  Denne siden er <i>ikke</i> offentlig.';
+  /* Field: First letter of title */
+  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['fields']['title_1']['table'] = 'node';
+  $handler->display->display_options['fields']['title_1']['field'] = 'title';
+  $handler->display->display_options['fields']['title_1']['ui_name'] = 'First letter of title';
+  $handler->display->display_options['fields']['title_1']['label'] = '';
+  $handler->display->display_options['fields']['title_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title_1']['alter']['max_length'] = '1';
+  $handler->display->display_options['fields']['title_1']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title_1']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title_1']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_1']['link_to_node'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Beskrivelse */
+  $handler->display->display_options['fields']['field_summary']['id'] = 'field_summary';
+  $handler->display->display_options['fields']['field_summary']['table'] = 'field_data_field_summary';
+  $handler->display->display_options['fields']['field_summary']['field'] = 'field_summary';
+  $handler->display->display_options['fields']['field_summary']['label'] = '';
+  $handler->display->display_options['fields']['field_summary']['element_label_colon'] = FALSE;
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'service' => 'service',
+  );
+  /* Filter criterion: Content: Tjenestetype (field_service_type) */
+  $handler->display->display_options['filters']['field_service_type_value']['id'] = 'field_service_type_value';
+  $handler->display->display_options['filters']['field_service_type_value']['table'] = 'field_data_field_service_type';
+  $handler->display->display_options['filters']['field_service_type_value']['field'] = 'field_service_type_value';
+  $handler->display->display_options['filters']['field_service_type_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_service_type_value']['value'] = array(
+    'cfs' => 'cfs',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'services/supporting';
+  $translatables['supporting_services'] = array(
+    t('Master'),
+    t('Understøttende tjenester'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Denne siden lister opp alle registrerte tjenester som vi tilbyr for å understøtte de tilbydte tjenestene.  Det kan være tjenester som er interne for IT-avdelingen, eller tjenester som bare brukes av innholds&shy;redaktørene for en tilbydt tjenestene.  Denne siden er <i>ikke</i> offentlig.'),
+    t('Page'),
+  );
+  $export['supporting_services'] = $view;
+
+  $view = new view();
   $view->name = 'taxonomy_term_service';
   $view->description = 'A view to emulate Drupal core\'s handling of taxonomy/term.';
   $view->tag = 'default';
