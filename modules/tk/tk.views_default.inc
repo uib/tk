@@ -691,13 +691,14 @@ finner du flere tjenester; alternativt gå direkte til den <a href="/services/al
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Sort criterion: Content: Tjenestetype (field_service_type) */
+  $handler->display->display_options['sorts']['field_service_type_value']['id'] = 'field_service_type_value';
+  $handler->display->display_options['sorts']['field_service_type_value']['table'] = 'field_data_field_service_type';
+  $handler->display->display_options['sorts']['field_service_type_value']['field'] = 'field_service_type_value';
+  /* Sort criterion: Content: Klassifisering (field_service_classification) */
+  $handler->display->display_options['sorts']['field_service_classification_target_id']['id'] = 'field_service_classification_target_id';
+  $handler->display->display_options['sorts']['field_service_classification_target_id']['table'] = 'field_data_field_service_classification';
+  $handler->display->display_options['sorts']['field_service_classification_target_id']['field'] = 'field_service_classification_target_id';
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
@@ -705,13 +706,34 @@ finner du flere tjenester; alternativt gå direkte til den <a href="/services/al
   $handler->display->display_options['filters']['type']['value'] = array(
     'service' => 'service',
   );
-  /* Filter criterion: Taxonomy term: Vocabulary */
-  $handler->display->display_options['filters']['vid']['id'] = 'vid';
-  $handler->display->display_options['filters']['vid']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['filters']['vid']['field'] = 'vid';
-  $handler->display->display_options['filters']['vid']['relationship'] = 'field_service_classification_target_id';
-  $handler->display->display_options['filters']['vid']['value'] = array(
-    2 => '2',
+  /* Filter criterion: Content: Tjenestetype (field_service_type) */
+  $handler->display->display_options['filters']['field_service_type_value']['id'] = 'field_service_type_value';
+  $handler->display->display_options['filters']['field_service_type_value']['table'] = 'field_data_field_service_type';
+  $handler->display->display_options['filters']['field_service_type_value']['field'] = 'field_service_type_value';
+  $handler->display->display_options['filters']['field_service_type_value']['value'] = array(
+    'cfs' => 'cfs',
+  );
+  /* Filter criterion: Content: Registreringsstatus (field_edit_state) */
+  $handler->display->display_options['filters']['field_edit_state_value']['id'] = 'field_edit_state_value';
+  $handler->display->display_options['filters']['field_edit_state_value']['table'] = 'field_data_field_edit_state';
+  $handler->display->display_options['filters']['field_edit_state_value']['field'] = 'field_edit_state_value';
+  $handler->display->display_options['filters']['field_edit_state_value']['value'] = array(
+    'accepted' => 'accepted',
+  );
+  /* Filter criterion: Content: Livssyklus (field_service_state) */
+  $handler->display->display_options['filters']['field_service_state_value']['id'] = 'field_service_state_value';
+  $handler->display->display_options['filters']['field_service_state_value']['table'] = 'field_data_field_service_state';
+  $handler->display->display_options['filters']['field_service_state_value']['field'] = 'field_service_state_value';
+  $handler->display->display_options['filters']['field_service_state_value']['value'] = array(
+    'prod' => 'prod',
+  );
+  /* Filter criterion: Taxonomy vocabulary: Machine name */
+  $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
+  $handler->display->display_options['filters']['machine_name']['field'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['relationship'] = 'field_service_classification_target_id';
+  $handler->display->display_options['filters']['machine_name']['value'] = array(
+    'service_classes' => 'service_classes',
   );
 
   /* Display: Page */
