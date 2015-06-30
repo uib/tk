@@ -382,3 +382,17 @@ a:visited {
 #block-tk-traffic-light > .content h3 {
     font-size: inherit;
 }
+
+@media all and (max-width: 720px) {
+    .node-service > .content {
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+    }
+
+   .group-sidebar  {
+     -webkit-order: -1;
+     order: -1;
+     margin-left: 0;
+     margin-bottom: 2em;
+   }
+}
