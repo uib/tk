@@ -51,6 +51,7 @@ function tk_field_default_field_bases() {
         247 => 'Hele døgnet',
         'arbeidstid' => '08:00-15:45 man-fre',
         'vakt' => '07:00-22:00 man-fre (10:00-18:00 lør-søn)',
+        'brukerstotte_studenter' => 'kl 08:00-18:00. Variasjoner forekommer, se https://it.uib.no/Brukerstotte_for_studenter for detaljer',
       ),
       'allowed_values_function' => '',
     ),
