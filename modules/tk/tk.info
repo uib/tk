@@ -150,6 +150,7 @@ features[variable][] = taxonomy_menu_vocab_parent_service_roles
 features[views_view][] = all_services
 features[views_view][] = classfications
 features[views_view][] = service_classes
+features[views_view][] = service_owners
 features[views_view][] = service_review
 features[views_view][] = service_users
 features[views_view][] = services_by_category
