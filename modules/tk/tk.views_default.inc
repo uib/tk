@@ -606,7 +606,6 @@ finner du flere tjenester; alternativt gå direkte til den <a href="/services/al
   /* Display: Driftsavsvarlige */
   $handler = $view->new_display('page', 'Driftsavsvarlige', 'page');
   $handler->display->display_options['path'] = 'services/ops';
-  $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Driftsavsvarlige';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['context'] = 0;
