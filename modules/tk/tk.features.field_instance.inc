@@ -43,7 +43,7 @@ function tk_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 11,
+      'weight' => 10,
     ),
   );
 
@@ -89,7 +89,7 @@ function tk_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 22,
+      'weight' => 21,
     ),
   );
 
@@ -221,7 +221,7 @@ function tk_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 6,
+      'weight' => 5,
     ),
   );
 
@@ -318,7 +318,7 @@ function tk_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 9,
+      'weight' => 4,
     ),
   );
 
@@ -399,7 +399,7 @@ function tk_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 8,
+      'weight' => 6,
     ),
   );
 
@@ -582,7 +582,7 @@ function tk_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete_tags',
-      'weight' => 15,
+      'weight' => 17,
     ),
   );
 
@@ -628,7 +628,7 @@ Leveringstid:',
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 21,
+      'weight' => 13,
     ),
   );
 
@@ -669,7 +669,7 @@ Leveringstid:',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 24,
+      'weight' => 23,
     ),
   );
 
@@ -745,7 +745,7 @@ Leveringstid:',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 14,
+      'weight' => 16,
     ),
   );
 
@@ -827,7 +827,7 @@ Leveringstid:',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -867,7 +867,7 @@ Leveringstid:',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 16,
+      'weight' => 24,
     ),
   );
 
@@ -908,7 +908,7 @@ Leveringstid:',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 17,
+      'weight' => 15,
     ),
   );
 
@@ -956,7 +956,7 @@ Leveringstid:',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 4,
+      'weight' => 11,
     ),
   );
 
@@ -1047,7 +1047,7 @@ Leveringstid:',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 10,
+      'weight' => 9,
     ),
   );
 
@@ -1087,7 +1087,7 @@ Leveringstid:',
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 23,
+      'weight' => 22,
     ),
   );
 
@@ -1124,7 +1124,7 @@ Leveringstid:',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 5,
+      'weight' => 8,
     ),
   );
 
