@@ -336,9 +336,9 @@ function tk_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
-  $handler->display->display_options['header']['area_text_custom']['content'] = 'Denne katalogen gir oversikt over hvilke IT-tjenester som tilbys ved Universitetet i Bergen.
-De viktigste tjenestene finner du på denne siden, men ved å utforske kategoriene
-finner du flere tjenester; alternativt gå direkte til den <a href="/services/all">alfabetiske opplistingen</a>.<br><br>';
+  $handler->display->display_options['header']['area_text_custom']['content'] = 'Denne katalogen skal gi oversikt over IT-tjenester som tilbys ved Universitetet i Bergen.
+Katalogen er under arbeid. Beskrivelsene må kvalitetssikres med eieravdelingene. 
+UiB\'s hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier under. Et utvalg tjenester er vist på førstesiden, men du finner alle ved å klikke på de respektive kategoriene. Du kan også gå direkte til den <a href="/services/all">alfabetiske opplistingen</a>.<br><br>';
   /* Relationship: Entity Reference: Referencing entity */
   $handler->display->display_options['relationships']['reverse_field_service_classification_node']['id'] = 'reverse_field_service_classification_node';
   $handler->display->display_options['relationships']['reverse_field_service_classification_node']['table'] = 'taxonomy_term_data';
@@ -412,9 +412,9 @@ finner du flere tjenester; alternativt gå direkte til den <a href="/services/al
     t('Sortér på'),
     t('Stigende'),
     t('Synkende'),
-    t('Denne katalogen gir oversikt over hvilke IT-tjenester som tilbys ved Universitetet i Bergen.
-De viktigste tjenestene finner du på denne siden, men ved å utforske kategoriene
-finner du flere tjenester; alternativt gå direkte til den <a href="/services/all">alfabetiske opplistingen</a>.<br><br>'),
+    t('Denne katalogen skal gi oversikt over IT-tjenester som tilbys ved Universitetet i Bergen.
+Katalogen er under arbeid. Beskrivelsene må kvalitetssikres med eieravdelingene. 
+UiB\'s hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier under. Et utvalg tjenester er vist på førstesiden, men du finner alle ved å klikke på de respektive kategoriene. Du kan også gå direkte til den <a href="/services/all">alfabetiske opplistingen</a>.<br><br>'),
     t('Services'),
     t('<i class="fa fa-[field_icon_name]"></i> [name]'),
     t('Page'),
