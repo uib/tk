@@ -155,6 +155,11 @@ nav a:visited {
     font-size: 100%;
 }
 
+
+#block-search-form {
+  margin-bottom: 2ex;
+}
+
 .block-menu ul {
     margin: 0;
     padding-left: 1ex;
