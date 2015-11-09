@@ -29,6 +29,7 @@ header {
 header > .section {
     height: 11ex;
     display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
     -webkit-align-items: center;
     align-items: center;
@@ -41,6 +42,7 @@ header a {
 
 #logo {
     -webkit-flex-shrink: 0;
+    -ms-flex-shrink: 0;
     flex-shrink: 0;
     margin: 0 3ex;
 }
@@ -102,14 +104,17 @@ nav a:visited {
 
 #main {
     display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
 }
 
 #content {
     position: relative;
     -webkit-flex-basis: 80%;
+    -ms-flex-basis: 80%;
     flex-basis: 80%;
     -webkit-flex-grow: 3;
+    -ms-flex-grow: 3;
     flex-grow: 3;
 }
 
@@ -132,8 +137,10 @@ nav a:visited {
     margin-right: 5ex;
     margin-left: 2ex;
     -webkit-flex-basis: 20%;
+    -ms-flex-basis: 20%;
     flex-basis: 20%;
     -webkit-flex-grow: 1;
+    -ms-flex-grow: 1;
     flex-grow: 1;
 }
 
@@ -166,8 +173,10 @@ nav a:visited {
 
 .view-service-classes > .view-content {
     display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
     -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     -webkit-justify-content: center;
     justify-content: center;
@@ -190,6 +199,7 @@ nav a:visited {
     color: #eee;
     min-height: 5ex;
     display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
     -webkit-align-items: center;
     align-items: center;
@@ -274,20 +284,25 @@ nav a:visited {
 
 .node-service > .content {
     display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
 }
 
 .group-main {
     -webkit-flex-basis: 60%;
+    -ms-flex-basis: 60%;
     flex-basis: 60%;
     -webkit-flex-grow: 1;
-    flex-grow: 3;
+    -ms-flex-grow: 1;
+    flex-grow: 1;
 }
 
 .group-sidebar {
     -webkit-flex-basis: 40%;
+    -ms-flex-basis: 40%;
     flex-basis: 40%;
     -webkit-flex-grow: 1;
+    -ms-flex-grow: 1;
     flex-grow: 1;
 }
 
@@ -330,8 +345,10 @@ nav a:visited {
 
 .group-secondary {
     display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
     -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
 
@@ -390,6 +407,7 @@ a:visited {
 @media all and (max-width: 720px) {
     .node-service > .content {
       -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
       flex-wrap: wrap;
     }
 
