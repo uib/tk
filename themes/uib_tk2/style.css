@@ -31,6 +31,7 @@ header > .section {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
 }
@@ -110,11 +111,10 @@ nav a:visited {
 
 #content {
     position: relative;
+    -ms-flex: 3 70%;
     -webkit-flex-basis: 80%;
-    -ms-flex-basis: 80%;
     flex-basis: 80%;
     -webkit-flex-grow: 3;
-    -ms-flex-grow: 3;
     flex-grow: 3;
 }
 
@@ -129,6 +129,7 @@ nav a:visited {
 }
 
 #sidebar-first {
+    -ms-flex-order: -1;
     -webkit-order: -1;
     order: -1;
     x-background: #8d8;
@@ -136,11 +137,10 @@ nav a:visited {
     min-width: 20ex;
     margin-right: 5ex;
     margin-left: 2ex;
+    -ms-flex: 1 20%;
     -webkit-flex-basis: 20%;
-    -ms-flex-basis: 20%;
     flex-basis: 20%;
     -webkit-flex-grow: 1;
-    -ms-flex-grow: 1;
     flex-grow: 1;
 }
 
@@ -183,8 +183,6 @@ nav a:visited {
     -webkit-flex-wrap: wrap;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    -webkit-justify-content: center;
-    justify-content: center;
 }
 
 .view-service-classes > .view-content > .item-list {
@@ -206,6 +204,7 @@ nav a:visited {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
 }
@@ -294,8 +293,8 @@ nav a:visited {
 }
 
 .group-main {
+    -ms-flex: 1 55%;
     -webkit-flex-basis: 60%;
-    -ms-flex-basis: 60%;
     flex-basis: 60%;
     -webkit-flex-grow: 1;
     -ms-flex-grow: 1;
@@ -303,8 +302,8 @@ nav a:visited {
 }
 
 .group-sidebar {
+    -ms-flex: 1 35%;
     -webkit-flex-basis: 40%;
-    -ms-flex-basis: 40%;
     flex-basis: 40%;
     -webkit-flex-grow: 1;
     -ms-flex-grow: 1;
@@ -417,6 +416,7 @@ a:visited {
     }
 
    .group-sidebar  {
+     -ms-flex-order: -1;
      -webkit-order: -1;
      order: -1;
      margin-left: 0;
