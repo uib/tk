@@ -826,6 +826,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['filters']['machine_name']['relationship'] = 'field_service_classification_target_id';
   $handler->display->display_options['filters']['machine_name']['value'] = array(
     'service_classes' => 'service_classes',
+    'service_business_levels' => 'service_business_levels',
   );
 
   /* Display: Page */
