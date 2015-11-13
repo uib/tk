@@ -15,7 +15,7 @@ function tk_taxonomy_default_vocabularies() {
       'description' => 'Tjenester for',
       'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => 0,
+      'weight' => 1,
     ),
     'service_classes' => array(
       'name' => 'Tjenesteorientert',
@@ -31,7 +31,7 @@ function tk_taxonomy_default_vocabularies() {
       'description' => 'Nyttige tjenester for deg som er...',
       'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => 0,
+      'weight' => 2,
     ),
   );
 }
