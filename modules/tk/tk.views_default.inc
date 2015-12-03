@@ -358,7 +358,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['name']['alter']['text'] = '<i class="fa fa-[field_icon_name]"></i> [name]';
+  $handler->display->display_options['fields']['name']['alter']['text'] = '<i class="fa fa-[field_icon_name]"></i> [name] <span class="see-more">(vis flere)</span>';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
@@ -421,7 +421,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
 Katalogen er under arbeid. Beskrivelsene må kvalitetssikres med eieravdelingene. 
 UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier under. Et utvalg tjenester er vist på førstesiden, men du finner alle ved å klikke på de respektive kategoriene. Du kan også gå direkte til den <a href="/services/all">alfabetiske opplistingen</a>.<br><br>'),
     t('Services'),
-    t('<i class="fa fa-[field_icon_name]"></i> [name]'),
+    t('<i class="fa fa-[field_icon_name]"></i> [name] <span class="see-more">(vis flere)</span>'),
     t('Page'),
     t('more'),
   );

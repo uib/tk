@@ -222,6 +222,15 @@ nav a:visited {
     text-decoration: none;
 }
 
+.view-service-classes > .view-content > .item-list > h3 .see-more {
+    color: #777;
+    font-size: 70%;
+    position: absolute;
+    right: 7px;
+    bottom: 3px;
+    text-decoration: underline;
+}
+
 .view-service-classes > .view-content > .item-list ul {
     margin: 1.5ex 2ex 1.5ex 1.5ex;
 }
