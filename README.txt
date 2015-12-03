@@ -21,4 +21,11 @@ and initialize the application by invoking:
 Alternatively manually configure postgres access and restore from the latest
 production dump by running:
 
-    ./scripts/pg-restore.sh
+    $ ssh real6
+    $ cd /var/www/app/tk
+    $ grep password site/settings.php
+    $ bin/site-drush cc all; bin/site-drush sql-dump >~/tk.sql
+    ^D
+    $ scp real6:tk.sql .
+
+    $ ./scripts/pg-restore.sh
