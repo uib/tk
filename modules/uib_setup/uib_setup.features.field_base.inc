@@ -10,7 +10,7 @@
 function uib_setup_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_full_name'
+  // Exported field_base: 'field_full_name'.
   $field_bases['field_full_name'] = array(
     'active' => 1,
     'cardinality' => 1,

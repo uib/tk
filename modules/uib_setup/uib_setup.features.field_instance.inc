@@ -10,7 +10,7 @@
 function uib_setup_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'user-user-field_full_name'
+  // Exported field_instance: 'user-user-field_full_name'.
   $field_instances['user-user-field_full_name'] = array(
     'bundle' => 'user',
     'default_value' => NULL,

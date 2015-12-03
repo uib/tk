@@ -10,7 +10,7 @@
 function tk_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-service-field_availability'
+  // Exported field_instance: 'node-service-field_availability'.
   $field_instances['node-service-field_availability'] = array(
     'bundle' => 'service',
     'default_value' => NULL,
@@ -47,7 +47,7 @@ function tk_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-service-field_cmdb_id'
+  // Exported field_instance: 'node-service-field_cmdb_id'.
   $field_instances['node-service-field_cmdb_id'] = array(
     'bundle' => 'service',
     'default_value' => NULL,
@@ -93,7 +93,7 @@ function tk_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-service-field_cost'
+  // Exported field_instance: 'node-service-field_cost'.
   $field_instances['node-service-field_cost'] = array(
     'bundle' => 'service',
     'default_value' => NULL,
@@ -130,7 +130,7 @@ function tk_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-service-field_criticality'
+  // Exported field_instance: 'node-service-field_criticality'.
   $field_instances['node-service-field_criticality'] = array(
     'bundle' => 'service',
     'default_value' => array(
@@ -178,7 +178,7 @@ function tk_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-service-field_demand'
+  // Exported field_instance: 'node-service-field_demand'.
   $field_instances['node-service-field_demand'] = array(
     'bundle' => 'service',
     'default_value' => NULL,
@@ -225,7 +225,7 @@ function tk_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-service-field_description'
+  // Exported field_instance: 'node-service-field_description'.
   $field_instances['node-service-field_description'] = array(
     'bundle' => 'service',
     'default_value' => NULL,
@@ -265,7 +265,7 @@ function tk_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-service-field_documentation_link'
+  // Exported field_instance: 'node-service-field_documentation_link'.
   $field_instances['node-service-field_documentation_link'] = array(
     'bundle' => 'service',
     'default_value' => NULL,
@@ -322,7 +322,7 @@ function tk_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-service-field_edit_state'
+  // Exported field_instance: 'node-service-field_edit_state'.
   $field_instances['node-service-field_edit_state'] = array(
     'bundle' => 'service',
     'default_value' => array(
@@ -363,7 +363,7 @@ function tk_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-service-field_field_howto_orde'
+  // Exported field_instance: 'node-service-field_field_howto_orde'.
   $field_instances['node-service-field_field_howto_orde'] = array(
     'bundle' => 'service',
     'default_value' => NULL,
@@ -403,7 +403,7 @@ function tk_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-service-field_home_link'
+  // Exported field_instance: 'node-service-field_home_link'.
   $field_instances['node-service-field_home_link'] = array(
     'bundle' => 'service',
     'default_value' => NULL,
@@ -460,7 +460,7 @@ function tk_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-service-field_internal_notes'
+  // Exported field_instance: 'node-service-field_internal_notes'.
   $field_instances['node-service-field_internal_notes'] = array(
     'bundle' => 'service',
     'default_value' => NULL,
@@ -500,7 +500,7 @@ function tk_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-service-field_operator'
+  // Exported field_instance: 'node-service-field_operator'.
   $field_instances['node-service-field_operator'] = array(
     'bundle' => 'service',
     'default_value' => NULL,
@@ -543,7 +543,7 @@ function tk_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-service-field_ower_contact'
+  // Exported field_instance: 'node-service-field_ower_contact'.
   $field_instances['node-service-field_ower_contact'] = array(
     'bundle' => 'service',
     'default_value' => NULL,
@@ -586,7 +586,7 @@ function tk_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-service-field_quality'
+  // Exported field_instance: 'node-service-field_quality'.
   $field_instances['node-service-field_quality'] = array(
     'bundle' => 'service',
     'default_value' => array(
@@ -632,7 +632,7 @@ Leveringstid:',
     ),
   );
 
-  // Exported field_instance: 'node-service-field_service_classification'
+  // Exported field_instance: 'node-service-field_service_classification'.
   $field_instances['node-service-field_service_classification'] = array(
     'bundle' => 'service',
     'default_value' => NULL,
@@ -673,7 +673,7 @@ Leveringstid:',
     ),
   );
 
-  // Exported field_instance: 'node-service-field_service_levels'
+  // Exported field_instance: 'node-service-field_service_levels'.
   $field_instances['node-service-field_service_levels'] = array(
     'bundle' => 'service',
     'default_value' => NULL,
@@ -710,7 +710,7 @@ Leveringstid:',
     ),
   );
 
-  // Exported field_instance: 'node-service-field_service_owner'
+  // Exported field_instance: 'node-service-field_service_owner'.
   $field_instances['node-service-field_service_owner'] = array(
     'bundle' => 'service',
     'default_value' => NULL,
@@ -749,7 +749,7 @@ Leveringstid:',
     ),
   );
 
-  // Exported field_instance: 'node-service-field_service_rotation'
+  // Exported field_instance: 'node-service-field_service_rotation'.
   $field_instances['node-service-field_service_rotation'] = array(
     'bundle' => 'service',
     'default_value' => array(
@@ -790,7 +790,7 @@ Leveringstid:',
     ),
   );
 
-  // Exported field_instance: 'node-service-field_service_state'
+  // Exported field_instance: 'node-service-field_service_state'.
   $field_instances['node-service-field_service_state'] = array(
     'bundle' => 'service',
     'default_value' => array(
@@ -831,7 +831,7 @@ Leveringstid:',
     ),
   );
 
-  // Exported field_instance: 'node-service-field_service_status'
+  // Exported field_instance: 'node-service-field_service_status'.
   $field_instances['node-service-field_service_status'] = array(
     'bundle' => 'service',
     'default_value' => array(
@@ -871,7 +871,7 @@ Leveringstid:',
     ),
   );
 
-  // Exported field_instance: 'node-service-field_service_supplier'
+  // Exported field_instance: 'node-service-field_service_supplier'.
   $field_instances['node-service-field_service_supplier'] = array(
     'bundle' => 'service',
     'default_value' => array(
@@ -912,7 +912,7 @@ Leveringstid:',
     ),
   );
 
-  // Exported field_instance: 'node-service-field_service_type'
+  // Exported field_instance: 'node-service-field_service_type'.
   $field_instances['node-service-field_service_type'] = array(
     'bundle' => 'service',
     'default_value' => array(
@@ -960,7 +960,7 @@ Leveringstid:',
     ),
   );
 
-  // Exported field_instance: 'node-service-field_summary'
+  // Exported field_instance: 'node-service-field_summary'.
   $field_instances['node-service-field_summary'] = array(
     'bundle' => 'service',
     'default_value' => NULL,
@@ -1001,7 +1001,7 @@ Leveringstid:',
     ),
   );
 
-  // Exported field_instance: 'node-service-field_support_contact'
+  // Exported field_instance: 'node-service-field_support_contact'.
   $field_instances['node-service-field_support_contact'] = array(
     'bundle' => 'service',
     'default_value' => NULL,
@@ -1051,7 +1051,7 @@ Leveringstid:',
     ),
   );
 
-  // Exported field_instance: 'node-service-field_supporting_systems'
+  // Exported field_instance: 'node-service-field_supporting_systems'.
   $field_instances['node-service-field_supporting_systems'] = array(
     'bundle' => 'service',
     'default_value' => NULL,
@@ -1091,7 +1091,7 @@ Leveringstid:',
     ),
   );
 
-  // Exported field_instance: 'node-service-field_user_group'
+  // Exported field_instance: 'node-service-field_user_group'.
   $field_instances['node-service-field_user_group'] = array(
     'bundle' => 'service',
     'default_value' => NULL,
@@ -1128,7 +1128,7 @@ Leveringstid:',
     ),
   );
 
-  // Exported field_instance: 'node-service_owner-field_kode'
+  // Exported field_instance: 'node-service_owner-field_kode'.
   $field_instances['node-service_owner-field_kode'] = array(
     'bundle' => 'service_owner',
     'default_value' => NULL,
@@ -1168,7 +1168,7 @@ Leveringstid:',
     ),
   );
 
-  // Exported field_instance: 'node-support_contact-field_adress'
+  // Exported field_instance: 'node-support_contact-field_adress'.
   $field_instances['node-support_contact-field_adress'] = array(
     'bundle' => 'support_contact',
     'default_value' => NULL,
@@ -1208,7 +1208,7 @@ Leveringstid:',
     ),
   );
 
-  // Exported field_instance: 'node-support_contact-field_opening'
+  // Exported field_instance: 'node-support_contact-field_opening'.
   $field_instances['node-support_contact-field_opening'] = array(
     'bundle' => 'support_contact',
     'default_value' => NULL,
@@ -1249,7 +1249,7 @@ Leveringstid:',
     ),
   );
 
-  // Exported field_instance: 'node-support_contact-field_phone'
+  // Exported field_instance: 'node-support_contact-field_phone'.
   $field_instances['node-support_contact-field_phone'] = array(
     'bundle' => 'support_contact',
     'default_value' => NULL,
@@ -1290,7 +1290,7 @@ Leveringstid:',
     ),
   );
 
-  // Exported field_instance: 'node-support_contact-field_www'
+  // Exported field_instance: 'node-support_contact-field_www'.
   $field_instances['node-support_contact-field_www'] = array(
     'bundle' => 'support_contact',
     'default_value' => NULL,
@@ -1348,7 +1348,7 @@ Leveringstid:',
   );
 
   // Exported field_instance:
-  // 'taxonomy_term-service_business_levels-field_icon_name'
+  // 'taxonomy_term-service_business_levels-field_icon_name'.
   $field_instances['taxonomy_term-service_business_levels-field_icon_name'] = array(
     'bundle' => 'service_business_levels',
     'default_value' => array(
@@ -1386,7 +1386,7 @@ Leveringstid:',
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-service_classes-field_icon_name'
+  // Exported field_instance: 'taxonomy_term-service_classes-field_icon_name'.
   $field_instances['taxonomy_term-service_classes-field_icon_name'] = array(
     'bundle' => 'service_classes',
     'default_value' => array(
@@ -1424,7 +1424,7 @@ Leveringstid:',
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-service_roles-field_side_text'
+  // Exported field_instance: 'taxonomy_term-service_roles-field_side_text'.
   $field_instances['taxonomy_term-service_roles-field_side_text'] = array(
     'bundle' => 'service_roles',
     'default_value' => NULL,
@@ -1458,7 +1458,7 @@ Leveringstid:',
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-service_roles-field_top_text'
+  // Exported field_instance: 'taxonomy_term-service_roles-field_top_text'.
   $field_instances['taxonomy_term-service_roles-field_top_text'] = array(
     'bundle' => 'service_roles',
     'default_value' => NULL,

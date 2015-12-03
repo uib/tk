@@ -46,7 +46,7 @@ function tk_views_default_views() {
     ),
   );
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Felt: First letter of service title */
+  /* Field: First letter of service title */
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
@@ -60,7 +60,7 @@ function tk_views_default_views() {
   $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title_1']['empty'] = '?';
   $handler->display->display_options['fields']['title_1']['link_to_node'] = FALSE;
-  /* Felt: Content: Title */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -68,17 +68,17 @@ function tk_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Felt: Content: Beskrivelse */
+  /* Field: Content: Beskrivelse */
   $handler->display->display_options['fields']['field_summary']['id'] = 'field_summary';
   $handler->display->display_options['fields']['field_summary']['table'] = 'field_data_field_summary';
   $handler->display->display_options['fields']['field_summary']['field'] = 'field_summary';
   $handler->display->display_options['fields']['field_summary']['label'] = '';
   $handler->display->display_options['fields']['field_summary']['element_label_colon'] = FALSE;
-  /* Sorteringskriterium: Content: Title */
+  /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Filter-kriterier: Content: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -92,28 +92,28 @@ function tk_views_default_views() {
   $handler->display->display_options['title'] = 'Tjenesteoversikt';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter-kriterier: Content: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'service' => 'service',
   );
-  /* Filter-kriterier: Content: Tjenestetype (field_service_type) */
+  /* Filter criterion: Content: Tjenestetype (field_service_type) */
   $handler->display->display_options['filters']['field_service_type_value']['id'] = 'field_service_type_value';
   $handler->display->display_options['filters']['field_service_type_value']['table'] = 'field_data_field_service_type';
   $handler->display->display_options['filters']['field_service_type_value']['field'] = 'field_service_type_value';
   $handler->display->display_options['filters']['field_service_type_value']['value'] = array(
     'cfs' => 'cfs',
   );
-  /* Filter-kriterier: Content: Registreringsstatus (field_edit_state) */
+  /* Filter criterion: Content: Registreringsstatus (field_edit_state) */
   $handler->display->display_options['filters']['field_edit_state_value']['id'] = 'field_edit_state_value';
   $handler->display->display_options['filters']['field_edit_state_value']['table'] = 'field_data_field_edit_state';
   $handler->display->display_options['filters']['field_edit_state_value']['field'] = 'field_edit_state_value';
   $handler->display->display_options['filters']['field_edit_state_value']['value'] = array(
     'accepted' => 'accepted',
   );
-  /* Filter-kriterier: Content: Livssyklus (field_service_state) */
+  /* Filter criterion: Content: Livssyklus (field_service_state) */
   $handler->display->display_options['filters']['field_service_state_value']['id'] = 'field_service_state_value';
   $handler->display->display_options['filters']['field_service_state_value']['table'] = 'field_data_field_service_state';
   $handler->display->display_options['filters']['field_service_state_value']['field'] = 'field_service_state_value';
@@ -143,49 +143,49 @@ function tk_views_default_views() {
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['style_options']['keep_html'] = 0;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relasjon: Entity Reference: Referenced Entity */
+  /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_support_contact_target_id']['id'] = 'field_support_contact_target_id';
   $handler->display->display_options['relationships']['field_support_contact_target_id']['table'] = 'field_data_field_support_contact';
   $handler->display->display_options['relationships']['field_support_contact_target_id']['field'] = 'field_support_contact_target_id';
-  /* Relasjon: Entity Reference: Referenced Entity */
+  /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_service_owner_target_id']['id'] = 'field_service_owner_target_id';
   $handler->display->display_options['relationships']['field_service_owner_target_id']['table'] = 'field_data_field_service_owner';
   $handler->display->display_options['relationships']['field_service_owner_target_id']['field'] = 'field_service_owner_target_id';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Content: Nid */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  /* Felt: Content: Title */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'Tjeneste';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Felt: Content: Kritikalitet */
+  /* Field: Content: Kritikalitet */
   $handler->display->display_options['fields']['field_criticality']['id'] = 'field_criticality';
   $handler->display->display_options['fields']['field_criticality']['table'] = 'field_data_field_criticality';
   $handler->display->display_options['fields']['field_criticality']['field'] = 'field_criticality';
-  /* Felt: Content: Hva er nødvendig for å bruke tjenesten */
+  /* Field: Content: Hva er nødvendig for å bruke tjenesten */
   $handler->display->display_options['fields']['field_demand']['id'] = 'field_demand';
   $handler->display->display_options['fields']['field_demand']['table'] = 'field_data_field_demand';
   $handler->display->display_options['fields']['field_demand']['field'] = 'field_demand';
-  /* Felt: Content: Normalt tilgjengelig */
+  /* Field: Content: Normalt tilgjengelig */
   $handler->display->display_options['fields']['field_availability']['id'] = 'field_availability';
   $handler->display->display_options['fields']['field_availability']['table'] = 'field_data_field_availability';
   $handler->display->display_options['fields']['field_availability']['field'] = 'field_availability';
-  /* Felt: Content: Utvidet beskrivelse (hva er inkludert) */
+  /* Field: Content: Utvidet beskrivelse (hva er inkludert) */
   $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
   $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
   $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
-  /* Felt: Content: Nid */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid_1']['id'] = 'nid_1';
   $handler->display->display_options['fields']['nid_1']['table'] = 'node';
   $handler->display->display_options['fields']['nid_1']['field'] = 'nid';
   $handler->display->display_options['fields']['nid_1']['relationship'] = 'field_support_contact_target_id';
   $handler->display->display_options['fields']['nid_1']['label'] = 'Support';
-  /* Felt: Content: Nid */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid_2']['id'] = 'nid_2';
   $handler->display->display_options['fields']['nid_2']['table'] = 'node';
   $handler->display->display_options['fields']['nid_2']['field'] = 'nid';
@@ -253,13 +253,13 @@ function tk_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Felt: Taxonomy vocabulary: Name */
+  /* Field: Taxonomy vocabulary: Name */
   $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
   $handler->display->display_options['fields']['name_1']['table'] = 'taxonomy_vocabulary';
   $handler->display->display_options['fields']['name_1']['field'] = 'name';
   $handler->display->display_options['fields']['name_1']['label'] = '';
   $handler->display->display_options['fields']['name_1']['element_label_colon'] = FALSE;
-  /* Felt: Taxonomy term: Name */
+  /* Field: Taxonomy term: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['name']['field'] = 'name';
@@ -332,26 +332,26 @@ function tk_views_default_views() {
   );
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Topptekst: Global: Unfiltered text */
+  /* Header: Global: Unfiltered text */
   $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['content'] = 'Denne katalogen skal gi oversikt over IT-tjenester som tilbys ved Universitetet i Bergen.
 Katalogen er under arbeid. Beskrivelsene må kvalitetssikres med eieravdelingene. 
 UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier under. Et utvalg tjenester er vist på førstesiden, men du finner alle ved å klikke på de respektive kategoriene. Du kan også gå direkte til den <a href="/services/all">alfabetiske opplistingen</a>.<br><br>';
-  /* Relasjon: Entity Reference: Referencing entity */
+  /* Relationship: Entity Reference: Referencing entity */
   $handler->display->display_options['relationships']['reverse_field_service_classification_node']['id'] = 'reverse_field_service_classification_node';
   $handler->display->display_options['relationships']['reverse_field_service_classification_node']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['relationships']['reverse_field_service_classification_node']['field'] = 'reverse_field_service_classification_node';
   $handler->display->display_options['relationships']['reverse_field_service_classification_node']['label'] = 'Services';
-  /* Felt: Taxonomy term: Icon name */
+  /* Field: Taxonomy term: Icon name */
   $handler->display->display_options['fields']['field_icon_name']['id'] = 'field_icon_name';
   $handler->display->display_options['fields']['field_icon_name']['table'] = 'field_data_field_icon_name';
   $handler->display->display_options['fields']['field_icon_name']['field'] = 'field_icon_name';
   $handler->display->display_options['fields']['field_icon_name']['label'] = '';
   $handler->display->display_options['fields']['field_icon_name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_icon_name']['element_label_colon'] = FALSE;
-  /* Felt: Taxonomy term: Name */
+  /* Field: Taxonomy term: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['name']['field'] = 'name';
@@ -363,27 +363,27 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_taxonomy'] = TRUE;
-  /* Felt: Content: Title */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['relationship'] = 'reverse_field_service_classification_node';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Sorteringskriterium: Taxonomy vocabulary: Weight */
+  /* Sort criterion: Taxonomy vocabulary: Weight */
   $handler->display->display_options['sorts']['weight_1']['id'] = 'weight_1';
   $handler->display->display_options['sorts']['weight_1']['table'] = 'taxonomy_vocabulary';
   $handler->display->display_options['sorts']['weight_1']['field'] = 'weight';
-  /* Sorteringskriterium: Taxonomy term: Weight */
+  /* Sort criterion: Taxonomy term: Weight */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
-  /* Sorteringskriterium: Content: Title */
+  /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
   $handler->display->display_options['sorts']['title']['relationship'] = 'reverse_field_service_classification_node';
-  /* Filter-kriterier: Taxonomy vocabulary: Machine name */
+  /* Filter criterion: Taxonomy vocabulary: Machine name */
   $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
   $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
   $handler->display->display_options['filters']['machine_name']['field'] = 'machine_name';
@@ -391,13 +391,13 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
     'service_classes' => 'service_classes',
     'service_business_levels' => 'service_business_levels',
   );
-  /* Filter-kriterier: Content: Promoted to front page */
+  /* Filter criterion: Content: Promoted to front page */
   $handler->display->display_options['filters']['promote']['id'] = 'promote';
   $handler->display->display_options['filters']['promote']['table'] = 'node';
   $handler->display->display_options['filters']['promote']['field'] = 'promote';
   $handler->display->display_options['filters']['promote']['relationship'] = 'reverse_field_service_classification_node';
   $handler->display->display_options['filters']['promote']['value'] = '1';
-  /* Filter-kriterier: Content: Registreringsstatus (field_edit_state) */
+  /* Filter criterion: Content: Registreringsstatus (field_edit_state) */
   $handler->display->display_options['filters']['field_edit_state_value']['id'] = 'field_edit_state_value';
   $handler->display->display_options['filters']['field_edit_state_value']['table'] = 'field_data_field_edit_state';
   $handler->display->display_options['filters']['field_edit_state_value']['field'] = 'field_edit_state_value';
@@ -456,13 +456,13 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
     ),
   );
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relasjon: Entity Reference: Referenced Entity */
+  /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_ower_contact_target_id']['id'] = 'field_ower_contact_target_id';
   $handler->display->display_options['relationships']['field_ower_contact_target_id']['table'] = 'field_data_field_ower_contact';
   $handler->display->display_options['relationships']['field_ower_contact_target_id']['field'] = 'field_ower_contact_target_id';
   $handler->display->display_options['relationships']['field_ower_contact_target_id']['label'] = 'Owner';
   $handler->display->display_options['relationships']['field_ower_contact_target_id']['required'] = TRUE;
-  /* Felt: User: Full name */
+  /* Field: User: Full name */
   $handler->display->display_options['fields']['field_full_name']['id'] = 'field_full_name';
   $handler->display->display_options['fields']['field_full_name']['table'] = 'field_data_field_full_name';
   $handler->display->display_options['fields']['field_full_name']['field'] = 'field_full_name';
@@ -470,23 +470,23 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['fields']['field_full_name']['label'] = '';
   $handler->display->display_options['fields']['field_full_name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_full_name']['element_label_colon'] = FALSE;
-  /* Felt: Content: Title */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Sorteringskriterium: User: Full name (field_full_name) */
+  /* Sort criterion: User: Full name (field_full_name) */
   $handler->display->display_options['sorts']['field_full_name_value']['id'] = 'field_full_name_value';
   $handler->display->display_options['sorts']['field_full_name_value']['table'] = 'field_data_field_full_name';
   $handler->display->display_options['sorts']['field_full_name_value']['field'] = 'field_full_name_value';
   $handler->display->display_options['sorts']['field_full_name_value']['relationship'] = 'field_ower_contact_target_id';
-  /* Sorteringskriterium: Content: Title */
+  /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Filter-kriterier: Content: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -544,14 +544,14 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
     ),
   );
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Felt: Content: Nid */
+  /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Felt: Content: Her finner du tjenesten */
+  /* Field: Content: Her finner du tjenesten */
   $handler->display->display_options['fields']['field_home_link']['id'] = 'field_home_link';
   $handler->display->display_options['fields']['field_home_link']['table'] = 'field_data_field_home_link';
   $handler->display->display_options['fields']['field_home_link']['field'] = 'field_home_link';
@@ -565,7 +565,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['fields']['field_home_link']['settings'] = array(
     'strip_www' => 1,
   );
-  /* Felt: Content: Title */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -577,28 +577,28 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Felt: Content: Registreringsstatus */
+  /* Field: Content: Registreringsstatus */
   $handler->display->display_options['fields']['field_edit_state']['id'] = 'field_edit_state';
   $handler->display->display_options['fields']['field_edit_state']['table'] = 'field_data_field_edit_state';
   $handler->display->display_options['fields']['field_edit_state']['field'] = 'field_edit_state';
   $handler->display->display_options['fields']['field_edit_state']['label'] = '';
   $handler->display->display_options['fields']['field_edit_state']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_edit_state']['element_label_colon'] = FALSE;
-  /* Felt: Content: Interne merknader */
+  /* Field: Content: Interne merknader */
   $handler->display->display_options['fields']['field_internal_notes']['id'] = 'field_internal_notes';
   $handler->display->display_options['fields']['field_internal_notes']['table'] = 'field_data_field_internal_notes';
   $handler->display->display_options['fields']['field_internal_notes']['field'] = 'field_internal_notes';
   $handler->display->display_options['fields']['field_internal_notes']['label'] = '';
   $handler->display->display_options['fields']['field_internal_notes']['element_label_colon'] = FALSE;
-  /* Sorteringskriterium: Content: Registreringsstatus (field_edit_state) */
+  /* Sort criterion: Content: Registreringsstatus (field_edit_state) */
   $handler->display->display_options['sorts']['field_edit_state_value']['id'] = 'field_edit_state_value';
   $handler->display->display_options['sorts']['field_edit_state_value']['table'] = 'field_data_field_edit_state';
   $handler->display->display_options['sorts']['field_edit_state_value']['field'] = 'field_edit_state_value';
-  /* Sorteringskriterium: Content: Title */
+  /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Filter-kriterier: Content: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -658,13 +658,13 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
     ),
   );
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relasjon: Entity Reference: Referenced Entity */
+  /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_operator_target_id']['id'] = 'field_operator_target_id';
   $handler->display->display_options['relationships']['field_operator_target_id']['table'] = 'field_data_field_operator';
   $handler->display->display_options['relationships']['field_operator_target_id']['field'] = 'field_operator_target_id';
   $handler->display->display_options['relationships']['field_operator_target_id']['label'] = 'Driftsansvarlig';
   $handler->display->display_options['relationships']['field_operator_target_id']['required'] = TRUE;
-  /* Felt: User: Full name */
+  /* Field: User: Full name */
   $handler->display->display_options['fields']['field_full_name']['id'] = 'field_full_name';
   $handler->display->display_options['fields']['field_full_name']['table'] = 'field_data_field_full_name';
   $handler->display->display_options['fields']['field_full_name']['field'] = 'field_full_name';
@@ -672,23 +672,23 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['fields']['field_full_name']['label'] = '';
   $handler->display->display_options['fields']['field_full_name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_full_name']['element_label_colon'] = FALSE;
-  /* Felt: Content: Title */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Sorteringskriterium: User: Full name (field_full_name) */
+  /* Sort criterion: User: Full name (field_full_name) */
   $handler->display->display_options['sorts']['field_full_name_value']['id'] = 'field_full_name_value';
   $handler->display->display_options['sorts']['field_full_name_value']['table'] = 'field_data_field_full_name';
   $handler->display->display_options['sorts']['field_full_name_value']['field'] = 'field_full_name_value';
   $handler->display->display_options['sorts']['field_full_name_value']['relationship'] = 'field_operator_target_id';
-  /* Sorteringskriterium: Content: Title */
+  /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Filter-kriterier: Content: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -745,18 +745,18 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
     ),
   );
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relasjon: Entity Reference: Referenced Entity */
+  /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_service_classification_target_id']['id'] = 'field_service_classification_target_id';
   $handler->display->display_options['relationships']['field_service_classification_target_id']['table'] = 'field_data_field_service_classification';
   $handler->display->display_options['relationships']['field_service_classification_target_id']['field'] = 'field_service_classification_target_id';
-  /* Felt: Content: Title */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Felt: Taxonomy term: Icon name */
+  /* Field: Taxonomy term: Icon name */
   $handler->display->display_options['fields']['field_icon_name']['id'] = 'field_icon_name';
   $handler->display->display_options['fields']['field_icon_name']['table'] = 'field_data_field_icon_name';
   $handler->display->display_options['fields']['field_icon_name']['field'] = 'field_icon_name';
@@ -764,7 +764,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['fields']['field_icon_name']['label'] = '';
   $handler->display->display_options['fields']['field_icon_name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_icon_name']['element_label_colon'] = FALSE;
-  /* Felt: Taxonomy term: Name */
+  /* Field: Taxonomy term: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['name']['field'] = 'name';
@@ -774,52 +774,52 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['text'] = '<i class="fa fa-[field_icon_name]"></i> [name]';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
-  /* Sorteringskriterium: Taxonomy term: Name */
+  /* Sort criterion: Taxonomy term: Name */
   $handler->display->display_options['sorts']['name']['id'] = 'name';
   $handler->display->display_options['sorts']['name']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['sorts']['name']['field'] = 'name';
   $handler->display->display_options['sorts']['name']['relationship'] = 'field_service_classification_target_id';
-  /* Sorteringskriterium: Content: Title */
+  /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Sorteringskriterium: Content: Tjenestetype (field_service_type) */
+  /* Sort criterion: Content: Tjenestetype (field_service_type) */
   $handler->display->display_options['sorts']['field_service_type_value']['id'] = 'field_service_type_value';
   $handler->display->display_options['sorts']['field_service_type_value']['table'] = 'field_data_field_service_type';
   $handler->display->display_options['sorts']['field_service_type_value']['field'] = 'field_service_type_value';
-  /* Sorteringskriterium: Content: Klassifisering (field_service_classification) */
+  /* Sort criterion: Content: Klassifisering (field_service_classification) */
   $handler->display->display_options['sorts']['field_service_classification_target_id']['id'] = 'field_service_classification_target_id';
   $handler->display->display_options['sorts']['field_service_classification_target_id']['table'] = 'field_data_field_service_classification';
   $handler->display->display_options['sorts']['field_service_classification_target_id']['field'] = 'field_service_classification_target_id';
-  /* Filter-kriterier: Content: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'service' => 'service',
   );
-  /* Filter-kriterier: Content: Tjenestetype (field_service_type) */
+  /* Filter criterion: Content: Tjenestetype (field_service_type) */
   $handler->display->display_options['filters']['field_service_type_value']['id'] = 'field_service_type_value';
   $handler->display->display_options['filters']['field_service_type_value']['table'] = 'field_data_field_service_type';
   $handler->display->display_options['filters']['field_service_type_value']['field'] = 'field_service_type_value';
   $handler->display->display_options['filters']['field_service_type_value']['value'] = array(
     'cfs' => 'cfs',
   );
-  /* Filter-kriterier: Content: Registreringsstatus (field_edit_state) */
+  /* Filter criterion: Content: Registreringsstatus (field_edit_state) */
   $handler->display->display_options['filters']['field_edit_state_value']['id'] = 'field_edit_state_value';
   $handler->display->display_options['filters']['field_edit_state_value']['table'] = 'field_data_field_edit_state';
   $handler->display->display_options['filters']['field_edit_state_value']['field'] = 'field_edit_state_value';
   $handler->display->display_options['filters']['field_edit_state_value']['value'] = array(
     'accepted' => 'accepted',
   );
-  /* Filter-kriterier: Content: Livssyklus (field_service_state) */
+  /* Filter criterion: Content: Livssyklus (field_service_state) */
   $handler->display->display_options['filters']['field_service_state_value']['id'] = 'field_service_state_value';
   $handler->display->display_options['filters']['field_service_state_value']['table'] = 'field_data_field_service_state';
   $handler->display->display_options['filters']['field_service_state_value']['field'] = 'field_service_state_value';
   $handler->display->display_options['filters']['field_service_state_value']['value'] = array(
     'prod' => 'prod',
   );
-  /* Filter-kriterier: Taxonomy vocabulary: Machine name */
+  /* Filter criterion: Taxonomy vocabulary: Machine name */
   $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
   $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
   $handler->display->display_options['filters']['machine_name']['field'] = 'machine_name';
@@ -875,39 +875,39 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['row_plugin'] = 'node';
   $handler->display->display_options['row_options']['view_mode'] = 'full';
   $handler->display->display_options['row_options']['links'] = FALSE;
-  /* Felt: Content: Title */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Sorteringskriterium: Content: Title */
+  /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Filter-kriterier: Content: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'service' => 'service',
   );
-  /* Filter-kriterier: Content: Tjenestetype (field_service_type) */
+  /* Filter criterion: Content: Tjenestetype (field_service_type) */
   $handler->display->display_options['filters']['field_service_type_value']['id'] = 'field_service_type_value';
   $handler->display->display_options['filters']['field_service_type_value']['table'] = 'field_data_field_service_type';
   $handler->display->display_options['filters']['field_service_type_value']['field'] = 'field_service_type_value';
   $handler->display->display_options['filters']['field_service_type_value']['value'] = array(
     'cfs' => 'cfs',
   );
-  /* Filter-kriterier: Content: Registreringsstatus (field_edit_state) */
+  /* Filter criterion: Content: Registreringsstatus (field_edit_state) */
   $handler->display->display_options['filters']['field_edit_state_value']['id'] = 'field_edit_state_value';
   $handler->display->display_options['filters']['field_edit_state_value']['table'] = 'field_data_field_edit_state';
   $handler->display->display_options['filters']['field_edit_state_value']['field'] = 'field_edit_state_value';
   $handler->display->display_options['filters']['field_edit_state_value']['value'] = array(
     'accepted' => 'accepted',
   );
-  /* Filter-kriterier: Content: Livssyklus (field_service_state) */
+  /* Filter criterion: Content: Livssyklus (field_service_state) */
   $handler->display->display_options['filters']['field_service_state_value']['id'] = 'field_service_state_value';
   $handler->display->display_options['filters']['field_service_state_value']['table'] = 'field_data_field_service_state';
   $handler->display->display_options['filters']['field_service_state_value']['field'] = 'field_service_state_value';
@@ -960,12 +960,12 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
     ),
   );
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Topptekst: Global: Unfiltered text */
+  /* Header: Global: Unfiltered text */
   $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['content'] = 'Denne siden lister opp alle registrerte tjenester som vi tilbyr for å understøtte de tilbydte tjenestene.  Det kan være tjenester som er interne for IT-avdelingen, eller tjenester som bare brukes av innholds&shy;redaktørene for en tilbydt tjenestene.  Denne siden er <i>ikke</i> offentlig.';
-  /* Felt: First letter of title */
+  /* Field: First letter of title */
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
@@ -978,31 +978,31 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['fields']['title_1']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title_1']['link_to_node'] = FALSE;
-  /* Felt: Content: Title */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Felt: Content: Beskrivelse */
+  /* Field: Content: Beskrivelse */
   $handler->display->display_options['fields']['field_summary']['id'] = 'field_summary';
   $handler->display->display_options['fields']['field_summary']['table'] = 'field_data_field_summary';
   $handler->display->display_options['fields']['field_summary']['field'] = 'field_summary';
   $handler->display->display_options['fields']['field_summary']['label'] = '';
   $handler->display->display_options['fields']['field_summary']['element_label_colon'] = FALSE;
-  /* Sorteringskriterium: Content: Title */
+  /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Filter-kriterier: Content: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'service' => 'service',
   );
-  /* Filter-kriterier: Content: Tjenestetype (field_service_type) */
+  /* Filter criterion: Content: Tjenestetype (field_service_type) */
   $handler->display->display_options['filters']['field_service_type_value']['id'] = 'field_service_type_value';
   $handler->display->display_options['filters']['field_service_type_value']['table'] = 'field_data_field_service_type';
   $handler->display->display_options['filters']['field_service_type_value']['field'] = 'field_service_type_value';
@@ -1020,21 +1020,21 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Ikke i produksjon';
   $handler->display->display_options['defaults']['header'] = FALSE;
-  /* Topptekst: Global: Unfiltered text */
+  /* Header: Global: Unfiltered text */
   $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['content'] = 'Denne siden lister opp alle registrerte tjenester ikke er i produksjon. De kan enten være under utvikling eller utfaset. Denne siden er <i>ikke</i> offentlig.';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter-kriterier: Content: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'service' => 'service',
   );
-  /* Filter-kriterier: Content: Livssyklus (field_service_state) */
+  /* Filter criterion: Content: Livssyklus (field_service_state) */
   $handler->display->display_options['filters']['field_service_state_value']['id'] = 'field_service_state_value';
   $handler->display->display_options['filters']['field_service_state_value']['table'] = 'field_data_field_service_state';
   $handler->display->display_options['filters']['field_service_state_value']['field'] = 'field_service_state_value';
@@ -1090,7 +1090,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
     ),
   );
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Felt: First letter of title */
+  /* Field: First letter of title */
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
@@ -1103,23 +1103,23 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['fields']['title_1']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title_1']['link_to_node'] = FALSE;
-  /* Felt: Content: Title */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Felt: Content: Beskrivelse */
+  /* Field: Content: Beskrivelse */
   $handler->display->display_options['fields']['field_summary']['id'] = 'field_summary';
   $handler->display->display_options['fields']['field_summary']['table'] = 'field_data_field_summary';
   $handler->display->display_options['fields']['field_summary']['field'] = 'field_summary';
   $handler->display->display_options['fields']['field_summary']['label'] = '';
   $handler->display->display_options['fields']['field_summary']['element_label_colon'] = FALSE;
-  /* Sorteringskriterium: Content: Title */
+  /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Kontekstuelt filter: Content: Has taxonomy term ID (with depth) */
+  /* Contextual filter: Content: Has taxonomy term ID (with depth) */
   $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
   $handler->display->display_options['arguments']['term_node_tid_depth']['table'] = 'node';
   $handler->display->display_options['arguments']['term_node_tid_depth']['field'] = 'term_node_tid_depth';
@@ -1133,7 +1133,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['arguments']['term_node_tid_depth']['validate']['type'] = 'taxonomy_term';
   $handler->display->display_options['arguments']['term_node_tid_depth']['depth'] = '0';
   $handler->display->display_options['arguments']['term_node_tid_depth']['break_phrase'] = TRUE;
-  /* Kontekstuelt filter: Content: Has taxonomy term ID depth modifier */
+  /* Contextual filter: Content: Has taxonomy term ID depth modifier */
   $handler->display->display_options['arguments']['term_node_tid_depth_modifier']['id'] = 'term_node_tid_depth_modifier';
   $handler->display->display_options['arguments']['term_node_tid_depth_modifier']['table'] = 'node';
   $handler->display->display_options['arguments']['term_node_tid_depth_modifier']['field'] = 'term_node_tid_depth_modifier';
@@ -1141,21 +1141,21 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['arguments']['term_node_tid_depth_modifier']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['term_node_tid_depth_modifier']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['term_node_tid_depth_modifier']['specify_validation'] = TRUE;
-  /* Filter-kriterier: Content: Tjenestetype (field_service_type) */
+  /* Filter criterion: Content: Tjenestetype (field_service_type) */
   $handler->display->display_options['filters']['field_service_type_value']['id'] = 'field_service_type_value';
   $handler->display->display_options['filters']['field_service_type_value']['table'] = 'field_data_field_service_type';
   $handler->display->display_options['filters']['field_service_type_value']['field'] = 'field_service_type_value';
   $handler->display->display_options['filters']['field_service_type_value']['value'] = array(
     'cfs' => 'cfs',
   );
-  /* Filter-kriterier: Content: Livssyklus (field_service_state) */
+  /* Filter criterion: Content: Livssyklus (field_service_state) */
   $handler->display->display_options['filters']['field_service_state_value']['id'] = 'field_service_state_value';
   $handler->display->display_options['filters']['field_service_state_value']['table'] = 'field_data_field_service_state';
   $handler->display->display_options['filters']['field_service_state_value']['field'] = 'field_service_state_value';
   $handler->display->display_options['filters']['field_service_state_value']['value'] = array(
     'prod' => 'prod',
   );
-  /* Filter-kriterier: Content: Registreringsstatus (field_edit_state) */
+  /* Filter criterion: Content: Registreringsstatus (field_edit_state) */
   $handler->display->display_options['filters']['field_edit_state_value']['id'] = 'field_edit_state_value';
   $handler->display->display_options['filters']['field_edit_state_value']['table'] = 'field_data_field_edit_state';
   $handler->display->display_options['filters']['field_edit_state_value']['field'] = 'field_edit_state_value';
@@ -1342,12 +1342,12 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
       'empty_column' => 0,
     ),
   );
-  /* Felt: Content: Title */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'Tjenestenavn';
-  /* Felt: Content: Driftsansvarlige */
+  /* Field: Content: Driftsansvarlige */
   $handler->display->display_options['fields']['field_operator']['id'] = 'field_operator';
   $handler->display->display_options['fields']['field_operator']['table'] = 'field_data_field_operator';
   $handler->display->display_options['fields']['field_operator']['field'] = 'field_operator';
@@ -1355,31 +1355,31 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
     'link' => 0,
   );
   $handler->display->display_options['fields']['field_operator']['delta_offset'] = '0';
-  /* Felt: Content: Driftsleverandør */
+  /* Field: Content: Driftsleverandør */
   $handler->display->display_options['fields']['field_service_supplier']['id'] = 'field_service_supplier';
   $handler->display->display_options['fields']['field_service_supplier']['table'] = 'field_data_field_service_supplier';
   $handler->display->display_options['fields']['field_service_supplier']['field'] = 'field_service_supplier';
-  /* Felt: Content: Mer informasjon */
+  /* Field: Content: Mer informasjon */
   $handler->display->display_options['fields']['field_documentation_link']['id'] = 'field_documentation_link';
   $handler->display->display_options['fields']['field_documentation_link']['table'] = 'field_data_field_documentation_link';
   $handler->display->display_options['fields']['field_documentation_link']['field'] = 'field_documentation_link';
   $handler->display->display_options['fields']['field_documentation_link']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_documentation_link']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_documentation_link']['type'] = 'link_absolute';
-  /* Felt: Content: Her finner du tjenesten */
+  /* Field: Content: Her finner du tjenesten */
   $handler->display->display_options['fields']['field_home_link']['id'] = 'field_home_link';
   $handler->display->display_options['fields']['field_home_link']['table'] = 'field_data_field_home_link';
   $handler->display->display_options['fields']['field_home_link']['field'] = 'field_home_link';
   $handler->display->display_options['fields']['field_home_link']['click_sort_column'] = 'url';
-  /* Felt: Content: Hva koster tjenesten */
+  /* Field: Content: Hva koster tjenesten */
   $handler->display->display_options['fields']['field_cost']['id'] = 'field_cost';
   $handler->display->display_options['fields']['field_cost']['table'] = 'field_data_field_cost';
   $handler->display->display_options['fields']['field_cost']['field'] = 'field_cost';
-  /* Felt: Content: Tjenestetype */
+  /* Field: Content: Tjenestetype */
   $handler->display->display_options['fields']['field_service_type']['id'] = 'field_service_type';
   $handler->display->display_options['fields']['field_service_type']['table'] = 'field_data_field_service_type';
   $handler->display->display_options['fields']['field_service_type']['field'] = 'field_service_type';
-  /* Felt: Content: CMDB id */
+  /* Field: Content: CMDB id */
   $handler->display->display_options['fields']['field_cmdb_id_1']['id'] = 'field_cmdb_id_1';
   $handler->display->display_options['fields']['field_cmdb_id_1']['table'] = 'field_data_field_cmdb_id';
   $handler->display->display_options['fields']['field_cmdb_id_1']['field'] = 'field_cmdb_id';
@@ -1387,12 +1387,12 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Felt: Content: Tilgjengelig for */
+  /* Field: Content: Tilgjengelig for */
   $handler->display->display_options['fields']['field_user_group']['id'] = 'field_user_group';
   $handler->display->display_options['fields']['field_user_group']['table'] = 'field_data_field_user_group';
   $handler->display->display_options['fields']['field_user_group']['field'] = 'field_user_group';
   $handler->display->display_options['fields']['field_user_group']['delta_offset'] = '0';
-  /* Felt: Content: Klassifisering */
+  /* Field: Content: Klassifisering */
   $handler->display->display_options['fields']['field_service_classification']['id'] = 'field_service_classification';
   $handler->display->display_options['fields']['field_service_classification']['table'] = 'field_data_field_service_classification';
   $handler->display->display_options['fields']['field_service_classification']['field'] = 'field_service_classification';
@@ -1400,42 +1400,42 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
     'link' => 0,
   );
   $handler->display->display_options['fields']['field_service_classification']['delta_offset'] = '0';
-  /* Felt: Content: Kritikalitet */
+  /* Field: Content: Kritikalitet */
   $handler->display->display_options['fields']['field_criticality']['id'] = 'field_criticality';
   $handler->display->display_options['fields']['field_criticality']['table'] = 'field_data_field_criticality';
   $handler->display->display_options['fields']['field_criticality']['field'] = 'field_criticality';
-  /* Felt: Content: Livssyklus */
+  /* Field: Content: Livssyklus */
   $handler->display->display_options['fields']['field_service_state']['id'] = 'field_service_state';
   $handler->display->display_options['fields']['field_service_state']['table'] = 'field_data_field_service_state';
   $handler->display->display_options['fields']['field_service_state']['field'] = 'field_service_state';
-  /* Felt: Content: Normalt tilgjengelig */
+  /* Field: Content: Normalt tilgjengelig */
   $handler->display->display_options['fields']['field_availability']['id'] = 'field_availability';
   $handler->display->display_options['fields']['field_availability']['table'] = 'field_data_field_availability';
   $handler->display->display_options['fields']['field_availability']['field'] = 'field_availability';
-  /* Felt: Content: Registreringsstatus */
+  /* Field: Content: Registreringsstatus */
   $handler->display->display_options['fields']['field_edit_state']['id'] = 'field_edit_state';
   $handler->display->display_options['fields']['field_edit_state']['table'] = 'field_data_field_edit_state';
   $handler->display->display_options['fields']['field_edit_state']['field'] = 'field_edit_state';
-  /* Felt: Content: Vaktordning */
+  /* Field: Content: Vaktordning */
   $handler->display->display_options['fields']['field_service_rotation']['id'] = 'field_service_rotation';
   $handler->display->display_options['fields']['field_service_rotation']['table'] = 'field_data_field_service_rotation';
   $handler->display->display_options['fields']['field_service_rotation']['field'] = 'field_service_rotation';
-  /* Felt: Content: Ytelser */
+  /* Field: Content: Ytelser */
   $handler->display->display_options['fields']['field_service_levels']['id'] = 'field_service_levels';
   $handler->display->display_options['fields']['field_service_levels']['table'] = 'field_data_field_service_levels';
   $handler->display->display_options['fields']['field_service_levels']['field'] = 'field_service_levels';
   $handler->display->display_options['fields']['field_service_levels']['delta_offset'] = '0';
-  /* Felt: Content: Published */
+  /* Field: Content: Published */
   $handler->display->display_options['fields']['status']['id'] = 'status';
   $handler->display->display_options['fields']['status']['table'] = 'node';
   $handler->display->display_options['fields']['status']['field'] = 'status';
   $handler->display->display_options['fields']['status']['not'] = 0;
-  /* Sorteringskriterium: Content: Post date */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter-kriterier: Content: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';

@@ -10,7 +10,7 @@
 function tk_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_adress'
+  // Exported field_base: 'field_adress'.
   $field_bases['field_adress'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -29,7 +29,7 @@ function tk_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_availability'
+  // Exported field_base: 'field_availability'.
   $field_bases['field_availability'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -59,7 +59,7 @@ function tk_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_cmdb_id'
+  // Exported field_base: 'field_cmdb_id'.
   $field_bases['field_cmdb_id'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -77,7 +77,7 @@ function tk_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_cost'
+  // Exported field_base: 'field_cost'.
   $field_bases['field_cost'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -106,7 +106,7 @@ function tk_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_criticality'
+  // Exported field_base: 'field_criticality'.
   $field_bases['field_criticality'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -136,7 +136,7 @@ function tk_field_default_field_bases() {
     'type' => 'list_integer',
   );
 
-  // Exported field_base: 'field_demand'
+  // Exported field_base: 'field_demand'.
   $field_bases['field_demand'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -158,7 +158,7 @@ function tk_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_description'
+  // Exported field_base: 'field_description'.
   $field_bases['field_description'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -180,7 +180,7 @@ function tk_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_documentation_link'
+  // Exported field_base: 'field_documentation_link'.
   $field_bases['field_documentation_link'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -212,7 +212,7 @@ function tk_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_edit_state'
+  // Exported field_base: 'field_edit_state'.
   $field_bases['field_edit_state'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -242,7 +242,7 @@ function tk_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_field_howto_orde'
+  // Exported field_base: 'field_field_howto_orde'.
   $field_bases['field_field_howto_orde'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -264,7 +264,7 @@ function tk_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_home_link'
+  // Exported field_base: 'field_home_link'.
   $field_bases['field_home_link'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -296,7 +296,7 @@ function tk_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_icon_name'
+  // Exported field_base: 'field_icon_name'.
   $field_bases['field_icon_name'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -320,7 +320,7 @@ function tk_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_internal_notes'
+  // Exported field_base: 'field_internal_notes'.
   $field_bases['field_internal_notes'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -342,7 +342,7 @@ function tk_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_kode'
+  // Exported field_base: 'field_kode'.
   $field_bases['field_kode'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -363,7 +363,7 @@ function tk_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_opening'
+  // Exported field_base: 'field_opening'.
   $field_bases['field_opening'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -384,7 +384,7 @@ function tk_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_operator'
+  // Exported field_base: 'field_operator'.
   $field_bases['field_operator'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -421,7 +421,7 @@ function tk_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_ower_contact'
+  // Exported field_base: 'field_ower_contact'.
   $field_bases['field_ower_contact'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -458,7 +458,7 @@ function tk_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_phone'
+  // Exported field_base: 'field_phone'.
   $field_bases['field_phone'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -479,7 +479,7 @@ function tk_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_quality'
+  // Exported field_base: 'field_quality'.
   $field_bases['field_quality'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -501,7 +501,7 @@ function tk_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_service_classification'
+  // Exported field_base: 'field_service_classification'.
   $field_bases['field_service_classification'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -538,7 +538,7 @@ function tk_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_service_levels'
+  // Exported field_base: 'field_service_levels'.
   $field_bases['field_service_levels'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -569,7 +569,7 @@ function tk_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_service_owner'
+  // Exported field_base: 'field_service_owner'.
   $field_bases['field_service_owner'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -608,7 +608,7 @@ function tk_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_service_rotation'
+  // Exported field_base: 'field_service_rotation'.
   $field_bases['field_service_rotation'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -637,7 +637,7 @@ function tk_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_service_state'
+  // Exported field_base: 'field_service_state'.
   $field_bases['field_service_state'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -668,7 +668,7 @@ function tk_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_service_status'
+  // Exported field_base: 'field_service_status'.
   $field_bases['field_service_status'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -697,7 +697,7 @@ function tk_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_service_supplier'
+  // Exported field_base: 'field_service_supplier'.
   $field_bases['field_service_supplier'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -726,7 +726,7 @@ function tk_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_service_type'
+  // Exported field_base: 'field_service_type'.
   $field_bases['field_service_type'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -754,7 +754,7 @@ function tk_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_side_text'
+  // Exported field_base: 'field_side_text'.
   $field_bases['field_side_text'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -776,7 +776,7 @@ function tk_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_summary'
+  // Exported field_base: 'field_summary'.
   $field_bases['field_summary'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -798,7 +798,7 @@ function tk_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_support_contact'
+  // Exported field_base: 'field_support_contact'.
   $field_bases['field_support_contact'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -837,7 +837,7 @@ function tk_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_supporting_systems'
+  // Exported field_base: 'field_supporting_systems'.
   $field_bases['field_supporting_systems'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -859,7 +859,7 @@ function tk_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_top_text'
+  // Exported field_base: 'field_top_text'.
   $field_bases['field_top_text'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -881,7 +881,7 @@ function tk_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_user_group'
+  // Exported field_base: 'field_user_group'.
   $field_bases['field_user_group'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -911,7 +911,7 @@ function tk_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_www'
+  // Exported field_base: 'field_www'.
   $field_bases['field_www'] = array(
     'active' => 1,
     'cardinality' => 1,
