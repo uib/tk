@@ -235,6 +235,7 @@ function tk_field_default_field_bases() {
         'dirty' => 'Klar til språkvask',
         'proposed' => 'Klar for godkjenning seksjonsleder',
         'accepted' => 'Godkjent',
+        'waiting' => 'På vent',
       ),
       'allowed_values_function' => '',
     ),
