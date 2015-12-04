@@ -661,7 +661,7 @@ function tk_field_default_field_bases() {
         'pilot' => 'Pilot/Test',
         'prod' => 'Produksjon',
         'utfasing' => 'Utfasing',
-        'avsluttet' => 'Avslutte',
+        'avsluttet' => 'Avsluttet',
       ),
       'allowed_values_function' => '',
     ),
