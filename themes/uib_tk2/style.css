@@ -99,6 +99,14 @@ nav a:visited {
     color: inherit;
 }
 
+#main-menu li:last-child {
+    float: right;
+}
+
+#main-menu li.active a {
+    text-decoration: underline;
+}
+
 .breadcrumb {
     display: none;
 }
