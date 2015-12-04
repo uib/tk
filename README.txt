@@ -25,6 +25,7 @@ production dump by running:
     $ cd /var/www/app/tk
     $ grep password site/settings.php
     $ bin/site-drush cc all; bin/site-drush sql-dump >~/tk.sql
+    Password:
     ^D
     $ scp real6:tk.sql .
 
