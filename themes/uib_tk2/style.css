@@ -417,6 +417,19 @@ a:visited {
     font-size: inherit;
 }
 
+.view-service-owners .view-grouping-header {
+    font-size: 130%;
+    margin-top: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+.view-service-owners .view-grouping-content {
+    font-size: 100%;
+}
+.view-service-owners .view-grouping-content h3 {
+    font-size: 100%;
+}
+
 @media all and (max-width: 720px) {
     .node-service > .content {
       -webkit-flex-wrap: wrap;

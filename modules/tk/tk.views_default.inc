@@ -450,6 +450,11 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
+      'field' => 'title_1',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+    1 => array(
       'field' => 'field_full_name',
       'rendered' => 1,
       'rendered_strip' => 0,
@@ -461,7 +466,20 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['relationships']['field_ower_contact_target_id']['table'] = 'field_data_field_ower_contact';
   $handler->display->display_options['relationships']['field_ower_contact_target_id']['field'] = 'field_ower_contact_target_id';
   $handler->display->display_options['relationships']['field_ower_contact_target_id']['label'] = 'Owner';
-  $handler->display->display_options['relationships']['field_ower_contact_target_id']['required'] = TRUE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_service_owner_target_id']['id'] = 'field_service_owner_target_id';
+  $handler->display->display_options['relationships']['field_service_owner_target_id']['table'] = 'field_data_field_service_owner';
+  $handler->display->display_options['relationships']['field_service_owner_target_id']['field'] = 'field_service_owner_target_id';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['fields']['title_1']['table'] = 'node';
+  $handler->display->display_options['fields']['title_1']['field'] = 'title';
+  $handler->display->display_options['fields']['title_1']['relationship'] = 'field_service_owner_target_id';
+  $handler->display->display_options['fields']['title_1']['label'] = '';
+  $handler->display->display_options['fields']['title_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_1']['empty'] = '⁉️ Ingen systemeier';
+  $handler->display->display_options['fields']['title_1']['link_to_node'] = FALSE;
   /* Field: User: Full name */
   $handler->display->display_options['fields']['field_full_name']['id'] = 'field_full_name';
   $handler->display->display_options['fields']['field_full_name']['table'] = 'field_data_field_full_name';
@@ -470,6 +488,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['fields']['field_full_name']['label'] = '';
   $handler->display->display_options['fields']['field_full_name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_full_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_full_name']['empty'] = '(mangler kontaktperson) 🙀';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -477,6 +496,11 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['sorts']['title_1']['table'] = 'node';
+  $handler->display->display_options['sorts']['title_1']['field'] = 'title';
+  $handler->display->display_options['sorts']['title_1']['relationship'] = 'field_service_owner_target_id';
   /* Sort criterion: User: Full name (field_full_name) */
   $handler->display->display_options['sorts']['field_full_name_value']['id'] = 'field_full_name_value';
   $handler->display->display_options['sorts']['field_full_name_value']['table'] = 'field_data_field_full_name';
@@ -511,6 +535,9 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
     t('Asc'),
     t('Desc'),
     t('Owner'),
+    t('Content entity referenced from field_service_owner'),
+    t('⁉️ Ingen systemeier'),
+    t('(mangler kontaktperson) 🙀'),
     t('Systemavsvarlige'),
   );
   $export['service_owners'] = $view;
