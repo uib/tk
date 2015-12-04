@@ -430,6 +430,31 @@ a:visited {
     font-size: 100%;
 }
 
+.view-service-review h3 {
+    margin-top: 2.5em;
+    margin-bottom: 0.5em;
+    font-size: 130%;
+    letter-spacing: 2px;
+}
+
+.view-service-review h3:before {
+    content: "Status: ";
+}
+
+.view-service-review h4 {
+    margin-top: 1em;
+    margin-bottom: 0em;
+    font-size: 110%;
+}
+
+.view-service-review .views-field-field-service-state {
+    font-size: 70%;
+}
+
+.view-service-review .views-field-field-internal-notes {
+    max-width: 70ex;
+}
+
 @media all and (max-width: 720px) {
     .node-service > .content {
       -webkit-flex-wrap: wrap;

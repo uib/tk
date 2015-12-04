@@ -562,7 +562,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
       'field' => 'field_edit_state',
@@ -570,7 +570,16 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
       'rendered_strip' => 0,
     ),
   );
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Content: Registreringsstatus */
+  $handler->display->display_options['fields']['field_edit_state']['id'] = 'field_edit_state';
+  $handler->display->display_options['fields']['field_edit_state']['table'] = 'field_data_field_edit_state';
+  $handler->display->display_options['fields']['field_edit_state']['field'] = 'field_edit_state';
+  $handler->display->display_options['fields']['field_edit_state']['label'] = '';
+  $handler->display->display_options['fields']['field_edit_state']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_edit_state']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_edit_state']['empty'] = 'Ukjent status';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -602,15 +611,15 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
 [field_home_link]';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'h4';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: Registreringsstatus */
-  $handler->display->display_options['fields']['field_edit_state']['id'] = 'field_edit_state';
-  $handler->display->display_options['fields']['field_edit_state']['table'] = 'field_data_field_edit_state';
-  $handler->display->display_options['fields']['field_edit_state']['field'] = 'field_edit_state';
-  $handler->display->display_options['fields']['field_edit_state']['label'] = '';
-  $handler->display->display_options['fields']['field_edit_state']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_edit_state']['element_label_colon'] = FALSE;
+  /* Field: Content: Livssyklus */
+  $handler->display->display_options['fields']['field_service_state']['id'] = 'field_service_state';
+  $handler->display->display_options['fields']['field_service_state']['table'] = 'field_data_field_service_state';
+  $handler->display->display_options['fields']['field_service_state']['field'] = 'field_service_state';
+  $handler->display->display_options['fields']['field_service_state']['element_type'] = 'span';
+  $handler->display->display_options['fields']['field_service_state']['empty'] = 'Ukjent';
   /* Field: Content: Interne merknader */
   $handler->display->display_options['fields']['field_internal_notes']['id'] = 'field_internal_notes';
   $handler->display->display_options['fields']['field_internal_notes']['table'] = 'field_data_field_internal_notes';
@@ -621,6 +630,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['sorts']['field_edit_state_value']['id'] = 'field_edit_state_value';
   $handler->display->display_options['sorts']['field_edit_state_value']['table'] = 'field_data_field_edit_state';
   $handler->display->display_options['sorts']['field_edit_state_value']['field'] = 'field_edit_state_value';
+  $handler->display->display_options['sorts']['field_edit_state_value']['order'] = 'DESC';
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -649,9 +659,12 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
     t('Sort by'),
     t('Asc'),
     t('Desc'),
+    t('Ukjent status'),
     t('→ ([field_home_link])'),
     t('<a href="/node/[nid]">[title]</a>
 [field_home_link]'),
+    t('Livssyklus'),
+    t('Ukjent'),
     t('Page'),
   );
   $export['service_review'] = $view;
