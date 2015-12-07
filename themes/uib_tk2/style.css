@@ -200,6 +200,7 @@ nav a:visited {
     border-radius: 2px;
     box-shadow: 2px 2px 3px #eee;
     position: relative;
+    padding-bottom: 1ex;
 }
 
 .view-service-classes > .view-content > .item-list > h3 {
