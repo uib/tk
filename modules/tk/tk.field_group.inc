@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function tk_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -36,11 +36,12 @@ function tk_field_group_info() {
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'fast',
+        'id' => 'node_service_full_group_main',
       ),
       'formatter' => 'open',
     ),
   );
-  $export['group_main|node|service|default'] = $field_group;
+  $field_groups['group_main|node|service|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -77,11 +78,12 @@ function tk_field_group_info() {
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'fast',
+        'id' => 'node_service_full_group_secondary',
       ),
       'formatter' => 'open',
     ),
   );
-  $export['group_secondary|node|service|default'] = $field_group;
+  $field_groups['group_secondary|node|service|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -117,11 +119,12 @@ function tk_field_group_info() {
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'fast',
+        'id' => 'node_service_full_group_sidebar',
       ),
       'formatter' => 'open',
     ),
   );
-  $export['group_sidebar|node|service|default'] = $field_group;
+  $field_groups['group_sidebar|node|service|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -149,11 +152,19 @@ function tk_field_group_info() {
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'fast',
+        'id' => 'node_service_full_group_text',
       ),
       'formatter' => 'open',
     ),
   );
-  $export['group_text|node|service|default'] = $field_group;
+  $field_groups['group_text|node|service|default'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Main');
+  t('Primary');
+  t('Secondary');
+  t('Text');
+
+  return $field_groups;
 }
