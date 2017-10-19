@@ -64,7 +64,7 @@ function tk_field_default_field_instances() {
           'thousand_separator' => '',
         ),
         'type' => 'number_integer',
-        'weight' => 35,
+        'weight' => 37,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -338,7 +338,7 @@ function tk_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 37,
+        'weight' => 39,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -359,7 +359,7 @@ function tk_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 25,
+      'weight' => 29,
     ),
   );
 
@@ -460,6 +460,43 @@ function tk_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-service-field_information_class'.
+  $field_instances['node-service-field_information_class'] = array(
+    'bundle' => 'service',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Hvordan klassifiseres informasjonen som lagres i tjenesten i henhold til SIS',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 30,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_information_class',
+    'label' => 'Informasjonsklasse',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 24,
+    ),
+  );
+
   // Exported field_instance: 'node-service-field_internal_notes'.
   $field_instances['node-service-field_internal_notes'] = array(
     'bundle' => 'service',
@@ -472,7 +509,7 @@ function tk_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 38,
+        'weight' => 40,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -496,7 +533,7 @@ function tk_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 26,
+      'weight' => 30,
     ),
   );
 
@@ -514,7 +551,7 @@ function tk_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 33,
+        'weight' => 35,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -557,7 +594,7 @@ function tk_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 32,
+        'weight' => 34,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -632,6 +669,173 @@ Leveringstid:',
     ),
   );
 
+  // Exported field_instance: 'node-service-field_ros_date'.
+  $field_instances['node-service-field_ros_date'] = array(
+    'bundle' => 'service',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'short',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => 0,
+        ),
+        'type' => 'date_default',
+        'weight' => 30,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_ros_date',
+    'label' => 'Siste gjennomførte ROS analyse',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'blank',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'Y-m-d H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'no_fieldset' => 1,
+        'text_parts' => array(),
+        'year_range' => '-2:+0',
+      ),
+      'type' => 'date_popup',
+      'weight' => 25,
+    ),
+  );
+
+  // Exported field_instance: 'node-service-field_ros_link'.
+  $field_instances['node-service-field_ros_link'] = array(
+    'bundle' => 'service',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Dokumentasjon for siste ROS-analyse gjort for tjenesten.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 31,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_ros_link',
+    'label' => 'ROS link',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'rel_remove' => 'default',
+      'title' => 'none',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 27,
+    ),
+  );
+
+  // Exported field_instance: 'node-service-field_ros_revision_date'.
+  $field_instances['node-service-field_ros_revision_date'] = array(
+    'bundle' => 'service',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'short',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => 0,
+        ),
+        'type' => 'date_default',
+        'weight' => 31,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_ros_revision_date',
+    'label' => 'Siste reviderte ROS analyse',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'blank',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'Y-m-d H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'no_fieldset' => 1,
+        'text_parts' => array(),
+        'year_range' => '-3:+0',
+      ),
+      'type' => 'date_popup',
+      'weight' => 26,
+    ),
+  );
+
   // Exported field_instance: 'node-service-field_service_classification'.
   $field_instances['node-service-field_service_classification'] = array(
     'bundle' => 'service',
@@ -685,7 +889,7 @@ Leveringstid:',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 34,
+        'weight' => 36,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -765,7 +969,7 @@ Leveringstid:',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 30,
+        'weight' => 32,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -806,7 +1010,7 @@ Leveringstid:',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 31,
+        'weight' => 33,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -867,7 +1071,7 @@ Leveringstid:',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 24,
+      'weight' => 28,
     ),
   );
 
@@ -1063,7 +1267,7 @@ Leveringstid:',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 36,
+        'weight' => 38,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1505,6 +1709,7 @@ Leveringstid:',
   t('Brukerstøtte');
   t('Brukes kun når IT-avdelingen er driftsleverandør. Angi de nivåene IT-avdelingen er ansvarlig for. ');
   t('CMDB id');
+  t('Dokumentasjon for siste ROS-analyse gjort for tjenesten.');
   t('Driftsansvarlige');
   t('Driftsleverandør');
   t('Driftsstatus');
@@ -1516,9 +1721,11 @@ Leveringstid:',
   t('Hva koster tjenesten');
   t('Hvis tjenesten også er definert i <a href="https://bs.uib.no/?module=cmdb&action=view">CMDB</a> så kan den knyttes til tjenestekatalogen.');
   t('Hvordan bestille');
+  t('Hvordan klassifiseres informasjonen som lagres i tjenesten i henhold til SIS');
   t('Icon name');
   t('Identifikator');
   t('Ikonnavnene man kan velge mellom er dokumentert <a href="http://fontawesome.io/icons/">Font Awesome siden</a>.');
+  t('Informasjonsklasse');
   t('Interne merknader');
   t('Klassifiserer om tjenesten er en tjeneste vi tilbyr til brukere eller om det er en «underliggende»/teknisk tjeneste.');
   t('Klassifisering');
@@ -1530,8 +1737,11 @@ Leveringstid:',
   t('Normalt tilgjengelig');
   t('Når kan bruker forvente at tjenesten kan brukes -- offentlig');
   t('Objekter i CMDB som tjenestene er avhengig. Kommaseparert liste.');
+  t('ROS link');
   t('Registreringsstatus');
   t('Side text');
+  t('Siste gjennomførte ROS analyse');
+  t('Siste reviderte ROS analyse');
   t('Systemeier');
   t('Telefon');
   t('Tilgjengelig for');
