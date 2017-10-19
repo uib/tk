@@ -218,6 +218,9 @@ function tk__service_node_as_obj($node, &$users, &$classes, &$support) {
       $service['link']['_title_doc'] = $node->field_documentation_link['und'][0]['title'];
     }
   }
+  if ($node->field_ros_link['und'][0]) {
+    $service['link']['ros'] = tk__url($node->field_ros_link['und'][0]['url']);
+  }
 
   // include the user roles
   $author = user_load($node->uid);
@@ -277,6 +280,7 @@ function tk__service_node_as_obj($node, &$users, &$classes, &$support) {
     'field_service_supplier',
     'field_cmdb_id',
     'field_criticality',
+    'field_information_class',
   )
   as $field) {
     $fv = $node->$field;
