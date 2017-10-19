@@ -971,6 +971,130 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $export['services_full_text'] = $view;
 
   $view = new view();
+  $view->name = 'services_ros';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'ROS';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'ROS';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Informasjonsklasse */
+  $handler->display->display_options['fields']['field_information_class']['id'] = 'field_information_class';
+  $handler->display->display_options['fields']['field_information_class']['table'] = 'field_data_field_information_class';
+  $handler->display->display_options['fields']['field_information_class']['field'] = 'field_information_class';
+  /* Field: Content: ROS link */
+  $handler->display->display_options['fields']['field_ros_link']['id'] = 'field_ros_link';
+  $handler->display->display_options['fields']['field_ros_link']['table'] = 'field_data_field_ros_link';
+  $handler->display->display_options['fields']['field_ros_link']['field'] = 'field_ros_link';
+  $handler->display->display_options['fields']['field_ros_link']['label'] = 'ROS';
+  $handler->display->display_options['fields']['field_ros_link']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ros_link']['empty'] = '(missing)';
+  $handler->display->display_options['fields']['field_ros_link']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_ros_link']['type'] = 'link_label';
+  /* Field: Content: Siste gjennomførte ROS analyse */
+  $handler->display->display_options['fields']['field_ros_date']['id'] = 'field_ros_date';
+  $handler->display->display_options['fields']['field_ros_date']['table'] = 'field_data_field_ros_date';
+  $handler->display->display_options['fields']['field_ros_date']['field'] = 'field_ros_date';
+  $handler->display->display_options['fields']['field_ros_date']['label'] = 'Dato';
+  $handler->display->display_options['fields']['field_ros_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ros_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Content: Siste reviderte ROS analyse */
+  $handler->display->display_options['fields']['field_ros_revision_date']['id'] = 'field_ros_revision_date';
+  $handler->display->display_options['fields']['field_ros_revision_date']['table'] = 'field_data_field_ros_revision_date';
+  $handler->display->display_options['fields']['field_ros_revision_date']['field'] = 'field_ros_revision_date';
+  $handler->display->display_options['fields']['field_ros_revision_date']['label'] = 'Revisjon';
+  $handler->display->display_options['fields']['field_ros_revision_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ros_revision_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Sort criterion: Content: Siste gjennomførte ROS analyse (field_ros_date) */
+  $handler->display->display_options['sorts']['field_ros_date_value']['id'] = 'field_ros_date_value';
+  $handler->display->display_options['sorts']['field_ros_date_value']['table'] = 'field_data_field_ros_date';
+  $handler->display->display_options['sorts']['field_ros_date_value']['field'] = 'field_ros_date_value';
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'service' => 'service',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'services/ros';
+  $translatables['services_ros'] = array(
+    t('Master'),
+    t('ROS'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Informasjonsklasse'),
+    t('(missing)'),
+    t('Dato'),
+    t('Revisjon'),
+    t('Page'),
+  );
+  $export['services_ros'] = $view;
+
+  $view = new view();
   $view->name = 'supporting_services';
   $view->description = '';
   $view->tag = 'default';
