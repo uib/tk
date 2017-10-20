@@ -18,11 +18,6 @@ and initialize the application by invoking:
 
     (cd scripts && ./install-sqlite.sh)
 
-This is a way to install drush if you have composer:
-
-    $ composer global require drush/drush:^6
-    $ PATH=$(composer config --global home)/vendor/bin:$PATH
-
 Alternatively manually configure postgres access and restore from the latest
 production dump by running:
 
@@ -35,3 +30,8 @@ production dump by running:
     $ scp real6:tk.sql .
 
     $ ./scripts/pg-restore.sh
+
+This is a way to install drush if you have composer:
+
+    $ composer global require drush/drush:^6
+    $ PATH=$(composer config --global home)/vendor/bin:$PATH
