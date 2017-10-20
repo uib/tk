@@ -23,7 +23,7 @@ production dump by running:
 
     $ ssh real6
     $ cd /var/www/app/tk
-    $ grep password site/settings.php
+    $ egrep ^\ +\'password site/settings.php
     $ bin/site-drush cc all; bin/site-drush sql-dump >~/tk.sql
     Password:
     ^D
