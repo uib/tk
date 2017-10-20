@@ -38,6 +38,15 @@ function tk_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'create field_information_class'.
+  $permissions['create field_information_class'] = array(
+    'name' => 'create field_information_class',
+    'roles' => array(
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'create field_internal_notes'.
   $permissions['create field_internal_notes'] = array(
     'name' => 'create field_internal_notes',
@@ -70,6 +79,15 @@ function tk_user_default_permissions() {
     'name' => 'create field_quality',
     'roles' => array(
       'druapladmin' => 'druapladmin',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'create field_ros_link'.
+  $permissions['create field_ros_link'] = array(
+    'name' => 'create field_ros_link',
+    'roles' => array(
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -148,6 +166,15 @@ function tk_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'edit field_information_class'.
+  $permissions['edit field_information_class'] = array(
+    'name' => 'edit field_information_class',
+    'roles' => array(
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'edit field_internal_notes'.
   $permissions['edit field_internal_notes'] = array(
     'name' => 'edit field_internal_notes',
@@ -180,6 +207,15 @@ function tk_user_default_permissions() {
     'name' => 'edit field_quality',
     'roles' => array(
       'druapladmin' => 'druapladmin',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit field_ros_link'.
+  $permissions['edit field_ros_link'] = array(
+    'name' => 'edit field_ros_link',
+    'roles' => array(
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -258,6 +294,16 @@ function tk_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'edit own field_information_class'.
+  $permissions['edit own field_information_class'] = array(
+    'name' => 'edit own field_information_class',
+    'roles' => array(
+      'authenticated user' => 'authenticated user',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'edit own field_internal_notes'.
   $permissions['edit own field_internal_notes'] = array(
     'name' => 'edit own field_internal_notes',
@@ -290,6 +336,15 @@ function tk_user_default_permissions() {
     'name' => 'edit own field_quality',
     'roles' => array(
       'druapladmin' => 'druapladmin',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit own field_ros_link'.
+  $permissions['edit own field_ros_link'] = array(
+    'name' => 'edit own field_ros_link',
+    'roles' => array(
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -369,6 +424,16 @@ function tk_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'view field_information_class'.
+  $permissions['view field_information_class'] = array(
+    'name' => 'view field_information_class',
+    'roles' => array(
+      'ita' => 'ita',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'view field_internal_notes'.
   $permissions['view field_internal_notes'] = array(
     'name' => 'view field_internal_notes',
@@ -383,6 +448,7 @@ function tk_user_default_permissions() {
   $permissions['view field_operator'] = array(
     'name' => 'view field_operator',
     'roles' => array(
+      'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -392,6 +458,7 @@ function tk_user_default_permissions() {
   $permissions['view field_ower_contact'] = array(
     'name' => 'view field_ower_contact',
     'roles' => array(
+      'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -402,6 +469,16 @@ function tk_user_default_permissions() {
     'name' => 'view field_quality',
     'roles' => array(
       'druapladmin' => 'druapladmin',
+      'ita' => 'ita',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view field_ros_link'.
+  $permissions['view field_ros_link'] = array(
+    'name' => 'view field_ros_link',
+    'roles' => array(
       'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
@@ -482,6 +559,16 @@ function tk_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'view own field_information_class'.
+  $permissions['view own field_information_class'] = array(
+    'name' => 'view own field_information_class',
+    'roles' => array(
+      'ita' => 'ita',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'view own field_internal_notes'.
   $permissions['view own field_internal_notes'] = array(
     'name' => 'view own field_internal_notes',
@@ -496,6 +583,7 @@ function tk_user_default_permissions() {
   $permissions['view own field_operator'] = array(
     'name' => 'view own field_operator',
     'roles' => array(
+      'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -505,6 +593,7 @@ function tk_user_default_permissions() {
   $permissions['view own field_ower_contact'] = array(
     'name' => 'view own field_ower_contact',
     'roles' => array(
+      'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -515,6 +604,16 @@ function tk_user_default_permissions() {
     'name' => 'view own field_quality',
     'roles' => array(
       'druapladmin' => 'druapladmin',
+      'ita' => 'ita',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view own field_ros_link'.
+  $permissions['view own field_ros_link'] = array(
+    'name' => 'view own field_ros_link',
+    'roles' => array(
       'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
