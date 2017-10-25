@@ -15,7 +15,7 @@ function tk_field_default_field_instances() {
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Når kan bruker forvente at tjenesten kan brukes -- offentlig',
+    'description' => 'Når kan bruker forvente at tjenesten kan brukes. Feltet vises for alle.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -55,7 +55,7 @@ function tk_field_default_field_instances() {
     'description' => 'Hvis tjenesten også er definert i <a href="https://bs.uib.no/?module=cmdb&action=view">CMDB</a> så kan den knyttes til tjenestekatalogen.',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
+        'label' => 'above',
         'module' => 'number',
         'settings' => array(
           'decimal_separator' => '.',
@@ -64,7 +64,7 @@ function tk_field_default_field_instances() {
           'thousand_separator' => '',
         ),
         'type' => 'number_integer',
-        'weight' => 37,
+        'weight' => 39,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -98,7 +98,7 @@ function tk_field_default_field_instances() {
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '   -- offentlig',
+    'description' => 'Brukeren må betale for tilgang til noen tjenester. Feltet vises til alle.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -139,10 +139,10 @@ function tk_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'Her har du mulighet for å vekte hvor viktig en tjeneste er.',
+    'description' => 'Her har du mulighet for å vekte hvor viktig tjenesten er.',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
+        'label' => 'above',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
@@ -183,7 +183,7 @@ function tk_field_default_field_instances() {
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Beskriv eventuelle krav for å kunne bruke tjenesten (hardware, software, målgrupper, etc) -- offentlig',
+    'description' => 'Beskriv eventuelle krav for å kunne bruke tjenesten (hardware, software, målgrupper, etc). Feltet vises til alle.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -230,7 +230,7 @@ function tk_field_default_field_instances() {
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Beskriv de viktigste egenskapene og funksjonene ved tjenesten og annen nyttig informasjon til sluttbrukere. (offentlig)',
+    'description' => 'Beskriv de viktigste egenskapene og funksjonene ved tjenesten og annen nyttig informasjon til sluttbrukere. Feltet vises til alle.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -270,7 +270,7 @@ function tk_field_default_field_instances() {
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '(offentlig)',
+    'description' => 'Dette lenker til brukerens dokumentasjonen av tjenesten. Feltet vises til alle.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -334,11 +334,11 @@ function tk_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
+        'label' => 'above',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 39,
+        'weight' => 41,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -368,7 +368,7 @@ function tk_field_default_field_instances() {
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '-- offentlig',
+    'description' => 'Forklar for brukeren hva som må gjøres for å bestille tilgang for tjenesten.  Feltet brukes ikke for åpne tjenester.  Feltet vises til all.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -408,7 +408,7 @@ function tk_field_default_field_instances() {
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '(offentlig)',
+    'description' => 'For tjenester tilgjengelig over webben. Her fyller man inn en lenke siden hvor tjenesten kan aksesseres. Feltet vises til alle.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -465,7 +465,7 @@ function tk_field_default_field_instances() {
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Hvordan klassifiseres informasjonen som lagres i tjenesten i henhold til SIS',
+    'description' => 'Hvordan klassifiseres informasjonen som lagres i tjenesten i henhold til <a href="http://regler.app.uib.no/regler/Del-4-OEkonomi-eiendom-og-IKT/4.3-Informasjons-og-kommunikasjonsteknologi/Styringssystem-for-informasjonssikkerhet-Gjennomfoerende-del">SIS</a>',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -509,7 +509,7 @@ function tk_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 40,
+        'weight' => 42,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -542,16 +542,16 @@ function tk_field_default_field_instances() {
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Angir hvem som har tjeneste ansvar for denne tjenesten.',
+    'description' => 'Angi hvilke personer som har ansvar for den tekniske driften av tjenesten.',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
+        'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 35,
+        'weight' => 37,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -585,16 +585,16 @@ function tk_field_default_field_instances() {
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Hvilken person hos systemeier forvalter i praksis ansvaret for tjenesten.',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
+        'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 34,
+        'weight' => 36,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -619,7 +619,7 @@ function tk_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete_tags',
-      'weight' => 17,
+      'weight' => 16,
     ),
   );
 
@@ -635,7 +635,7 @@ Leveringstid:',
       ),
     ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Dette feltet er ikke i bruk og vises ikke til noen.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -673,7 +673,7 @@ Leveringstid:',
   $field_instances['node-service-field_ros_date'] = array(
     'bundle' => 'service',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Alle produksjonsatte tjenester skal ha ROS-analyse som ikke er mer en 2 år gammel.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -687,7 +687,7 @@ Leveringstid:',
           'show_remaining_days' => 0,
         ),
         'type' => 'date_default',
-        'weight' => 30,
+        'weight' => 31,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -698,7 +698,7 @@ Leveringstid:',
     ),
     'entity_type' => 'node',
     'field_name' => 'field_ros_date',
-    'label' => 'Siste gjennomførte ROS analyse',
+    'label' => 'Dato for siste gjennomførte ROS-analyse',
     'required' => 0,
     'settings' => array(
       'default_value' => 'blank',
@@ -729,14 +729,14 @@ Leveringstid:',
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Dokumentasjon for siste ROS-analyse gjort for tjenesten.',
+    'description' => 'Lenke til dokumentasjon for siste ROS-analyse gjort for tjenesten.',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 31,
+        'weight' => 33,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -747,7 +747,7 @@ Leveringstid:',
     ),
     'entity_type' => 'node',
     'field_name' => 'field_ros_link',
-    'label' => 'ROS link',
+    'label' => 'Hvor finnes ROS-analysen',
     'required' => 0,
     'settings' => array(
       'absolute_url' => 1,
@@ -799,7 +799,7 @@ Leveringstid:',
           'show_remaining_days' => 0,
         ),
         'type' => 'date_default',
-        'weight' => 31,
+        'weight' => 32,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -810,7 +810,7 @@ Leveringstid:',
     ),
     'entity_type' => 'node',
     'field_name' => 'field_ros_revision_date',
-    'label' => 'Siste reviderte ROS analyse',
+    'label' => 'Dato for revisjon av ROS-analyse',
     'required' => 0,
     'settings' => array(
       'default_value' => 'blank',
@@ -841,7 +841,7 @@ Leveringstid:',
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '(offentlig)',
+    'description' => 'Styrer hvilke kategorier tjenesten listes opp under.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -885,11 +885,11 @@ Leveringstid:',
     'description' => 'Brukes kun når IT-avdelingen er driftsleverandør. Angi de nivåene IT-avdelingen er ansvarlig for. ',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
+        'label' => 'above',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 36,
+        'weight' => 38,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -919,7 +919,7 @@ Leveringstid:',
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '-- offentlig',
+    'description' => 'Hvilken avdeling er eier systemet. Feltet vises til alle.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -949,7 +949,7 @@ Leveringstid:',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 16,
+      'weight' => 15,
     ),
   );
 
@@ -965,11 +965,11 @@ Leveringstid:',
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
+        'label' => 'above',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 32,
+        'weight' => 34,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1010,7 +1010,7 @@ Leveringstid:',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 33,
+        'weight' => 35,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1044,7 +1044,7 @@ Leveringstid:',
       ),
     ),
     'deleted' => 0,
-    'description' => '(offentlig)',
+    'description' => 'Feltet er ikke tatt i bruk enda.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1084,7 +1084,7 @@ Leveringstid:',
       ),
     ),
     'deleted' => 0,
-    'description' => '-- offentlig',
+    'description' => 'Hvilken avdeling/leverandør drifter tjenesten teknisk. Feltet vises til alle.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1112,7 +1112,7 @@ Leveringstid:',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 15,
+      'weight' => 17,
     ),
   );
 
@@ -1128,7 +1128,7 @@ Leveringstid:',
     'description' => 'Klassifiserer om tjenesten er en tjeneste vi tilbyr til brukere eller om det er en «underliggende»/teknisk tjeneste.',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
+        'label' => 'above',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
@@ -1169,7 +1169,7 @@ Leveringstid:',
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '(offentlig)',
+    'description' => 'Kort beskrivelse av innholdet i tjenesten (ingress).  Brukes sammen med navnet på tjenesten i lister. Feltet vises til alle.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1210,7 +1210,7 @@ Leveringstid:',
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '-- offentlig',
+    'description' => 'Hvor skal brukeren henvende seg for å få hjelp med tjenesten.  Feltet vises for alle.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1260,14 +1260,14 @@ Leveringstid:',
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Objekter i CMDB som tjenestene er avhengig. Kommaseparert liste.',
+    'description' => 'Objekter i CMDB som tjenesten er avhengig av i form av en kommaseparert liste. Det er å foretrekke å registrere CMDB-id og så la avhengighetene være definert i CMDB.',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 38,
+        'weight' => 40,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1300,7 +1300,7 @@ Leveringstid:',
     'bundle' => 'service',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '-- offentlig',
+    'description' => 'Kryss av for målgruppene for tjenesten.  Feltet vises til alle.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1698,30 +1698,40 @@ Leveringstid:',
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('   -- offentlig');
-  t('(offentlig)');
-  t('-- offentlig');
   t('Addresse');
-  t('Angir hvem som har tjeneste ansvar for denne tjenesten.');
-  t('Beskriv de viktigste egenskapene og funksjonene ved tjenesten og annen nyttig informasjon til sluttbrukere. (offentlig)');
-  t('Beskriv eventuelle krav for å kunne bruke tjenesten (hardware, software, målgrupper, etc) -- offentlig');
+  t('Alle produksjonsatte tjenester skal ha ROS-analyse som ikke er mer en 2 år gammel.');
+  t('Angi hvilke personer som har ansvar for den tekniske driften av tjenesten.');
+  t('Beskriv de viktigste egenskapene og funksjonene ved tjenesten og annen nyttig informasjon til sluttbrukere. Feltet vises til alle.');
+  t('Beskriv eventuelle krav for å kunne bruke tjenesten (hardware, software, målgrupper, etc). Feltet vises til alle.');
   t('Beskrivelse');
+  t('Brukeren må betale for tilgang til noen tjenester. Feltet vises til alle.');
   t('Brukerstøtte');
   t('Brukes kun når IT-avdelingen er driftsleverandør. Angi de nivåene IT-avdelingen er ansvarlig for. ');
   t('CMDB id');
-  t('Dokumentasjon for siste ROS-analyse gjort for tjenesten.');
+  t('Dato for revisjon av ROS-analyse');
+  t('Dato for siste gjennomførte ROS-analyse');
+  t('Dette feltet er ikke i bruk og vises ikke til noen.');
+  t('Dette lenker til brukerens dokumentasjonen av tjenesten. Feltet vises til alle.');
   t('Driftsansvarlige');
   t('Driftsleverandør');
   t('Driftsstatus');
+  t('Feltet er ikke tatt i bruk enda.');
+  t('For tjenester tilgjengelig over webben. Her fyller man inn en lenke siden hvor tjenesten kan aksesseres. Feltet vises til alle.');
+  t('Forklar for brukeren hva som må gjøres for å bestille tilgang for tjenesten.  Feltet brukes ikke for åpne tjenester.  Feltet vises til all.');
   t('Her finner du tjenesten');
-  t('Her har du mulighet for å vekte hvor viktig en tjeneste er.');
+  t('Her har du mulighet for å vekte hvor viktig tjenesten er.');
   t('Her kan du melde inn feil');
   t('Hva er nødvendig for å bruke tjenesten');
   t('Hva er tjenesten avhengig av (CMDB)');
   t('Hva koster tjenesten');
+  t('Hvilken avdeling er eier systemet. Feltet vises til alle.');
+  t('Hvilken avdeling/leverandør drifter tjenesten teknisk. Feltet vises til alle.');
+  t('Hvilken person hos systemeier forvalter i praksis ansvaret for tjenesten.');
   t('Hvis tjenesten også er definert i <a href="https://bs.uib.no/?module=cmdb&action=view">CMDB</a> så kan den knyttes til tjenestekatalogen.');
+  t('Hvor finnes ROS-analysen');
+  t('Hvor skal brukeren henvende seg for å få hjelp med tjenesten.  Feltet vises for alle.');
   t('Hvordan bestille');
-  t('Hvordan klassifiseres informasjonen som lagres i tjenesten i henhold til SIS');
+  t('Hvordan klassifiseres informasjonen som lagres i tjenesten i henhold til <a href="http://regler.app.uib.no/regler/Del-4-OEkonomi-eiendom-og-IKT/4.3-Informasjons-og-kommunikasjonsteknologi/Styringssystem-for-informasjonssikkerhet-Gjennomfoerende-del">SIS</a>');
   t('Icon name');
   t('Identifikator');
   t('Ikonnavnene man kan velge mellom er dokumentert <a href="http://fontawesome.io/icons/">Font Awesome siden</a>.');
@@ -1730,18 +1740,19 @@ Leveringstid:',
   t('Klassifiserer om tjenesten er en tjeneste vi tilbyr til brukere eller om det er en «underliggende»/teknisk tjeneste.');
   t('Klassifisering');
   t('Kontaktperson systemeier');
+  t('Kort beskrivelse av innholdet i tjenesten (ingress).  Brukes sammen med navnet på tjenesten i lister. Feltet vises til alle.');
   t('Kritikalitet');
+  t('Kryss av for målgruppene for tjenesten.  Feltet vises til alle.');
   t('Kvalitetsmål');
+  t('Lenke til dokumentasjon for siste ROS-analyse gjort for tjenesten.');
   t('Livssyklus');
   t('Mer informasjon');
   t('Normalt tilgjengelig');
-  t('Når kan bruker forvente at tjenesten kan brukes -- offentlig');
-  t('Objekter i CMDB som tjenestene er avhengig. Kommaseparert liste.');
-  t('ROS link');
+  t('Når kan bruker forvente at tjenesten kan brukes. Feltet vises for alle.');
+  t('Objekter i CMDB som tjenesten er avhengig av i form av en kommaseparert liste. Det er å foretrekke å registrere CMDB-id og så la avhengighetene være definert i CMDB.');
   t('Registreringsstatus');
   t('Side text');
-  t('Siste gjennomførte ROS analyse');
-  t('Siste reviderte ROS analyse');
+  t('Styrer hvilke kategorier tjenesten listes opp under.');
   t('Systemeier');
   t('Telefon');
   t('Tilgjengelig for');

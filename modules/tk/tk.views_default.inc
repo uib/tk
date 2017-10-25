@@ -1014,7 +1014,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['fields']['field_information_class']['id'] = 'field_information_class';
   $handler->display->display_options['fields']['field_information_class']['table'] = 'field_data_field_information_class';
   $handler->display->display_options['fields']['field_information_class']['field'] = 'field_information_class';
-  /* Field: Content: ROS link */
+  /* Field: Content: Hvor finnes ROS-analysen */
   $handler->display->display_options['fields']['field_ros_link']['id'] = 'field_ros_link';
   $handler->display->display_options['fields']['field_ros_link']['table'] = 'field_data_field_ros_link';
   $handler->display->display_options['fields']['field_ros_link']['field'] = 'field_ros_link';
@@ -1023,7 +1023,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['fields']['field_ros_link']['empty'] = '(missing)';
   $handler->display->display_options['fields']['field_ros_link']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_ros_link']['type'] = 'link_label';
-  /* Field: Content: Siste gjennomførte ROS analyse */
+  /* Field: Content: Dato for siste gjennomførte ROS-analyse */
   $handler->display->display_options['fields']['field_ros_date']['id'] = 'field_ros_date';
   $handler->display->display_options['fields']['field_ros_date']['table'] = 'field_data_field_ros_date';
   $handler->display->display_options['fields']['field_ros_date']['field'] = 'field_ros_date';
@@ -1037,7 +1037,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Field: Content: Siste reviderte ROS analyse */
+  /* Field: Content: Dato for revisjon av ROS-analyse */
   $handler->display->display_options['fields']['field_ros_revision_date']['id'] = 'field_ros_revision_date';
   $handler->display->display_options['fields']['field_ros_revision_date']['table'] = 'field_data_field_ros_revision_date';
   $handler->display->display_options['fields']['field_ros_revision_date']['field'] = 'field_ros_revision_date';
@@ -1051,7 +1051,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Sort criterion: Content: Siste gjennomførte ROS analyse (field_ros_date) */
+  /* Sort criterion: Content: Dato for siste gjennomførte ROS-analyse (field_ros_date) */
   $handler->display->display_options['sorts']['field_ros_date_value']['id'] = 'field_ros_date_value';
   $handler->display->display_options['sorts']['field_ros_date_value']['table'] = 'field_data_field_ros_date';
   $handler->display->display_options['sorts']['field_ros_date_value']['field'] = 'field_ros_date_value';

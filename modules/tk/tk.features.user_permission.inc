@@ -32,7 +32,6 @@ function tk_user_default_permissions() {
   $permissions['create field_edit_state'] = array(
     'name' => 'create field_edit_state',
     'roles' => array(
-      'druapladmin' => 'druapladmin',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -78,7 +77,15 @@ function tk_user_default_permissions() {
   $permissions['create field_quality'] = array(
     'name' => 'create field_quality',
     'roles' => array(
-      'druapladmin' => 'druapladmin',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'create field_ros_date'.
+  $permissions['create field_ros_date'] = array(
+    'name' => 'create field_ros_date',
+    'roles' => array(
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -87,6 +94,15 @@ function tk_user_default_permissions() {
   // Exported permission: 'create field_ros_link'.
   $permissions['create field_ros_link'] = array(
     'name' => 'create field_ros_link',
+    'roles' => array(
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'create field_ros_revision_date'.
+  $permissions['create field_ros_revision_date'] = array(
+    'name' => 'create field_ros_revision_date',
     'roles' => array(
       'tjenesteadmin' => 'tjenesteadmin',
     ),
@@ -160,7 +176,6 @@ function tk_user_default_permissions() {
   $permissions['edit field_edit_state'] = array(
     'name' => 'edit field_edit_state',
     'roles' => array(
-      'druapladmin' => 'druapladmin',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -206,7 +221,15 @@ function tk_user_default_permissions() {
   $permissions['edit field_quality'] = array(
     'name' => 'edit field_quality',
     'roles' => array(
-      'druapladmin' => 'druapladmin',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit field_ros_date'.
+  $permissions['edit field_ros_date'] = array(
+    'name' => 'edit field_ros_date',
+    'roles' => array(
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -215,6 +238,15 @@ function tk_user_default_permissions() {
   // Exported permission: 'edit field_ros_link'.
   $permissions['edit field_ros_link'] = array(
     'name' => 'edit field_ros_link',
+    'roles' => array(
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit field_ros_revision_date'.
+  $permissions['edit field_ros_revision_date'] = array(
+    'name' => 'edit field_ros_revision_date',
     'roles' => array(
       'tjenesteadmin' => 'tjenesteadmin',
     ),
@@ -288,7 +320,6 @@ function tk_user_default_permissions() {
   $permissions['edit own field_edit_state'] = array(
     'name' => 'edit own field_edit_state',
     'roles' => array(
-      'druapladmin' => 'druapladmin',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -298,7 +329,6 @@ function tk_user_default_permissions() {
   $permissions['edit own field_information_class'] = array(
     'name' => 'edit own field_information_class',
     'roles' => array(
-      'authenticated user' => 'authenticated user',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -335,7 +365,15 @@ function tk_user_default_permissions() {
   $permissions['edit own field_quality'] = array(
     'name' => 'edit own field_quality',
     'roles' => array(
-      'druapladmin' => 'druapladmin',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit own field_ros_date'.
+  $permissions['edit own field_ros_date'] = array(
+    'name' => 'edit own field_ros_date',
+    'roles' => array(
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -344,6 +382,15 @@ function tk_user_default_permissions() {
   // Exported permission: 'edit own field_ros_link'.
   $permissions['edit own field_ros_link'] = array(
     'name' => 'edit own field_ros_link',
+    'roles' => array(
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit own field_ros_revision_date'.
+  $permissions['edit own field_ros_revision_date'] = array(
+    'name' => 'edit own field_ros_revision_date',
     'roles' => array(
       'tjenesteadmin' => 'tjenesteadmin',
     ),
@@ -409,6 +456,7 @@ function tk_user_default_permissions() {
   $permissions['view field_criticality'] = array(
     'name' => 'view field_criticality',
     'roles' => array(
+      'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -418,7 +466,6 @@ function tk_user_default_permissions() {
   $permissions['view field_edit_state'] = array(
     'name' => 'view field_edit_state',
     'roles' => array(
-      'druapladmin' => 'druapladmin',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -468,7 +515,15 @@ function tk_user_default_permissions() {
   $permissions['view field_quality'] = array(
     'name' => 'view field_quality',
     'roles' => array(
-      'druapladmin' => 'druapladmin',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view field_ros_date'.
+  $permissions['view field_ros_date'] = array(
+    'name' => 'view field_ros_date',
+    'roles' => array(
       'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
@@ -485,10 +540,21 @@ function tk_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'view field_ros_revision_date'.
+  $permissions['view field_ros_revision_date'] = array(
+    'name' => 'view field_ros_revision_date',
+    'roles' => array(
+      'ita' => 'ita',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'view field_service_levels'.
   $permissions['view field_service_levels'] = array(
     'name' => 'view field_service_levels',
     'roles' => array(
+      'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -498,6 +564,7 @@ function tk_user_default_permissions() {
   $permissions['view field_service_rotation'] = array(
     'name' => 'view field_service_rotation',
     'roles' => array(
+      'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -507,6 +574,7 @@ function tk_user_default_permissions() {
   $permissions['view field_service_state'] = array(
     'name' => 'view field_service_state',
     'roles' => array(
+      'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -516,6 +584,7 @@ function tk_user_default_permissions() {
   $permissions['view field_service_type'] = array(
     'name' => 'view field_service_type',
     'roles' => array(
+      'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -535,6 +604,7 @@ function tk_user_default_permissions() {
   $permissions['view own field_cmdb_id'] = array(
     'name' => 'view own field_cmdb_id',
     'roles' => array(
+      'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -544,6 +614,7 @@ function tk_user_default_permissions() {
   $permissions['view own field_criticality'] = array(
     'name' => 'view own field_criticality',
     'roles' => array(
+      'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -553,7 +624,6 @@ function tk_user_default_permissions() {
   $permissions['view own field_edit_state'] = array(
     'name' => 'view own field_edit_state',
     'roles' => array(
-      'druapladmin' => 'druapladmin',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -603,7 +673,15 @@ function tk_user_default_permissions() {
   $permissions['view own field_quality'] = array(
     'name' => 'view own field_quality',
     'roles' => array(
-      'druapladmin' => 'druapladmin',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view own field_ros_date'.
+  $permissions['view own field_ros_date'] = array(
+    'name' => 'view own field_ros_date',
+    'roles' => array(
       'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
@@ -620,10 +698,21 @@ function tk_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'view own field_ros_revision_date'.
+  $permissions['view own field_ros_revision_date'] = array(
+    'name' => 'view own field_ros_revision_date',
+    'roles' => array(
+      'ita' => 'ita',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'view own field_service_levels'.
   $permissions['view own field_service_levels'] = array(
     'name' => 'view own field_service_levels',
     'roles' => array(
+      'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -633,6 +722,7 @@ function tk_user_default_permissions() {
   $permissions['view own field_service_rotation'] = array(
     'name' => 'view own field_service_rotation',
     'roles' => array(
+      'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -642,6 +732,7 @@ function tk_user_default_permissions() {
   $permissions['view own field_service_state'] = array(
     'name' => 'view own field_service_state',
     'roles' => array(
+      'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
@@ -651,6 +742,7 @@ function tk_user_default_permissions() {
   $permissions['view own field_service_type'] = array(
     'name' => 'view own field_service_type',
     'roles' => array(
+      'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
     ),
     'module' => 'field_permissions',
