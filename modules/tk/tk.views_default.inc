@@ -985,17 +985,58 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['title'] = 'ROS';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'edit any service content';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
+    'field_service_owner' => 'field_service_owner',
     'title' => 'title',
+    'field_information_class' => 'field_information_class',
+    'field_ros_date' => 'field_ros_date',
+    'field_ros_revision_date' => 'field_ros_revision_date',
+    'field_ros_link' => 'field_ros_link',
   );
-  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['default'] = 'field_ros_date';
   $handler->display->display_options['style_options']['info'] = array(
+    'field_service_owner' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
     'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_information_class' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ros_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ros_revision_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ros_link' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -1003,26 +1044,24 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
       'empty_column' => 0,
     ),
   );
+  /* Field: Content: Systemeier */
+  $handler->display->display_options['fields']['field_service_owner']['id'] = 'field_service_owner';
+  $handler->display->display_options['fields']['field_service_owner']['table'] = 'field_data_field_service_owner';
+  $handler->display->display_options['fields']['field_service_owner']['field'] = 'field_service_owner';
+  $handler->display->display_options['fields']['field_service_owner']['settings'] = array(
+    'link' => 0,
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['label'] = 'Tjenestenavn';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   /* Field: Content: Informasjonsklasse */
   $handler->display->display_options['fields']['field_information_class']['id'] = 'field_information_class';
   $handler->display->display_options['fields']['field_information_class']['table'] = 'field_data_field_information_class';
   $handler->display->display_options['fields']['field_information_class']['field'] = 'field_information_class';
-  /* Field: Content: Hvor finnes ROS-analysen */
-  $handler->display->display_options['fields']['field_ros_link']['id'] = 'field_ros_link';
-  $handler->display->display_options['fields']['field_ros_link']['table'] = 'field_data_field_ros_link';
-  $handler->display->display_options['fields']['field_ros_link']['field'] = 'field_ros_link';
-  $handler->display->display_options['fields']['field_ros_link']['label'] = 'ROS';
-  $handler->display->display_options['fields']['field_ros_link']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ros_link']['empty'] = '(missing)';
-  $handler->display->display_options['fields']['field_ros_link']['click_sort_column'] = 'url';
-  $handler->display->display_options['fields']['field_ros_link']['type'] = 'link_label';
   /* Field: Content: Dato for siste gjennomførte ROS-analyse */
   $handler->display->display_options['fields']['field_ros_date']['id'] = 'field_ros_date';
   $handler->display->display_options['fields']['field_ros_date']['table'] = 'field_data_field_ros_date';
@@ -1051,6 +1090,17 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
+  /* Field: Content: Hvor finnes ROS-analysen */
+  $handler->display->display_options['fields']['field_ros_link']['id'] = 'field_ros_link';
+  $handler->display->display_options['fields']['field_ros_link']['table'] = 'field_data_field_ros_link';
+  $handler->display->display_options['fields']['field_ros_link']['field'] = 'field_ros_link';
+  $handler->display->display_options['fields']['field_ros_link']['label'] = 'Lenke';
+  $handler->display->display_options['fields']['field_ros_link']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ros_link']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_ros_link']['type'] = 'link_domain';
+  $handler->display->display_options['fields']['field_ros_link']['settings'] = array(
+    'strip_www' => 0,
+  );
   /* Sort criterion: Content: Dato for siste gjennomførte ROS-analyse (field_ros_date) */
   $handler->display->display_options['sorts']['field_ros_date_value']['id'] = 'field_ros_date_value';
   $handler->display->display_options['sorts']['field_ros_date_value']['table'] = 'field_data_field_ros_date';
@@ -1059,6 +1109,10 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Sort criterion: Content: Systemeier (field_service_owner) */
+  $handler->display->display_options['sorts']['field_service_owner_target_id']['id'] = 'field_service_owner_target_id';
+  $handler->display->display_options['sorts']['field_service_owner_target_id']['table'] = 'field_data_field_service_owner';
+  $handler->display->display_options['sorts']['field_service_owner_target_id']['field'] = 'field_service_owner_target_id';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -1086,10 +1140,12 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
     t('Sort by'),
     t('Asc'),
     t('Desc'),
+    t('Systemeier'),
+    t('Tjenestenavn'),
     t('Informasjonsklasse'),
-    t('(missing)'),
     t('Dato'),
     t('Revisjon'),
+    t('Lenke'),
     t('Page'),
   );
   $export['services_ros'] = $view;
