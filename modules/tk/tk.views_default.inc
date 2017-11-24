@@ -993,7 +993,9 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'field_service_owner' => 'field_service_owner',
+    'field_ower_contact' => 'field_ower_contact',
     'title' => 'title',
+    'field_service_state' => 'field_service_state',
     'field_information_class' => 'field_information_class',
     'field_ros_date' => 'field_ros_date',
     'field_ros_revision_date' => 'field_ros_revision_date',
@@ -1008,7 +1010,21 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
       'separator' => '',
       'empty_column' => 0,
     ),
+    'field_ower_contact' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
     'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_service_state' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -1051,6 +1067,14 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['fields']['field_service_owner']['settings'] = array(
     'link' => 0,
   );
+  /* Field: Content: Kontaktperson systemeier */
+  $handler->display->display_options['fields']['field_ower_contact']['id'] = 'field_ower_contact';
+  $handler->display->display_options['fields']['field_ower_contact']['table'] = 'field_data_field_ower_contact';
+  $handler->display->display_options['fields']['field_ower_contact']['field'] = 'field_ower_contact';
+  $handler->display->display_options['fields']['field_ower_contact']['label'] = 'Kontaktperson';
+  $handler->display->display_options['fields']['field_ower_contact']['settings'] = array(
+    'link' => 0,
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1058,6 +1082,10 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['fields']['title']['label'] = 'Tjenestenavn';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Livssyklus */
+  $handler->display->display_options['fields']['field_service_state']['id'] = 'field_service_state';
+  $handler->display->display_options['fields']['field_service_state']['table'] = 'field_data_field_service_state';
+  $handler->display->display_options['fields']['field_service_state']['field'] = 'field_service_state';
   /* Field: Content: Informasjonsklasse */
   $handler->display->display_options['fields']['field_information_class']['id'] = 'field_information_class';
   $handler->display->display_options['fields']['field_information_class']['table'] = 'field_data_field_information_class';
@@ -1127,6 +1155,15 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['filters']['type']['value'] = array(
     'service' => 'service',
   );
+  /* Filter criterion: Content: Livssyklus (field_service_state) */
+  $handler->display->display_options['filters']['field_service_state_value']['id'] = 'field_service_state_value';
+  $handler->display->display_options['filters']['field_service_state_value']['table'] = 'field_data_field_service_state';
+  $handler->display->display_options['filters']['field_service_state_value']['field'] = 'field_service_state_value';
+  $handler->display->display_options['filters']['field_service_state_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_service_state_value']['value'] = array(
+    'planlagt' => 'planlagt',
+    'avsluttet' => 'avsluttet',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -1141,7 +1178,9 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
     t('Asc'),
     t('Desc'),
     t('Systemeier'),
+    t('Kontaktperson'),
     t('Tjenestenavn'),
+    t('Livssyklus'),
     t('Informasjonsklasse'),
     t('Dato'),
     t('Revisjon'),
