@@ -994,6 +994,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['style_options']['columns'] = array(
     'field_service_owner' => 'field_service_owner',
     'field_ower_contact' => 'field_ower_contact',
+    'field_full_name' => 'field_full_name',
     'title' => 'title',
     'field_service_state' => 'field_service_state',
     'field_information_class' => 'field_information_class',
@@ -1011,6 +1012,13 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
       'empty_column' => 0,
     ),
     'field_ower_contact' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_full_name' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -1060,6 +1068,10 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
       'empty_column' => 0,
     ),
   );
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_ower_contact_target_id']['id'] = 'field_ower_contact_target_id';
+  $handler->display->display_options['relationships']['field_ower_contact_target_id']['table'] = 'field_data_field_ower_contact';
+  $handler->display->display_options['relationships']['field_ower_contact_target_id']['field'] = 'field_ower_contact_target_id';
   /* Field: Content: Systemeier */
   $handler->display->display_options['fields']['field_service_owner']['id'] = 'field_service_owner';
   $handler->display->display_options['fields']['field_service_owner']['table'] = 'field_data_field_service_owner';
@@ -1072,9 +1084,15 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['fields']['field_ower_contact']['table'] = 'field_data_field_ower_contact';
   $handler->display->display_options['fields']['field_ower_contact']['field'] = 'field_ower_contact';
   $handler->display->display_options['fields']['field_ower_contact']['label'] = 'Kontaktperson';
+  $handler->display->display_options['fields']['field_ower_contact']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_ower_contact']['settings'] = array(
     'link' => 0,
   );
+  /* Field: User: Full name */
+  $handler->display->display_options['fields']['field_full_name']['id'] = 'field_full_name';
+  $handler->display->display_options['fields']['field_full_name']['table'] = 'field_data_field_full_name';
+  $handler->display->display_options['fields']['field_full_name']['field'] = 'field_full_name';
+  $handler->display->display_options['fields']['field_full_name']['relationship'] = 'field_ower_contact_target_id';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1168,6 +1186,13 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'services/ros';
+
+  /* Display: Data export */
+  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['path'] = 'services/ros.csv';
   $translatables['services_ros'] = array(
     t('Master'),
     t('ROS'),
@@ -1177,8 +1202,10 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
     t('Sort by'),
     t('Asc'),
     t('Desc'),
+    t('User entity referenced from field_ower_contact'),
     t('Systemeier'),
     t('Kontaktperson'),
+    t('Full name'),
     t('Tjenestenavn'),
     t('Livssyklus'),
     t('Informasjonsklasse'),
@@ -1186,6 +1213,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
     t('Revisjon'),
     t('Lenke'),
     t('Page'),
+    t('Data export'),
   );
   $export['services_ros'] = $view;
 
