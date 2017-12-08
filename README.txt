@@ -30,6 +30,7 @@ production dump by running:
     $ scp real6:tk.sql .
 
     $ ./scripts/pg-restore.sh
+    $ bin/site-drush en --yes uib_devel
 
 This is a way to install drush if you have composer:
 
