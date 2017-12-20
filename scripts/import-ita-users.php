@@ -41,6 +41,9 @@ foreach ($ita as $uname => $info) {
 	print "Updating $uname: " . implode(' ', array_keys($edit)) . "\n";
 	user_save($u, $edit);
       }
+      else {
+	print "$uname already imported with the correct roles\n";
+      }
   }
   else {
     $u = user_save(NULL, array(
