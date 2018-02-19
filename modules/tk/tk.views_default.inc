@@ -344,7 +344,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['relationships']['reverse_field_service_classification_node']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['relationships']['reverse_field_service_classification_node']['field'] = 'reverse_field_service_classification_node';
   $handler->display->display_options['relationships']['reverse_field_service_classification_node']['label'] = 'Services';
-  /* Field: Taxonomy term: Icon name */
+  /* Field: Taksonomi-termer: Icon name */
   $handler->display->display_options['fields']['field_icon_name']['id'] = 'field_icon_name';
   $handler->display->display_options['fields']['field_icon_name']['table'] = 'field_data_field_icon_name';
   $handler->display->display_options['fields']['field_icon_name']['field'] = 'field_icon_name';
@@ -480,7 +480,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title_1']['empty'] = '⁉️ Ingen systemeier';
   $handler->display->display_options['fields']['title_1']['link_to_node'] = FALSE;
-  /* Field: User: Full name */
+  /* Field: Bruker: Full name */
   $handler->display->display_options['fields']['field_full_name']['id'] = 'field_full_name';
   $handler->display->display_options['fields']['field_full_name']['table'] = 'field_data_field_full_name';
   $handler->display->display_options['fields']['field_full_name']['field'] = 'field_full_name';
@@ -501,7 +501,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['sorts']['title_1']['table'] = 'node';
   $handler->display->display_options['sorts']['title_1']['field'] = 'title';
   $handler->display->display_options['sorts']['title_1']['relationship'] = 'field_service_owner_target_id';
-  /* Sort criterion: User: Full name (field_full_name) */
+  /* Sort criterion: Bruker: Full name (field_full_name) */
   $handler->display->display_options['sorts']['field_full_name_value']['id'] = 'field_full_name_value';
   $handler->display->display_options['sorts']['field_full_name_value']['table'] = 'field_data_field_full_name';
   $handler->display->display_options['sorts']['field_full_name_value']['field'] = 'field_full_name_value';
@@ -704,7 +704,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['relationships']['field_operator_target_id']['field'] = 'field_operator_target_id';
   $handler->display->display_options['relationships']['field_operator_target_id']['label'] = 'Driftsansvarlig';
   $handler->display->display_options['relationships']['field_operator_target_id']['required'] = TRUE;
-  /* Field: User: Full name */
+  /* Field: Bruker: Full name */
   $handler->display->display_options['fields']['field_full_name']['id'] = 'field_full_name';
   $handler->display->display_options['fields']['field_full_name']['table'] = 'field_data_field_full_name';
   $handler->display->display_options['fields']['field_full_name']['field'] = 'field_full_name';
@@ -719,7 +719,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Sort criterion: User: Full name (field_full_name) */
+  /* Sort criterion: Bruker: Full name (field_full_name) */
   $handler->display->display_options['sorts']['field_full_name_value']['id'] = 'field_full_name_value';
   $handler->display->display_options['sorts']['field_full_name_value']['table'] = 'field_data_field_full_name';
   $handler->display->display_options['sorts']['field_full_name_value']['field'] = 'field_full_name_value';
@@ -796,7 +796,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Taxonomy term: Icon name */
+  /* Field: Taksonomi-termer: Icon name */
   $handler->display->display_options['fields']['field_icon_name']['id'] = 'field_icon_name';
   $handler->display->display_options['fields']['field_icon_name']['table'] = 'field_data_field_icon_name';
   $handler->display->display_options['fields']['field_icon_name']['field'] = 'field_icon_name';
@@ -885,7 +885,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
     t('Sort by'),
     t('Asc'),
     t('Desc'),
-    t('Taxonomy term entity referenced from field_service_classification'),
+    t('Taksonomi-termer entity referenced from field_service_classification'),
     t('<i class="fa fa-[field_icon_name]"></i> [name]'),
     t('Page'),
   );
@@ -1072,6 +1072,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['relationships']['field_ower_contact_target_id']['id'] = 'field_ower_contact_target_id';
   $handler->display->display_options['relationships']['field_ower_contact_target_id']['table'] = 'field_data_field_ower_contact';
   $handler->display->display_options['relationships']['field_ower_contact_target_id']['field'] = 'field_ower_contact_target_id';
+  $handler->display->display_options['relationships']['field_ower_contact_target_id']['label'] = 'User entity referenced from field_ower_contact';
   /* Field: Content: Systemeier */
   $handler->display->display_options['fields']['field_service_owner']['id'] = 'field_service_owner';
   $handler->display->display_options['fields']['field_service_owner']['table'] = 'field_data_field_service_owner';
@@ -1088,7 +1089,7 @@ UiBs hovedområder er listet menyen oppe og i tillegg finner du ulike kategorier
   $handler->display->display_options['fields']['field_ower_contact']['settings'] = array(
     'link' => 0,
   );
-  /* Field: User: Full name */
+  /* Field: Bruker: Full name */
   $handler->display->display_options['fields']['field_full_name']['id'] = 'field_full_name';
   $handler->display->display_options['fields']['field_full_name']['table'] = 'field_data_field_full_name';
   $handler->display->display_options['fields']['field_full_name']['field'] = 'field_full_name';
