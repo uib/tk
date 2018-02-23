@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the GDPR feature.
+ */
+
+include_once 'gdpr.features.inc';
