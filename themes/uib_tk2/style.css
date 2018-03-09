@@ -310,6 +310,13 @@ nav a:visited {
     display: flex;
 }
 
+.node-type-gdpr-processing #page-title:before {
+    content: "Behandling av persondata";
+    display: block;
+    font-size: 60%;
+    color: #B55;
+}
+
 .group-main {
     -ms-flex: 1 55%;
     -webkit-flex-basis: 60%;
