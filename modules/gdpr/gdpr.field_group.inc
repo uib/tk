@@ -24,7 +24,9 @@ function gdpr_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'field_gdpr_controller',
-      1 => 'field_gdpr_description',
+      1 => 'field_gdpr_controller_person',
+      2 => 'field_gdpr_purpose',
+      3 => 'field_gdpr_description',
     ),
     'format_type' => 'div',
     'format_settings' => array(

@@ -5,3 +5,23 @@
  */
 
 include_once 'gdpr.features.inc';
+
+/**
+ * Implements hook_entity_view_alter().
+ */
+function gdpr_entity_view_alter(&$build, $type) {
+  if ($type != 'node')
+    return;
+  if ($build['#bundle'] != 'gdpr_processing')
+    return;
+  foreach (array('field_gdpr_controller_person') as $user_field) {
+    if (isset($build[$user_field])) {
+      $i = 0;
+      while (isset($build[$user_field][$i])) {
+        $u = $build[$user_field]['#items'][$i]['entity'];
+        $build[$user_field][$i]['#markup'] = l($u->field_full_name['und'][0]['value'], 'http://www.uib.no/user/uib/' . $u->name);
+        $i++;
+      }
+    }
+  }
+}
