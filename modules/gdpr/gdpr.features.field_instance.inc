@@ -137,6 +137,87 @@ function gdpr_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'node-gdpr_processing-field_gdpr_data_description'.
+  $field_instances['node-gdpr_processing-field_gdpr_data_description'] = array(
+    'bundle' => 'gdpr_processing',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Hvilke personopplysninger/kategorier personopplysninger behandles, kategorier registrerte? Om mulig, ta også med noe om omfanget av data.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_gdpr_data_description',
+    'label' => 'Personopplysninger',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'node-gdpr_processing-field_gdpr_data_origin'.
+  $field_instances['node-gdpr_processing-field_gdpr_data_origin'] = array(
+    'bundle' => 'gdpr_processing',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Hvem eller hvor er opplysningene mottatt fra? Den registrerte eller andre. ',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_gdpr_data_origin',
+    'label' => 'Opphav',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 9,
+    ),
+  );
+
   // Exported field_instance: 'node-gdpr_processing-field_gdpr_description'.
   $field_instances['node-gdpr_processing-field_gdpr_description'] = array(
     'bundle' => 'gdpr_processing',
@@ -174,6 +255,83 @@ function gdpr_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-gdpr_processing-field_gdpr_lawfulness'.
+  $field_instances['node-gdpr_processing-field_gdpr_lawfulness'] = array(
+    'bundle' => 'gdpr_processing',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Ta inn det lovmessige grunnlaget for å behandle personopplysningene. ',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_gdpr_lawfulness',
+    'label' => 'Behandlingsgrunnlag',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-gdpr_processing-field_gdpr_location'.
+  $field_instances['node-gdpr_processing-field_gdpr_location'] = array(
+    'bundle' => 'gdpr_processing',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Hvor lagres og behandlinges opplysningene fysisk sett, systemmessig, i juridisk enhet mv. ',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_gdpr_location',
+    'label' => 'Behandingssted',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 6,
     ),
   );
 
@@ -259,12 +417,20 @@ function gdpr_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Behandingssted');
   t('Behandlingsansvarlig');
+  t('Behandlingsgrunnlag');
   t('Beskriv formålet med behandlingen, herunder hvorfor personopplysningene ble samlet inn, hvordan disse var tiltenkt behandlet, hvem de var tiltenkt utlevert til mv.');
   t('Beskrivelse');
   t('Beskrivelse av opplysninger som behandles, herunder omfanget av behandlingen, hvem som skal behandle (om det ikke fremgår andre steder) mv. ');
   t('Formålet med behandlingen');
+  t('Hvem eller hvor er opplysningene mottatt fra? Den registrerte eller andre. ');
+  t('Hvilke personopplysninger/kategorier personopplysninger behandles, kategorier registrerte? Om mulig, ta også med noe om omfanget av data.');
+  t('Hvor lagres og behandlinges opplysningene fysisk sett, systemmessig, i juridisk enhet mv. ');
   t('Internt ansvarlig');
+  t('Opphav');
+  t('Personopplysninger');
+  t('Ta inn det lovmessige grunnlaget for å behandle personopplysningene. ');
 
   return $field_instances;
 }

@@ -23,10 +23,14 @@ function gdpr_field_group_info() {
     'label' => 'Main',
     'weight' => '0',
     'children' => array(
-      0 => 'field_gdpr_controller',
-      1 => 'field_gdpr_controller_person',
-      2 => 'field_gdpr_purpose',
-      3 => 'field_gdpr_description',
+      0 => 'field_gdpr_location',
+      1 => 'field_gdpr_data_description',
+      2 => 'field_gdpr_lawfulness',
+      3 => 'field_gdpr_data_origin',
+      4 => 'field_gdpr_description',
+      5 => 'field_gdpr_purpose',
+      6 => 'field_gdpr_controller',
+      7 => 'field_gdpr_controller_person',
     ),
     'format_type' => 'div',
     'format_settings' => array(
