@@ -218,6 +218,122 @@ function gdpr_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-gdpr_processing-field_gdpr_data_sensitive'.
+  $field_instances['node-gdpr_processing-field_gdpr_data_sensitive'] = array(
+    'bundle' => 'gdpr_processing',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Behandles det særlige katetorier opplysninger (sensitive opplysninger)? ',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 10,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_gdpr_data_sensitive',
+    'label' => 'Særlige kategorier',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-gdpr_processing-field_gdpr_data_sensitive_type'.
+  $field_instances['node-gdpr_processing-field_gdpr_data_sensitive_type'] = array(
+    'bundle' => 'gdpr_processing',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Hvilke opplysninger behandles? ',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 11,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_gdpr_data_sensitive_type',
+    'label' => 'Typer av sensitive opplysninger',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance: 'node-gdpr_processing-field_gdpr_data_structured'.
+  $field_instances['node-gdpr_processing-field_gdpr_data_structured'] = array(
+    'bundle' => 'gdpr_processing',
+    'default_value' => array(
+      0 => array(
+        'value' => '?',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Foreligger personopplysningene i strukturert maskinlesbar form?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_gdpr_data_structured',
+    'label' => 'Strukturerte data',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 10,
+    ),
+  );
+
   // Exported field_instance: 'node-gdpr_processing-field_gdpr_description'.
   $field_instances['node-gdpr_processing-field_gdpr_description'] = array(
     'bundle' => 'gdpr_processing',
@@ -418,19 +534,25 @@ function gdpr_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Behandingssted');
+  t('Behandles det særlige katetorier opplysninger (sensitive opplysninger)? ');
   t('Behandlingsansvarlig');
   t('Behandlingsgrunnlag');
   t('Beskriv formålet med behandlingen, herunder hvorfor personopplysningene ble samlet inn, hvordan disse var tiltenkt behandlet, hvem de var tiltenkt utlevert til mv.');
   t('Beskrivelse');
   t('Beskrivelse av opplysninger som behandles, herunder omfanget av behandlingen, hvem som skal behandle (om det ikke fremgår andre steder) mv. ');
+  t('Foreligger personopplysningene i strukturert maskinlesbar form?');
   t('Formålet med behandlingen');
   t('Hvem eller hvor er opplysningene mottatt fra? Den registrerte eller andre. ');
+  t('Hvilke opplysninger behandles? ');
   t('Hvilke personopplysninger/kategorier personopplysninger behandles, kategorier registrerte? Om mulig, ta også med noe om omfanget av data.');
   t('Hvor lagres og behandlinges opplysningene fysisk sett, systemmessig, i juridisk enhet mv. ');
   t('Internt ansvarlig');
   t('Opphav');
   t('Personopplysninger');
+  t('Strukturerte data');
+  t('Særlige kategorier');
   t('Ta inn det lovmessige grunnlaget for å behandle personopplysningene. ');
+  t('Typer av sensitive opplysninger');
 
   return $field_instances;
 }

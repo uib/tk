@@ -155,6 +155,97 @@ function gdpr_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_gdpr_data_sensitive'.
+  $field_bases['field_gdpr_data_sensitive'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_gdpr_data_sensitive',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'y' => 'Ja',
+        'n' => 'Nei',
+        '?' => 'Ukjent',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_gdpr_data_sensitive_type'.
+  $field_bases['field_gdpr_data_sensitive_type'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_gdpr_data_sensitive_type',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'e' => 'Rasemessig eller etinisk opprinnelse',
+        'p' => 'Politisk oppfatning',
+        'r' => 'Religion eller overbevisning',
+        'f' => 'Fagforeningsmedlemskap',
+        'g' => 'Genetiske eller biometriske opplysninger for identifikasjonsformål',
+        'h' => 'Helseopplysninger',
+        's' => 'Seksuelle forhold eller seksuell orientering',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_gdpr_data_structured'.
+  $field_bases['field_gdpr_data_structured'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_gdpr_data_structured',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'y' => 'Ja',
+        'n' => 'Nei',
+        '?' => 'Ukjent',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_gdpr_description'.
   $field_bases['field_gdpr_description'] = array(
     'active' => 1,
