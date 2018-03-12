@@ -64,7 +64,7 @@ function tk_field_default_field_instances() {
           'thousand_separator' => '',
         ),
         'type' => 'number_integer',
-        'weight' => 39,
+        'weight' => 40,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -338,7 +338,7 @@ function tk_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 41,
+        'weight' => 42,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -359,7 +359,7 @@ function tk_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 29,
+      'weight' => 30,
     ),
   );
 
@@ -509,7 +509,7 @@ function tk_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 42,
+        'weight' => 43,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -533,7 +533,7 @@ function tk_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 30,
+      'weight' => 31,
     ),
   );
 
@@ -551,7 +551,7 @@ function tk_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 37,
+        'weight' => 38,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -594,7 +594,7 @@ function tk_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 36,
+        'weight' => 37,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -620,6 +620,47 @@ function tk_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete_tags',
       'weight' => 16,
+    ),
+  );
+
+  // Exported field_instance: 'node-service-field_personal_data'.
+  $field_instances['node-service-field_personal_data'] = array(
+    'bundle' => 'service',
+    'default_value' => array(
+      0 => array(
+        'value' => '?',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Lagrer, sammenstiller eller prosesserer tjenesten opplysninger som kan knyttes til enkeltpersoner',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 31,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_personal_data',
+    'label' => 'Behandles personopplysninger',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 25,
     ),
   );
 
@@ -687,7 +728,7 @@ Leveringstid:',
           'show_remaining_days' => 0,
         ),
         'type' => 'date_default',
-        'weight' => 31,
+        'weight' => 32,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -720,7 +761,7 @@ Leveringstid:',
         'year_range' => '-2:+0',
       ),
       'type' => 'date_popup',
-      'weight' => 25,
+      'weight' => 26,
     ),
   );
 
@@ -736,7 +777,7 @@ Leveringstid:',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 33,
+        'weight' => 34,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -777,7 +818,7 @@ Leveringstid:',
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 27,
+      'weight' => 28,
     ),
   );
 
@@ -799,7 +840,7 @@ Leveringstid:',
           'show_remaining_days' => 0,
         ),
         'type' => 'date_default',
-        'weight' => 32,
+        'weight' => 33,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -832,7 +873,7 @@ Leveringstid:',
         'year_range' => '-3:+0',
       ),
       'type' => 'date_popup',
-      'weight' => 26,
+      'weight' => 27,
     ),
   );
 
@@ -889,7 +930,7 @@ Leveringstid:',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 38,
+        'weight' => 39,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -969,7 +1010,7 @@ Leveringstid:',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 34,
+        'weight' => 35,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1010,7 +1051,7 @@ Leveringstid:',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 35,
+        'weight' => 36,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1071,7 +1112,7 @@ Leveringstid:',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 28,
+      'weight' => 29,
     ),
   );
 
@@ -1267,7 +1308,7 @@ Leveringstid:',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 40,
+        'weight' => 41,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1701,6 +1742,7 @@ Leveringstid:',
   t('Addresse');
   t('Alle produksjonsatte tjenester skal ha ROS-analyse som ikke er mer en 2 år gammel.');
   t('Angi hvilke personer som har ansvar for den tekniske driften av tjenesten.');
+  t('Behandles personopplysninger');
   t('Beskriv de viktigste egenskapene og funksjonene ved tjenesten og annen nyttig informasjon til sluttbrukere. Feltet vises til alle.');
   t('Beskriv eventuelle krav for å kunne bruke tjenesten (hardware, software, målgrupper, etc). Feltet vises til alle.');
   t('Beskrivelse');
@@ -1744,6 +1786,7 @@ Leveringstid:',
   t('Kritikalitet');
   t('Kryss av for målgruppene for tjenesten.  Feltet vises til alle.');
   t('Kvalitetsmål');
+  t('Lagrer, sammenstiller eller prosesserer tjenesten opplysninger som kan knyttes til enkeltpersoner');
   t('Lenke til dokumentasjon for siste ROS-analyse gjort for tjenesten.');
   t('Livssyklus');
   t('Mer informasjon');
