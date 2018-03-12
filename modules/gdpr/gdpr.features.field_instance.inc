@@ -53,9 +53,13 @@ function gdpr_field_default_field_instances() {
   // Exported field_instance: 'node-gdpr_processing-field_gdpr_controller'.
   $field_instances['node-gdpr_processing-field_gdpr_controller'] = array(
     'bundle' => 'gdpr_processing',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'target_id' => 324,
+      ),
+    ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Den som bestemmer formålet med behandlingen av personopplysninger og hvilke hjelpemidler som skal brukes. Systemer som UiB har tatt i bruk vil vanligvis ha "Universitetet i Bergen" satt som behandlingsansvarlig. Dette impliserer at administrerende direktør ved UiB er behandlingsansvarlig i lovens forstand.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -64,7 +68,7 @@ function gdpr_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 1,
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -89,7 +93,7 @@ function gdpr_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -99,7 +103,7 @@ function gdpr_field_default_field_instances() {
     'bundle' => 'gdpr_processing',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Hvilken bruker hos behandlingsansvarlig har blitt delegert oppgavene med å følge opp behandlingen. For behandling tilknyttet tjenester vil dette som oftest være samme person som er kontaktperson hos systemeier.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -108,7 +112,7 @@ function gdpr_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 2,
+        'weight' => 14,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -133,7 +137,7 @@ function gdpr_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -150,7 +154,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 7,
+        'weight' => 19,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -190,7 +194,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 8,
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -230,7 +234,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 10,
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -268,7 +272,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 11,
+        'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -309,7 +313,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 9,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -346,7 +350,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -370,7 +374,7 @@ function gdpr_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -386,7 +390,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 5,
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -407,7 +411,7 @@ function gdpr_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -423,7 +427,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -447,7 +451,7 @@ function gdpr_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -463,7 +467,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 16,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -487,7 +491,50 @@ function gdpr_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 4,
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-gdpr_processing-field_gdpr_service'.
+  $field_instances['node-gdpr_processing-field_gdpr_service'] = array(
+    'bundle' => 'gdpr_processing',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'I hvilken tjeneste foregår behandlingen.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 12,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_gdpr_service',
+    'label' => 'Tjeneste',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 1,
     ),
   );
 
@@ -540,18 +587,22 @@ function gdpr_field_default_field_instances() {
   t('Beskriv formålet med behandlingen, herunder hvorfor personopplysningene ble samlet inn, hvordan disse var tiltenkt behandlet, hvem de var tiltenkt utlevert til mv.');
   t('Beskrivelse');
   t('Beskrivelse av opplysninger som behandles, herunder omfanget av behandlingen, hvem som skal behandle (om det ikke fremgår andre steder) mv. ');
+  t('Den som bestemmer formålet med behandlingen av personopplysninger og hvilke hjelpemidler som skal brukes. Systemer som UiB har tatt i bruk vil vanligvis ha "Universitetet i Bergen" satt som behandlingsansvarlig. Dette impliserer at administrerende direktør ved UiB er behandlingsansvarlig i lovens forstand.');
   t('Foreligger personopplysningene i strukturert maskinlesbar form?');
   t('Formålet med behandlingen');
   t('Hvem eller hvor er opplysningene mottatt fra? Den registrerte eller andre. ');
   t('Hvilke opplysninger behandles? ');
   t('Hvilke personopplysninger/kategorier personopplysninger behandles, kategorier registrerte? Om mulig, ta også med noe om omfanget av data.');
+  t('Hvilken bruker hos behandlingsansvarlig har blitt delegert oppgavene med å følge opp behandlingen. For behandling tilknyttet tjenester vil dette som oftest være samme person som er kontaktperson hos systemeier.');
   t('Hvor lagres og behandlinges opplysningene fysisk sett, systemmessig, i juridisk enhet mv. ');
+  t('I hvilken tjeneste foregår behandlingen.');
   t('Internt ansvarlig');
   t('Opphav');
   t('Personopplysninger');
   t('Strukturerte data');
   t('Særlige kategorier');
   t('Ta inn det lovmessige grunnlaget for å behandle personopplysningene. ');
+  t('Tjeneste');
   t('Typer av sensitive opplysninger');
 
   return $field_instances;

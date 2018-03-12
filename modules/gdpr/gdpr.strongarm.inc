@@ -228,7 +228,6 @@ function gdpr_strongarm() {
   $strongarm->name = 'node_options_gdpr_processing';
   $strongarm->value = array(
     0 => 'status',
-    1 => 'promote',
   );
   $export['node_options_gdpr_processing'] = $strongarm;
 
@@ -246,21 +245,21 @@ function gdpr_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_gdpr_controller';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['node_preview_gdpr_controller'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_gdpr_processing';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['node_preview_gdpr_processing'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_gdpr_processor';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['node_preview_gdpr_processor'] = $strongarm;
 
   $strongarm = new stdClass();
