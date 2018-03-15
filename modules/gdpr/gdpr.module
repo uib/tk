@@ -30,9 +30,14 @@ function gdpr_entity_view_alter(&$build, $type) {
  * Implements hook_form_alter().
  */
  function gdpr_form_gdpr_processing_node_form_alter(&$form, &$form_state, $form_id) {
-  $form['field_gdpr_data_sensitive_type']['#states'] = array(
+  $form['field_gdpr_data_special_type']['#states'] = array(
     'visible' => array(
-      ':input[name="field_gdpr_data_sensitive[und]"]' => array('value' => 'y'),
+      ':input[name="field_gdpr_data_special[und]"]' => array('value' => 'y'),
+    ),
+  );
+  $form['field_gdpr_data_special_lawfulne']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_gdpr_data_special[und]"]' => array('value' => 'y'),
     ),
   );
 }

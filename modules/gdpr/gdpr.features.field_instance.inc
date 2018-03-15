@@ -222,10 +222,14 @@ function gdpr_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-gdpr_processing-field_gdpr_data_sensitive'.
-  $field_instances['node-gdpr_processing-field_gdpr_data_sensitive'] = array(
+  // Exported field_instance: 'node-gdpr_processing-field_gdpr_data_special'.
+  $field_instances['node-gdpr_processing-field_gdpr_data_special'] = array(
     'bundle' => 'gdpr_processing',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => '?',
+      ),
+    ),
     'deleted' => 0,
     'description' => 'Behandles det særlige katetorier opplysninger (sensitive opplysninger)? ',
     'display' => array(
@@ -244,8 +248,8 @@ function gdpr_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_gdpr_data_sensitive',
-    'label' => 'Særlige kategorier',
+    'field_name' => 'field_gdpr_data_special',
+    'label' => 'Særlige oppsyninger',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -260,8 +264,46 @@ function gdpr_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-gdpr_processing-field_gdpr_data_sensitive_type'.
-  $field_instances['node-gdpr_processing-field_gdpr_data_sensitive_type'] = array(
+  // 'node-gdpr_processing-field_gdpr_data_special_lawfulne'.
+  $field_instances['node-gdpr_processing-field_gdpr_data_special_lawfulne'] = array(
+    'bundle' => 'gdpr_processing',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Grunnlag for behandlingen etter artikkel 9 i personvernforordningen. Sensitive data må <em>ikke</em> behandles uten at minst én av disse grunnene gjelder.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 24,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_gdpr_data_special_lawfulne',
+    'label' => 'Grunnlag for behandling av sensitive opplysninger',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-gdpr_processing-field_gdpr_data_special_type'.
+  $field_instances['node-gdpr_processing-field_gdpr_data_special_type'] = array(
     'bundle' => 'gdpr_processing',
     'default_value' => NULL,
     'deleted' => 0,
@@ -282,7 +324,7 @@ function gdpr_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_gdpr_data_sensitive_type',
+    'field_name' => 'field_gdpr_data_special_type',
     'label' => 'Typer av sensitive opplysninger',
     'required' => 0,
     'settings' => array(
@@ -590,6 +632,8 @@ function gdpr_field_default_field_instances() {
   t('Den som bestemmer formålet med behandlingen av personopplysninger og hvilke hjelpemidler som skal brukes. Systemer som UiB har tatt i bruk vil vanligvis ha "Universitetet i Bergen" satt som behandlingsansvarlig. Dette impliserer at administrerende direktør ved UiB er behandlingsansvarlig i lovens forstand.');
   t('Foreligger personopplysningene i strukturert maskinlesbar form?');
   t('Formålet med behandlingen');
+  t('Grunnlag for behandling av sensitive opplysninger');
+  t('Grunnlag for behandlingen etter artikkel 9 i personvernforordningen. Sensitive data må <em>ikke</em> behandles uten at minst én av disse grunnene gjelder.');
   t('Hvem eller hvor er opplysningene mottatt fra? Den registrerte eller andre. ');
   t('Hvilke opplysninger behandles? ');
   t('Hvilke personopplysninger/kategorier personopplysninger behandles, kategorier registrerte? Om mulig, ta også med noe om omfanget av data.');
@@ -600,7 +644,7 @@ function gdpr_field_default_field_instances() {
   t('Opphav');
   t('Personopplysninger');
   t('Strukturerte data');
-  t('Særlige kategorier');
+  t('Særlige oppsyninger');
   t('Ta inn det lovmessige grunnlaget for å behandle personopplysningene. ');
   t('Tjeneste');
   t('Typer av sensitive opplysninger');

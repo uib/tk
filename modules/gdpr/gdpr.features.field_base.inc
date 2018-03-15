@@ -155,13 +155,13 @@ function gdpr_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_gdpr_data_sensitive'.
-  $field_bases['field_gdpr_data_sensitive'] = array(
+  // Exported field_base: 'field_gdpr_data_special'.
+  $field_bases['field_gdpr_data_special'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_gdpr_data_sensitive',
+    'field_name' => 'field_gdpr_data_special',
     'field_permissions' => array(
       'type' => 0,
     ),
@@ -184,13 +184,49 @@ function gdpr_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_gdpr_data_sensitive_type'.
-  $field_bases['field_gdpr_data_sensitive_type'] = array(
+  // Exported field_base: 'field_gdpr_data_special_lawfulne'.
+  $field_bases['field_gdpr_data_special_lawfulne'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_gdpr_data_sensitive_type',
+    'field_name' => 'field_gdpr_data_special_lawfulne',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'a' => 'Samtykke (se mer i forordningen)',
+        'b' => 'Oppfylle forpliktelser eller utøve særlige rettigheter innenfor arbeids-, trygde- eller sosialrett (se mer i forordningen)',
+        'c' => 'Nødvendig for å verne den registrertes eller en annen fysisk persons vitale interesser dersom det ikke kan gis samtykke (se mer i forordningen)',
+        'd' => 'Behandlingen utføres av en stiftelse, sammenslutning eller et annet ideelt organ hvis mål er av politisk, religiøs eller fagforeningsmessig art, som ledd i organets berettigede aktiviteter og med nødvendige garantier (se mer i forordningen)',
+        'e' => 'Behandlingen gjelder personopplysninger som det er åpenbart at den registrerte har offentliggjort (se mer i forordningen)',
+        'f|Behandlingen er nødvendig for å fastsette, gjøre gjeldende eller forsvare rettskrav eller når domstolene handler innenfor rammen av sin domsmyndighet (se mer i forordningen)"' => 'av sin domsmyndighet (se mer i forordningen)"',
+        'g' => 'Behandlingen er nødvendig av hensyn til viktige samfunnsinteresser, på grunnlag av unionsretten eller  medlemsstatenes nasjonale rett (se mer i forordningen)',
+        'h' => 'Behandlingen er nødvendig i forbindelse med forebyggende  medisin eller arbeidsmedisin for å vurdere en arbeidstakers  arbeidskapasitet (se mer i forordningen)',
+        'i' => 'Behandlingen er nødvendig av allmenne folkehelsehensyn (se mer i forordningen)',
+        'j' => 'Behandlingen er nødvendig for arkivformål i allmennhetens interesse, for formål knyttet til vitenskapelig eller historisk forskning eller for statistiske formål (se mer i forordningen) eller for statistiske formål (se mer i forordningen)',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_gdpr_data_special_type'.
+  $field_bases['field_gdpr_data_special_type'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_gdpr_data_special_type',
     'field_permissions' => array(
       'type' => 0,
     ),
