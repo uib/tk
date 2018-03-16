@@ -231,7 +231,7 @@ function gdpr_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'Behandles det særlige katetorier opplysninger (sensitive opplysninger)? ',
+    'description' => 'Behandles det særlige katetorier opplysninger (sensitive opplysninger)?',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -249,7 +249,7 @@ function gdpr_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_gdpr_data_special',
-    'label' => 'Særlige oppsyninger',
+    'label' => 'Særlige kategorier',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -623,7 +623,7 @@ function gdpr_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Behandingssted');
-  t('Behandles det særlige katetorier opplysninger (sensitive opplysninger)? ');
+  t('Behandles det særlige katetorier opplysninger (sensitive opplysninger)?');
   t('Behandlingsansvarlig');
   t('Behandlingsgrunnlag');
   t('Beskriv formålet med behandlingen, herunder hvorfor personopplysningene ble samlet inn, hvordan disse var tiltenkt behandlet, hvem de var tiltenkt utlevert til mv.');
@@ -644,7 +644,7 @@ function gdpr_field_default_field_instances() {
   t('Opphav');
   t('Personopplysninger');
   t('Strukturerte data');
-  t('Særlige oppsyninger');
+  t('Særlige kategorier');
   t('Ta inn det lovmessige grunnlaget for å behandle personopplysningene. ');
   t('Tjeneste');
   t('Typer av sensitive opplysninger');
