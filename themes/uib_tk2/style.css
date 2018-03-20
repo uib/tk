@@ -351,6 +351,7 @@ nav a:visited {
 }
 
 .field-group-div > .field {
+    max-width: 70ex;
     border: 1px solid #aaa;
     margin-top: -1px;
     margin-left: -1px;
