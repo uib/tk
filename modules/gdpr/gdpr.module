@@ -30,6 +30,8 @@ function gdpr_entity_view_alter(&$build, $type) {
  * Implements hook_form_alter().
  */
  function gdpr_form_gdpr_processing_node_form_alter(&$form, &$form_state, $form_id) {
+  $form['title']['#required'] = FALSE;
+  $form['title']['#description'] = 'Behandlingens tittel brukes i opplistinger. Knyttes behandlingen til en tjeneste blir tittel satt fra denne.';
   $form['field_gdpr_data_special_type']['#states'] = array(
     'visible' => array(
       ':input[name="field_gdpr_data_special[und]"]' => array('value' => 'y'),
@@ -40,4 +42,21 @@ function gdpr_entity_view_alter(&$build, $type) {
       ':input[name="field_gdpr_data_special[und]"]' => array('value' => 'y'),
     ),
   );
+}
+
+/**
+ * Implements hook_node_presave().
+ */
+function gdpr_node_presave($node) {
+  if (empty($node->title)) {
+    if (!empty($node->field_gdpr_service['und'])) {
+      $service_node = node_load($node->field_gdpr_service['und'][0]['target_id']);
+      $node->title = $service_node->title;
+    }
+    else {
+      $cnt = db_query("SELECT count(*) FROM {node} n WHERE n.type = 'gdpr_processing'")->fetchField();
+      $cnt++;
+      $node->title = "Behandling #$cnt";
+    }
+  }
 }
