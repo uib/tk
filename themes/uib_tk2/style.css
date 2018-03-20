@@ -471,6 +471,17 @@ a:visited {
     max-width: 70ex;
 }
 
+ul.gdpr_processing_links {
+    margin: 0;
+    padding: 0;
+    display: inline;
+}
+ul.gdpr_processing_links > li {
+    display: inline;
+    padding: 0;
+    margin: 0;
+}
+
 @media all and (max-width: 720px) {
     .node-service > .content {
       -webkit-flex-wrap: wrap;

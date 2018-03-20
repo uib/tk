@@ -541,6 +541,7 @@ function gdpr_field_default_field_instances() {
   $field_instances['node-gdpr_processing-field_gdpr_service'] = array(
     'bundle' => 'gdpr_processing',
     'default_value' => NULL,
+    'default_value_function' => 'entityreference_prepopulate_field_default_value',
     'deleted' => 0,
     'description' => 'I hvilken tjeneste foregår behandlingen.',
     'display' => array(
@@ -565,6 +566,19 @@ function gdpr_field_default_field_instances() {
     'label' => 'Tjeneste',
     'required' => 0,
     'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'action' => 'disable',
+          'action_on_edit' => 0,
+          'fallback' => 'none',
+          'providers' => array(
+            'og_context' => FALSE,
+            'url' => 1,
+          ),
+          'skip_perm' => 0,
+          'status' => 1,
+        ),
+      ),
       'user_register_form' => FALSE,
     ),
     'widget' => array(

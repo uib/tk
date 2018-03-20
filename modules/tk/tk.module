@@ -432,4 +432,33 @@ function tk_entity_view_alter(&$build, $type) {
       }
     }
   }
+  if (isset($build['field_personal_data'])) {
+    $q = new EntityFieldQuery();
+    $q->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'gdpr_processing')
+      ->propertyCondition('status', NODE_PUBLISHED)
+      ->fieldCondition('field_gdpr_service', 'target_id', $build['#node']->nid)
+      ;
+    $res = $q->execute();
+    if (!empty($res['node'])) {
+      $build['field_personal_data'][0]['#markup'] .= ': <ul class="gdpr_processing_links">';
+      foreach (entity_load('node', array_keys($res['node'])) as $p) {
+        $t = $p->title;
+        if ($t == $build['#node']->title) {
+          $t = "info";
+        }
+        $build['field_personal_data'][0]['#markup'] .= '<li>' . l($t, '/node/' . $p->nid) . '</li>';
+      }
+      $build['field_personal_data'][0]['#markup'] .= '</ul>';
+    }
+    else {
+      if ($build['field_personal_data']['#items'][0]['value'] == 'y') {
+        # add link to register new processing information
+        $build['field_personal_data'][0]['#markup'] .=
+          ' <a class="button" href="/node/add/gdpr-processing?field_gdpr_service=' .
+          $build['#node']->nid .
+          '">⚙️</a>';
+      }
+    }
+  }
 }
