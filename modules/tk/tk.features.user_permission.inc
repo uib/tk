@@ -73,6 +73,15 @@ function tk_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'create field_personal_data'.
+  $permissions['create field_personal_data'] = array(
+    'name' => 'create field_personal_data',
+    'roles' => array(
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'create field_quality'.
   $permissions['create field_quality'] = array(
     'name' => 'create field_quality',
@@ -211,6 +220,15 @@ function tk_user_default_permissions() {
   // Exported permission: 'edit field_ower_contact'.
   $permissions['edit field_ower_contact'] = array(
     'name' => 'edit field_ower_contact',
+    'roles' => array(
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit field_personal_data'.
+  $permissions['edit field_personal_data'] = array(
+    'name' => 'edit field_personal_data',
     'roles' => array(
       'tjenesteadmin' => 'tjenesteadmin',
     ),
@@ -361,6 +379,15 @@ function tk_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'edit own field_personal_data'.
+  $permissions['edit own field_personal_data'] = array(
+    'name' => 'edit own field_personal_data',
+    'roles' => array(
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'edit own field_quality'.
   $permissions['edit own field_quality'] = array(
     'name' => 'edit own field_quality',
@@ -504,6 +531,16 @@ function tk_user_default_permissions() {
   // Exported permission: 'view field_ower_contact'.
   $permissions['view field_ower_contact'] = array(
     'name' => 'view field_ower_contact',
+    'roles' => array(
+      'ita' => 'ita',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view field_personal_data'.
+  $permissions['view field_personal_data'] = array(
+    'name' => 'view field_personal_data',
     'roles' => array(
       'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
@@ -662,6 +699,16 @@ function tk_user_default_permissions() {
   // Exported permission: 'view own field_ower_contact'.
   $permissions['view own field_ower_contact'] = array(
     'name' => 'view own field_ower_contact',
+    'roles' => array(
+      'ita' => 'ita',
+      'tjenesteadmin' => 'tjenesteadmin',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view own field_personal_data'.
+  $permissions['view own field_personal_data'] = array(
+    'name' => 'view own field_personal_data',
     'roles' => array(
       'ita' => 'ita',
       'tjenesteadmin' => 'tjenesteadmin',
