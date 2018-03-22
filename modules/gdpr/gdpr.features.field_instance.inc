@@ -62,7 +62,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 25,
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -86,7 +86,7 @@ function gdpr_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 14,
+      'weight' => 19,
     ),
   );
 
@@ -278,7 +278,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 22,
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -299,7 +299,7 @@ function gdpr_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 11,
+      'weight' => 14,
     ),
   );
 
@@ -316,7 +316,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 24,
+        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -337,7 +337,7 @@ function gdpr_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 13,
+      'weight' => 16,
     ),
   );
 
@@ -354,7 +354,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 23,
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -375,7 +375,7 @@ function gdpr_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 12,
+      'weight' => 15,
     ),
   );
 
@@ -395,7 +395,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 21,
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -416,7 +416,47 @@ function gdpr_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 10,
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'node-gdpr_processing-field_gdpr_delete_policy'.
+  $field_instances['node-gdpr_processing-field_gdpr_delete_policy'] = array(
+    'bundle' => 'gdpr_processing',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Rutiner for sletting av opplysningene, evnt. planlagte tidsfrister for sletting (om mulig)',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 23,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_gdpr_delete_policy',
+    'label' => 'Slettting',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 12,
     ),
   );
 
@@ -537,6 +577,141 @@ function gdpr_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-gdpr_processing-field_gdpr_measures'.
+  $field_instances['node-gdpr_processing-field_gdpr_measures'] = array(
+    'bundle' => 'gdpr_processing',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Generell beskrivelse av de tekniske og/eller organisatoriske tiltak for behandlingen (om mulig)',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 24,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_gdpr_measures',
+    'label' => 'Tiltak',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance: 'node-gdpr_processing-field_gdpr_processor'.
+  $field_instances['node-gdpr_processing-field_gdpr_processor'] = array(
+    'bundle' => 'gdpr_processing',
+    'default_value' => array(
+      0 => array(
+        'target_id' => 326,
+      ),
+    ),
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 28,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_gdpr_processor',
+    'label' => 'Databehandler',
+    'required' => 1,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 17,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-gdpr_processing-field_gdpr_processor_contract'.
+  $field_instances['node-gdpr_processing-field_gdpr_processor_contract'] = array(
+    'bundle' => 'gdpr_processing',
+    'default_value' => array(
+      0 => array(
+        'value' => '?',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Foreligger det en formell avtale mellom behandlingsansvarlige og databehandleren?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 29,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_gdpr_processor_contract',
+    'label' => 'Databehandleravtale',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 18,
+    ),
+  );
+
   // Exported field_instance: 'node-gdpr_processing-field_gdpr_purpose'.
   $field_instances['node-gdpr_processing-field_gdpr_purpose'] = array(
     'bundle' => 'gdpr_processing',
@@ -634,6 +809,48 @@ function gdpr_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'node-gdpr_processing-field_gdpr_subject_informed'.
+  $field_instances['node-gdpr_processing-field_gdpr_subject_informed'] = array(
+    'bundle' => 'gdpr_processing',
+    'default_value' => array(
+      0 => array(
+        'value' => '?',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Er de registrerte informert i henhold til artikkel 13 og 14 ved innsamling av opplysningene?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 21,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_gdpr_subject_informed',
+    'label' => 'Informasjon gitt til de registrerte',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 10,
+    ),
+  );
+
   // Exported field_instance: 'node-gdpr_processor-field_gdpr_description'.
   $field_instances['node-gdpr_processor-field_gdpr_description'] = array(
     'bundle' => 'gdpr_processor',
@@ -683,9 +900,14 @@ function gdpr_field_default_field_instances() {
   t('Beskriv formålet med behandlingen, herunder hvorfor personopplysningene ble samlet inn, hvordan disse var tiltenkt behandlet, hvem de var tiltenkt utlevert til mv.');
   t('Beskrivelse');
   t('Beskrivelse av opplysninger som behandles, herunder omfanget av behandlingen, hvem som skal behandle (om det ikke fremgår andre steder) mv. ');
+  t('Databehandler');
+  t('Databehandleravtale');
   t('Den som bestemmer formålet med behandlingen av personopplysninger og hvilke hjelpemidler som skal brukes. Systemer som UiB har tatt i bruk vil vanligvis ha "Universitetet i Bergen" satt som behandlingsansvarlig. Dette impliserer at administrerende direktør ved UiB er behandlingsansvarlig i lovens forstand.');
+  t('Er de registrerte informert i henhold til artikkel 13 og 14 ved innsamling av opplysningene?');
+  t('Foreligger det en formell avtale mellom behandlingsansvarlige og databehandleren?');
   t('Foreligger personopplysningene i strukturert maskinlesbar form?');
   t('Formålet med behandlingen');
+  t('Generell beskrivelse av de tekniske og/eller organisatoriske tiltak for behandlingen (om mulig)');
   t('Grunnlag for behandling av sensitive opplysninger');
   t('Grunnlag for behandlingen etter artikkel 9 i personvernforordningen. Sensitive data må <em>ikke</em> behandles uten at minst én av disse grunnene gjelder.');
   t('Hvem eller hvor er opplysningene mottatt fra? Den registrerte eller andre. ');
@@ -694,13 +916,17 @@ function gdpr_field_default_field_instances() {
   t('Hvilken bruker hos behandlingsansvarlig har blitt delegert oppgavene med å følge opp behandlingen. For behandling tilknyttet tjenester vil dette som oftest være samme person som er kontaktperson hos systemeier.');
   t('Hvor lagres og behandlinges opplysningene fysisk sett, systemmessig, i juridisk enhet mv. ');
   t('I hvilken tjeneste foregår behandlingen.');
+  t('Informasjon gitt til de registrerte');
   t('Internt ansvarlig');
   t('Kommentarer');
   t('Opphav');
   t('Personopplysninger');
+  t('Rutiner for sletting av opplysningene, evnt. planlagte tidsfrister for sletting (om mulig)');
+  t('Slettting');
   t('Strukturerte data');
   t('Særlige kategorier');
   t('Ta inn det lovmessige grunnlaget for å behandle personopplysningene. ');
+  t('Tiltak');
   t('Tjeneste');
   t('Typer av sensitive opplysninger');
   t('Ytterligere kommentarer som ikke er dekket andre steder i skjemaet.');
