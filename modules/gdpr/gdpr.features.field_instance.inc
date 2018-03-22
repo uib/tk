@@ -50,6 +50,46 @@ function gdpr_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-gdpr_processing-field_gdpr_comment'.
+  $field_instances['node-gdpr_processing-field_gdpr_comment'] = array(
+    'bundle' => 'gdpr_processing',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Ytterligere kommentarer som ikke er dekket andre steder i skjemaet.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 25,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_gdpr_comment',
+    'label' => 'Kommentarer',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 14,
+    ),
+  );
+
   // Exported field_instance: 'node-gdpr_processing-field_gdpr_controller'.
   $field_instances['node-gdpr_processing-field_gdpr_controller'] = array(
     'bundle' => 'gdpr_processing',
@@ -655,6 +695,7 @@ function gdpr_field_default_field_instances() {
   t('Hvor lagres og behandlinges opplysningene fysisk sett, systemmessig, i juridisk enhet mv. ');
   t('I hvilken tjeneste foregår behandlingen.');
   t('Internt ansvarlig');
+  t('Kommentarer');
   t('Opphav');
   t('Personopplysninger');
   t('Strukturerte data');
@@ -662,6 +703,7 @@ function gdpr_field_default_field_instances() {
   t('Ta inn det lovmessige grunnlaget for å behandle personopplysningene. ');
   t('Tjeneste');
   t('Typer av sensitive opplysninger');
+  t('Ytterligere kommentarer som ikke er dekket andre steder i skjemaet.');
 
   return $field_instances;
 }
