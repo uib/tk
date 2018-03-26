@@ -472,6 +472,12 @@ a:visited {
     max-width: 70ex;
 }
 
+.node-gdpr-processing .field-type-list-text .field-item:before {
+    content: "‣";
+    color: #B55;
+    padding-right: 0.4ex;
+}
+
 ul.gdpr_processing_links {
     margin: 0;
     padding: 0;
