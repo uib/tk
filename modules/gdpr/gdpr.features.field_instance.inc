@@ -50,6 +50,46 @@ function gdpr_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-gdpr_processing-field_gdpr_access_transfer'.
+  $field_instances['node-gdpr_processing-field_gdpr_access_transfer'] = array(
+    'bundle' => 'gdpr_processing',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Andre som har tilgang  eller blir opplysningene overført til andre, herunder kategorier av mottakere? ',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 32,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_gdpr_access_transfer',
+    'label' => 'Tilgang/overføring',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 21,
+    ),
+  );
+
   // Exported field_instance: 'node-gdpr_processing-field_gdpr_comment'.
   $field_instances['node-gdpr_processing-field_gdpr_comment'] = array(
     'bundle' => 'gdpr_processing',
@@ -62,7 +102,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 32,
+        'weight' => 33,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -86,7 +126,7 @@ function gdpr_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 21,
+      'weight' => 22,
     ),
   );
 
@@ -555,6 +595,64 @@ function gdpr_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'node-gdpr_processing-field_gdpr_documentation_link'.
+  $field_instances['node-gdpr_processing-field_gdpr_documentation_link'] = array(
+    'bundle' => 'gdpr_processing',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Hvor dokumenatasjon og eventuelt mer informasjon om behandlingen finnes.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 34,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_gdpr_documentation_link',
+    'label' => 'Dokumentasjon',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'rel_remove' => 'default',
+      'title' => 'optional',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 23,
+    ),
+  );
+
   // Exported field_instance: 'node-gdpr_processing-field_gdpr_dpia'.
   $field_instances['node-gdpr_processing-field_gdpr_dpia'] = array(
     'bundle' => 'gdpr_processing',
@@ -989,6 +1087,7 @@ function gdpr_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Andre som har tilgang  eller blir opplysningene overført til andre, herunder kategorier av mottakere? ');
   t('Behandingssted');
   t('Behandles det særlige katetorier opplysninger (sensitive opplysninger)?');
   t('Behandlingsansvarlig');
@@ -999,6 +1098,7 @@ function gdpr_field_default_field_instances() {
   t('Databehandler');
   t('Databehandleravtale');
   t('Den som bestemmer formålet med behandlingen av personopplysninger og hvilke hjelpemidler som skal brukes. Systemer som UiB har tatt i bruk vil vanligvis ha "Universitetet i Bergen" satt som behandlingsansvarlig. Dette impliserer at administrerende direktør ved UiB er behandlingsansvarlig i lovens forstand.');
+  t('Dokumentasjon');
   t('Er de registrerte informert i henhold til artikkel 13 og 14 ved innsamling av opplysningene?');
   t('Er det gjennomført vurdering av personvern-konsekvenser (DPIA)? Hvis dette ikke er nødvendig sett denne til N/A.');
   t('Foreligger det en formell avtale mellom behandlingsansvarlige og databehandleren?');
@@ -1012,6 +1112,7 @@ function gdpr_field_default_field_instances() {
   t('Hvilke personopplysninger/kategorier personopplysninger behandles, kategorier registrerte? Om mulig, ta også med noe om omfanget av data.');
   t('Hvilken bruker hos behandlingsansvarlig har blitt delegert oppgavene med å følge opp behandlingen. For behandling tilknyttet tjenester vil dette som oftest være samme person som er kontaktperson hos systemeier.');
   t('Hvilken organisasjonsenhet er internt sett ansvarlig for behandlingen');
+  t('Hvor dokumenatasjon og eventuelt mer informasjon om behandlingen finnes.');
   t('Hvor lagres og behandlinges opplysningene fysisk sett, systemmessig, i juridisk enhet mv. ');
   t('I hvilken tjeneste foregår behandlingen.');
   t('Informasjon gitt til de registrerte');
@@ -1026,6 +1127,7 @@ function gdpr_field_default_field_instances() {
   t('Strukturerte data');
   t('Særlige kategorier');
   t('Ta inn det lovmessige grunnlaget for å behandle personopplysningene. ');
+  t('Tilgang/overføring');
   t('Tiltak');
   t('Tjeneste');
   t('Typer av sensitive opplysninger');
