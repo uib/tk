@@ -62,7 +62,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 31,
+        'weight' => 32,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -86,7 +86,7 @@ function gdpr_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 20,
+      'weight' => 21,
     ),
   );
 
@@ -555,6 +555,47 @@ function gdpr_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-gdpr_processing-field_gdpr_dpia'.
+  $field_instances['node-gdpr_processing-field_gdpr_dpia'] = array(
+    'bundle' => 'gdpr_processing',
+    'default_value' => array(
+      0 => array(
+        'value' => '?',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Er det gjennomført vurdering av personvern-konsekvenser (DPIA)? Hvis dette ikke er nødvendig sett denne til N/A.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 29,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_gdpr_dpia',
+    'label' => 'Personvernkonsekvenser vurdert',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 18,
+    ),
+  );
+
   // Exported field_instance: 'node-gdpr_processing-field_gdpr_lawfulness'.
   $field_instances['node-gdpr_processing-field_gdpr_lawfulness'] = array(
     'bundle' => 'gdpr_processing',
@@ -691,7 +732,7 @@ function gdpr_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 29,
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -721,7 +762,7 @@ function gdpr_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 18,
+      'weight' => 19,
     ),
   );
 
@@ -742,7 +783,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 30,
+        'weight' => 31,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -763,7 +804,7 @@ function gdpr_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 19,
+      'weight' => 20,
     ),
   );
 
@@ -959,6 +1000,7 @@ function gdpr_field_default_field_instances() {
   t('Databehandleravtale');
   t('Den som bestemmer formålet med behandlingen av personopplysninger og hvilke hjelpemidler som skal brukes. Systemer som UiB har tatt i bruk vil vanligvis ha "Universitetet i Bergen" satt som behandlingsansvarlig. Dette impliserer at administrerende direktør ved UiB er behandlingsansvarlig i lovens forstand.');
   t('Er de registrerte informert i henhold til artikkel 13 og 14 ved innsamling av opplysningene?');
+  t('Er det gjennomført vurdering av personvern-konsekvenser (DPIA)? Hvis dette ikke er nødvendig sett denne til N/A.');
   t('Foreligger det en formell avtale mellom behandlingsansvarlige og databehandleren?');
   t('Foreligger personopplysningene i strukturert maskinlesbar form?');
   t('Formålet med behandlingen');
@@ -978,6 +1020,7 @@ function gdpr_field_default_field_instances() {
   t('Kontaktperson for behandlingen');
   t('Opphav');
   t('Personopplysninger');
+  t('Personvernkonsekvenser vurdert');
   t('Rutiner for sletting av opplysningene, evnt. planlagte tidsfrister for sletting (om mulig)');
   t('Slettting');
   t('Strukturerte data');
