@@ -62,7 +62,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 30,
+        'weight' => 31,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -86,7 +86,7 @@ function gdpr_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 19,
+      'weight' => 20,
     ),
   );
 
@@ -137,13 +137,13 @@ function gdpr_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'node-gdpr_processing-field_gdpr_controller_person'.
-  $field_instances['node-gdpr_processing-field_gdpr_controller_person'] = array(
+  // Exported field_instance: 'node-gdpr_processing-field_gdpr_controller_org'.
+  $field_instances['node-gdpr_processing-field_gdpr_controller_org'] = array(
     'bundle' => 'gdpr_processing',
     'default_value' => NULL,
+    'default_value_function' => '',
     'deleted' => 0,
-    'description' => 'Hvilken bruker hos behandlingsansvarlig har blitt delegert oppgavene med å følge opp behandlingen. For behandling tilknyttet tjenester vil dette som oftest være samme person som er kontaktperson hos systemeier.',
+    'description' => 'Hvilken organisasjonsenhet er internt sett ansvarlig for behandlingen',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -162,10 +162,15 @@ function gdpr_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_gdpr_controller_person',
+    'field_name' => 'field_gdpr_controller_org',
     'label' => 'Internt ansvarlig',
     'required' => 0,
     'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -182,6 +187,56 @@ function gdpr_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'node-gdpr_processing-field_gdpr_controller_person'.
+  $field_instances['node-gdpr_processing-field_gdpr_controller_person'] = array(
+    'bundle' => 'gdpr_processing',
+    'default_value' => NULL,
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => 'Hvilken bruker hos behandlingsansvarlig har blitt delegert oppgavene med å følge opp behandlingen. For behandling tilknyttet tjenester vil dette som oftest være samme person som er kontaktperson hos systemeier.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 15,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_gdpr_controller_person',
+    'label' => 'Kontaktperson for behandlingen',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance:
   // 'node-gdpr_processing-field_gdpr_data_description'.
   $field_instances['node-gdpr_processing-field_gdpr_data_description'] = array(
     'bundle' => 'gdpr_processing',
@@ -194,7 +249,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 19,
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -218,7 +273,7 @@ function gdpr_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -234,7 +289,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 20,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -258,7 +313,7 @@ function gdpr_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -278,7 +333,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 25,
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -299,7 +354,7 @@ function gdpr_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -316,7 +371,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 27,
+        'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -337,7 +392,7 @@ function gdpr_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 16,
+      'weight' => 17,
     ),
   );
 
@@ -354,7 +409,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 26,
+        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -375,7 +430,7 @@ function gdpr_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
@@ -395,7 +450,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 22,
+        'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -416,7 +471,7 @@ function gdpr_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -432,7 +487,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 23,
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -456,7 +511,7 @@ function gdpr_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 12,
+      'weight' => 13,
     ),
   );
 
@@ -472,7 +527,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 15,
+        'weight' => 16,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -496,7 +551,7 @@ function gdpr_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -512,7 +567,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 17,
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -533,7 +588,7 @@ function gdpr_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -549,7 +604,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 18,
+        'weight' => 19,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -573,7 +628,7 @@ function gdpr_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -589,7 +644,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 24,
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -613,7 +668,7 @@ function gdpr_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -636,7 +691,7 @@ function gdpr_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 28,
+        'weight' => 29,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -666,7 +721,7 @@ function gdpr_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 17,
+      'weight' => 18,
     ),
   );
 
@@ -687,7 +742,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 29,
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -708,7 +763,7 @@ function gdpr_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 18,
+      'weight' => 19,
     ),
   );
 
@@ -724,7 +779,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 16,
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -748,7 +803,7 @@ function gdpr_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -826,7 +881,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 21,
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -847,7 +902,7 @@ function gdpr_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -914,11 +969,13 @@ function gdpr_field_default_field_instances() {
   t('Hvilke opplysninger behandles? ');
   t('Hvilke personopplysninger/kategorier personopplysninger behandles, kategorier registrerte? Om mulig, ta også med noe om omfanget av data.');
   t('Hvilken bruker hos behandlingsansvarlig har blitt delegert oppgavene med å følge opp behandlingen. For behandling tilknyttet tjenester vil dette som oftest være samme person som er kontaktperson hos systemeier.');
+  t('Hvilken organisasjonsenhet er internt sett ansvarlig for behandlingen');
   t('Hvor lagres og behandlinges opplysningene fysisk sett, systemmessig, i juridisk enhet mv. ');
   t('I hvilken tjeneste foregår behandlingen.');
   t('Informasjon gitt til de registrerte');
   t('Internt ansvarlig');
   t('Kommentarer');
+  t('Kontaktperson for behandlingen');
   t('Opphav');
   t('Personopplysninger');
   t('Rutiner for sletting av opplysningene, evnt. planlagte tidsfrister for sletting (om mulig)');
