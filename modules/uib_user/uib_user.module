@@ -61,3 +61,21 @@ function uib_user__import_form_submit($form, &$form_state) {
   $name = $account->field_full_name['und'][0]['value'];
   drupal_set_message("Created user $name ($account->uid)");
 }
+
+/**
+ * Implements hook_form_alter().
+ */
+function uib_user_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'user_login') {
+    array_unshift($form['#validate'], 'uib_user__username_lc');
+  }
+}
+
+/**
+ * Always lowercase username.
+ */
+function uib_user__username_lc($form, &$form_state) {
+  if (!empty($form_state['values']['name'])) {
+    $form_state['values']['name'] = drupal_strtolower($form_state['values']['name']);
+  }
+}
