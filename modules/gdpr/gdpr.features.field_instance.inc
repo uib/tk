@@ -76,7 +76,7 @@ function gdpr_field_default_field_instances() {
     'label' => 'Kommentarer',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -263,7 +263,7 @@ function gdpr_field_default_field_instances() {
     'label' => 'Personopplysninger',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -541,7 +541,7 @@ function gdpr_field_default_field_instances() {
     'label' => 'Beskrivelse',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -699,7 +699,7 @@ function gdpr_field_default_field_instances() {
     'label' => 'Tiltak',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -834,7 +834,7 @@ function gdpr_field_default_field_instances() {
     'label' => 'Formålet med behandlingen',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
