@@ -20,6 +20,7 @@ function gdpr_entity_view_alter(&$build, $type) {
       while (isset($build[$user_field][$i])) {
         $u = $build[$user_field]['#items'][$i]['entity'];
         $build[$user_field][$i]['#markup'] = l($u->field_full_name['und'][0]['value'], 'http://www.uib.no/user/uib/' . $u->name);
+        unset($build[$user_field][$i]['#theme']);
         $i++;
       }
     }
