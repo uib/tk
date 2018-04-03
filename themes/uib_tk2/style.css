@@ -485,8 +485,13 @@ ul.gdpr_processing_links {
 }
 ul.gdpr_processing_links > li {
     display: inline;
-    padding: 0;
+    padding: 0 0.5ex;
     margin: 0;
+}
+ul.gdpr_processing_links > li:before {
+    content: "‣";
+    color: #B55;
+    padding-right: 0.3ex;
 }
 
 @media all and (max-width: 720px) {
