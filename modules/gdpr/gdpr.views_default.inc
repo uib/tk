@@ -31,6 +31,14 @@ function gdpr_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['label'] = 'Lenke tilbake';
+  $handler->display->display_options['footer']['area']['empty'] = TRUE;
+  $handler->display->display_options['footer']['area']['content'] = 'Tilbake til <a href="/gdpr">GDPR oversikten</a>.';
+  $handler->display->display_options['footer']['area']['format'] = 'markdown';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -69,6 +77,8 @@ function gdpr_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
+    t('Lenke tilbake'),
+    t('Tilbake til <a href="/gdpr">GDPR oversikten</a>.'),
     t('Page'),
   );
   $export['gdpr_processing'] = $view;
