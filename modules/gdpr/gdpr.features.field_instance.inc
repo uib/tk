@@ -19,7 +19,7 @@ function gdpr_field_default_field_instances() {
     'description' => 'Hvilket land overføres personopplysningene til?',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -54,7 +54,7 @@ function gdpr_field_default_field_instances() {
     'description' => 'Hva er grunnlaget for å overføre personopplysninger til tredjeland utenfor EU/EØS? Se kapittel V i personvernforordningen',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
@@ -86,7 +86,7 @@ function gdpr_field_default_field_instances() {
     'description' => 'Hvis opplysningene overføres til tredjeland, hvem overføres opplysningene til? ',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
