@@ -29,8 +29,51 @@ function gdpr_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_gdpr_controller',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_gdpr_controller' => 'field_gdpr_controller',
+    'field_gdpr_service' => 'field_gdpr_service',
+    'title' => 'title',
+    'field_gdpr_processor' => 'field_gdpr_processor',
+  );
+  $handler->display->display_options['style_options']['default'] = 'title';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_gdpr_controller' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_gdpr_service' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_gdpr_processor' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
   /* Footer: Global: Text area */
   $handler->display->display_options['footer']['area']['id'] = 'area';
   $handler->display->display_options['footer']['area']['table'] = 'views';
@@ -39,13 +82,39 @@ function gdpr_views_default_views() {
   $handler->display->display_options['footer']['area']['empty'] = TRUE;
   $handler->display->display_options['footer']['area']['content'] = 'Tilbake til <a href="/gdpr">GDPR oversikten</a>.';
   $handler->display->display_options['footer']['area']['format'] = 'markdown';
+  /* Field: Content: Behandlingsansvarlig */
+  $handler->display->display_options['fields']['field_gdpr_controller']['id'] = 'field_gdpr_controller';
+  $handler->display->display_options['fields']['field_gdpr_controller']['table'] = 'field_data_field_gdpr_controller';
+  $handler->display->display_options['fields']['field_gdpr_controller']['field'] = 'field_gdpr_controller';
+  $handler->display->display_options['fields']['field_gdpr_controller']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_gdpr_controller']['settings'] = array(
+    'bypass_access' => 0,
+    'link' => 0,
+  );
+  /* Field: Content: Tjeneste */
+  $handler->display->display_options['fields']['field_gdpr_service']['id'] = 'field_gdpr_service';
+  $handler->display->display_options['fields']['field_gdpr_service']['table'] = 'field_data_field_gdpr_service';
+  $handler->display->display_options['fields']['field_gdpr_service']['field'] = 'field_gdpr_service';
+  $handler->display->display_options['fields']['field_gdpr_service']['empty'] = '(Ingen)';
+  $handler->display->display_options['fields']['field_gdpr_service']['settings'] = array(
+    'bypass_access' => 0,
+    'link' => 1,
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['label'] = 'Behandling';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Databehandler */
+  $handler->display->display_options['fields']['field_gdpr_processor']['id'] = 'field_gdpr_processor';
+  $handler->display->display_options['fields']['field_gdpr_processor']['table'] = 'field_data_field_gdpr_processor';
+  $handler->display->display_options['fields']['field_gdpr_processor']['field'] = 'field_gdpr_processor';
+  $handler->display->display_options['fields']['field_gdpr_processor']['settings'] = array(
+    'bypass_access' => 0,
+    'link' => 0,
+  );
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -79,6 +148,11 @@ function gdpr_views_default_views() {
     t('Desc'),
     t('Lenke tilbake'),
     t('Tilbake til <a href="/gdpr">GDPR oversikten</a>.'),
+    t('Behandlingsansvarlig'),
+    t('Tjeneste'),
+    t('(Ingen)'),
+    t('Behandling'),
+    t('Databehandler'),
     t('Page'),
   );
   $export['gdpr_processing'] = $view;
