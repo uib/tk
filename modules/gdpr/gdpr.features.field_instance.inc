@@ -10,6 +10,108 @@
 function gdpr_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance:
+  // 'field_collection_item-field_gdpr_transfer_3rd-field_gdpr_transfer_country'.
+  $field_instances['field_collection_item-field_gdpr_transfer_3rd-field_gdpr_transfer_country'] = array(
+    'bundle' => 'field_gdpr_transfer_3rd',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Hvilket land overføres personopplysningene til?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_gdpr_transfer_country',
+    'label' => 'Land',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'field_collection_item-field_gdpr_transfer_3rd-field_gdpr_transfer_lawfulness'.
+  $field_instances['field_collection_item-field_gdpr_transfer_3rd-field_gdpr_transfer_lawfulness'] = array(
+    'bundle' => 'field_gdpr_transfer_3rd',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Hva er grunnlaget for å overføre personopplysninger til tredjeland utenfor EU/EØS? Se kapittel V i personvernforordningen',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_gdpr_transfer_lawfulness',
+    'label' => 'Grunnlag for eksport',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'field_collection_item-field_gdpr_transfer_3rd-field_gdpr_transfer_receiver'.
+  $field_instances['field_collection_item-field_gdpr_transfer_3rd-field_gdpr_transfer_receiver'] = array(
+    'bundle' => 'field_gdpr_transfer_3rd',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Hvis opplysningene overføres til tredjeland, hvem overføres opplysningene til? ',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_gdpr_transfer_receiver',
+    'label' => 'Mottaker',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
+    ),
+  );
+
   // Exported field_instance: 'node-gdpr_controller-field_gdpr_description'.
   $field_instances['node-gdpr_controller-field_gdpr_description'] = array(
     'bundle' => 'gdpr_controller',
@@ -102,7 +204,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 33,
+        'weight' => 34,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -126,7 +228,7 @@ function gdpr_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 22,
+      'weight' => 23,
     ),
   );
 
@@ -611,7 +713,7 @@ function gdpr_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 34,
+        'weight' => 35,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -652,7 +754,7 @@ function gdpr_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 23,
+      'weight' => 24,
     ),
   );
 
@@ -1050,6 +1152,45 @@ function gdpr_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-gdpr_processing-field_gdpr_transfer_3rd'.
+  $field_instances['node-gdpr_processing-field_gdpr_transfer_3rd'] = array(
+    'bundle' => 'gdpr_processing',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Overføres personopplysningene til tredjeland utenfor EU/EØS?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'field_collection',
+        'settings' => array(
+          'view_mode' => 'full',
+        ),
+        'type' => 'field_collection_fields',
+        'weight' => 33,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_gdpr_transfer_3rd',
+    'label' => 'Overføring utland',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'field_collection',
+      'settings' => array(),
+      'type' => 'field_collection_embed',
+      'weight' => 22,
+    ),
+  );
+
   // Exported field_instance: 'node-gdpr_processor-field_gdpr_description'.
   $field_instances['node-gdpr_processor-field_gdpr_description'] = array(
     'bundle' => 'gdpr_processor',
@@ -1112,11 +1253,15 @@ function gdpr_field_default_field_instances() {
   t('Generell beskrivelse av de tekniske og/eller organisatoriske tiltak for behandlingen (om mulig)');
   t('Grunnlag for behandling av sensitive opplysninger');
   t('Grunnlag for behandlingen etter artikkel 9 i personvernforordningen. Sensitive data må <em>ikke</em> behandles uten at minst én av disse grunnene gjelder.');
+  t('Grunnlag for eksport');
+  t('Hva er grunnlaget for å overføre personopplysninger til tredjeland utenfor EU/EØS? Se kapittel V i personvernforordningen');
   t('Hvem eller hvor er opplysningene mottatt fra? Den registrerte eller andre. ');
   t('Hvilke opplysninger behandles? ');
   t('Hvilke personopplysninger/kategorier personopplysninger behandles, kategorier registrerte? Om mulig, ta også med noe om omfanget av data.');
   t('Hvilken bruker hos behandlingsansvarlig har blitt delegert oppgavene med å følge opp behandlingen. For behandling tilknyttet tjenester vil dette som oftest være samme person som er kontaktperson hos systemeier.');
   t('Hvilken organisasjonsenhet er internt sett ansvarlig for behandlingen');
+  t('Hvilket land overføres personopplysningene til?');
+  t('Hvis opplysningene overføres til tredjeland, hvem overføres opplysningene til? ');
   t('Hvor dokumenatasjon og eventuelt mer informasjon om behandlingen finnes.');
   t('Hvor lagres og behandlinges opplysningene fysisk sett, systemmessig, i juridisk enhet mv. ');
   t('I hvilken tjeneste foregår behandlingen.');
@@ -1124,7 +1269,11 @@ function gdpr_field_default_field_instances() {
   t('Internt ansvarlig');
   t('Kommentarer');
   t('Kontaktperson for behandlingen');
+  t('Land');
+  t('Mottaker');
   t('Opphav');
+  t('Overføres personopplysningene til tredjeland utenfor EU/EØS?');
+  t('Overføring utland');
   t('Personopplysninger');
   t('Personvernkonsekvenser vurdert');
   t('Rutiner for sletting av opplysningene, evnt. planlagte tidsfrister for sletting (om mulig)');
