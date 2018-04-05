@@ -509,3 +509,33 @@ ul.gdpr_processing_links > li:before {
      margin-bottom: 2em;
    }
 }
+
+table {
+    font-size: smaller;
+}
+
+table > caption {
+    color: #B55;
+    font-size: larger;
+    text-align: left;
+}
+td, th {
+    padding: 0.5ex 1ex;
+}
+
+td {
+    border-right: 1px solid #FFFFFF;
+}
+
+td.active {
+    background-color: inherit;
+}
+
+tr.even, tr.odd {
+    border-bottom: 1px solid #FFFFFF;
+    background-color: #E8E8E8;
+}
+
+tr.even {
+    background-color: #F5F5F5;
+}
