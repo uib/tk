@@ -89,10 +89,7 @@ function gdpr__api_processing_all() {
 
   $nodes = node_load_multiple(array_keys($result['node']));
   foreach ($nodes as $nid => $node) {
-    $processing[] = array(
-      "id" => $node->nid,
-      "title" => $node->title,
-    );
+    $processing[$nid] = gdpr__processing_node_as_obj($node);
   }
 
   drupal_add_http_header('Access-Control-Allow-Origin', '*');
@@ -100,4 +97,37 @@ function gdpr__api_processing_all() {
     'processing' => $processing,
     '_version' => '0.9',
   ));
+}
+
+function gdpr__processing_node_as_obj($node) {
+  $processing = array(
+    'title' => $node->title,
+    'id' => $node->nid,
+    'link' => array(
+      'href_tk' => url('node/' . $node->nid, array('absolute' => TRUE)),
+    ),
+    'meta' => array(
+      'created' => format_date($node->created, 'custom', 'Y-m-d H:i:s'),
+      'changed' => format_date($node->changed, 'custom', 'Y-m-d H:i:s'),
+    ),
+  );
+
+  // text fields
+  foreach (array(
+    'field_gdpr_purpose',
+    'field_gdpr_delete_policy',
+    'field_gdpr_location',
+    'field_gdpr_data_origin',
+    'field_gdpr_data_description'
+  )
+  as $field) {
+    $fv = $node->$field;
+    if (isset($fv['und'][0])) {
+      $text = $fv['und'][0]['value'];
+      $text = str_replace("\r\n", "\n", $text);
+      $processing['text'][substr($field, 11)] = $text;
+    }
+  }
+
+  return $processing;
 }
