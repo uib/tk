@@ -7,6 +7,17 @@
 include_once 'gdpr.features.inc';
 
 /**
+ * Implements hook_menu().
+ */
+function gdpr_menu() {
+  $items['api/v1/gdpr/processing/all'] = array(
+    'page callback' => 'gdpr__api_processing_all',
+    'access callback' => TRUE,
+  );
+  return $items;
+}
+
+/**
  * Implements hook_entity_view_alter().
  */
 function gdpr_entity_view_alter(&$build, $type) {
@@ -60,4 +71,33 @@ function gdpr_node_presave($node) {
       $node->title = "Behandling #$cnt";
     }
   }
+}
+
+/**
+ * API implementation
+ */
+function gdpr__api_processing_all() {
+  $processing = array();
+
+  $query = new EntityFieldQuery;
+  $result = $query
+    ->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', 'gdpr_processing')
+    //->propertyCondition('status', '1')
+    ->propertyOrderBy('title')
+    ->execute();
+
+  $nodes = node_load_multiple(array_keys($result['node']));
+  foreach ($nodes as $nid => $node) {
+    $processing[] = array(
+      "id" => $node->nid,
+      "title" => $node->title,
+    );
+  }
+
+  drupal_add_http_header('Access-Control-Allow-Origin', '*');
+  return drupal_json_output(array(
+    'processing' => $processing,
+    '_version' => '0.9',
+  ));
 }
