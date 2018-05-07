@@ -102,7 +102,7 @@ function gdpr__api_processing_all() {
 function gdpr__processing_node_as_obj($node) {
   $processing = array(
     'title' => $node->title,
-    'id' => $node->nid,
+    'id' => (int)$node->nid,
     'link' => array(
       'href_tk' => url('node/' . $node->nid, array('absolute' => TRUE)),
     ),
@@ -111,6 +111,38 @@ function gdpr__processing_node_as_obj($node) {
       'changed' => format_date($node->changed, 'custom', 'Y-m-d H:i:s'),
     ),
   );
+
+  if (isset($node->field_gdpr_service['und'][0])) {
+    $srv = node_load($node->field_gdpr_service['und'][0]['target_id']);
+    $processing['service']['id'] = (int)$srv->nid;
+    $processing['service']['title'] = $srv->title;
+    $processing['service']['href_tk'] = url('node/' . $srv->nid, array('absolute' => TRUE));
+    $processing['service']['href_api'] = url('/api/v1/service/' . $srv->nid, array('absolute' => TRUE));
+  }
+
+  if (isset($node->field_gdpr_controller['und'][0])) {
+    $ctrl = node_load($node->field_gdpr_controller['und'][0]['target_id']);
+    $processing['controller']['id'] = (int)$ctrl->nid;
+    $processing['controller']['name'] = $ctrl->title;
+  }
+  if (isset($node->field_gdpr_controller_org['und'][0])) {
+    $ctrl_org = node_load($node->field_gdpr_controller_org['und'][0]['target_id']);
+    $processing['controller']['ou'] = $ctrl_org->title;
+  }
+  if (isset($node->field_gdpr_controller_person['und'][0])) {
+    $ctrl_person = user_load($node->field_gdpr_controller_org['und'][0]['target_id']);
+    $processing['controller']['person']['id'] = (int)$ctrl_person->uid;
+    if ($ctrl_person->uid) {
+      $processing['controller']['person']['name'] = $ctrl_person->name;
+      $processing['controller']['person']['mail'] = $ctrl_person->mail;
+    }
+  }
+
+  if (isset($node->field_gdpr_processor['und'][0])) {
+      $proc = node_load($node->field_gdpr_processor['und'][0]['target_id']);
+      $processing['processor']['id'] = (int)$proc->nid;
+      $processing['processor']['name'] = $proc->title;
+  }
 
   // text fields
   foreach (array(
