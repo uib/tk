@@ -114,11 +114,17 @@ function gdpr__processing_node_as_obj($node) {
 
   // text fields
   foreach (array(
+    'field_gdpr_description',
     'field_gdpr_purpose',
     'field_gdpr_delete_policy',
     'field_gdpr_location',
     'field_gdpr_data_origin',
-    'field_gdpr_data_description'
+    'field_gdpr_data_description',
+    'field_gdpr_delete_policy',
+    'field_gdpr_measures',
+    'field_gdpr_access_transfer',
+    'field_gdpr_transfer_3rd',
+    'field_gdpr_comment',
   )
   as $field) {
     $fv = $node->$field;
@@ -126,6 +132,54 @@ function gdpr__processing_node_as_obj($node) {
       $text = $fv['und'][0]['value'];
       $text = str_replace("\r\n", "\n", $text);
       $processing['text'][substr($field, 11)] = $text;
+    }
+  }
+
+  // "boolean" fields
+  foreach (array(
+    'field_gdpr_subject_informed',
+    'field_gdpr_data_structured',
+    'field_gdpr_dpia',
+    'field_gdpr_data_special',
+    'field_gdpr_processor_contract',
+  )
+  as $field) {
+    $fv = $node->$field;
+    if (isset($fv['und'][0])) {
+      $val = $fv['und'][0]['value'];
+      $val = ($val == '?') ? NULL : ($val == 'y');
+      $processing['info'][substr($field, 11)] = $val;
+    }
+  }
+
+  // multi enum fields
+  foreach (array(
+    'field_gdpr_lawfulness',
+    'field_gdpr_data_special_type',
+    'field_gdpr_data_special_lawfulne',
+  )
+  as $field) {
+    $fv = $node->$field;
+    if (isset($fv['und'][0])) {
+      $processing['info'][substr($field, 11)] =
+        implode(' ', array_map(
+            function($v) { return $v['value']; },
+            $fv['und']
+        ));
+    }
+  }
+
+  // link fields
+  foreach (array(
+    'field_gdpr_documentation_link',
+  )
+  as $field) {
+    $fv = $node->$field;
+    if (isset($fv['und'][0])) {
+      $f = substr($field, 11);
+      $f = str_replace('_link', '', $f);
+      $url = $fv['und'][0]['url'];
+      $processing['link'][$f] = $url;
     }
   }
 
