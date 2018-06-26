@@ -767,7 +767,7 @@ function gdpr_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'Er det gjennomført vurdering av personvern-konsekvenser (DPIA)? Hvis dette ikke er nødvendig sett denne til N/A.',
+    'description' => 'Er det gjennomført vurdering av personvern-konsekvenser (DPIA)? Hvis dette ikke er nødvendig sett denne til N/A. Du kan lese mer om i <a href="https://www.datatilsynet.no/regelverk-og-skjema/veiledere/vurdering-av-personvernkonsekvenser/?id=8303">Datatilsynets beskrivelse av DPIA</a>. Hvis vi har konsesjon for en behandling, så kan vi krysse av for DPIA, ettersom det bygger på de samme vurderingene (selv om konsesjonen faller bort når den nye personopplysningsloven trer i kraft, så faller ikke vurderingene som ble gjort, bort).',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1058,7 +1058,7 @@ function gdpr_field_default_field_instances() {
     'default_value' => NULL,
     'default_value_function' => 'entityreference_prepopulate_field_default_value',
     'deleted' => 0,
-    'description' => 'I hvilken tjeneste foregår behandlingen.',
+    'description' => 'I hvilken tjeneste foregår behandlingen. Hvis behandlingen skjer i en tjeneste registrert i Tjenestekatalogen så kan dette registreres her. La feltet stå blankt for eksterne tjenester som ikke er blitt registrert.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1246,7 +1246,7 @@ function gdpr_field_default_field_instances() {
   t('Den som bestemmer formålet med behandlingen av personopplysninger og hvilke hjelpemidler som skal brukes. Systemer som UiB har tatt i bruk vil vanligvis ha "Universitetet i Bergen" satt som behandlingsansvarlig. Dette impliserer at administrerende direktør ved UiB er behandlingsansvarlig i lovens forstand.');
   t('Dokumentasjon');
   t('Er de registrerte informert i henhold til artikkel 13 og 14 ved innsamling av opplysningene?');
-  t('Er det gjennomført vurdering av personvern-konsekvenser (DPIA)? Hvis dette ikke er nødvendig sett denne til N/A.');
+  t('Er det gjennomført vurdering av personvern-konsekvenser (DPIA)? Hvis dette ikke er nødvendig sett denne til N/A. Du kan lese mer om i <a href="https://www.datatilsynet.no/regelverk-og-skjema/veiledere/vurdering-av-personvernkonsekvenser/?id=8303">Datatilsynets beskrivelse av DPIA</a>. Hvis vi har konsesjon for en behandling, så kan vi krysse av for DPIA, ettersom det bygger på de samme vurderingene (selv om konsesjonen faller bort når den nye personopplysningsloven trer i kraft, så faller ikke vurderingene som ble gjort, bort).');
   t('Foreligger det en formell avtale mellom behandlingsansvarlige og databehandleren?');
   t('Foreligger personopplysningene i strukturert maskinlesbar form?');
   t('Formålet med behandlingen');
@@ -1264,7 +1264,7 @@ function gdpr_field_default_field_instances() {
   t('Hvis opplysningene overføres til tredjeland, hvem overføres opplysningene til? ');
   t('Hvor dokumenatasjon og eventuelt mer informasjon om behandlingen finnes.');
   t('Hvor lagres og behandlinges opplysningene fysisk sett, systemmessig, i juridisk enhet mv. ');
-  t('I hvilken tjeneste foregår behandlingen.');
+  t('I hvilken tjeneste foregår behandlingen. Hvis behandlingen skjer i en tjeneste registrert i Tjenestekatalogen så kan dette registreres her. La feltet stå blankt for eksterne tjenester som ikke er blitt registrert.');
   t('Informasjon gitt til de registrerte');
   t('Internt ansvarlig');
   t('Kommentarer');
