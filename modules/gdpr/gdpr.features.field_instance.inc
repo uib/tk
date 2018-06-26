@@ -188,7 +188,7 @@ function gdpr_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 21,
+      'weight' => 22,
     ),
   );
 
@@ -228,7 +228,7 @@ function gdpr_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 23,
+      'weight' => 24,
     ),
   );
 
@@ -418,7 +418,7 @@ function gdpr_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -458,7 +458,7 @@ function gdpr_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -499,7 +499,7 @@ function gdpr_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
@@ -537,7 +537,7 @@ function gdpr_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 17,
+      'weight' => 18,
     ),
   );
 
@@ -575,7 +575,7 @@ function gdpr_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 16,
+      'weight' => 17,
     ),
   );
 
@@ -616,7 +616,7 @@ function gdpr_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 12,
+      'weight' => 13,
     ),
   );
 
@@ -656,7 +656,7 @@ function gdpr_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -754,7 +754,7 @@ function gdpr_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 24,
+      'weight' => 25,
     ),
   );
 
@@ -795,7 +795,47 @@ function gdpr_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 18,
+      'weight' => 19,
+    ),
+  );
+
+  // Exported field_instance: 'node-gdpr_processing-field_gdpr_law_reference'.
+  $field_instances['node-gdpr_processing-field_gdpr_law_reference'] = array(
+    'bundle' => 'gdpr_processing',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Hvilke nasjonale lover hjemler behandlingsgrunnlaget? Det vil være bestemmelser i universitets- og høyskoleloven når det gjelder studenter, som er mest aktuell, og noen andre lover.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 36,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_gdpr_law_reference',
+    'label' => 'Lovhjemmel for behandlingsgrunnlaget',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 8,
     ),
   );
 
@@ -872,7 +912,7 @@ function gdpr_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -912,7 +952,7 @@ function gdpr_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -966,7 +1006,7 @@ function gdpr_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 19,
+      'weight' => 20,
     ),
   );
 
@@ -1008,7 +1048,7 @@ function gdpr_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 20,
+      'weight' => 21,
     ),
   );
 
@@ -1148,7 +1188,7 @@ function gdpr_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -1187,7 +1227,7 @@ function gdpr_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 22,
+      'weight' => 23,
     ),
   );
 
@@ -1256,6 +1296,7 @@ function gdpr_field_default_field_instances() {
   t('Grunnlag for eksport');
   t('Hva er grunnlaget for å overføre personopplysninger til tredjeland utenfor EU/EØS? Se kapittel V i personvernforordningen');
   t('Hvem eller hvor er opplysningene mottatt fra? Den registrerte eller andre. ');
+  t('Hvilke nasjonale lover hjemler behandlingsgrunnlaget? Det vil være bestemmelser i universitets- og høyskoleloven når det gjelder studenter, som er mest aktuell, og noen andre lover.');
   t('Hvilke opplysninger behandles? ');
   t('Hvilke personopplysninger/kategorier personopplysninger behandles, kategorier registrerte? Om mulig, ta også med noe om omfanget av data.');
   t('Hvilken bruker hos behandlingsansvarlig har blitt delegert oppgavene med å følge opp behandlingen. For behandling tilknyttet tjenester vil dette som oftest være samme person som er kontaktperson hos systemeier.');
@@ -1270,6 +1311,7 @@ function gdpr_field_default_field_instances() {
   t('Kommentarer');
   t('Kontaktperson for behandlingen');
   t('Land');
+  t('Lovhjemmel for behandlingsgrunnlaget');
   t('Mottaker');
   t('Opphav');
   t('Overføres personopplysningene til tredjeland utenfor EU/EØS?');

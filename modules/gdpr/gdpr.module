@@ -44,6 +44,13 @@ function gdpr_entity_view_alter(&$build, $type) {
  function gdpr_form_gdpr_processing_node_form_alter(&$form, &$form_state, $form_id) {
   $form['title']['#required'] = FALSE;
   $form['title']['#description'] = 'Behandlingens tittel brukes i opplistinger. Knyttes behandlingen til en tjeneste blir tittel satt fra denne.';
+  $form['field_gdpr_law_reference']['#states'] = array(
+    'visible' => array(
+      array(':input[name="field_gdpr_lawfulness[und][c]"]' => array('checked' => TRUE)),
+      'or',
+      array(':input[name="field_gdpr_lawfulness[und][e]"]' => array('checked' => TRUE)),
+    ),
+  );
   $form['field_gdpr_data_special_type']['#states'] = array(
     'visible' => array(
       ':input[name="field_gdpr_data_special[und]"]' => array('value' => 'y'),
