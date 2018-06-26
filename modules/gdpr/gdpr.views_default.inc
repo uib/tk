@@ -91,6 +91,13 @@ function gdpr_views_default_views() {
     'bypass_access' => 0,
     'link' => 0,
   );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = 'Behandling';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   /* Field: Content: Tjeneste */
   $handler->display->display_options['fields']['field_gdpr_service']['id'] = 'field_gdpr_service';
   $handler->display->display_options['fields']['field_gdpr_service']['table'] = 'field_data_field_gdpr_service';
@@ -100,13 +107,6 @@ function gdpr_views_default_views() {
     'bypass_access' => 0,
     'link' => 1,
   );
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'Behandling';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   /* Field: Content: Databehandler */
   $handler->display->display_options['fields']['field_gdpr_processor']['id'] = 'field_gdpr_processor';
   $handler->display->display_options['fields']['field_gdpr_processor']['table'] = 'field_data_field_gdpr_processor';
@@ -149,9 +149,9 @@ function gdpr_views_default_views() {
     t('Lenke tilbake'),
     t('Tilbake til <a href="/gdpr">GDPR oversikten</a>.'),
     t('Behandlingsansvarlig'),
+    t('Behandling'),
     t('Tjeneste'),
     t('(Ingen)'),
-    t('Behandling'),
     t('Databehandler'),
     t('Page'),
   );
