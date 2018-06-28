@@ -155,6 +155,7 @@ function gdpr__processing_node_as_obj($node) {
   foreach (array(
     'field_gdpr_description',
     'field_gdpr_purpose',
+    'field_gdpr_law_reference',
     'field_gdpr_delete_policy',
     'field_gdpr_location',
     'field_gdpr_data_origin',
