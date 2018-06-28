@@ -116,12 +116,6 @@ function tk__api_page() {
     <dt> <a href="/api/v1/service/all">$base_url/api/v1/service/all</a>
     <dd>This returns a complete dump all the services and related information such as users and categories.
   </dl>
-
-  <p>Deprecated endpoints:</p>
-  <dl>
-    <dt> <a href="/data/tk.csv">$base_url/data/tk.csv</a>
-    <dt> <a href="/data/tk.xls">$base_url/data/tk.xls</a>
-  </dl>
 </article>
 EOT;
 }
